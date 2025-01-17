@@ -6,7 +6,7 @@ const config = {
     "stylelint-config-recess-order",
   ],
   plugins: ["stylelint-order"],
-  ignoreFiles:['**/*.cjs', '**/*.js','**/*.jsx'],
+  ignoreFiles:['**/*.cjs', '**/*.mjs', '**/*.js','**/*.jsx'],
   overrides: [
     {
       files: [
