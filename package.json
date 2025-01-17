@@ -1,7 +1,15 @@
 {
-  "name": "booker",
+  "name": "BOOKER",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "badahertz52"
+  },
+  "description": "더 많은 사람에게 책과 도서관을 연결하는,BOOKER",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BadaHertz52/booker.git"
+  },
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
