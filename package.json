@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@stylelint/postcss-css-in-js": "github:stylelint/postcss-css-in-js",
+    "@stylelint/postcss-css-in-js": "^0.38.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -44,8 +44,7 @@
     "stylelint-config-prettier": "^9.0.4",
     "stylelint-config-recess-order": "^3.0.0",
     "stylelint-config-recommended": "^9.0.0",
-    "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.10.0",
+    "stylelint-order": "^6.0.4",
     "typescript": "^5"
   }
 }

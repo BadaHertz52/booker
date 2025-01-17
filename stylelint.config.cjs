@@ -1,26 +1,19 @@
 /** @type { import('stylelint').Config } */
 const config = {
   extends: [
-    "stylelint-config-recommended",
-    "stylelint-config-styled-components",
     "stylelint-config-prettier",
+    "stylelint-config-recommended",
     "stylelint-config-recess-order",
   ],
-  rules: {
-    "no-descending-specificity": null,
-  },
+  plugins: ["stylelint-order"],
+  ignoreFiles:['**/*.cjs', '**/*.js','**/*.jsx'],
   overrides: [
     {
       files: [
-        "**/*.js",
-        "**/*.cjs",
-        "**/*.mjs",
-        "**/*.jsx",
         "**/*.ts",
         "**/*.tsx",
       ],
-      processors: ["stylelint-processor-styled-components"],
-      customSyntax: "postcss-scss",
+      customSyntax: "@stylelint/postcss-css-in-js",
     },
   ],
 };
