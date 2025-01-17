@@ -14,20 +14,38 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:styles": "stylelint \"src/**/style.ts\" --fix"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "emotion": "^8.0.12",
+    "next": "15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next": "15.1.4"
+    "react-emotion": "^8.0.12"
   },
   "devDependencies": {
-    "typescript": "^5",
+    "@eslint/eslintrc": "^3",
+    "@stylelint/postcss-css-in-js": "github:stylelint/postcss-css-in-js",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.1.4",
-    "@eslint/eslintrc": "^3"
+    "i": "^0.3.7",
+    "npm": "^11.0.0",
+    "postcss": "^8.4.19",
+    "postcss-scss": "^4.0.5",
+    "postcss-syntax": "^0.36.2",
+    "prettier": "^3.4.2",
+    "stylelint": "^14.15.0",
+    "stylelint-config-prettier": "^9.0.4",
+    "stylelint-config-recess-order": "^3.0.0",
+    "stylelint-config-recommended": "^9.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
+    "typescript": "^5"
   }
 }
