@@ -52,6 +52,7 @@ const eslintConfig = [
       },
     },
     rules: {
+      'react/react-in-jsx-scope': 'off',
       '@typescript-eslint/naming-convention': [
         'error',
         {
