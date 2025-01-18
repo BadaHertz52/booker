@@ -1,0 +1,11 @@
+html {
+  font-size: 62.5%; /*NOTE: 1rem = 10px을 위한 트릭*/
+}
+
+body {
+  box-sizing: border-box;
+  margin: 0;
+  font-size: var(--font-size-basic);
+  font-family: var(--font-pretendard);
+  word-break: keep-all;
+}
