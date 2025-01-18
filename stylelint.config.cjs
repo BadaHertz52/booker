@@ -1,21 +1,21 @@
 /** @type { import('stylelint').Config } */
 const config = {
   extends: [
-    "stylelint-config-prettier",
-    "stylelint-config-recommended",
-    "stylelint-config-recess-order",
+    'stylelint-config-prettier',
+    'stylelint-config-recommended',
+    'stylelint-config-recess-order',
   ],
-  plugins: ["stylelint-order"],
-  ignoreFiles:['**/*.cjs', '**/*.mjs', '**/*.js','**/*.jsx'],
+  plugins: ['stylelint-order'],
+  ignoreFiles: ['**/*.cjs', '**/*.mjs', '**/*.js', '**/*.jsx'],
   overrides: [
     {
-      files: [
-        "**/*.ts",
-        "**/*.tsx",
-      ],
-      customSyntax: "@stylelint/postcss-css-in-js",
+      files: ['**/*.ts', '**/*.tsx'],
+      customSyntax: '@stylelint/postcss-css-in-js',
     },
   ],
+  rules: {
+    'function-no-unknown': null,
+  },
 };
 
 module.exports = config;
