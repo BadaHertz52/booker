@@ -1,4 +1,6 @@
-import '@/styles/globals.css';
+import '@/styles/variables.scss';
+import '@/styles/globals.scss';
+import '@/styles/reset.scss';
 
 import localFont from 'next/font/local';
 
