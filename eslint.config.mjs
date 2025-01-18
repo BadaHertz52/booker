@@ -20,8 +20,6 @@ const eslintConfig = [
     'next/core-web-vitals',
     'next/typescript',
     'plugin:prettier/recommended',
-    'plugin:react/recommended',
-    'plugin:react-hooks/recommended',
     'plugin:jsx-a11y/recommended',
     'plugin:@typescript-eslint/recommended',
   ),
@@ -42,8 +40,6 @@ const eslintConfig = [
     plugins: {
       prettier: eslintPluginPrettier,
       '@typescript-eslint': typescriptEslint,
-      react: eslintPluginReact,
-      'react-hooks': eslintPluginReactHooks,
       'jsx-a11y': eslintPluginJsxA11y,
     },
     settings: {

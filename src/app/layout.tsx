@@ -1,6 +1,12 @@
-import { Global } from '@emotion/react';
+import '@/styles/globals.css';
 
-import globalStyles from '@/globalStyles/globalStyles';
+import localFont from 'next/font/local';
+
+const pretendard = localFont({
+  src: './PretendardVariable.woff2',
+  display: 'swap',
+  variable: '--font-pretendard',
+});
 
 export default function RootLayout({
   children,
@@ -8,11 +14,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body>
-        <Global styles={globalStyles()} />
-        {children}
-      </body>
+    <html lang="en" className={pretendard.variable}>
+      <body>{children}</body>
     </html>
   );
 }
