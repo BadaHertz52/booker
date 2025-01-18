@@ -24,16 +24,17 @@
     "next": "15.1.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-emotion": "^8.0.12"
+    "react-emotion": "^8.0.12",
+    "sass": "^1.83.4"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
-    "@stylelint/postcss-css-in-js": "^0.38.0",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@typescript-eslint/eslint-plugin": "^8.20.0",
     "@typescript-eslint/parser": "^8.20.0",
+    "autoprefixer": "^10.4.20",
     "eslint": "^9",
     "eslint-config-next": "15.1.4",
     "eslint-config-prettier": "^10.0.1",
@@ -44,13 +45,8 @@
     "i": "^0.3.7",
     "npm": "^11.0.0",
     "postcss": "^8.4.19",
-    "postcss-scss": "^4.0.5",
     "prettier": "^3.4.2",
-    "stylelint": "^14.15.0",
-    "stylelint-config-prettier": "^9.0.4",
-    "stylelint-config-recess-order": "^3.0.0",
-    "stylelint-config-recommended": "^9.0.0",
-    "stylelint-order": "^6.0.4",
+    "prettier-plugin-css-order": "^2.1.2",
     "typescript": "^5"
   }
 }
