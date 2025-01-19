@@ -4,6 +4,8 @@ import '@/styles/reset.scss';
 
 import localFont from 'next/font/local';
 
+import { Footer, Topbar } from '@/components';
+
 const pretendard = localFont({
   src: './PretendardVariable.woff2',
   display: 'swap',
@@ -17,7 +19,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={pretendard.variable}>
-      <body>{children}</body>
+      <body>
+        <div id="root">
+          <Topbar />
+          <main>{children}</main>
+          <Footer />
+        </div>
+      </body>
     </html>
   );
 }

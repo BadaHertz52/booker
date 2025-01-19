@@ -1,0 +1,14 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  margin: 1.6rem 0;
+  width: inherit;
+  color: var(--color-gray500);
+  font-size: var(--font-size-small);
+}
+
+.link {
+  &:hover {
+    color: var(--color-primary);
+  }
+}
