@@ -1,0 +1,41 @@
+@use '@/styles/mixins' as mixins;
+
+.topbar {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  justify-content: space-between;
+
+  background-color: var(--color-white);
+  padding: 1.6rem 1rem;
+  width: 100%;
+  height: var(--topbar-height);
+
+  @include mixins.responsive-layout-width;
+  @media screen and (min-width: 768) {
+    left: calc((100% - var(--root-max-width)) / 2);
+  }
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoText {
+  color: var(--color-primary);
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+.searchbar {
+  border: 0.1rem solid var(--color-gray500);
+  border-radius: 9999;
+  width: 23rem;
+
+  @media screen and (max-width: 425) {
+    width: 50%;
+  }
+}
