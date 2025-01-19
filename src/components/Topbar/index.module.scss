@@ -6,14 +6,15 @@
   top: 0;
   left: 0;
   justify-content: space-between;
-  margin: 0 auto;
+
   background-color: var(--color-white);
   padding: 1.6rem 1rem;
   width: inherit;
   height: var(--topbar-height);
+
+  @include mixins.responsive-layout-width;
   @media screen and (min-width: 768) {
-    left: calc((100% - 76.8rem) / 2);
-    width: 76.8rem;
+    left: calc((100% - var(--root-max-width)) / 2);
   }
 }
 

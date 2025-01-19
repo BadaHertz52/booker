@@ -3,6 +3,6 @@
   width: inherit;
   @media screen and (min-width: 768px) {
     margin: 0 auto;
-    width: 76.8rem;
+    width: var(--root-max-width);
   }
 }
