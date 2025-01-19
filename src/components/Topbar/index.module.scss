@@ -9,7 +9,7 @@
 
   background-color: var(--color-white);
   padding: 1.6rem 1rem;
-  width: inherit;
+  width: 100%;
   height: var(--topbar-height);
 
   @include mixins.responsive-layout-width;
