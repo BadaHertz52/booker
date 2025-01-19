@@ -9,7 +9,7 @@
   margin: 0 auto;
   background-color: var(--color-white);
   padding: 1.6rem 1rem;
-  width: 100%;
+  width: inherit;
   height: var(--topbar-height);
   @media screen and (min-width: 768) {
     left: calc((100% - 76.8rem) / 2);
