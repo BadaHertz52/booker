@@ -24,3 +24,7 @@ body {
 
   @include mixins.responsive-layout-width;
 }
+
+main {
+  padding: 10 10 0 10;
+}
