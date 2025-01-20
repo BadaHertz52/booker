@@ -2,30 +2,31 @@
 
 import classNames from 'classnames';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import FullTriangle from '@/images/fullTriangle.svg';
 import SearchIcon from '@/images/searchIcon.svg';
 import { debounce } from '@/utils/debounce';
 
 import useElementId from './hooks/useElementId';
+import useOpenDropdownMenu from './hooks/useOpenDropdownMenu';
 import styles from './index.module.scss';
-type SearchCategory = 'title' | 'author';
 
+type SearchCategory = 'title' | 'author';
 const CATEGORY_NAME: Record<SearchCategory, string> = {
   title: '도서',
   author: '저자',
 } as const;
 
-const DELAY_TIME = 1 * 100;
-interface CategoryDropdownMenuProps {
+interface DropdownMenuProps {
   id: string;
+  dropdownMenuRef: React.RefObject<HTMLUListElement | null>;
   category: SearchCategory;
   changeCategory: () => void;
 }
-const CategoryDropdownMenu = ({ id, category, changeCategory }: CategoryDropdownMenuProps) => {
+const DropdownMenu = ({ id, dropdownMenuRef, category, changeCategory }: DropdownMenuProps) => {
   return (
-    <ul id={id} className={styles.dropdownMenu}>
+    <ul id={id} ref={dropdownMenuRef} className={styles.dropdownMenu}>
       {Object.entries(CATEGORY_NAME).map(([key, value]) => (
         <li key={key} role="option" aria-selected={category === value} tabIndex={category === value ? 0 : -1}>
           {value}
@@ -36,34 +37,22 @@ const CategoryDropdownMenu = ({ id, category, changeCategory }: CategoryDropdown
 };
 const Searchbar = () => {
   const [category, setCategory] = useState<SearchCategory>('title');
-  const [isOpenDropdownMenu, setIsOpenDropdownMenu] = useState(false);
+
   const elementId = useElementId();
+  const dropdownMenuButtonRef = useRef<HTMLButtonElement>(null);
+  const dropdownMenuRef = useRef<HTMLUListElement>(null);
 
-  const handleClickDropdownOpenButton = debounce(() => {
-    setIsOpenDropdownMenu((prev) => !prev);
-  }, DELAY_TIME);
-
-  const handleDropdownMenu = (e: MouseEvent) => {
-    if (!(e.target instanceof HTMLElement)) return;
-
-    if (e.target.closest(`#${elementId.searchCategoryList}`) || e.target.closest(`#${elementId.dropdownMenuButton}`))
-      return;
-    setIsOpenDropdownMenu(false);
-  };
+  const { isOpenDropdownMenu, handleClickDropdownOpenButton } = useOpenDropdownMenu({
+    dropdownMenuButtonRef,
+    dropdownMenuRef,
+  });
 
   const changeCategory = () => {};
-
-  useEffect(() => {
-    document.addEventListener('click', handleDropdownMenu);
-    return () => {
-      document.removeEventListener('click', handleDropdownMenu);
-    };
-  }, []);
 
   return (
     <form className={styles.searchbar}>
       <button
-        id={elementId.dropdownMenuButton}
+        ref={dropdownMenuButtonRef}
         type="button"
         className={styles.categoryContainer}
         aria-haspopup="listbox"
@@ -85,7 +74,12 @@ const Searchbar = () => {
         </span>
       </button>
       {isOpenDropdownMenu && (
-        <CategoryDropdownMenu id={elementId.searchCategoryList} category={category} changeCategory={changeCategory} />
+        <DropdownMenu
+          id={elementId.searchCategoryList}
+          dropdownMenuRef={dropdownMenuRef}
+          category={category}
+          changeCategory={changeCategory}
+        />
       )}
       <label className="sr-only" htmlFor={elementId.searchInput}>
         검색어

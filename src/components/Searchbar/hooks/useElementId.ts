@@ -3,7 +3,6 @@ import { useId } from 'react';
 const ID = {
   searchCategoryList: 'search-category-list',
   searchInput: 'searchInput',
-  dropdownMenuButton: 'dropdownMenuButton',
 } as const;
 
 const useElementId = () => {
