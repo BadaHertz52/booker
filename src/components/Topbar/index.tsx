@@ -3,6 +3,8 @@ import React from 'react';
 
 import LogoIcon from '@/images/logo.svg';
 
+import Searchbar from '../Searchbar';
+
 import styles from './index.module.scss';
 const Topbar = () => {
   return (
@@ -11,7 +13,7 @@ const Topbar = () => {
         <Image src={LogoIcon} alt="" width={30} height={30} />
         <p className={styles.logoText}>BOOKER</p>
       </div>
-      <div className={styles.searchbar}></div>
+      <Searchbar />
     </header>
   );
 };

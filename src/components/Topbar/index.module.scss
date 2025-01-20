@@ -29,13 +29,3 @@
   font-weight: 900;
   font-size: 2rem;
 }
-
-.searchbar {
-  border: 0.1rem solid var(--color-gray500);
-  border-radius: 9999;
-  width: 23rem;
-
-  @media screen and (max-width: 425) {
-    width: 50%;
-  }
-}
