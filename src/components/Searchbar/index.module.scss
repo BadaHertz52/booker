@@ -1,8 +1,8 @@
-$categoryContainerWidth: 4rem;
-$categoryContainerMargin: 0.8rem;
-$searchButtonWidth: 1.7rem;
-$searchButtonMargin: 0.8rem;
-$padding-horizon: 1.6rem;
+$category-container__width: 4rem;
+$category-container__margin: 0.8rem;
+$search-button__width: 1.7rem;
+$search-button__margin: 0.8rem;
+$searchbar__padding-horizon: 1.6rem;
 
 .searchbar {
   display: flex;
@@ -10,15 +10,16 @@ $padding-horizon: 1.6rem;
   align-items: center;
   border: 0.1rem solid var(--color-gray500);
   border-radius: 9999;
-  padding: 0.8rem $padding-horizon;
+  padding: 0.8rem $searchbar__padding-horizon;
   width: 30rem;
   @media screen and (max-width: 500) {
     width: 50%;
   }
 
   input {
-    border: none;
-    width: calc(100% - $categoryContainerWidth - $categoryContainerMargin - $searchButtonWidth - $searchButtonMargin);
+    width: calc(
+      100% - $category-container__width - $category-container__margin - $search-button__width - $search-button__margin
+    );
     color: var(--color-placeHolder);
   }
 }
@@ -26,8 +27,8 @@ $padding-horizon: 1.6rem;
   display: flex;
   align-items: center;
   gap: 0.2rem;
-  margin-right: $categoryContainerMargin;
-  width: $categoryContainerWidth;
+  margin-right: $category-container__margin;
+  width: $category-container__width;
   height: 1.6rem;
 }
 .bar {
@@ -35,6 +36,7 @@ $padding-horizon: 1.6rem;
   font-weight: 500;
 }
 .searchButton {
-  margin-left: $searchButtonMargin;
-  width: $searchButtonWidth;
+  margin-left: $search-button__margin;
+  width: $search-button__width;
+}
 }
