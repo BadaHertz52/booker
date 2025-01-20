@@ -6,6 +6,7 @@ $searchbar__padding-horizon: 1.6rem;
 
 .searchbar {
   display: flex;
+  position: relative;
   justify-content: space-evenly;
   align-items: center;
   border: 0.1rem solid var(--color-gray500);
@@ -39,4 +40,23 @@ $searchbar__padding-horizon: 1.6rem;
   margin-left: $search-button__margin;
   width: $search-button__width;
 }
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: calc($searchbar__padding-horizon - 0.8rem);
+  transition: display 1s ease-in-out;
+  border: 0.1rem solid var(--color-gray500);
+  border-radius: var(--border-radius-basic);
+  background-color: var(--color-white);
+  padding: 0.8rem 1.4rem;
+  list-style: none;
+}
+
+.triangle {
+  transform: rotateX(0);
+  transition: transform 500ms ease;
+  &.reverse {
+    transform: rotateX(180deg);
+  }
 }

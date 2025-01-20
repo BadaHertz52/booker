@@ -28,3 +28,14 @@ body {
 main {
   padding: 10 10 0 10;
 }
+
+.sr-only {
+  position: fixed;
+  top: -9999px;
+  left: -9999px;
+}
+
+input {
+  outline: none;
+  border: 1px solid transparent;
+}
