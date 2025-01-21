@@ -10,7 +10,7 @@
   align-items: center;
   gap: 1.6rem;
   opacity: 1;
-  animation: fadeOut 5s forwards;
+  animation: fadeOut 3s forwards;
   margin: 0;
   border-radius: var(--border-radius-basic);
   background-color: var(--color-warning);
@@ -27,8 +27,11 @@
     90% {
       opacity: 1;
     }
-    100% {
+    99% {
       opacity: 0; /* 10% 동안 희미해짐 */
+    }
+    100% {
+      opacity: 0;
     }
   }
 }

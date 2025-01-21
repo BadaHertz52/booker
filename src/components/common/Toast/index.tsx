@@ -7,7 +7,7 @@ import Portal from '../Portal';
 
 import styles from './index.module.scss';
 
-const DURATION = 5 * 1000;
+const DURATION = 3 * 1000;
 
 interface Props {
   children: React.ReactNode;
