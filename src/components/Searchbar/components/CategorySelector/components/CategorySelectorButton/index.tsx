@@ -3,18 +3,18 @@ import Image from 'next/image';
 
 import FullTriangle from '@/images/fullTriangle.svg';
 
+import { CategorySelectorProps } from '../..';
+
 import styles from './index.module.scss';
 
-interface Props {
+interface Props extends CategorySelectorProps {
   dropdownMenuButtonRef: React.RefObject<HTMLButtonElement | null>;
   isOpenDropdownMenu: boolean;
-  elementId: Record<string, string>;
   handleClickDropdownOpenButton: () => void;
-  categoryInfo: Record<string, string>;
   selectedCategory: string;
 }
 
-const SearchCategoryButton = ({
+const CategorySelectorButton = ({
   dropdownMenuButtonRef,
   isOpenDropdownMenu,
   elementId,
@@ -49,4 +49,4 @@ const SearchCategoryButton = ({
   );
 };
 
-export default SearchCategoryButton;
+export default CategorySelectorButton;
