@@ -19,13 +19,13 @@
 
   @keyframes fadeOut {
     0% {
-      opacity: 1; /* 초기 상태 */
+      opacity: 0;
     }
-    90% {
+    15% {
       opacity: 1;
     }
-    99% {
-      opacity: 0; /* 10% 동안 희미해짐 */
+    90% {
+      opacity: 0.85;
     }
     100% {
       opacity: 0;
