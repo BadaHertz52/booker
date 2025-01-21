@@ -1,16 +1,15 @@
 'use client';
 
-import classNames from 'classnames';
 import Image from 'next/image';
 import React, { useActionState, useRef, useState } from 'react';
 
-import FullTriangle from '@/images/fullTriangle.svg';
 import SearchIcon from '@/images/searchIcon.svg';
 
 import { Toast } from '../common';
 
 import searchAction from './action/searchAction';
 import DropdownMenu from './components/DropdownMenu';
+import SearchCategoryButton from './components/SearchCategoryButton';
 import useElementId from './hooks/useElementId';
 import useOpenDropdownMenu from './hooks/useOpenDropdownMenu';
 import useToast from './hooks/useToast';
@@ -49,38 +48,14 @@ const Searchbar = ({ categoryInfo }: Props) => {
 
   return (
     <form className={styles.searchbar} action={handleFormAction}>
-      <button
-        ref={dropdownMenuButtonRef}
-        type="button"
-        className={styles.categoryContainer}
-        aria-haspopup="listbox"
-        aria-expanded="false"
-        aria-controls={elementId.searchCategoryList}
-        onClick={handleClickDropdownOpenButton}
-      >
-        <input name="selectedCategory" readOnly hidden value={categoryInfo[selectedCategory]} />
-        <span title="검색유형">{categoryInfo[selectedCategory]}</span>
-        <Image
-          className={classNames(styles.triangle, { [styles.reverse]: isOpenDropdownMenu })}
-          src={FullTriangle}
-          alt=""
-          width={10}
-          height={8}
-          aria-hidden="true"
-        />
-        <span aria-hidden="true" className={styles.bar}>
-          |
-        </span>
-      </button>
-      {isOpenDropdownMenu && (
-        <DropdownMenu
-          id={elementId.searchCategoryList}
-          dropdownMenuRef={dropdownMenuRef}
-          selectedCategory={selectedCategory}
-          categoryInfo={categoryInfo}
-          changeCategory={changeCategory}
-        />
-      )}
+      <SearchCategoryButton
+        dropdownMenuButtonRef={dropdownMenuButtonRef}
+        isOpenDropdownMenu={isOpenDropdownMenu}
+        elementId={elementId}
+        handleClickDropdownOpenButton={handleClickDropdownOpenButton}
+        categoryInfo={categoryInfo}
+        selectedCategory={selectedCategory}
+      />
       <label className="sr-only" htmlFor={elementId.searchInput}>
         검색어
       </label>
@@ -95,6 +70,15 @@ const Searchbar = ({ categoryInfo }: Props) => {
       <button type="submit" className={styles.searchButton} disabled={isPending}>
         <Image src={SearchIcon} alt="" width={17} height={18} />
       </button>
+      {isOpenDropdownMenu && (
+        <DropdownMenu
+          id={elementId.searchCategoryList}
+          dropdownMenuRef={dropdownMenuRef}
+          selectedCategory={selectedCategory}
+          categoryInfo={categoryInfo}
+          changeCategory={changeCategory}
+        />
+      )}
       {isOpenToast && (
         <Toast handleCloseToast={handleCloseToast}>
           <p>{state?.error}</p>
