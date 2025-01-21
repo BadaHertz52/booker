@@ -2,10 +2,12 @@
 
 import classNames from 'classnames';
 import Image from 'next/image';
-import React, { useActionState, useRef, useState } from 'react';
+import React, { useActionState, useEffect, useRef, useState } from 'react';
 
 import FullTriangle from '@/images/fullTriangle.svg';
 import SearchIcon from '@/images/searchIcon.svg';
+
+import { Toast } from '../common';
 
 import searchAction from './action/searchAction';
 import DropdownMenu from './components/DropdownMenu';
@@ -20,6 +22,12 @@ interface Props {
 const Searchbar = ({ categoryInfo }: Props) => {
   const [selectedCategory, setSelectedCategory] = useState('title');
   const [state, formAction, isPending] = useActionState(searchAction, null);
+  const [isOpenToast, setIsOpenToast] = useState(false);
+
+  useEffect(() => {
+    if (!state) return;
+    setIsOpenToast(!state?.status);
+  }, [state]);
 
   const elementId = useElementId();
   const dropdownMenuButtonRef = useRef<HTMLButtonElement>(null);
@@ -90,6 +98,11 @@ const Searchbar = ({ categoryInfo }: Props) => {
       <button type="submit" className={styles.searchButton} disabled={isPending}>
         <Image src={SearchIcon} alt="" width={17} height={18} />
       </button>
+      {isOpenToast && (
+        <Toast handleCloseToast={() => setIsOpenToast(false)}>
+          <p>{state?.error}</p>
+        </Toast>
+      )}
     </form>
   );
 };
