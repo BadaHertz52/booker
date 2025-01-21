@@ -2,11 +2,12 @@
 
 import classNames from 'classnames';
 import Image from 'next/image';
-import React, { useRef, useState } from 'react';
+import React, { useActionState, useRef, useState } from 'react';
 
 import FullTriangle from '@/images/fullTriangle.svg';
 import SearchIcon from '@/images/searchIcon.svg';
 
+import searchAction from './action/searchAction';
 import DropdownMenu from './components/DropdownMenu';
 import useElementId from './hooks/useElementId';
 import useOpenDropdownMenu from './hooks/useOpenDropdownMenu';
@@ -21,10 +22,12 @@ const CATEGORY_NAME: Record<string, string> = {
 
 const Searchbar = () => {
   const [selectedCategory, setSelectedCategory] = useState('title');
+  const [state, formAction, isPending] = useActionState(searchAction, null);
 
   const elementId = useElementId();
   const dropdownMenuButtonRef = useRef<HTMLButtonElement>(null);
   const dropdownMenuRef = useRef<HTMLUListElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   const { isOpenDropdownMenu, handleClickDropdownOpenButton, closeDropdownMenu } = useOpenDropdownMenu({
     dropdownMenuButtonRef,
@@ -37,8 +40,13 @@ const Searchbar = () => {
     closeDropdownMenu();
   };
 
+  const handleFormAction = (payload: FormData) => {
+    if (!searchInputRef.current || searchInputRef.current.value.trim() === '') return;
+    formAction(payload);
+  };
+
   return (
-    <form className={styles.searchbar}>
+    <form className={styles.searchbar} action={handleFormAction}>
       <button
         ref={dropdownMenuButtonRef}
         type="button"
@@ -74,8 +82,15 @@ const Searchbar = () => {
       <label className="sr-only" htmlFor={elementId.searchInput}>
         검색어
       </label>
-      <input id={elementId.searchInput} type="search" name="searchValue" placeholder="검색어를 입력해주세요" />
-      <button className={styles.searchButton}>
+      <input
+        id={elementId.searchInput}
+        type="search"
+        ref={searchInputRef}
+        disabled={isPending}
+        name="searchValue"
+        placeholder="검색어를 입력해주세요"
+      />
+      <button type="submit" className={styles.searchButton} disabled={isPending}>
         <Image src={SearchIcon} alt="" width={17} height={18} />
       </button>
     </form>
