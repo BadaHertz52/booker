@@ -13,14 +13,11 @@ import useElementId from './hooks/useElementId';
 import useOpenDropdownMenu from './hooks/useOpenDropdownMenu';
 import styles from './index.module.scss';
 
-type SearchCategory = 'title' | 'author';
+interface Props {
+  categoryInfo: Record<string, string>;
+}
 
-const CATEGORY_NAME: Record<string, string> = {
-  title: '도서',
-  author: '저자',
-} as const;
-
-const Searchbar = () => {
+const Searchbar = ({ categoryInfo }: Props) => {
   const [selectedCategory, setSelectedCategory] = useState('title');
   const [state, formAction, isPending] = useActionState(searchAction, null);
 
@@ -56,8 +53,8 @@ const Searchbar = () => {
         aria-controls={elementId.searchCategoryList}
         onClick={handleClickDropdownOpenButton}
       >
-        <input title="검색유형" name="selectedCategory" readOnly hidden value={CATEGORY_NAME[selectedCategory]} />
-        <span title="검색유형">{CATEGORY_NAME[selectedCategory]}</span>
+        <input title="검색유형" name="selectedCategory" readOnly hidden value={categoryInfo[selectedCategory]} />
+        <span title="검색유형">{categoryInfo[selectedCategory]}</span>
         <Image
           className={classNames(styles.triangle, { [styles.reverse]: isOpenDropdownMenu })}
           src={FullTriangle}
@@ -75,7 +72,7 @@ const Searchbar = () => {
           id={elementId.searchCategoryList}
           dropdownMenuRef={dropdownMenuRef}
           selectedCategory={selectedCategory}
-          categoryInfo={CATEGORY_NAME}
+          categoryInfo={categoryInfo}
           changeCategory={changeCategory}
         />
       )}
