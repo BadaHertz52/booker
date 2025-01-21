@@ -25,7 +25,7 @@ const Toast = ({ children, handleCloseToast }: Props) => {
   }, []);
 
   return (
-    <Portal extraClassName={styles.toastPortal}>
+    <Portal>
       <div className={styles.toast}>
         <Image src={WarningIcon} alt="" width={16} />
         {children}
