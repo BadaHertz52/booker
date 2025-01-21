@@ -30,7 +30,7 @@ const useOpenDropdownMenu = ({ dropdownMenuButtonRef, dropdownMenuRef }: Props) 
     };
   }, [dropdownMenuButtonRef, dropdownMenuRef]);
 
-  return { isOpenDropdownMenu, handleClickDropdownOpenButton };
+  return { isOpenDropdownMenu, handleClickDropdownOpenButton, closeDropdownMenu: () => setIsOpenDropdownMenu(false) };
 };
 
 export default useOpenDropdownMenu;

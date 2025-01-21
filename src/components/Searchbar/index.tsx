@@ -42,12 +42,16 @@ const Searchbar = () => {
   const dropdownMenuButtonRef = useRef<HTMLButtonElement>(null);
   const dropdownMenuRef = useRef<HTMLUListElement>(null);
 
-  const { isOpenDropdownMenu, handleClickDropdownOpenButton } = useOpenDropdownMenu({
+  const { isOpenDropdownMenu, handleClickDropdownOpenButton, closeDropdownMenu } = useOpenDropdownMenu({
     dropdownMenuButtonRef,
     dropdownMenuRef,
   });
 
-  const changeCategory = () => {};
+  const changeCategory = (item: string) => {
+    if (item === selectedCategory) return;
+    setSelectedCategory(item);
+    closeDropdownMenu();
+  };
 
   return (
     <form className={styles.searchbar}>
