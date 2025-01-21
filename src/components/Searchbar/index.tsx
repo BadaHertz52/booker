@@ -2,7 +2,7 @@
 
 import classNames from 'classnames';
 import Image from 'next/image';
-import React, { useActionState, useEffect, useRef, useState } from 'react';
+import React, { useActionState, useRef, useState } from 'react';
 
 import FullTriangle from '@/images/fullTriangle.svg';
 import SearchIcon from '@/images/searchIcon.svg';
@@ -13,6 +13,7 @@ import searchAction from './action/searchAction';
 import DropdownMenu from './components/DropdownMenu';
 import useElementId from './hooks/useElementId';
 import useOpenDropdownMenu from './hooks/useOpenDropdownMenu';
+import useToast from './hooks/useToast';
 import styles from './index.module.scss';
 
 interface Props {
@@ -22,22 +23,18 @@ interface Props {
 const Searchbar = ({ categoryInfo }: Props) => {
   const [selectedCategory, setSelectedCategory] = useState('title');
   const [state, formAction, isPending] = useActionState(searchAction, null);
-  const [isOpenToast, setIsOpenToast] = useState(false);
-
-  useEffect(() => {
-    if (!state) return;
-    setIsOpenToast(!state?.status);
-  }, [state]);
+  const { isOpenToast, handleCloseToast } = useToast({ state });
 
   const elementId = useElementId();
-  const dropdownMenuButtonRef = useRef<HTMLButtonElement>(null);
-  const dropdownMenuRef = useRef<HTMLUListElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
-  const { isOpenDropdownMenu, handleClickDropdownOpenButton, closeDropdownMenu } = useOpenDropdownMenu({
+  const {
     dropdownMenuButtonRef,
     dropdownMenuRef,
-  });
+    isOpenDropdownMenu,
+    handleClickDropdownOpenButton,
+    closeDropdownMenu,
+  } = useOpenDropdownMenu();
 
   const changeCategory = (item: string) => {
     if (item === selectedCategory) return;
@@ -61,7 +58,7 @@ const Searchbar = ({ categoryInfo }: Props) => {
         aria-controls={elementId.searchCategoryList}
         onClick={handleClickDropdownOpenButton}
       >
-        <input title="검색유형" name="selectedCategory" readOnly hidden value={categoryInfo[selectedCategory]} />
+        <input name="selectedCategory" readOnly hidden value={categoryInfo[selectedCategory]} />
         <span title="검색유형">{categoryInfo[selectedCategory]}</span>
         <Image
           className={classNames(styles.triangle, { [styles.reverse]: isOpenDropdownMenu })}
@@ -99,7 +96,7 @@ const Searchbar = ({ categoryInfo }: Props) => {
         <Image src={SearchIcon} alt="" width={17} height={18} />
       </button>
       {isOpenToast && (
-        <Toast handleCloseToast={() => setIsOpenToast(false)}>
+        <Toast handleCloseToast={handleCloseToast}>
           <p>{state?.error}</p>
         </Toast>
       )}

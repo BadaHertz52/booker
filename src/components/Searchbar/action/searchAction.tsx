@@ -1,7 +1,4 @@
-interface ActionState {
-  status: boolean;
-  error: string;
-}
+import { ActionState } from '@/types/actionState';
 
 const searchAction = async (_: any, formData: FormData): Promise<ActionState> => {
   const selectedCategory = formData?.get('selectedCategory');

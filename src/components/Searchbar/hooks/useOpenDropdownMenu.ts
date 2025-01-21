@@ -1,14 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { debounce } from '@/utils/debounce';
 
 const DELAY_TIME = 1 * 100;
 
-interface Props {
-  dropdownMenuRef: React.RefObject<HTMLUListElement | null>;
-  dropdownMenuButtonRef: React.RefObject<HTMLButtonElement | null>;
-}
-const useOpenDropdownMenu = ({ dropdownMenuButtonRef, dropdownMenuRef }: Props) => {
+const useOpenDropdownMenu = () => {
+  const dropdownMenuButtonRef = useRef<HTMLButtonElement>(null);
+  const dropdownMenuRef = useRef<HTMLUListElement>(null);
   const [isOpenDropdownMenu, setIsOpenDropdownMenu] = useState(false);
 
   const handleClickDropdownOpenButton = debounce(() => {
@@ -30,7 +28,13 @@ const useOpenDropdownMenu = ({ dropdownMenuButtonRef, dropdownMenuRef }: Props) 
     };
   }, [dropdownMenuButtonRef, dropdownMenuRef]);
 
-  return { isOpenDropdownMenu, handleClickDropdownOpenButton, closeDropdownMenu: () => setIsOpenDropdownMenu(false) };
+  return {
+    dropdownMenuButtonRef,
+    dropdownMenuRef,
+    isOpenDropdownMenu,
+    handleClickDropdownOpenButton,
+    closeDropdownMenu: () => setIsOpenDropdownMenu(false),
+  };
 };
 
 export default useOpenDropdownMenu;
