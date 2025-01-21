@@ -1,8 +1,9 @@
+@use './_variable' as vars;
+
 $category-container__width: 4rem;
 $category-container__margin: 0.8rem;
 $search-button__width: 1.7rem;
 $search-button__margin: 0.8rem;
-$searchbar__padding-horizon: 1.6rem;
 
 .searchbar {
   display: flex;
@@ -11,7 +12,7 @@ $searchbar__padding-horizon: 1.6rem;
   align-items: center;
   border: 0.1rem solid var(--color-gray500);
   border-radius: 9999;
-  padding: 0.8rem $searchbar__padding-horizon;
+  padding: 0.8rem vars.$searchbar__padding-horizon;
   width: 30rem;
   @media screen and (max-width: 500) {
     width: 50%;
@@ -21,7 +22,9 @@ $searchbar__padding-horizon: 1.6rem;
     width: calc(
       100% - $category-container__width - $category-container__margin - $search-button__width - $search-button__margin
     );
-    color: var(--color-placeHolder);
+    &::placeholder {
+      color: var(--color-placeHolder);
+    }
   }
 }
 .categoryContainer {
@@ -39,18 +42,6 @@ $searchbar__padding-horizon: 1.6rem;
 .searchButton {
   margin-left: $search-button__margin;
   width: $search-button__width;
-}
-
-.dropdownMenu {
-  position: absolute;
-  top: calc(100% + 0.4rem);
-  left: calc($searchbar__padding-horizon - 0.8rem);
-  transition: display 1s ease-in-out;
-  border: 0.1rem solid var(--color-gray500);
-  border-radius: var(--border-radius-basic);
-  background-color: var(--color-white);
-  padding: 0.8rem 1.4rem;
-  list-style: none;
 }
 
 .triangle {

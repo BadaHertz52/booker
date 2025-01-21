@@ -2,41 +2,25 @@
 
 import classNames from 'classnames';
 import Image from 'next/image';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 
 import FullTriangle from '@/images/fullTriangle.svg';
 import SearchIcon from '@/images/searchIcon.svg';
-import { debounce } from '@/utils/debounce';
 
+import DropdownMenu from './components/DropdownMenu';
 import useElementId from './hooks/useElementId';
 import useOpenDropdownMenu from './hooks/useOpenDropdownMenu';
 import styles from './index.module.scss';
 
 type SearchCategory = 'title' | 'author';
-const CATEGORY_NAME: Record<SearchCategory, string> = {
+
+const CATEGORY_NAME: Record<string, string> = {
   title: '도서',
   author: '저자',
 } as const;
 
-interface DropdownMenuProps {
-  id: string;
-  dropdownMenuRef: React.RefObject<HTMLUListElement | null>;
-  category: SearchCategory;
-  changeCategory: () => void;
-}
-const DropdownMenu = ({ id, dropdownMenuRef, category, changeCategory }: DropdownMenuProps) => {
-  return (
-    <ul id={id} ref={dropdownMenuRef} className={styles.dropdownMenu}>
-      {Object.entries(CATEGORY_NAME).map(([key, value]) => (
-        <li key={key} role="option" aria-selected={category === value} tabIndex={category === value ? 0 : -1}>
-          {value}
-        </li>
-      ))}
-    </ul>
-  );
-};
 const Searchbar = () => {
-  const [category, setCategory] = useState<SearchCategory>('title');
+  const [selectedCategory, setSelectedCategory] = useState('title');
 
   const elementId = useElementId();
   const dropdownMenuButtonRef = useRef<HTMLButtonElement>(null);
@@ -64,7 +48,8 @@ const Searchbar = () => {
         aria-controls={elementId.searchCategoryList}
         onClick={handleClickDropdownOpenButton}
       >
-        <span title="검색유형">{CATEGORY_NAME[category]}</span>
+        <input title="검색유형" name="selectedCategory" readOnly hidden value={CATEGORY_NAME[selectedCategory]} />
+        <span title="검색유형">{CATEGORY_NAME[selectedCategory]}</span>
         <Image
           className={classNames(styles.triangle, { [styles.reverse]: isOpenDropdownMenu })}
           src={FullTriangle}
@@ -81,7 +66,8 @@ const Searchbar = () => {
         <DropdownMenu
           id={elementId.searchCategoryList}
           dropdownMenuRef={dropdownMenuRef}
-          category={category}
+          selectedCategory={selectedCategory}
+          categoryInfo={CATEGORY_NAME}
           changeCategory={changeCategory}
         />
       )}
