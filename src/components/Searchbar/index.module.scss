@@ -9,7 +9,11 @@
   border-radius: 9999;
   padding: 0.8rem vars.$searchbar__padding-horizon;
   width: 30rem;
+  font-size: var(--font-size-small);
   @media screen and (max-width: 500) {
     width: 60%;
+  }
+  @media screen and (max-width: 350px) {
+    width: 70%;
   }
 }
