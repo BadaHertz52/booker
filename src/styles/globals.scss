@@ -25,6 +25,15 @@ body {
   @include mixins.responsive-layout-width;
 }
 
+#portal-root {
+  z-index: var(--portal-z-index);
+  border: none;
+  padding: 0;
+  &::backdrop {
+    background: transparent;
+  }
+  @include mixins.responsive-fixed-layout;
+}
 main {
   padding: 10 10 0 10;
 }
