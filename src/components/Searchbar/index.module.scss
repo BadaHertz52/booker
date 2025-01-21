@@ -10,16 +10,6 @@
   padding: 0.8rem vars.$searchbar__padding-horizon;
   width: 30rem;
   @media screen and (max-width: 500) {
-    width: 50%;
-  }
-
-  input {
-    width: calc(
-      100% - vars.$category-container__width - vars.$category-container__margin - vars.$search-button__width -
-        vars.$search-button__margin
-    );
-    &::placeholder {
-      color: var(--color-placeHolder);
-    }
+    width: 60%;
   }
 }

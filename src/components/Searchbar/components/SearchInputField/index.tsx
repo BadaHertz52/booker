@@ -1,5 +1,7 @@
 import React from 'react';
 
+import styles from './index.module.scss';
+
 interface Props {
   elementId: Record<string, string>;
   searchInputRef: React.RefObject<HTMLInputElement | null>;
@@ -13,6 +15,7 @@ const SearchInputField = ({ elementId, searchInputRef, isPending }: Props) => {
         검색어
       </label>
       <input
+        className={styles.input}
         id={elementId.searchInput}
         type="search"
         ref={searchInputRef}
