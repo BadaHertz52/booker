@@ -6,7 +6,7 @@ import Searchbar from '../components/Searchbar';
 
 const meta: Meta<typeof Searchbar> = {
   component: Searchbar,
-  title: 'components/BookSearchbar',
+  title: 'components/Searchbar',
   argTypes: {
     categoryInfo: { control: 'object' },
   },
