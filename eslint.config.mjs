@@ -3,8 +3,6 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import eslintPluginPrettier from 'eslint-plugin-prettier';
 import typescriptEslint from '@typescript-eslint/eslint-plugin';
-import eslintPluginReact from 'eslint-plugin-react';
-import eslintPluginReactHooks from 'eslint-plugin-react-hooks';
 import eslintPluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import tsParser from '@typescript-eslint/parser';
 
@@ -64,13 +62,7 @@ const eslintConfig = [
         'error',
         {
           'newlines-between': 'always',
-          groups: [
-            ['builtin', 'external'],
-            'internal',
-            'parent',
-            'sibling',
-            'index',
-          ],
+          groups: [['builtin', 'external'], 'internal', 'parent', 'sibling', 'index'],
           pathGroups: [
             {
               pattern: 'next',
