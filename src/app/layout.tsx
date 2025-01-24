@@ -4,7 +4,7 @@ import '@/styles/reset.scss';
 
 import { Footer, Topbar } from '@/components';
 import { pretendard } from '@/styles/fonts';
-
+// ci 테스트
 export default function RootLayout({
   children,
 }: Readonly<{
