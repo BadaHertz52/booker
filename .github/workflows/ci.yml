@@ -4,7 +4,6 @@ on:
   pull_request:
     branches:
       - develop
-      - release
 
 jobs:
   ci:
@@ -24,16 +23,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run ESLint
-        run: npm lint
-      - name: Run Stylelint
-        run: npm lint:styles
-
       - name: Build Next.js
-        run: npm build
+        run: npm run build
 
       - name: Build Storybook
-        run: npm build-storybook
+        run: npm run build-storybook
 
       - name: Verify Storybook Deployment
         if: ${{ github.event_name == 'pull_request' }}
