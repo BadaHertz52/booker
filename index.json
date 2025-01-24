@@ -1,1 +1,1 @@
-{"v":5,"entries":{"components-searchbar--book-searchbar":{"type":"story","id":"components-searchbar--book-searchbar","name":"Book Searchbar","title":"components/Searchbar","importPath":"./src/stories/Searchbar.stories.ts","componentPath":"./src/components/Searchbar","tags":["dev","test"]}}}
+{"v":5,"entries":{"components-searchbar--book-searchbar":{"type":"story","id":"components-searchbar--book-searchbar","name":"Book Searchbar","title":"components/Searchbar","importPath":"./src/stories/Searchbar.stories.ts","componentPath":"./src/components","tags":["dev","test"]}}}
