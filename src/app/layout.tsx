@@ -2,15 +2,8 @@ import '@/styles/variables.scss';
 import '@/styles/globals.scss';
 import '@/styles/reset.scss';
 
-import localFont from 'next/font/local';
-
 import { Footer, Topbar } from '@/components';
-
-const pretendard = localFont({
-  src: './PretendardVariable.woff2',
-  display: 'swap',
-  variable: '--font-pretendard',
-});
+import { pretendard } from '@/styles/fonts';
 
 export default function RootLayout({
   children,
