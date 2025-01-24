@@ -7,7 +7,7 @@ import Searchbar from '../Searchbar';
 
 import styles from './index.module.scss';
 
-const CATEGORY_NAME: Record<string, string> = {
+export const BOOK_SEARCH_CATEGORY_NAME: Record<string, string> = {
   title: '도서',
   author: '저자',
 } as const;
@@ -19,7 +19,7 @@ const Topbar = () => {
         <Image src={LogoIcon} alt="" width={30} height={30} />
         <p className={styles.logoText}>BOOKER</p>
       </div>
-      <Searchbar categoryInfo={CATEGORY_NAME} />
+      <Searchbar categoryInfo={BOOK_SEARCH_CATEGORY_NAME} />
     </header>
   );
 };

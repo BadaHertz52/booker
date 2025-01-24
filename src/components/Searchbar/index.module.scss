@@ -6,7 +6,8 @@
   justify-content: space-evenly;
   align-items: center;
   border: 0.1rem solid var(--color-gray500);
-  border-radius: 9999;
+  border-radius: 999px;
+  background-color: var(--color-white);
   padding: 0.8rem vars.$searchbar__padding-horizon;
   width: 30rem;
   font-size: var(--font-size-small);
