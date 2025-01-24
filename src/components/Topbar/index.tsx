@@ -1,9 +1,8 @@
 import Image from 'next/image';
 import React from 'react';
 
+import { Searchbar } from '@/components';
 import LogoIcon from '@/images/logo.svg';
-
-import Searchbar from '../Searchbar';
 
 import styles from './index.module.scss';
 
