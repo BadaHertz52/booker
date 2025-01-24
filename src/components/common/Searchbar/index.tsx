@@ -3,9 +3,8 @@
 import Image from 'next/image';
 import React, { useActionState, useRef } from 'react';
 
+import { Toast } from '@/components';
 import SearchIcon from '@/images/searchIcon.svg';
-
-import { Toast } from '../common';
 
 import searchAction from './action/searchAction';
 import CategorySelector from './components/CategorySelector';
