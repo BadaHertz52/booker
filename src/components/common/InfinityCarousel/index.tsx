@@ -1,6 +1,6 @@
 'use client';
 import Image from 'next/image';
-import React, { CSSProperties, useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 
 import ArrowRightIcon from '@/images/arrowRight.svg';
 import PauseIcon from '@/images/pauseCircle.svg';
@@ -56,7 +56,7 @@ const InfinityCarousel = ({
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isAutoSlide, setIsAutoSlide] = useState(true);
 
-  const slideIntervalRef = useRef<NodeJS.Timeout | null>(null); // useRef로 변경
+  const slideIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   const cardRef = useRef<HTMLLIElement>(null);
 
@@ -73,6 +73,8 @@ const InfinityCarousel = ({
   };
 
   const handleNavigationClick = debounce((isPrev: boolean) => {
+    setSlideTransitionDuration(contorlSlideDuration);
+    clearSlideInterval();
     moveSlide(isPrev ? 'left' : 'right');
   }, 100);
 
@@ -85,17 +87,15 @@ const InfinityCarousel = ({
       slideIntervalRef.current = setInterval(() => {
         moveSlide('right');
       }, autoSlideInterval);
-      setSlideTransitionDuration(autoSlideDuration);
     }
     if (!isAutoSlide) {
-      setSlideTransitionDuration(contorlSlideDuration);
       clearSlideInterval();
     }
 
     return () => {
       clearSlideInterval();
     };
-  }, [isAutoSlide]);
+  }, [isAutoSlide, currentSlideIndex]);
 
   useEffect(() => {
     if (cardRef.current) {
@@ -117,6 +117,8 @@ const InfinityCarousel = ({
   };
 
   const handleSlideTransitionEnd = () => {
+    // controlSlide buttond으로 슬라이드 조작 후 자동 슬라이드 속도 맞춤
+    setSlideTransitionDuration(autoSlideDuration);
     if (currentSlideIndex === 0) {
       return resetTransition(slides.length - 2);
     }
