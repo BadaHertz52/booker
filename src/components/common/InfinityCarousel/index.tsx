@@ -35,15 +35,28 @@ const AutoPlayButton = ({ isPlaying, handlePlayButtonClick }: AutoPlayButtonProp
 
 interface InfinityCarouselProps {
   title: string;
-  duration?: number;
+  autoSlideDuration?: number;
+  autoSlideInterval?: number;
+  contorlSlideDuration?: number;
+  Duration?: number;
   children: React.ReactElement<HTMLElement>[];
 }
-const InfinityCarousel = ({ title, duration = 1000, children: cards }: InfinityCarouselProps) => {
+const InfinityCarousel = ({
+  title,
+  autoSlideDuration = 1.5 * 1000,
+  autoSlideInterval = 5 * 1000,
+  contorlSlideDuration = 500,
+  children: cards,
+}: InfinityCarouselProps) => {
   const slides = [cards[cards.length - 1], ...cards, cards[0]];
   type Direction = 'left' | 'right';
   const [currentSlideIndex, setCurrentIndex] = useState(1);
+  const [slideTransitionDuration, setSlideTransitionDuration] = useState(autoSlideDuration);
   const [cardWidth, setCardWidth] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
+  const [isAutoSlide, setIsAutoSlide] = useState(true);
+
+  const slideIntervalRef = useRef<NodeJS.Timeout | null>(null); // useRef로 변경
 
   const cardRef = useRef<HTMLLIElement>(null);
 
@@ -56,42 +69,60 @@ const InfinityCarousel = ({ title, duration = 1000, children: cards }: InfinityC
   };
 
   const moveSlide = (direction: Direction) => {
-    const newCurrentIndex = direction === 'left' ? getPrevIndex(currentSlideIndex) : getNextIndex(currentSlideIndex);
-
-    setCurrentIndex(newCurrentIndex);
+    setCurrentIndex((prev) => (direction === 'left' ? getPrevIndex(prev) : getNextIndex(prev)));
   };
 
   const handleNavigationClick = debounce((isPrev: boolean) => {
     moveSlide(isPrev ? 'left' : 'right');
   }, 100);
 
+  const clearSlideInterval = () => {
+    if (slideIntervalRef.current) clearInterval(slideIntervalRef.current);
+  };
+
+  useEffect(() => {
+    if (isAutoSlide) {
+      slideIntervalRef.current = setInterval(() => {
+        moveSlide('right');
+      }, autoSlideInterval);
+      setSlideTransitionDuration(autoSlideDuration);
+    }
+    if (!isAutoSlide) {
+      setSlideTransitionDuration(contorlSlideDuration);
+      clearSlideInterval();
+    }
+
+    return () => {
+      clearSlideInterval();
+    };
+  }, [isAutoSlide]);
+
   useEffect(() => {
     if (cardRef.current) {
       setCardWidth(cardRef.current.clientWidth);
-      setTimeout(() => {
+
+      requestAnimationFrame(() => {
         setIsTransitioning(true);
-      }, 100);
+      });
     }
   }, [cardRef.current]);
 
+  const resetTransition = (newIndex: number) => {
+    setIsTransitioning(false);
+    setCurrentIndex(newIndex);
+    // DOM 업데이트를 위한 최소한의 지연 시간
+    setTimeout(() => {
+      setIsTransitioning(true);
+    }, 10);
+  };
+
   const handleSlideTransitionEnd = () => {
     if (currentSlideIndex === 0) {
-      setIsTransitioning(false);
-      setCurrentIndex(slides.length - 2);
-      setTimeout(() => {
-        setIsTransitioning(true);
-      }, 10);
-      return;
+      return resetTransition(slides.length - 2);
     }
     if (currentSlideIndex === slides.length - 1) {
-      setIsTransitioning(false);
-      setCurrentIndex(1);
-      setTimeout(() => {
-        setIsTransitioning(true);
-      }, 10);
-      return;
+      return resetTransition(1);
     }
-    setIsTransitioning(true);
   };
 
   return (
@@ -101,7 +132,7 @@ const InfinityCarousel = ({ title, duration = 1000, children: cards }: InfinityC
         className={styles.slide}
         style={{
           transform: `translateX(-${cardWidth * currentSlideIndex}px)`,
-          transition: isTransitioning ? `transform ${duration}ms ease-in-out` : 'none',
+          transition: isTransitioning ? `transform ${slideTransitionDuration}ms ease-in-out` : 'none',
         }}
       >
         {slides.map((card, index) => (
@@ -117,7 +148,12 @@ const InfinityCarousel = ({ title, duration = 1000, children: cards }: InfinityC
         </div>
         <SlideNavigationButton handleNavigationClick={handleNavigationClick} />
       </div>
-      <AutoPlayButton isPlaying={false} handlePlayButtonClick={() => {}} />
+      <AutoPlayButton
+        isPlaying={isAutoSlide}
+        handlePlayButtonClick={() => {
+          setIsAutoSlide((prev) => !prev);
+        }}
+      />
     </section>
   );
 };
