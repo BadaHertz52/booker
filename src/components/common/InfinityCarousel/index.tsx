@@ -49,6 +49,11 @@ const InfinityCarousel = ({
   const { cardWidth, cardRef } = useCardWidth({
     activateTransition,
   });
+  /**
+   * currentSlideIndex를 기반으로 몇번째 카드인지 계산한 값
+   * 예를 들어, 총 5개의 카드가 있고 currentSlideIndex가 6일 경우, 1번째 카드를 가리키는 값을 반환
+   */
+  const currentCardIndex = useMemo(() => {
 
   return (
     <section className={styles.container} style={{ width: cardWidth, overflow: 'hidden' }}>

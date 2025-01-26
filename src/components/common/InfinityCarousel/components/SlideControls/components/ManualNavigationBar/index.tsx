@@ -9,6 +9,7 @@ import styles from './index.module.scss';
 interface ManualNavigationButtonProps {
   isPrev?: boolean;
   disabled: boolean;
+
   handleNavigationClick: (isPrev: boolean) => void;
 }
 
@@ -22,22 +23,16 @@ const ManualNavigationButton = ({ isPrev = false, disabled, handleNavigationClic
 
 export interface ManualNavigationBarProps extends Pick<ManualNavigationButtonProps, 'handleNavigationClick'> {
   isAbleControlSlide: boolean;
-  currentSlideIndex: number;
+  currentCardIndex: number;
   cardsLength: number;
 }
 
 const ManualNavigationBar = ({
   isAbleControlSlide,
-  currentSlideIndex,
+  currentCardIndex,
   cardsLength,
   handleNavigationClick,
 }: ManualNavigationBarProps) => {
-  const getCurrentCardIndex = (currentSlideIndex: number) => {
-    if (currentSlideIndex === 0) return cardsLength;
-    if (currentSlideIndex > cardsLength) return currentSlideIndex - cardsLength;
-    return currentSlideIndex;
-  };
-
   return (
     <div className={styles.navigation}>
       <ManualNavigationButton
@@ -46,7 +41,7 @@ const ManualNavigationBar = ({
         handleNavigationClick={handleNavigationClick}
       />
       <p>
-        {getCurrentCardIndex(currentSlideIndex)} / {cardsLength}
+        {currentCardIndex} / {cardsLength}
       </p>
       <ManualNavigationButton disabled={!isAbleControlSlide} handleNavigationClick={handleNavigationClick} />
     </div>

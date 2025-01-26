@@ -7,7 +7,7 @@ import styles from './index.module.scss';
 
 interface SlideControlsProps extends UseAutoSlideProps {
   isAbleControlSlide: boolean;
-  currentSlideIndex: number;
+  currentCardIndex: number;
   cardsLength: number;
   adjustTransitionToManualSpeed: () => void;
   moveToNextSlide: () => void;
@@ -16,7 +16,7 @@ interface SlideControlsProps extends UseAutoSlideProps {
 
 const SlideControls = ({
   isAbleControlSlide,
-  currentSlideIndex,
+  currentCardIndex,
   cardsLength,
   adjustTransitionToManualSpeed,
   moveToNextSlide,
@@ -42,7 +42,7 @@ const SlideControls = ({
       />
       <ManualNavigationBar
         isAbleControlSlide={isAbleControlSlide}
-        currentSlideIndex={currentSlideIndex}
+        currentCardIndex={currentCardIndex}
         cardsLength={cardsLength}
         handleNavigationClick={handleNavigationClick}
       />
