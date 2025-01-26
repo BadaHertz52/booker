@@ -29,10 +29,8 @@ const InfinityCarousel = ({
   const [slideTransitionDuration, setSlideTransitionDuration] = useState(autoSlideDuration);
   const [cardWidth, setCardWidth] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
-  const [isAutoSlide, setIsAutoSlide] = useState(true);
   const [isAbleControlSlide, setIsAbleControlSlide] = useState(true);
 
-  const slideIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const cardRef = useRef<HTMLLIElement>(null);
 
   const getPrevIndex = (currentSlideIndex: number) => {
@@ -46,31 +44,6 @@ const InfinityCarousel = ({
   const moveSlide = (direction: Direction) => {
     setCurrentIndex((prev) => (direction === 'left' ? getPrevIndex(prev) : getNextIndex(prev)));
   };
-
-  const handleNavigationClick = (isPrev: boolean) => {
-    setSlideTransitionDuration(contorlSlideDuration);
-    clearSlideInterval();
-    moveSlide(isPrev ? 'left' : 'right');
-  };
-
-  const clearSlideInterval = () => {
-    if (slideIntervalRef.current) clearInterval(slideIntervalRef.current);
-  };
-
-  useEffect(() => {
-    if (isAutoSlide) {
-      slideIntervalRef.current = setInterval(() => {
-        moveSlide('right');
-      }, autoSlideInterval);
-    }
-    if (!isAutoSlide) {
-      clearSlideInterval();
-    }
-
-    return () => {
-      clearSlideInterval();
-    };
-  }, [isAutoSlide, currentSlideIndex]);
 
   useEffect(() => {
     if (cardRef.current) {
@@ -104,10 +77,6 @@ const InfinityCarousel = ({
     setIsAbleControlSlide(true);
   };
 
-  const handlePlayButtonClick = () => {
-    setIsAutoSlide((prev) => !prev);
-  };
-
   return (
     <section className={styles.container} style={{ width: cardWidth, overflow: 'hidden' }}>
       <SlideDisplay
@@ -124,10 +93,14 @@ const InfinityCarousel = ({
       <SlideController
         isAbleControlSlide={isAbleControlSlide}
         currentSlideIndex={currentSlideIndex}
-        cards={cards}
-        handleNavigationClick={handleNavigationClick}
-        handlePlayButtonClick={handlePlayButtonClick}
-        isPlaying={isAutoSlide}
+        cardsLength={cards.length}
+        adjustTransitionToManualSpeed={() => {
+          setSlideTransitionDuration(contorlSlideDuration);
+        }}
+        autoSlideInterval={autoSlideInterval}
+        moveSlide={() => moveSlide('right')}
+        moveToNextSlide={() => moveSlide('right')}
+        moveToPrevSlide={() => moveSlide('left')}
       />
     </section>
   );

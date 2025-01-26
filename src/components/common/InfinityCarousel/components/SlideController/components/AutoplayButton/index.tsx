@@ -7,15 +7,15 @@ import PlayIcon from '@/images/play.svg';
 import styles from './index.module.scss';
 
 export interface AutoPlayButtonProps {
-  isPlaying: boolean;
+  isAutoSlide: boolean;
   disabled: boolean;
   handlePlayButtonClick: () => void;
 }
 
-const AutoPlayButton = ({ isPlaying, disabled, handlePlayButtonClick }: AutoPlayButtonProps) => {
+const AutoPlayButton = ({ isAutoSlide, disabled, handlePlayButtonClick }: AutoPlayButtonProps) => {
   return (
     <button onClick={handlePlayButtonClick} disabled={disabled} className={styles.button}>
-      <Image src={isPlaying ? PauseIcon : PlayIcon} height={10} alt="" />
+      <Image src={isAutoSlide ? PauseIcon : PlayIcon} height={10} alt="" />
     </button>
   );
 };

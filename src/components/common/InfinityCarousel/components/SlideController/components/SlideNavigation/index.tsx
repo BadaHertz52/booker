@@ -23,13 +23,13 @@ const SlideNavigationButton = ({ isPrev = false, disabled, handleNavigationClick
 export interface SlideNavigationProps extends Pick<SlideNavigationButtonProps, 'handleNavigationClick'> {
   isAbleControlSlide: boolean;
   currentSlideIndex: number;
-  cards: React.ReactNode[];
+  cardsLength: number;
 }
 
 const SlideNavigation = ({
   isAbleControlSlide,
   currentSlideIndex,
-  cards,
+  cardsLength,
   handleNavigationClick,
 }: SlideNavigationProps) => {
   return (
@@ -40,7 +40,7 @@ const SlideNavigation = ({
         handleNavigationClick={handleNavigationClick}
       />
       <p>
-        {currentSlideIndex + 1} / {cards.length}
+        {currentSlideIndex + 1} / {cardsLength}
       </p>
       <SlideNavigationButton disabled={!isAbleControlSlide} handleNavigationClick={handleNavigationClick} />
     </div>

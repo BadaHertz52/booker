@@ -1,30 +1,49 @@
 import React from 'react';
 
-import AutoPlayButton, { AutoPlayButtonProps } from './components/AutoplayButton';
-import SlideNavigation, { SlideNavigationProps } from './components/SlideNavigation';
+import AutoPlayButton from './components/AutoplayButton';
+import SlideNavigation from './components/SlideNavigation';
+import { useAutoSlide, UseAutoSlideProps } from './hooks/useAutoSlide';
 import styles from './index.module.scss';
 
-interface SlideControllerProps extends Omit<AutoPlayButtonProps, 'disabled'>, SlideNavigationProps {}
+interface SlideControllerProps extends UseAutoSlideProps {
+  isAbleControlSlide: boolean;
+  currentSlideIndex: number;
+  cardsLength: number;
+  adjustTransitionToManualSpeed: () => void;
+  moveToNextSlide: () => void;
+  moveToPrevSlide: () => void;
+}
 
 const SlideController = ({
   isAbleControlSlide,
   currentSlideIndex,
-  cards,
-  handleNavigationClick,
-  handlePlayButtonClick,
-  isPlaying,
+  cardsLength,
+  adjustTransitionToManualSpeed,
+  moveToNextSlide,
+  moveToPrevSlide,
+  ...hooksProps
 }: SlideControllerProps) => {
+  const { isAutoSlide, toggleAutoSlide, clearSlideInterval } = useAutoSlide(hooksProps);
+
+  const handleNavigationClick = (isPrev: boolean) => {
+    adjustTransitionToManualSpeed();
+    clearSlideInterval();
+
+    if (isPrev) return moveToPrevSlide();
+    moveToNextSlide();
+  };
+
   return (
     <div className={styles.controller}>
       <AutoPlayButton
-        isPlaying={isPlaying}
+        isAutoSlide={isAutoSlide}
         disabled={!isAbleControlSlide}
-        handlePlayButtonClick={handlePlayButtonClick}
+        handlePlayButtonClick={toggleAutoSlide}
       />
       <SlideNavigation
         isAbleControlSlide={isAbleControlSlide}
         currentSlideIndex={currentSlideIndex}
-        cards={cards}
+        cardsLength={cardsLength}
         handleNavigationClick={handleNavigationClick}
       />
     </div>
