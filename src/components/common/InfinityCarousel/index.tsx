@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 
 import SlideController from './components/SlideController';
+import SlideDisplay from './components/SlideDisplay';
 import styles from './index.module.scss';
 
 type Direction = 'left' | 'right';
@@ -109,21 +110,17 @@ const InfinityCarousel = ({
 
   return (
     <section className={styles.container} style={{ width: cardWidth, overflow: 'hidden' }}>
-      <ul
-        onTransitionEnd={handleSlideTransitionEnd}
-        onTransitionRun={() => setIsAbleControlSlide(false)}
-        className={styles.slide}
-        style={{
-          transform: `translateX(-${cardWidth * currentSlideIndex}px)`,
-          transition: isTransitioning ? `transform ${slideTransitionDuration}ms ease-in-out` : 'none',
-        }}
-      >
-        {slides.map((card, index) => (
-          <li ref={cardRef} key={`${title}card-${index}`}>
-            {card}
-          </li>
-        ))}
-      </ul>
+      <SlideDisplay
+        title={title}
+        cardRef={cardRef}
+        slides={slides}
+        cardWidth={cardWidth}
+        currentSlideIndex={currentSlideIndex}
+        isTransitioning={isTransitioning}
+        slideTransitionDuration={slideTransitionDuration}
+        handleSlideTransitionEnd={handleSlideTransitionEnd}
+        setIsAbleControlSlide={setIsAbleControlSlide}
+      />
       <SlideController
         isAbleControlSlide={isAbleControlSlide}
         currentSlideIndex={currentSlideIndex}
