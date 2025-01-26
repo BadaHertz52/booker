@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import SlideControls from './components/SlideControls';
 import SlideDisplay from './components/SlideDisplay';
@@ -9,6 +9,9 @@ import { useSlideIndex } from './hooks/useSlideIndex';
 import useSlideTransition from './hooks/useSlideTransition';
 import styles from './index.module.scss';
 
+interface CardInfoForScreenReader {
+  title: string;
+}
 interface InfinityCarouselProps {
   title: string;
   autoSlideDuration?: number;
@@ -16,6 +19,7 @@ interface InfinityCarouselProps {
   manualSlideDuration?: number;
   Duration?: number;
   children: React.ReactElement<HTMLElement>[];
+  cardInfoForScreenReader: CardInfoForScreenReader[];
 }
 const InfinityCarousel = ({
   title,
@@ -23,9 +27,13 @@ const InfinityCarousel = ({
   autoSlideInterval = 5 * 1000,
   manualSlideDuration = 500,
   children: cards,
+  cardInfoForScreenReader,
 }: InfinityCarouselProps) => {
   const slides = [cards[cards.length - 1], ...cards, cards[0]];
+  const [isFocused, setIsFocused] = useState(false);
+  const [ariaMessage, setAriaMessage] = useState('');
 
+  const cardsLength = cards.length;
   const { currentSlideIndex, moveToNextSlide, moveToPrevSlide, moveToIndexSlide } = useSlideIndex({
     slidesLength: slides.length,
   });
@@ -54,9 +62,33 @@ const InfinityCarousel = ({
    * 예를 들어, 총 5개의 카드가 있고 currentSlideIndex가 6일 경우, 1번째 카드를 가리키는 값을 반환
    */
   const currentCardIndex = useMemo(() => {
+    if (currentSlideIndex === 0) return cardsLength;
+    if (currentSlideIndex > cardsLength) return currentSlideIndex - cardsLength;
+    return currentSlideIndex;
+  }, [currentSlideIndex, cardsLength]);
+
+  useEffect(() => {
+    if (isFocused) {
+      setAriaMessage(
+        `총 ${cardsLength}개 중 ${currentCardIndex}번째 ${title} : ${cardInfoForScreenReader[currentCardIndex - 1].title}`,
+      );
+    } else {
+      setAriaMessage('');
+    }
+  }, [currentCardIndex, isFocused, cardInfoForScreenReader]);
 
   return (
-    <section className={styles.container} style={{ width: cardWidth, overflow: 'hidden' }}>
+    <div
+      className={styles.container}
+      style={{ width: cardWidth, overflow: 'hidden' }}
+      onFocus={() => setIsFocused(true)}
+      onBlur={() => setIsFocused(false)}
+      aria-roledescription="카드 캐러셀"
+    >
+      <div className="sr-only" role="status" aria-live="polite">
+        {ariaMessage}
+      </div>
+
       <SlideDisplay
         title={title}
         cardRef={cardRef}
@@ -70,14 +102,14 @@ const InfinityCarousel = ({
       />
       <SlideControls
         isAbleControlSlide={isAbleControlSlide}
-        currentSlideIndex={currentSlideIndex}
+        currentCardIndex={currentCardIndex}
         cardsLength={cards.length}
         adjustTransitionToManualSpeed={adjustTransitionToManualDuration}
         autoSlideInterval={autoSlideInterval}
         moveToNextSlide={moveToNextSlide}
         moveToPrevSlide={moveToPrevSlide}
       />
-    </section>
+    </div>
   );
 };
 

@@ -36,7 +36,7 @@ const SlideDisplay = ({
       }}
     >
       {slides.map((card, index) => (
-        <li ref={cardRef} key={`${title}card-${index}`}>
+        <li ref={cardRef} key={`${title}card-${index}`} aria-hidden={currentSlideIndex !== index}>
           {card}
         </li>
       ))}
