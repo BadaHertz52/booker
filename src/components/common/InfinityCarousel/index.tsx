@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 import SlideController from './components/SlideController';
 import SlideDisplay from './components/SlideDisplay';
+import useCardWidth from './hooks/useCardWidth';
 import { useSlideIndex } from './hooks/useSlideIndex';
 import styles from './index.module.scss';
 
@@ -29,22 +30,14 @@ const InfinityCarousel = ({
     slidesLength: slides.length,
   });
 
+  const { cardWidth, cardRef } = useCardWidth({
+    activateTransition: () => setIsTransitioning(true),
+  });
+
   const [slideTransitionDuration, setSlideTransitionDuration] = useState(autoSlideDuration);
-  const [cardWidth, setCardWidth] = useState(0);
+
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isAbleControlSlide, setIsAbleControlSlide] = useState(true);
-
-  const cardRef = useRef<HTMLLIElement>(null);
-
-  useEffect(() => {
-    if (cardRef.current) {
-      setCardWidth(cardRef.current.clientWidth);
-
-      requestAnimationFrame(() => {
-        setIsTransitioning(true);
-      });
-    }
-  }, [cardRef.current]);
 
   const resetTransition = (newIndex: number) => {
     setIsTransitioning(false);
