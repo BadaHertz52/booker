@@ -5,9 +5,9 @@ export default function Home() {
     <div>
       <h1>✨🍀📚</h1>
       <h2>사서 추천 도서</h2>
-      <InfinityCarousel title="사서 추천 도서" duration={1000}>
+      <InfinityCarousel title="사서 추천 도서">
         {[{ id: '책1' }, { id: '책2' }, { id: '책3' }, { id: '책4' }, { id: '책5' }].map((book) => (
-          <div key={book.id} style={{ width: '100px', backgroundColor: 'skyblue' }}>
+          <div key={book.id} style={{ width: '300px', height: '100px', backgroundColor: 'skyblue' }}>
             {book.id}
           </div>
         ))}
