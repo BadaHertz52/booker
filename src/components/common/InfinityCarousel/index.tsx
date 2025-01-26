@@ -2,7 +2,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
-import SlideController from './components/controls/SlideController';
+import SlideController from './components/SlideController';
 import styles from './index.module.scss';
 
 type Direction = 'left' | 'right';

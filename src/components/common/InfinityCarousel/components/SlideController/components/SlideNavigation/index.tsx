@@ -4,6 +4,8 @@ import React from 'react';
 import ArrowLeftIcon from '@/images/arrowLeft.svg';
 import ArrowRightIcon from '@/images/arrowRight.svg';
 
+import styles from './index.module.scss';
+
 interface SlideNavigationButtonProps {
   isPrev?: boolean;
   disabled: boolean;
@@ -13,7 +15,7 @@ interface SlideNavigationButtonProps {
 const SlideNavigationButton = ({ isPrev = false, disabled, handleNavigationClick }: SlideNavigationButtonProps) => {
   return (
     <button disabled={disabled} onClick={() => handleNavigationClick(isPrev)}>
-      <Image src={isPrev ? ArrowLeftIcon : ArrowRightIcon} width={18} alt="" />
+      <Image src={isPrev ? ArrowLeftIcon : ArrowRightIcon} height={10} alt="" />
     </button>
   );
 };
@@ -31,15 +33,15 @@ const SlideNavigation = ({
   handleNavigationClick,
 }: SlideNavigationProps) => {
   return (
-    <div className={styles.slideNavigation}>
+    <div className={styles.navigation}>
       <SlideNavigationButton
         disabled={!isAbleControlSlide}
         isPrev={true}
         handleNavigationClick={handleNavigationClick}
       />
-      <div>
+      <p>
         {currentSlideIndex + 1} / {cards.length}
-      </div>
+      </p>
       <SlideNavigationButton disabled={!isAbleControlSlide} handleNavigationClick={handleNavigationClick} />
     </div>
   );

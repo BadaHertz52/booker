@@ -1,7 +1,8 @@
 import React from 'react';
 
-import AutoPlayButton, { AutoPlayButtonProps } from '../AutoPlayButton';
-import SlideNavigation, { SlideNavigationProps } from '../SlideNavigation';
+import AutoPlayButton, { AutoPlayButtonProps } from './components/AutoplayButton';
+import SlideNavigation, { SlideNavigationProps } from './components/SlideNavigation';
+import styles from './index.module.scss';
 
 interface SlideControllerProps extends Omit<AutoPlayButtonProps, 'disabled'>, SlideNavigationProps {}
 
@@ -14,7 +15,7 @@ const SlideController = ({
   isPlaying,
 }: SlideControllerProps) => {
   return (
-    <div>
+    <div className={styles.controller}>
       <AutoPlayButton
         isPlaying={isPlaying}
         disabled={!isAbleControlSlide}
