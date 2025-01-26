@@ -11,28 +11,31 @@ import styles from './index.module.scss';
 
 interface SlideNavigationButtonProps {
   isPrev?: boolean;
+  disabled: boolean;
   handleNavigationClick: (isPrev: boolean) => void;
 }
-const SlideNavigationButton = ({ isPrev = false, handleNavigationClick }: SlideNavigationButtonProps) => {
+const SlideNavigationButton = ({ isPrev = false, disabled, handleNavigationClick }: SlideNavigationButtonProps) => {
   return (
-    <button onClick={() => handleNavigationClick(isPrev)}>
+    <button disabled={disabled} onClick={() => handleNavigationClick(isPrev)}>
       <Image src={ArrowRightIcon} width={18} style={isPrev ? { transform: 'rotate(180deg)' } : {}} alt="" />
     </button>
   );
 };
 interface AutoPlayButtonProps {
   isPlaying: boolean;
+  disabled: boolean;
   handlePlayButtonClick: () => void;
 }
 
-const AutoPlayButton = ({ isPlaying, handlePlayButtonClick }: AutoPlayButtonProps) => {
+const AutoPlayButton = ({ isPlaying, disabled, handlePlayButtonClick }: AutoPlayButtonProps) => {
   return (
-    <button onClick={handlePlayButtonClick}>
+    <button onClick={handlePlayButtonClick} disabled={disabled}>
       <Image src={isPlaying ? PauseIcon : PlayIcon} width={18} alt="" />
     </button>
   );
 };
 
+type Direction = 'left' | 'right';
 interface InfinityCarouselProps {
   title: string;
   autoSlideDuration?: number;
@@ -48,16 +51,17 @@ const InfinityCarousel = ({
   contorlSlideDuration = 500,
   children: cards,
 }: InfinityCarouselProps) => {
+  const resetTransitionTime = contorlSlideDuration * 0.7;
   const slides = [cards[cards.length - 1], ...cards, cards[0]];
-  type Direction = 'left' | 'right';
+
   const [currentSlideIndex, setCurrentIndex] = useState(1);
   const [slideTransitionDuration, setSlideTransitionDuration] = useState(autoSlideDuration);
   const [cardWidth, setCardWidth] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isAutoSlide, setIsAutoSlide] = useState(true);
+  const [isAbleControlSlide, setIsAbleControlSlide] = useState(true);
 
   const slideIntervalRef = useRef<NodeJS.Timeout | null>(null);
-
   const cardRef = useRef<HTMLLIElement>(null);
 
   const getPrevIndex = (currentSlideIndex: number) => {
@@ -72,11 +76,11 @@ const InfinityCarousel = ({
     setCurrentIndex((prev) => (direction === 'left' ? getPrevIndex(prev) : getNextIndex(prev)));
   };
 
-  const handleNavigationClick = debounce((isPrev: boolean) => {
+  const handleNavigationClick = (isPrev: boolean) => {
     setSlideTransitionDuration(contorlSlideDuration);
     clearSlideInterval();
     moveSlide(isPrev ? 'left' : 'right');
-  }, 100);
+  };
 
   const clearSlideInterval = () => {
     if (slideIntervalRef.current) clearInterval(slideIntervalRef.current);
@@ -113,7 +117,8 @@ const InfinityCarousel = ({
     // DOM 업데이트를 위한 최소한의 지연 시간
     setTimeout(() => {
       setIsTransitioning(true);
-    }, 10);
+      setIsAbleControlSlide(true);
+    }, resetTransitionTime);
   };
 
   const handleSlideTransitionEnd = () => {
@@ -125,12 +130,14 @@ const InfinityCarousel = ({
     if (currentSlideIndex === slides.length - 1) {
       return resetTransition(1);
     }
+    setIsAbleControlSlide(true);
   };
 
   return (
     <section className={styles.container} style={{ width: cardWidth, overflow: 'hidden' }}>
       <ul
         onTransitionEnd={handleSlideTransitionEnd}
+        onTransitionRun={() => setIsAbleControlSlide(false)}
         className={styles.slide}
         style={{
           transform: `translateX(-${cardWidth * currentSlideIndex}px)`,
@@ -138,19 +145,24 @@ const InfinityCarousel = ({
         }}
       >
         {slides.map((card, index) => (
-          <li ref={cardRef} key={`card-${index}`}>
+          <li ref={cardRef} key={`${title}card-${index}`}>
             {card}
           </li>
         ))}
       </ul>
       <div className={styles.slideNavigation}>
-        <SlideNavigationButton isPrev={true} handleNavigationClick={handleNavigationClick} />
+        <SlideNavigationButton
+          disabled={!isAbleControlSlide}
+          isPrev={true}
+          handleNavigationClick={handleNavigationClick}
+        />
         <div>
           {currentSlideIndex + 1} / {cards.length}
         </div>
-        <SlideNavigationButton handleNavigationClick={handleNavigationClick} />
+        <SlideNavigationButton disabled={!isAbleControlSlide} handleNavigationClick={handleNavigationClick} />
       </div>
       <AutoPlayButton
+        disabled={!isAbleControlSlide}
         isPlaying={isAutoSlide}
         handlePlayButtonClick={() => {
           setIsAutoSlide((prev) => !prev);
