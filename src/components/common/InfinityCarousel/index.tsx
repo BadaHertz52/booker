@@ -1,39 +1,9 @@
 'use client';
-import Image from 'next/image';
+
 import React, { useEffect, useRef, useState } from 'react';
 
-import ArrowRightIcon from '@/images/arrowRight.svg';
-import PauseIcon from '@/images/pauseCircle.svg';
-import PlayIcon from '@/images/play.svg';
-import { debounce } from '@/utils/debounce';
-
+import SlideController from './components/controls/SlideController';
 import styles from './index.module.scss';
-
-interface SlideNavigationButtonProps {
-  isPrev?: boolean;
-  disabled: boolean;
-  handleNavigationClick: (isPrev: boolean) => void;
-}
-const SlideNavigationButton = ({ isPrev = false, disabled, handleNavigationClick }: SlideNavigationButtonProps) => {
-  return (
-    <button disabled={disabled} onClick={() => handleNavigationClick(isPrev)}>
-      <Image src={ArrowRightIcon} width={18} style={isPrev ? { transform: 'rotate(180deg)' } : {}} alt="" />
-    </button>
-  );
-};
-interface AutoPlayButtonProps {
-  isPlaying: boolean;
-  disabled: boolean;
-  handlePlayButtonClick: () => void;
-}
-
-const AutoPlayButton = ({ isPlaying, disabled, handlePlayButtonClick }: AutoPlayButtonProps) => {
-  return (
-    <button onClick={handlePlayButtonClick} disabled={disabled}>
-      <Image src={isPlaying ? PauseIcon : PlayIcon} width={18} alt="" />
-    </button>
-  );
-};
 
 type Direction = 'left' | 'right';
 interface InfinityCarouselProps {
@@ -122,7 +92,7 @@ const InfinityCarousel = ({
   };
 
   const handleSlideTransitionEnd = () => {
-    // controlSlide buttond으로 슬라이드 조작 후 자동 슬라이드 속도 맞춤
+    // controlSlide button으로 슬라이드 조작 후 자동 슬라이드 속도 맞춤
     setSlideTransitionDuration(autoSlideDuration);
     if (currentSlideIndex === 0) {
       return resetTransition(slides.length - 2);
@@ -131,6 +101,10 @@ const InfinityCarousel = ({
       return resetTransition(1);
     }
     setIsAbleControlSlide(true);
+  };
+
+  const handlePlayButtonClick = () => {
+    setIsAutoSlide((prev) => !prev);
   };
 
   return (
@@ -150,23 +124,13 @@ const InfinityCarousel = ({
           </li>
         ))}
       </ul>
-      <div className={styles.slideNavigation}>
-        <SlideNavigationButton
-          disabled={!isAbleControlSlide}
-          isPrev={true}
-          handleNavigationClick={handleNavigationClick}
-        />
-        <div>
-          {currentSlideIndex + 1} / {cards.length}
-        </div>
-        <SlideNavigationButton disabled={!isAbleControlSlide} handleNavigationClick={handleNavigationClick} />
-      </div>
-      <AutoPlayButton
-        disabled={!isAbleControlSlide}
+      <SlideController
+        isAbleControlSlide={isAbleControlSlide}
+        currentSlideIndex={currentSlideIndex}
+        cards={cards}
+        handleNavigationClick={handleNavigationClick}
+        handlePlayButtonClick={handlePlayButtonClick}
         isPlaying={isAutoSlide}
-        handlePlayButtonClick={() => {
-          setIsAutoSlide((prev) => !prev);
-        }}
       />
     </section>
   );
