@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 
 export interface UseAutoSlideProps {
   autoSlideInterval: number;
-  moveSlide: () => void;
+  moveToNextSlide: () => void;
 }
 
-export const useAutoSlide = ({ autoSlideInterval, moveSlide }: UseAutoSlideProps) => {
+export const useAutoSlide = ({ autoSlideInterval, moveToNextSlide }: UseAutoSlideProps) => {
   const [isAutoSlide, setIsAutoSlide] = useState(true);
   const slideIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -19,14 +19,14 @@ export const useAutoSlide = ({ autoSlideInterval, moveSlide }: UseAutoSlideProps
 
   useEffect(() => {
     if (isAutoSlide) {
-      slideIntervalRef.current = setInterval(moveSlide, autoSlideInterval);
+      slideIntervalRef.current = setInterval(moveToNextSlide, autoSlideInterval);
     }
     if (!isAutoSlide) {
       clearSlideInterval();
     }
 
     return clearSlideInterval;
-  }, [isAutoSlide, moveSlide, autoSlideInterval]);
+  }, [isAutoSlide, moveToNextSlide, autoSlideInterval]);
 
   return {
     isAutoSlide,

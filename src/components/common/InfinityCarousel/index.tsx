@@ -4,9 +4,9 @@ import React, { useEffect, useRef, useState } from 'react';
 
 import SlideController from './components/SlideController';
 import SlideDisplay from './components/SlideDisplay';
+import { useSlideIndex } from './hooks/useSlideIndex';
 import styles from './index.module.scss';
 
-type Direction = 'left' | 'right';
 interface InfinityCarouselProps {
   title: string;
   autoSlideDuration?: number;
@@ -25,25 +25,16 @@ const InfinityCarousel = ({
   const resetTransitionTime = contorlSlideDuration * 0.7;
   const slides = [cards[cards.length - 1], ...cards, cards[0]];
 
-  const [currentSlideIndex, setCurrentIndex] = useState(1);
+  const { currentSlideIndex, moveToNextSlide, moveToPrevSlide, moveToIndexSlide } = useSlideIndex({
+    slidesLength: slides.length,
+  });
+
   const [slideTransitionDuration, setSlideTransitionDuration] = useState(autoSlideDuration);
   const [cardWidth, setCardWidth] = useState(0);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isAbleControlSlide, setIsAbleControlSlide] = useState(true);
 
   const cardRef = useRef<HTMLLIElement>(null);
-
-  const getPrevIndex = (currentSlideIndex: number) => {
-    return (currentSlideIndex - 1 + slides.length) % slides.length;
-  };
-
-  const getNextIndex = (currentSlideIndex: number) => {
-    return (currentSlideIndex + 1) % slides.length;
-  };
-
-  const moveSlide = (direction: Direction) => {
-    setCurrentIndex((prev) => (direction === 'left' ? getPrevIndex(prev) : getNextIndex(prev)));
-  };
 
   useEffect(() => {
     if (cardRef.current) {
@@ -57,7 +48,7 @@ const InfinityCarousel = ({
 
   const resetTransition = (newIndex: number) => {
     setIsTransitioning(false);
-    setCurrentIndex(newIndex);
+    moveToIndexSlide(newIndex);
     // DOM 업데이트를 위한 최소한의 지연 시간
     setTimeout(() => {
       setIsTransitioning(true);
@@ -98,9 +89,8 @@ const InfinityCarousel = ({
           setSlideTransitionDuration(contorlSlideDuration);
         }}
         autoSlideInterval={autoSlideInterval}
-        moveSlide={() => moveSlide('right')}
-        moveToNextSlide={() => moveSlide('right')}
-        moveToPrevSlide={() => moveSlide('left')}
+        moveToNextSlide={moveToNextSlide}
+        moveToPrevSlide={moveToPrevSlide}
       />
     </section>
   );

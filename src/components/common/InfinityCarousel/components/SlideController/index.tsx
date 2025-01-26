@@ -21,9 +21,9 @@ const SlideController = ({
   adjustTransitionToManualSpeed,
   moveToNextSlide,
   moveToPrevSlide,
-  ...hooksProps
+  autoSlideInterval,
 }: SlideControllerProps) => {
-  const { isAutoSlide, toggleAutoSlide, clearSlideInterval } = useAutoSlide(hooksProps);
+  const { isAutoSlide, toggleAutoSlide, clearSlideInterval } = useAutoSlide({ autoSlideInterval, moveToNextSlide });
 
   const handleNavigationClick = (isPrev: boolean) => {
     adjustTransitionToManualSpeed();
