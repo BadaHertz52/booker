@@ -10,8 +10,8 @@ interface SlideDisplayProps {
   currentSlideIndex: number;
   isTransitioning: boolean;
   slideTransitionDuration: number;
-  handleSlideTransitionEnd: () => void;
-  setIsAbleControlSlide: (value: boolean) => void;
+  handleSlideTransitionEnd: (currentSlideIndex: number) => void;
+  handleTransitionRun: () => void;
 }
 
 const SlideDisplay = ({
@@ -23,12 +23,12 @@ const SlideDisplay = ({
   isTransitioning,
   slideTransitionDuration,
   handleSlideTransitionEnd,
-  setIsAbleControlSlide,
+  handleTransitionRun,
 }: SlideDisplayProps) => {
   return (
     <ul
-      onTransitionEnd={handleSlideTransitionEnd}
-      onTransitionRun={() => setIsAbleControlSlide(false)}
+      onTransitionEnd={() => handleSlideTransitionEnd(currentSlideIndex)}
+      onTransitionRun={handleTransitionRun}
       className={styles.slide}
       style={{
         transform: `translateX(-${cardWidth * currentSlideIndex}px)`,
