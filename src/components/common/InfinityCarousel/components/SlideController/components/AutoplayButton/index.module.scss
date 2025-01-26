@@ -1,7 +1,0 @@
-@use '@/components/common/InfinityCarousel/components/SlideController/_mixins.scss' as mixins;
-
-.button {
-  border-radius: 100%;
-  aspect-ratio: 1;
-  @include mixins.controller-container;
-}

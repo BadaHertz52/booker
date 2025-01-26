@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import SlideController from './components/SlideController';
+import SlideControls from './components/SlideControls';
 import SlideDisplay from './components/SlideDisplay';
 import useCardWidth from './hooks/useCardWidth';
 import { useSlideIndex } from './hooks/useSlideIndex';
@@ -63,7 +63,7 @@ const InfinityCarousel = ({
         handleSlideTransitionEnd={handleSlideTransitionEnd}
         handleTransitionRun={handleTransitionRun}
       />
-      <SlideController
+      <SlideControls
         isAbleControlSlide={isAbleControlSlide}
         currentSlideIndex={currentSlideIndex}
         cardsLength={cards.length}

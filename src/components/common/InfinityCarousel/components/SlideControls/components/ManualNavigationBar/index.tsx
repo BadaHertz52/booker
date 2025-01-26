@@ -6,13 +6,13 @@ import ArrowRightIcon from '@/images/arrowRight.svg';
 
 import styles from './index.module.scss';
 
-interface SlideNavigationButtonProps {
+interface ManualNavigationButtonProps {
   isPrev?: boolean;
   disabled: boolean;
   handleNavigationClick: (isPrev: boolean) => void;
 }
 
-const SlideNavigationButton = ({ isPrev = false, disabled, handleNavigationClick }: SlideNavigationButtonProps) => {
+const ManualNavigationButton = ({ isPrev = false, disabled, handleNavigationClick }: ManualNavigationButtonProps) => {
   return (
     <button disabled={disabled} onClick={() => handleNavigationClick(isPrev)}>
       <Image src={isPrev ? ArrowLeftIcon : ArrowRightIcon} height={10} alt="" />
@@ -20,18 +20,18 @@ const SlideNavigationButton = ({ isPrev = false, disabled, handleNavigationClick
   );
 };
 
-export interface SlideNavigationProps extends Pick<SlideNavigationButtonProps, 'handleNavigationClick'> {
+export interface ManualNavigationBarProps extends Pick<ManualNavigationButtonProps, 'handleNavigationClick'> {
   isAbleControlSlide: boolean;
   currentSlideIndex: number;
   cardsLength: number;
 }
 
-const SlideNavigation = ({
+const ManualNavigationBar = ({
   isAbleControlSlide,
   currentSlideIndex,
   cardsLength,
   handleNavigationClick,
-}: SlideNavigationProps) => {
+}: ManualNavigationBarProps) => {
   const getCurrentCardIndex = (currentSlideIndex: number) => {
     if (currentSlideIndex === 0) return cardsLength;
     if (currentSlideIndex > cardsLength) return currentSlideIndex - cardsLength;
@@ -40,7 +40,7 @@ const SlideNavigation = ({
 
   return (
     <div className={styles.navigation}>
-      <SlideNavigationButton
+      <ManualNavigationButton
         disabled={!isAbleControlSlide}
         isPrev={true}
         handleNavigationClick={handleNavigationClick}
@@ -48,9 +48,9 @@ const SlideNavigation = ({
       <p>
         {getCurrentCardIndex(currentSlideIndex)} / {cardsLength}
       </p>
-      <SlideNavigationButton disabled={!isAbleControlSlide} handleNavigationClick={handleNavigationClick} />
+      <ManualNavigationButton disabled={!isAbleControlSlide} handleNavigationClick={handleNavigationClick} />
     </div>
   );
 };
 
-export default SlideNavigation;
+export default ManualNavigationBar;

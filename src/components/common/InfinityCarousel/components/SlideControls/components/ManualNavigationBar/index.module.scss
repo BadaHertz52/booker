@@ -1,4 +1,4 @@
-@use '@/components/common/InfinityCarousel/components/SlideController/_mixins.scss' as mixins;
+@use '../../_mixins.scss' as mixins;
 
 .navigation {
   gap: 0.4rem;
@@ -7,5 +7,5 @@
   width: fit-content;
   color: var(--color-white);
   font-size: 1.2rem;
-  @include mixins.controller-container;
+  @include mixins.controls-bar;
 }
