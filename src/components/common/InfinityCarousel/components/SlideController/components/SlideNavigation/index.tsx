@@ -32,6 +32,12 @@ const SlideNavigation = ({
   cardsLength,
   handleNavigationClick,
 }: SlideNavigationProps) => {
+  const getCurrentCardIndex = (currentSlideIndex: number) => {
+    if (currentSlideIndex === 0) return cardsLength;
+    if (currentSlideIndex > cardsLength) return currentSlideIndex - cardsLength;
+    return currentSlideIndex;
+  };
+
   return (
     <div className={styles.navigation}>
       <SlideNavigationButton
@@ -40,7 +46,7 @@ const SlideNavigation = ({
         handleNavigationClick={handleNavigationClick}
       />
       <p>
-        {currentSlideIndex + 1} / {cardsLength}
+        {getCurrentCardIndex(currentSlideIndex)} / {cardsLength}
       </p>
       <SlideNavigationButton disabled={!isAbleControlSlide} handleNavigationClick={handleNavigationClick} />
     </div>
