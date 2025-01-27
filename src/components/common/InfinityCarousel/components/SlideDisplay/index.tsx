@@ -5,7 +5,7 @@ import styles from './index.module.scss';
 interface SlideDisplayProps {
   title: string;
   cardRef: React.RefObject<HTMLLIElement | null>;
-  slides: React.ReactNode[];
+  slides: React.ReactElement<HTMLElement>[];
   cardWidth: number;
   currentSlideIndex: number;
   isTransitioning: boolean;
