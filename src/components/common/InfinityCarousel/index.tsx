@@ -80,7 +80,7 @@ const InfinityCarousel = ({
   return (
     <div
       className={styles.container}
-      style={{ width: cardWidth, overflow: 'hidden' }}
+      style={{ width: cardWidth }}
       onFocus={() => setIsFocused(true)}
       onBlur={() => setIsFocused(false)}
       aria-roledescription="카드 캐러셀"
