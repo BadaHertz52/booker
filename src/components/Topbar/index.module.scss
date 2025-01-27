@@ -5,8 +5,13 @@
   justify-content: space-between;
   z-index: var(--topbar-z-index);
   background-color: var(--color-white);
-  padding: 1.6rem 1rem;
+  padding: 1.6rem var(--layout-padding-horizontal);
   height: var(--topbar-height);
+
+  @media screen and (max-width: 425px) {
+    padding-right: var(--layout-padding-horizontal-small-device);
+    padding-left: var(--layout-padding-horizontal-small-device);
+  }
 
   @include mixins.responsive-fixed-layout;
 }
