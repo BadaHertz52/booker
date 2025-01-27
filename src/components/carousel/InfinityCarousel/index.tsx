@@ -12,14 +12,14 @@ import styles from './index.module.scss';
 interface CardInfoForScreenReader {
   title: string;
 }
-interface InfinityCarouselProps {
+export interface InfinityCarouselProps {
   title: string;
   autoSlideDuration?: number;
   autoSlideInterval?: number;
   manualSlideDuration?: number;
   Duration?: number;
   children: React.ReactElement<HTMLElement>[];
-  cardInfoForScreenReader: CardInfoForScreenReader[];
+  cardsInfoForScreenReader: CardInfoForScreenReader[];
 }
 const InfinityCarousel = ({
   title,
@@ -27,7 +27,7 @@ const InfinityCarousel = ({
   autoSlideInterval = 5 * 1000,
   manualSlideDuration = 500,
   children: cards,
-  cardInfoForScreenReader,
+  cardsInfoForScreenReader,
 }: InfinityCarouselProps) => {
   const slides = [cards[cards.length - 1], ...cards, cards[0]];
   const [isFocused, setIsFocused] = useState(false);
@@ -70,12 +70,12 @@ const InfinityCarousel = ({
   useEffect(() => {
     if (isFocused) {
       setAriaMessage(
-        `총 ${cardsLength}개 중 ${currentCardIndex}번째 ${title} : ${cardInfoForScreenReader[currentCardIndex - 1].title}`,
+        `총 ${cardsLength}개 중 ${currentCardIndex}번째 ${title} : ${cardsInfoForScreenReader[currentCardIndex - 1].title}`,
       );
     } else {
       setAriaMessage('');
     }
-  }, [currentCardIndex, isFocused, cardInfoForScreenReader]);
+  }, [currentCardIndex, isFocused, cardsInfoForScreenReader]);
 
   return (
     <div
