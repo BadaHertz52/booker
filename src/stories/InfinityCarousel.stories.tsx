@@ -13,7 +13,7 @@ type Story = StoryObj<typeof meta>;
 
 const cardsInfoScreenReader = [
   { title: 'BOOKER - 무한 슬라이드 사용법' },
-  { title: '카드가 순환되는 것을 확인해보세요' },
+  { title: '카드를 순회하며 카드 정보를 확인할 수 있어요' },
   { title: '자동 슬라이드 기능을 사용해보세요' },
   { title: '이전, 다음 버튼으로 카드를 이동해보세요' },
 ];
