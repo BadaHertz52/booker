@@ -17,3 +17,11 @@
     margin: 0;
   }
 }
+
+@mixin full-width-card {
+  padding: 0.8rem;
+  width: 100vw;
+  @media screen and (min-width: 768px) {
+    width: var(--root-max-width);
+  }
+}
