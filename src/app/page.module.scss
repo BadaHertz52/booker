@@ -6,14 +6,3 @@
   gap: 1rem;
   margin-top: 1.6rem;
 }
-.recommendBooksCarouselWrapper {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-}
-
-.fullWidthCard {
-  background-color: skyblue;
-  height: 20rem;
-  @include mixins.full-width-card;
-}
