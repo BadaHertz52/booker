@@ -1,7 +1,6 @@
 import { BookSimpleInfo } from '@/types';
 
-const BOOK_COVER_IMG_URL =
-  'https://images.unsplash.com/photo-1612541831162-96d8fe7558f9?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+const BOOK_COVER_IMG_URL = '';
 
 export const RECOMMENDED_BOOKS_MOCK_DATA: BookSimpleInfo[] = [
   {
@@ -10,7 +9,7 @@ export const RECOMMENDED_BOOKS_MOCK_DATA: BookSimpleInfo[] = [
     author: 'F. Scott Fitzgerald',
     publisher: 'Scribner',
     contents:
-      'The story of the mysteriously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan, of lavish parties on Long Island.',
+      'The story of the mysteriously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan, of lavish parties on Long Island. The story of the mysteriously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan, of lavish parties on Long Island. The story of the mysteriously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan, of lavish parties on Long Island.',
     coverImageUrl: BOOK_COVER_IMG_URL,
   },
   {
@@ -19,7 +18,7 @@ export const RECOMMENDED_BOOKS_MOCK_DATA: BookSimpleInfo[] = [
     author: 'Harper Lee',
     publisher: 'J.B. Lippincott & Co.',
     contents:
-      'The unforgettable novel of a childhood in a sleepy Southern town and the crisis of conscience that rocked it.',
+      'The unforgettable novel of a childhood in a sleepy Southern town and the crisis of conscience that rocked it. The unforgettable novel of a childhood in a sleepy Southern town and the crisis of conscience that rocked it. The unforgettable novel of a childhood in a sleepy Southern town and the crisis of conscience that rocked it.',
     coverImageUrl: BOOK_COVER_IMG_URL,
   },
   {
@@ -28,7 +27,7 @@ export const RECOMMENDED_BOOKS_MOCK_DATA: BookSimpleInfo[] = [
     author: 'George Orwell',
     publisher: 'Penguin Random House',
     contents:
-      'The chilling dystopian novel that explores the dangers of totalitarianism and the importance of individual freedom.',
+      'The chilling dystopian novel that explores the dangers of totalitarianism and the importance of individual freedom. The chilling dystopian novel that explores the dangers of totalitarianism and the importance of individual freedom. The chilling dystopian novel that explores the dangers of totalitarianism and the importance of individual freedom.',
     coverImageUrl: BOOK_COVER_IMG_URL,
   },
   {
