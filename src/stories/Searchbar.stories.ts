@@ -6,6 +6,7 @@ import { BOOK_SEARCH_CATEGORY_NAME } from '@/components/Topbar';
 const meta: Meta<typeof Searchbar> = {
   component: Searchbar,
   title: 'components/Searchbar',
+  tags: ['autodocs'],
   argTypes: {
     categoryInfo: { control: 'object' },
   },
