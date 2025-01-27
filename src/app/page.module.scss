@@ -1,0 +1,8 @@
+@use '@/styles/mixins.scss' as mixins;
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.6rem;
+}

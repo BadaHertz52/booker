@@ -18,9 +18,13 @@ body {
   -webkit-box-shadow: 0px 0px 21px 5px rgba(118, 118, 118, 0.27);
   box-shadow: 0px 0px 21px 5px rgba(118, 118, 118, 0.27);
   background-color: var(--color-white);
-  padding-top: var(--topbar-height);
+  padding: var(--topbar-height) var(--layout-padding-horizontal);
   padding-bottom: var(--footer-height);
   min-height: 100vh;
+
+  @media screen and (max-width: 425px) {
+    padding: var(--topbar-height) var(--layout-padding-horizontal-small-device);
+  }
 
   @include mixins.responsive-layout-width;
 }
@@ -33,9 +37,6 @@ body {
     background: transparent;
   }
   @include mixins.responsive-fixed-layout;
-}
-main {
-  padding: 10 10 0 10;
 }
 
 .sr-only {
