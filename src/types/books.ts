@@ -1,6 +1,6 @@
-export interface RecommendedBook {
-  isbn: number;
+export interface BookSimpleInfo {
   title: string;
+  isbn: number;
   author: string;
   publisher: string;
   contents: string;
