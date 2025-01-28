@@ -1,11 +1,7 @@
-'use client';
-
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 
 import NoCoverImage from '@/images/noCover.svg';
 import { BookSimpleInfo } from '@/types';
-import { debounce } from '@/utils/debounce';
 
 import InfinityCarousel, { InfinityCarouselProps } from '../InfinityCarousel';
 
@@ -15,51 +11,25 @@ interface BooksInfinityCarouselProps extends Omit<InfinityCarouselProps, 'childr
   booksSimpleInfo: BookSimpleInfo[];
 }
 
-const DESKTOP_DIMENSIONS = { width: 120, height: 180 };
-const MOBILE_DIMENSIONS = { width: 80, height: 120 };
-const MOBILE_BREAKPOINT = 768;
-const DEBOUNCE_TIME = 100;
-
 const BooksInfinityCarousel = ({ booksSimpleInfo, title }: BooksInfinityCarouselProps) => {
   const cardsInfoForScreenReader = booksSimpleInfo.map((book) => ({ title: book.title }));
-  const [dimensions, setDimensions] = useState(DESKTOP_DIMENSIONS);
-
-  const handleResizeDimensions = debounce(() => {
-    const width = window.innerWidth;
-
-    if (width <= MOBILE_BREAKPOINT) {
-      setDimensions(MOBILE_DIMENSIONS);
-    } else {
-      setDimensions(DESKTOP_DIMENSIONS);
-    }
-  }, DEBOUNCE_TIME);
-
-  useEffect(() => {
-    handleResizeDimensions();
-
-    window.addEventListener('resize', handleResizeDimensions);
-
-    return () => {
-      window.removeEventListener('resize', handleResizeDimensions);
-    };
-  }, []);
 
   return (
     <div className={styles.booksCarouselWrapper}>
       <InfinityCarousel title={title} cardsInfoForScreenReader={cardsInfoForScreenReader}>
         {booksSimpleInfo.map((book) => (
           <div key={book.isbn} className={styles.fullWidthCard}>
-            <Image
-              src={book.coverImageUrl !== '' ? book.coverImageUrl : NoCoverImage}
-              alt={book.title}
-              {...dimensions}
-            />
+            <div className={styles.imgWrapper}>
+              <Image src={book.coverImageUrl !== '' ? book.coverImageUrl : NoCoverImage} alt={book.title} fill />
+            </div>
             <div className={styles.bookInfo}>
-              <p className={styles.bookTitle}>{book.title}</p>
-              <p className={styles.bookAuthorAndPublisher}>
-                {book.author} / {book.publisher}
-              </p>
-              <p className={styles.bookContents}>{book.contents}</p>
+              <h3 className={styles.bookTitle}>{book.title}</h3>
+              <ul>
+                <li className={styles.bookAuthorAndPublisher}>
+                  {book.author} / {book.publisher}
+                </li>
+                <li className={styles.bookContents}>{book.contents}</li>
+              </ul>
             </div>
           </div>
         ))}
