@@ -12,11 +12,11 @@ import BookItemSkeleton from '../BookItemSkeleton';
 import styles from './index.module.scss';
 
 interface BookItemProps {
-  bookData: BookItemData;
+  bookItemData: BookItemData;
 }
 
-const BookItem = ({ bookData }: BookItemProps) => {
-  const { title, author } = bookData;
+const BookItem = ({ bookItemData }: BookItemProps) => {
+  const { title, author } = bookItemData;
 
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -41,7 +41,7 @@ const BookItem = ({ bookData }: BookItemProps) => {
         className={classNames(styles.contents, { [styles.on]: isLoaded })}
         aria-busy={!isLoaded}
       >
-        <BookItemLayout bookData={bookData} handleImgRoad={handleImgLoad} />
+        <BookItemLayout bookItemData={bookItemData} handleImgRoad={handleImgLoad} />
       </Link>
     </li>
   );

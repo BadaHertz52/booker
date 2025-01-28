@@ -8,7 +8,7 @@ import { BookItemData } from '@/types';
 import styles from './index.module.scss';
 
 interface BookItemLayoutProps {
-  bookData?: BookItemData;
+  bookItemData?: BookItemData;
   skeletonClassName?: {
     img: string;
     info: string;
@@ -16,13 +16,13 @@ interface BookItemLayoutProps {
   handleImgRoad?: React.ReactEventHandler<HTMLImageElement>;
 }
 
-const BookItemLayout = ({ bookData, skeletonClassName, handleImgRoad }: BookItemLayoutProps) => {
+const BookItemLayout = ({ bookItemData, skeletonClassName, handleImgRoad }: BookItemLayoutProps) => {
   return (
     <div className={styles.container}>
       <div className={styles.imgWrapper}>
-        {bookData ? (
+        {bookItemData ? (
           <Image
-            src={bookData.coverImageUrl !== '' ? bookData.coverImageUrl : NoCoverImg}
+            src={bookItemData.coverImageUrl !== '' ? bookItemData.coverImageUrl : NoCoverImg}
             alt=""
             width={80}
             height={120}
@@ -33,11 +33,11 @@ const BookItemLayout = ({ bookData, skeletonClassName, handleImgRoad }: BookItem
         )}
       </div>
       <div className={classNames(styles.info, { [skeletonClassName?.info as string]: skeletonClassName })}>
-        <h3 className={styles.bookTitle}>{bookData?.title ?? ''}</h3>
+        <h3 className={styles.bookTitle}>{bookItemData?.title ?? ''}</h3>
         <ul className={styles.bookDetail}>
-          <li>{bookData ? `${bookData?.author} 저자(글)` : ''}</li>
+          <li>{bookItemData ? `${bookItemData?.author} 저자(글)` : ''}</li>
           <li className={styles.publication}>
-            {bookData ? `${bookData.publisher}．${bookData.publicationYear}년 출간` : ''}
+            {bookItemData ? `${bookItemData.publisher}．${bookItemData.publicationYear}년 출간` : ''}
           </li>
         </ul>
       </div>
