@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { BookItem } from '@/components/book';
+import { BookItem } from '@/components';
 import BookItemSkeleton from '@/components/book/listItem/BookItemSkeleton';
 import { RECOMMENDED_BOOKS_MOCK_DATA } from '@/mocks/mockData';
 
