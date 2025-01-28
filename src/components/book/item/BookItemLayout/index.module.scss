@@ -14,18 +14,17 @@
   flex-direction: column;
   gap: 0.4rem;
 
-  & > p {
-    min-height: 1.8rem;
-  }
-  & > p:not(:first-child) {
+  p:not(:first-child) {
+    height: calc(var(--font-size-small) + 1rem);
     font-size: var(--font-size-small);
   }
 }
 
 .bookTitle {
   margin-bottom: 0.4rem;
+  height: calc(var(--font-size-h3) + 1rem);
   font-weight: var(--font-weight-semi-bold);
-  font-size: 1.8rem;
+  font-size: var(--font-size-h3);
 }
 
 .publication {
