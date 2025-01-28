@@ -1,0 +1,33 @@
+.item {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.imgWrapper {
+  aspect-ratio: 2/3;
+  width: 8rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  & > p {
+    min-height: 1.8rem;
+  }
+  & > p:not(:first-child) {
+    font-size: var(--font-size-small);
+  }
+}
+
+.bookTitle {
+  margin-bottom: 0.4rem;
+  font-weight: var(--font-weight-semi-bold);
+  font-size: 1.8rem;
+}
+
+.publication {
+  color: var(--color-gray500);
+}
