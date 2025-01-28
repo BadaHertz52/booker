@@ -1,4 +1,4 @@
-import { BookSimpleInfo } from '@/types';
+import { BookItemData, BookSimpleInfo } from '@/types';
 
 const BOOK_COVER_IMG_URL = '';
 
@@ -47,3 +47,8 @@ export const RECOMMENDED_BOOKS_MOCK_DATA: BookSimpleInfo[] = [
     coverImageUrl: BOOK_COVER_IMG_URL,
   },
 ];
+
+export const HOT_BOOKS_MOCK_DATA: BookItemData[] = RECOMMENDED_BOOKS_MOCK_DATA.map((book) => ({
+  ...book,
+  publicationYear: 2025,
+}));

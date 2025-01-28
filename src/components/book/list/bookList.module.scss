@@ -1,0 +1,9 @@
+.list {
+  & > li {
+    padding-bottom: 1rem;
+  }
+  & > li + li {
+    border-top: 1px solid var(--color-gray100);
+    padding-top: 1rem;
+  }
+}
