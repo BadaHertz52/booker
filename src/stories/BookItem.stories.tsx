@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { BookItem } from '@/components/book';
+import BookItemSkeleton from '@/components/book/listItem/BookItemSkeleton';
 import { RECOMMENDED_BOOKS_MOCK_DATA } from '@/mocks/mockData';
 
 const meta: Meta<typeof BookItem> = {
@@ -26,4 +27,8 @@ export const Default: Story = {
   args: {
     bookItemData: { ...RECOMMENDED_BOOKS_MOCK_DATA[0], publicationYear: 2025 },
   },
+};
+
+export const Skeleton: StoryObj<typeof BookItemSkeleton> = {
+  render: () => <BookItemSkeleton />,
 };
