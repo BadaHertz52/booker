@@ -23,19 +23,16 @@ const BookItemLayout = ({ bookData, skeletonClassName, handleImgRoad }: BookItem
         {bookData ? (
           <Image
             src={bookData.coverImageUrl !== '' ? bookData.coverImageUrl : NoCoverImg}
-            alt={bookData.title !== '' ? `${bookData.title}도서 커버` : '도서 커버 대체 이미지'}
+            alt=""
             width={80}
             height={120}
             onLoad={handleImgRoad}
           />
         ) : (
-          <div className={classNames({ [skeletonClassName?.img as string]: skeletonClassName })} role="presentation" />
+          <div className={classNames({ [skeletonClassName?.img as string]: skeletonClassName })} />
         )}
       </div>
-      <div
-        className={classNames(styles.info, { [skeletonClassName?.info as string]: skeletonClassName })}
-        role={skeletonClassName ? 'presentation' : 'contentinfo'}
-      >
+      <div className={classNames(styles.info, { [skeletonClassName?.info as string]: skeletonClassName })}>
         <h3 className={styles.bookTitle}>{bookData?.title ?? ''}</h3>
         <ul className={styles.bookDetail}>
           <li>{bookData ? `${bookData?.author} 저자(글)` : ''}</li>
