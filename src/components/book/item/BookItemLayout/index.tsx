@@ -18,28 +18,33 @@ interface BookItemLayoutProps {
 
 const BookItemLayout = ({ bookData, skeletonClassName, handleImgRoad }: BookItemLayoutProps) => {
   return (
-    <li className={styles.item}>
+    <div className={styles.container}>
       <div className={styles.imgWrapper}>
         {bookData ? (
           <Image
             src={bookData.coverImageUrl !== '' ? bookData.coverImageUrl : NoCoverImg}
-            alt={`${bookData.title}도서 커버`}
+            alt={bookData.title !== '' ? `${bookData.title}도서 커버` : '도서 커버 대체 이미지'}
             width={80}
             height={120}
             onLoad={handleImgRoad}
           />
         ) : (
-          <div className={classNames({ [skeletonClassName?.img as string]: skeletonClassName })} />
+          <div className={classNames({ [skeletonClassName?.img as string]: skeletonClassName })} role="presentation" />
         )}
       </div>
-      <div className={classNames(styles.info, { [skeletonClassName?.info as string]: skeletonClassName })}>
-        <p className={styles.bookTitle}>{bookData?.title ?? ''}</p>
-        <p>{bookData ? `${bookData?.author} 저자(글)` : ''}</p>
-        <p className={styles.publication}>
-          {bookData ? `${bookData.publisher}．${bookData.publicationYear}년 출간` : ''}
-        </p>
+      <div
+        className={classNames(styles.info, { [skeletonClassName?.info as string]: skeletonClassName })}
+        role={skeletonClassName ? 'presentation' : 'contentinfo'}
+      >
+        <h3 className={styles.bookTitle}>{bookData?.title ?? ''}</h3>
+        <ul className={styles.bookDetail}>
+          <li>{bookData ? `${bookData?.author} 저자(글)` : ''}</li>
+          <li className={styles.publication}>
+            {bookData ? `${bookData.publisher}．${bookData.publicationYear}년 출간` : ''}
+          </li>
+        </ul>
       </div>
-    </li>
+    </div>
   );
 };
 

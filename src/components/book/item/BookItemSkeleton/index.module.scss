@@ -8,19 +8,20 @@
 }
 
 .info {
-  p {
+  h3,
+  li {
     border-radius: var(--border-radius-small);
     @include mixins.skeleton;
   }
 
-  p:first-child {
+  h3 {
     width: 10rem;
   }
-  p:nth-child(2) {
+  li:nth-child(1) {
     margin: 0.5rem 0;
     width: 15rem;
   }
-  p:nth-child(3) {
+  li:nth-child(2) {
     width: 20rem;
   }
 }
