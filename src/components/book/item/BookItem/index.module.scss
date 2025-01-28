@@ -1,0 +1,18 @@
+.item {
+  position: relative;
+}
+
+.skeletonWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.contents {
+  opacity: 0;
+  transition: opacity 0.1s linear;
+}
+
+.contents.on {
+  opacity: 1;
+}
