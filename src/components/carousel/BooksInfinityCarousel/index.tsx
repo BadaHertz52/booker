@@ -55,7 +55,7 @@ const BooksInfinityCarousel = ({ booksSimpleInfo, title }: BooksInfinityCarousel
               {...dimensions}
             />
             <div className={styles.bookInfo}>
-              <h3>{book.title}</h3>
+              <p className={styles.bookTitle}>{book.title}</p>
               <p className={styles.bookAuthorAndPublisher}>
                 {book.author} / {book.publisher}
               </p>

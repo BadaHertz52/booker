@@ -40,15 +40,10 @@
   @media screen and (max-width: 425px) {
     width: calc(100% - 6rem - 1.5rem);
   }
+}
 
-  h3 {
-    font-weight: var(--font-weight-semi-bold);
-    font-size: 2rem;
-
-    @media screen and (max-width: 425px) {
-      font-size: var(--font-size-basic);
-    }
-  }
+.bookTitle {
+  font-weight: var(--font-weight-semi-bold);
 }
 
 .bookAuthorAndPublisher {
