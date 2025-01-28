@@ -1,3 +1,9 @@
+@use '@/styles/mixins.scss' as mixins;
+
+$img__width-basic: 8rem;
+$img__width-small: 7rem;
+$info__gap: 0.4rem;
+
 .container {
   display: flex;
   align-items: center;
@@ -5,26 +11,45 @@
 }
 
 .imgWrapper {
+  position: relative;
   aspect-ratio: 2/3;
-  width: 8rem;
+  width: $img__width-basic;
+
+  @media screen and (max-width: 425px) {
+    width: $img__width-small;
+  }
 }
 
 .info {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: $info__gap;
+  padding-right: 1rem;
+  width: calc(100% - $img__width-basic - $info__gap);
+
+  @media screen and (max-width: 425px) {
+    width: calc(100% - $img__width-small - $info__gap);
+  }
 }
 
 .bookTitle {
   margin-bottom: 0.4rem;
-  height: calc(var(--font-size-h3) + 1rem);
+  width: 100%;
   font-weight: var(--font-weight-semi-bold);
+
+  @media screen and (max-width: 425px) {
+    font-size: var(--font-size-basic);
+  }
+
+  @include mixins.ellipse;
 }
 
 .bookDetail {
   li {
-    height: calc(var(--font-size-small) + 1rem);
+    width: 100%;
     font-size: var(--font-size-small);
+
+    @include mixins.ellipse;
   }
 }
 

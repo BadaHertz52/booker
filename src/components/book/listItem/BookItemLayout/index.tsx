@@ -24,8 +24,7 @@ const BookItemLayout = ({ bookItemData, skeletonClassName, handleImgRoad }: Book
           <Image
             src={bookItemData.coverImageUrl !== '' ? bookItemData.coverImageUrl : NoCoverImg}
             alt=""
-            width={80}
-            height={120}
+            fill
             onLoad={handleImgRoad}
           />
         ) : (
@@ -36,9 +35,8 @@ const BookItemLayout = ({ bookItemData, skeletonClassName, handleImgRoad }: Book
         <h3 className={styles.bookTitle}>{bookItemData?.title ?? ''}</h3>
         <ul className={styles.bookDetail}>
           <li>{bookItemData ? `${bookItemData?.author} 저자(글)` : ''}</li>
-          <li className={styles.publication}>
-            {bookItemData ? `${bookItemData.publisher}．${bookItemData.publicationYear}년 출간` : ''}
-          </li>
+          <li className={styles.publication}>{bookItemData ? bookItemData.publisher : ''}</li>
+          <li className={styles.publication}>{bookItemData ? `${bookItemData.publicationYear}년` : ''}</li>
         </ul>
       </div>
     </div>

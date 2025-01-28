@@ -11,6 +11,7 @@
   h3,
   li {
     border-radius: var(--border-radius-small);
+    height: var(--font-size-basic);
     @include mixins.skeleton;
   }
 
