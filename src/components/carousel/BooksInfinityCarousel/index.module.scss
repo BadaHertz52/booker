@@ -18,6 +18,8 @@ $full-width-card__gap-small-mobile: 1rem;
   background-color: var(--color-gray100);
   padding: 2.5rem 3rem;
 
+  @include mixins.full-width-card;
+
   @media screen and (max-width: 768px) {
     gap: $full-width-card__gap-mobile;
   }
@@ -27,8 +29,6 @@ $full-width-card__gap-small-mobile: 1rem;
     padding-right: 1rem;
     padding-left: 1rem;
   }
-
-  @include mixins.full-width-card;
 }
 
 .imgWrapper {

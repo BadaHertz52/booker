@@ -8,12 +8,12 @@
   padding: 1.6rem var(--layout-padding-horizontal);
   height: var(--topbar-height);
 
+  @include mixins.responsive-fixed-layout;
+
   @media screen and (max-width: 425px) {
     padding-right: var(--layout-padding-horizontal-small-device);
     padding-left: var(--layout-padding-horizontal-small-device);
   }
-
-  @include mixins.responsive-fixed-layout;
 }
 
 .logoContainer {

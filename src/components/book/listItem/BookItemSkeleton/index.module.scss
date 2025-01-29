@@ -4,6 +4,7 @@
   border-radius: var(--border-radius-basic);
   width: 100%;
   height: 100%;
+
   @include mixins.skeleton;
 }
 
@@ -12,6 +13,7 @@
   li {
     border-radius: var(--border-radius-small);
     height: var(--font-size-basic);
+
     @include mixins.skeleton;
   }
 

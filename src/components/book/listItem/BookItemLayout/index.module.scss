@@ -37,16 +37,17 @@ $info__gap: 0.4rem;
   width: 100%;
   font-weight: var(--font-weight-semi-bold);
 
+  @include mixins.ellipse;
+
   @media screen and (max-width: 425px) {
     font-size: var(--font-size-basic);
   }
-
-  @include mixins.ellipse;
 }
 
 .bookDetail {
   li {
     width: 100%;
+
     @include mixins.ellipse;
   }
 }
