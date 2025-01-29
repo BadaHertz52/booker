@@ -1,0 +1,14 @@
+@use '@/styles/mixins' as mixins;
+
+.title {
+  margin: 1.6rem 0;
+  width: 100%;
+  font-size: var(--font-size-h2);
+  text-align: center;
+
+  @include mixins.word-break;
+
+  @media screen and (max-width: 425px) {
+    font-size: var(--font-size-h3);
+  }
+}
