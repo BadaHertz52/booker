@@ -52,3 +52,46 @@ export const HOT_BOOKS_MOCK_DATA: BookItemData[] = RECOMMENDED_BOOKS_MOCK_DATA.m
   ...book,
   publicationYear: 2025,
 }));
+
+export const FRONTEND_BOOKS_MOCK_DATA: BookItemData[] = [
+  {
+    isbn: 9781449331818,
+    title: '러닝 리액트',
+    author: '알렉스 뱅크스, 이브 포셀로',
+    publisher: '한빛미디어',
+    coverImageUrl: BOOK_COVER_IMG_URL,
+    publicationYear: 2021,
+  },
+  {
+    isbn: 9788966262557,
+    title: '모던 자바스크립트 Deep Dive',
+    author: '이웅모',
+    publisher: '위키북스',
+    coverImageUrl: BOOK_COVER_IMG_URL,
+    publicationYear: 2020,
+  },
+  {
+    isbn: 9791158392239,
+    title: '타입스크립트 프로그래밍',
+    author: '보리스 체르니',
+    publisher: '인사이트',
+    coverImageUrl: BOOK_COVER_IMG_URL,
+    publicationYear: 2021,
+  },
+  {
+    isbn: 9791165921675,
+    title: '프론트엔드 성능 최적화 가이드',
+    author: '김효진',
+    publisher: '프로그래밍인사이트',
+    coverImageUrl: BOOK_COVER_IMG_URL,
+    publicationYear: 2022,
+  },
+  {
+    isbn: 9791162245262,
+    title: 'Next.js 완벽 가이드',
+    author: '이재승',
+    publisher: '길벗',
+    coverImageUrl: BOOK_COVER_IMG_URL,
+    publicationYear: 2023,
+  },
+];
