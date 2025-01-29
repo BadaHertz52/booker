@@ -9,6 +9,7 @@ export default function Home() {
 
   return (
     <div>
+      <h1 className="sr-only">BOOKER 홈페이지</h1>
       <section className={styles.section}>
         <h2>사서 추천 도서</h2>
         <div className={styles.recommendBooksCarouselWrapper}>
