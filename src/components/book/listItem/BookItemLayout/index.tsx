@@ -34,9 +34,10 @@ const BookItemLayout = ({ bookItemData, skeletonClassName, handleImgRoad }: Book
       <div className={classNames(styles.info, { [skeletonClassName?.info as string]: skeletonClassName })}>
         <h3 className={styles.bookTitle}>{bookItemData?.title ?? ''}</h3>
         <ul className={styles.bookDetail}>
-          <li>{bookItemData ? `${bookItemData?.author} 저자(글)` : ''}</li>
-          <li className={styles.publication}>{bookItemData ? bookItemData.publisher : ''}</li>
-          <li className={styles.publication}>{bookItemData ? `${bookItemData.publicationYear}년` : ''}</li>
+          <li className={styles.author}>{bookItemData ? `${bookItemData?.author} 저자(글)` : ''}</li>
+          <li className={styles.publication}>
+            {bookItemData ? `${bookItemData.publisher} - ${bookItemData.publicationYear}년` : ''}
+          </li>
         </ul>
       </div>
     </div>

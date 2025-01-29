@@ -47,12 +47,16 @@ $info__gap: 0.4rem;
 .bookDetail {
   li {
     width: 100%;
-    font-size: var(--font-size-small);
-
     @include mixins.ellipse;
   }
 }
 
+.author {
+  font-size: var(--font-size-small);
+}
+
 .publication {
+  margin-top: 0.5rem;
   color: var(--color-gray500);
+  font-size: var(--font-size-xsmall);
 }
