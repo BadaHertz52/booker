@@ -65,3 +65,7 @@ ul,
 ol {
   list-style: none;
 }
+
+main {
+  min-height: calc((100vh - var(--topbar-height) - var(--footer-height)));
+}
