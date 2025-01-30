@@ -1,0 +1,25 @@
+@use '@/styles/mixins' as mixins;
+
+.errorNotification {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  width: 20rem;
+  color: var(--color-gray200);
+}
+
+@mixin button {
+  width: 100%;
+  height: 4rem;
+}
+
+.resetButton {
+  @include mixins.primary-button;
+  @include button;
+}
+
+.homeButton {
+  @include mixins.secondary-button;
+  @include button;
+}
