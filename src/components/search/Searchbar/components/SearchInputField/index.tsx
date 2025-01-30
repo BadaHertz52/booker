@@ -22,7 +22,7 @@ const SearchInputField = ({ elementId, searchInputRef, isPending, initialSearchV
         ref={searchInputRef}
         disabled={isPending}
         name="searchValue"
-        placeholder="검색어를 입력해주세요"
+        placeholder="검색어 입력"
         defaultValue={initialSearchValue}
       />
     </>
