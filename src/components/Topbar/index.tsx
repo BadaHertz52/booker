@@ -31,11 +31,13 @@ const Topbar = () => {
         <Image src={LogoIcon} alt="" width={30} height={30} />
         <p className={styles.logoText}>BOOKER</p>
       </div>
-      <Searchbar
-        categoryInfo={BOOK_SEARCH_CATEGORY_NAME}
-        processSearch={processSearch}
-        initialFormData={initialFormData}
-      />
+      <div className={styles.searchbarWrapper}>
+        <Searchbar
+          categoryInfo={BOOK_SEARCH_CATEGORY_NAME}
+          processSearch={processSearch}
+          initialFormData={initialFormData}
+        />
+      </div>
     </header>
   );
 };

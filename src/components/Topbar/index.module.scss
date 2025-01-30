@@ -33,3 +33,14 @@
   font-weight: 900;
   font-size: 2rem;
 }
+
+.searchbarWrapper {
+  width: 30rem;
+
+  @media screen and (max-width: 500px) {
+    width: 60%;
+  }
+  @media screen and (max-width: 350px) {
+    width: 80%;
+  }
+}
