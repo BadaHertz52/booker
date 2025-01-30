@@ -76,3 +76,18 @@
   word-break: keep-all;
   overflow-wrap: break-word;
 }
+
+@mixin primary-button {
+  border-radius: var(--border-radius-basic);
+  background-color: var(--color-primary);
+  padding: 1rem 0;
+  color: var(--color-white);
+  text-align: center;
+}
+
+@mixin secondary-button {
+  border: 0.2rem solid var(--color-primary);
+  border-radius: var(--border-radius-basic);
+  padding: 1rem 0;
+  text-align: center;
+}
