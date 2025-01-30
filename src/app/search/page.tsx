@@ -2,7 +2,7 @@ import { BookList, NotFoundSearchResult } from '@/components';
 import { BOOK_SEARCH_CATEGORY_NAME } from '@/constants';
 import { FRONTEND_BOOKS_MOCK_DATA } from '@/mocks/mockData';
 
-import Layout from './components/Layout';
+import H1 from './components/H1';
 import styles from './page.module.scss';
 
 interface SearchPageProps {
@@ -28,8 +28,9 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
   const searchTarget = BOOK_SEARCH_CATEGORY_NAME[category];
 
   return (
-    <Layout searchResultGuideMessage={searchResultGuideMessage}>
-      {result.state === 'success' && (
+    <>
+      <H1 message={searchResultGuideMessage} />
+      {FRONTEND_BOOKS_MOCK_DATA.length > 0 ? (
         <BookList listTitle={searchResultListTitle} bookItemsData={FRONTEND_BOOKS_MOCK_DATA} />
       )}
       {result.state === 'fail' && (
@@ -39,7 +40,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
           </NotFoundSearchResult>
         </div>
       )}
-    </Layout>
+    </>
   );
 };
 

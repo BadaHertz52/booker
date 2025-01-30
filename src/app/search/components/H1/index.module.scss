@@ -1,12 +1,6 @@
 @use '@/styles/mixins' as mixins;
 
-.container {
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  min-height: inherit;
-}
-.searchResultGuideMessage {
+.message {
   margin: 1.6rem 0;
   width: 100%;
   font-size: var(--font-size-h3);
