@@ -15,6 +15,7 @@ interface SearchPageProps {
 const MAX_SEARCH_KEYWORD_LENGTH = 16;
 
 const SearchPage = async ({ searchParams }: SearchPageProps) => {
+  // NOTE : 검색 api 호출 중인 경우를 위한 임시 코드 - api 호출 작업 후 삭제 예정
   await new Promise((resolve) => setTimeout(resolve, 1000));
   const params = await searchParams;
   const { keyword, category } = params;
