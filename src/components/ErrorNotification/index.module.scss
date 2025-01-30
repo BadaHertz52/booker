@@ -9,6 +9,9 @@
   color: var(--color-gray200);
 }
 
+.errorIcon {
+  border-radius: var(--border-radius-basic);
+}
 @mixin button {
   width: 100%;
   height: 4rem;

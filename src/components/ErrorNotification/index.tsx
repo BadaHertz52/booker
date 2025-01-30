@@ -22,7 +22,15 @@ const ErrorNotification = ({ children, reset }: ErrorNotificationProps) => {
   };
   return (
     <div className={styles.errorNotification}>
-      <Image src={ErrorIcon} alt="" width={140} height={140} placeholder="blur" blurDataURL={gray200BlurDataURL} />
+      <Image
+        className={styles.errorIcon}
+        src={ErrorIcon}
+        alt=""
+        width={140}
+        height={140}
+        placeholder="blur"
+        blurDataURL={gray200BlurDataURL}
+      />
       {children}
       <button className={styles.resetButton} onClick={reset}>
         다시 시도하기
