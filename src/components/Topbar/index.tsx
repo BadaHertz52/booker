@@ -5,16 +5,12 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
 
 import { Searchbar } from '@/components';
+import { BOOK_SEARCH_CATEGORY_NAME } from '@/constants';
 import LogoIcon from '@/images/logo.svg';
 
 import { ProcessSearchFunction, ProcessSearchParams } from '../search/Searchbar/action/searchAction';
 
 import styles from './index.module.scss';
-
-export const BOOK_SEARCH_CATEGORY_NAME: Record<string, string> = {
-  title: '도서',
-  author: '저자',
-} as const;
 
 const Topbar = () => {
   const router = useRouter();

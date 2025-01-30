@@ -23,6 +23,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
   const searchResultGuideMessage = `'${truncatedKeyword}'에 대한 검색 ${result.state === 'pending' ? '중 이에요' : '결과에요'}`;
   const searchResultListTitle = `${keyword} 검색 결과`;
   const searchTarget = category === 'author' ? '저자' : '도서';
+  const searchTarget = BOOK_SEARCH_CATEGORY_NAME[category];
 
   return (
     <div className={styles.container}>
