@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { Searchbar } from '@/components';
-import { BOOK_SEARCH_CATEGORY_NAME } from '@/components/Topbar';
+import { BOOK_SEARCH_CATEGORY_NAME } from '@/constants';
 
 const meta: Meta<typeof Searchbar> = {
   component: Searchbar,
@@ -19,4 +19,9 @@ export const BookSearchbar: Story = {
   args: {
     categoryInfo: BOOK_SEARCH_CATEGORY_NAME,
   },
+  render: (args) => (
+    <div style={{ width: '30rem' }}>
+      <Searchbar {...args} />
+    </div>
+  ),
 };
