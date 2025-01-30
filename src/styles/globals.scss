@@ -19,7 +19,7 @@ body {
   box-shadow: 0px 0px 21px 5px rgba(118, 118, 118, 0.27);
   background-color: var(--color-white);
   padding: var(--topbar-height) var(--layout-padding-horizontal);
-  padding-bottom: var(--footer-height);
+  padding-bottom: 0;
   min-height: 100vh;
 
   @include mixins.responsive-layout-width;
