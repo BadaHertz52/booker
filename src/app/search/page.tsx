@@ -16,7 +16,7 @@ const SKELETON_LIST_LENGTH = 5;
 const SearchPage = async ({ searchParams }: SearchPageProps) => {
   const params = await searchParams;
   const { keyword, category } = params;
-  // TODO : 검색 api 응답 상태에 따라 추후 세부 작업 진행
+  // TODO : 검색 api 호출 추후 세부 작업 진행
   const result: { state: 'pending' | 'success' | 'fail' } = { state: 'success' };
   const truncatedKeyword =
     keyword.length > MAX_SEARCH_KEYWORD_LENGTH ? keyword.slice(0, MAX_SEARCH_KEYWORD_LENGTH) + '...' : keyword;
