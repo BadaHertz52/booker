@@ -3,7 +3,7 @@ import { HOT_BOOKS_MOCK_DATA, RECOMMENDED_BOOKS_MOCK_DATA } from '@/mocks/mockDa
 
 import styles from './page.module.scss';
 
-export default function Home() {
+const Home = async () => {
   const recommendedBooks = RECOMMENDED_BOOKS_MOCK_DATA;
   const hotBooks = HOT_BOOKS_MOCK_DATA;
 
@@ -22,4 +22,6 @@ export default function Home() {
       </section>
     </div>
   );
-}
+};
+
+export default Home;

@@ -2,6 +2,7 @@
 import { ErrorNotification } from '@/components';
 
 import styles from './error.module.scss';
+
 interface ErrorProps {
   error: Error & { digest?: string };
   reset: () => void;
