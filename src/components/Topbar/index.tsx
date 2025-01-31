@@ -28,9 +28,16 @@ const Topbar = () => {
 
   return (
     <header className={styles.topbar}>
-      <Link className={styles.logoContainer} href="/" prefetch={false}>
-        <Image src={LogoIcon} alt="" width={30} height={30} />
-        <p className={styles.logoText}>BOOKER</p>
+      <Link
+        className={styles.logoContainer}
+        href="/"
+        aria-label="BOOKER 로고 : 클릭 시 홈으로 돌아가기"
+        prefetch={false}
+      >
+        <Image src={LogoIcon} alt="" width={30} height={30} aria-hidden />
+        <p className={styles.logoText} aria-hidden>
+          BOOKER
+        </p>
       </Link>
       <div className={styles.searchbarWrapper}>
         <Searchbar
