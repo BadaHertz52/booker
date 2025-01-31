@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
 
@@ -27,10 +28,10 @@ const Topbar = () => {
 
   return (
     <header className={styles.topbar}>
-      <div className={styles.logoContainer}>
+      <Link className={styles.logoContainer} href="/" prefetch={false}>
         <Image src={LogoIcon} alt="" width={30} height={30} />
         <p className={styles.logoText}>BOOKER</p>
-      </div>
+      </Link>
       <div className={styles.searchbarWrapper}>
         <Searchbar
           categoryInfo={BOOK_SEARCH_CATEGORY_NAME}
