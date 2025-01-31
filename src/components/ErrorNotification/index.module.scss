@@ -12,9 +12,11 @@
 .errorIcon {
   border-radius: var(--border-radius-basic);
 }
+
 @mixin button {
   width: 100%;
   height: 4rem;
+  color: var(--color-black);
 }
 
 .resetButton {
@@ -22,7 +24,7 @@
   @include button;
 }
 
-.homeButton {
+.homeLinkButton {
   @include mixins.secondary-button;
   @include button;
 }

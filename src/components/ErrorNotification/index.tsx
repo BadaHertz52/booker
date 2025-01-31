@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
 import { gray200BlurDataURL } from '@/constants';
@@ -13,13 +14,9 @@ interface ErrorNotificationProps {
   reset: () => void;
 }
 const ErrorNotification = ({ children, reset }: ErrorNotificationProps) => {
-  const router = useRouter();
   const pathname = usePathname();
   const isHome = pathname === '/';
 
-  const moveToHome = () => {
-    router.push('/');
-  };
   return (
     <div className={styles.errorNotification}>
       <Image
@@ -36,9 +33,9 @@ const ErrorNotification = ({ children, reset }: ErrorNotificationProps) => {
         다시 시도하기
       </button>
       {!isHome && (
-        <button className={styles.homeButton} onClick={moveToHome}>
+        <Link className={styles.homeLinkButton} href="/" prefetch={false}>
           홈으로 돌아가기
-        </button>
+        </Link>
       )}
     </div>
   );
