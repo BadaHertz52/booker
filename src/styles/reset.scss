@@ -116,6 +116,6 @@ a:active,
 a:focus,
 a:visited,
 a:hover {
-  color: inherit;
+  color: var(--color-black);
   text-decoration: none;
 }
