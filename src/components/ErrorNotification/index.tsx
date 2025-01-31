@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 import { gray200BlurDataURL } from '@/constants';
 import ErrorIcon from '@/images/error.svg';
