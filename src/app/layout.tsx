@@ -2,6 +2,8 @@ import '@/styles/variables.scss';
 import '@/styles/globals.scss';
 import '@/styles/reset.scss';
 
+import { Suspense } from 'react';
+
 import { Footer, Topbar } from '@/components';
 import { pretendard } from '@/styles/fonts';
 
@@ -14,7 +16,9 @@ export default function RootLayout({
     <html lang="en" className={pretendard.variable}>
       <body>
         <div id="root">
-          <Topbar />
+          <Suspense>
+            <Topbar />
+          </Suspense>
           <main>{children}</main>
           <Footer />
         </div>

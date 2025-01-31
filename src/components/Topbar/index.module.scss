@@ -8,12 +8,12 @@
   padding: 1.6rem var(--layout-padding-horizontal);
   height: var(--topbar-height);
 
+  @include mixins.responsive-fixed-layout;
+
   @media screen and (max-width: 425px) {
     padding-right: var(--layout-padding-horizontal-small-device);
     padding-left: var(--layout-padding-horizontal-small-device);
   }
-
-  @include mixins.responsive-fixed-layout;
 }
 
 .logoContainer {
@@ -22,7 +22,7 @@
   gap: 1rem;
 
   @media screen and (max-width: 350px) {
-    & > img {
+    & > p {
       display: none;
     }
   }
@@ -32,4 +32,15 @@
   color: var(--color-primary);
   font-weight: 900;
   font-size: 2rem;
+}
+
+.searchbarWrapper {
+  width: 30rem;
+
+  @media screen and (max-width: 500px) {
+    width: 60%;
+  }
+  @media screen and (max-width: 350px) {
+    width: 80%;
+  }
 }

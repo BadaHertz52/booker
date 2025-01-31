@@ -7,5 +7,6 @@
   width: fit-content;
   color: var(--color-white);
   font-size: 1.2rem;
+
   @include mixins.controls-bar;
 }

@@ -1,0 +1,45 @@
+import { BookList, NotFoundSearchResult } from '@/components';
+import { BOOK_SEARCH_CATEGORY_NAME } from '@/constants';
+import { FRONTEND_BOOKS_MOCK_DATA } from '@/mocks/mockData';
+
+import H1 from './components/H1';
+import styles from './page.module.scss';
+
+interface SearchPageProps {
+  searchParams: Promise<{
+    keyword: string;
+    category: string;
+  }>;
+}
+
+const MAX_SEARCH_KEYWORD_LENGTH = 16;
+
+const SearchPage = async ({ searchParams }: SearchPageProps) => {
+  // NOTE : 검색 api 호출 중인 경우를 위한 임시 코드 - api 호출 작업 후 삭제 예정
+  await new Promise((resolve) => setTimeout(resolve, 1000));
+  const params = await searchParams;
+  const { keyword, category } = params;
+  // TODO : 검색 api 호출 추후 세부 작업 진행 , api 요청 실패 시, 에러 메세지에 에러 페이지에 보여줄 문구 넣을 것!
+  const truncatedKeyword =
+    keyword.length > MAX_SEARCH_KEYWORD_LENGTH ? keyword.slice(0, MAX_SEARCH_KEYWORD_LENGTH) + '...' : keyword;
+  const searchResultGuideMessage = `'${truncatedKeyword}'에 대한 검색 결과에요`;
+  const searchResultListTitle = `${keyword} 검색 결과`;
+  const searchTarget = BOOK_SEARCH_CATEGORY_NAME[category];
+
+  return (
+    <>
+      <H1 message={searchResultGuideMessage} />
+      {FRONTEND_BOOKS_MOCK_DATA.length > 0 ? (
+        <BookList listTitle={searchResultListTitle} bookItemsData={FRONTEND_BOOKS_MOCK_DATA} />
+      ) : (
+        <div className={styles.notFoundResultWrapper}>
+          <NotFoundSearchResult>
+            <p>찾으시는 {searchTarget} 정보가 없어요.</p>
+          </NotFoundSearchResult>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default SearchPage;

@@ -7,11 +7,12 @@ import DropdownMenu from './components/DropdownMenu';
 import useOpenDropdownMenu from './hooks/useOpenDropdownMenu';
 
 export interface CategorySelectorProps {
+  initialCategory: string;
   elementId: Record<string, string>;
   categoryInfo: Record<string, string>;
 }
-const CategorySelector = ({ elementId, categoryInfo }: CategorySelectorProps) => {
-  const [selectedCategory, setSelectedCategory] = useState('title');
+const CategorySelector = ({ initialCategory, elementId, categoryInfo }: CategorySelectorProps) => {
+  const [selectedCategory, setSelectedCategory] = useState(initialCategory);
 
   const {
     dropdownMenuButtonRef,

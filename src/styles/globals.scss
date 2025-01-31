@@ -8,6 +8,7 @@ body {
   box-sizing: border-box;
   background-color: var(--color-gray100);
   width: 100%;
+  color: var(--color-black);
   font-size: var(--font-size-basic);
   font-family: var(--font-pretendard);
   word-break: keep-all;
@@ -19,14 +20,13 @@ body {
   box-shadow: 0px 0px 21px 5px rgba(118, 118, 118, 0.27);
   background-color: var(--color-white);
   padding: var(--topbar-height) var(--layout-padding-horizontal);
-  padding-bottom: var(--footer-height);
+  padding-bottom: 0;
   min-height: 100vh;
 
+  @include mixins.responsive-layout-width;
   @media screen and (max-width: 425px) {
     padding: var(--topbar-height) var(--layout-padding-horizontal-small-device);
   }
-
-  @include mixins.responsive-layout-width;
 }
 
 #portal-root {
@@ -36,6 +36,7 @@ body {
   &::backdrop {
     background: transparent;
   }
+
   @include mixins.responsive-fixed-layout;
 }
 
@@ -64,4 +65,8 @@ h3 {
 ul,
 ol {
   list-style: none;
+}
+
+main {
+  min-height: calc((100vh - var(--topbar-height) - var(--footer-height)));
 }

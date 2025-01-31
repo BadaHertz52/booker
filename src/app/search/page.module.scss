@@ -1,0 +1,27 @@
+@use '@/styles/mixins' as mixins;
+
+.container {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  min-height: inherit;
+}
+.searchResultGuideMessage {
+  margin: 1.6rem 0;
+  width: 100%;
+  font-size: var(--font-size-h3);
+  text-align: center;
+
+  @include mixins.word-break;
+
+  @media screen and (max-width: 425px) {
+    font-size: var(--font-size-basic);
+  }
+}
+
+.notFoundResultWrapper {
+  position: absolute;
+  top: calc((100% - 20rem) / 2);
+  left: 0;
+  width: 100%;
+}

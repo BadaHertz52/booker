@@ -7,7 +7,7 @@ import { CategorySelectorProps } from '../..';
 
 import styles from './index.module.scss';
 
-interface Props extends CategorySelectorProps {
+interface Props extends Omit<CategorySelectorProps, 'initialCategory'> {
   dropdownMenuButtonRef: React.RefObject<HTMLButtonElement | null>;
   isOpenDropdownMenu: boolean;
   handleClickDropdownOpenButton: () => void;
@@ -32,7 +32,7 @@ const CategorySelectorButton = ({
       aria-controls={elementId.searchCategoryList}
       onClick={handleClickDropdownOpenButton}
     >
-      <input name="selectedCategory" readOnly hidden value={categoryInfo[selectedCategory]} />
+      <input name="selectedCategory" readOnly hidden value={selectedCategory} />
       <span title="검색유형">{categoryInfo[selectedCategory]}</span>
       <Image
         className={classNames(styles.triangle, { [styles.reverse]: isOpenDropdownMenu })}
