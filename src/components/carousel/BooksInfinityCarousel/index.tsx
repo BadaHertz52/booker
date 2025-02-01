@@ -25,17 +25,19 @@ const BooksInfinityCarousel = ({ booksSimpleInfo, title }: BooksInfinityCarousel
             href={`/book/${book.isbn}`}
             key={book.isbn}
           >
+            <div className={styles.bookCover}>
+              <div className={styles.imgWrapper}>
+                <Image src={book.coverImageUrl !== '' ? book.coverImageUrl : NoCoverImage} alt={book.title} fill />
+              </div>
+            </div>
             <div className={styles.bookInfo}>
               <h3 className={styles.bookTitle}>{book.title}</h3>
               <ul>
                 <li className={styles.bookAuthorAndPublisher}>
                   {book.author} / {book.publisher}
                 </li>
-                <li className={styles.bookContents}>{book.contents}</li>
+                <li className={styles.bookContent}>{book.content}</li>
               </ul>
-            </div>
-            <div className={styles.imgWrapper}>
-              <Image src={book.coverImageUrl !== '' ? book.coverImageUrl : NoCoverImage} alt={book.title} fill />
             </div>
           </Link>
         ))}

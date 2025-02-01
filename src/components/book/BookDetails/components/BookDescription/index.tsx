@@ -24,7 +24,7 @@ const BookDescriptionContent = ({ bookDetailData }: BookDescriptionContentProps)
       </div>
       <div className={styles.bookContent}>
         <h3>책 내용</h3>
-        <pre>{bookDetailData.contents}</pre>
+        <pre>{bookDetailData.content}</pre>
       </div>
       <div className={styles.bookInfo}>
         <h3>기본 정보</h3>
