@@ -20,9 +20,11 @@ const BookItemContent = ({ bookItemData }: BookItemProps) => {
     loadingState: '도서 정보를 불러오는 중입니다. 잠시만 기다려주세요.',
   };
 
+  const href = `/book/${bookItemData.isbn}`;
+
   return (
     <li className={styles.item}>
-      <Link href="/" aria-label={a11yLabel.bookDescription + ' ' + a11yLabel.linkInfo}>
+      <Link href={href} aria-label={a11yLabel.bookDescription + ' ' + a11yLabel.linkInfo}>
         <div className={styles.container}>
           <BookCover.Content bookItemData={bookItemData} />
           <BookOverview.Content bookItemData={bookItemData} />
