@@ -19,14 +19,11 @@ body {
   -webkit-box-shadow: 0px 0px 21px 5px rgba(118, 118, 118, 0.27);
   box-shadow: 0px 0px 21px 5px rgba(118, 118, 118, 0.27);
   background-color: var(--color-white);
-  padding: var(--topbar-height) var(--layout-padding-horizontal);
+  padding: var(--topbar-height) 0;
   padding-bottom: 0;
   min-height: 100vh;
 
   @include mixins.responsive-layout-width;
-  @media screen and (max-width: 425px) {
-    padding: var(--topbar-height) var(--layout-padding-horizontal-small-device);
-  }
 }
 
 #portal-root {
@@ -68,6 +65,5 @@ ol {
 }
 
 main {
-  padding-top: 1.6rem;
   min-height: calc((100vh - var(--topbar-height) - var(--footer-height)));
 }
