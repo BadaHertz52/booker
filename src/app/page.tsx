@@ -8,7 +8,7 @@ const Home = async () => {
   const hotBooks = HOT_BOOKS_MOCK_DATA;
 
   return (
-    <div>
+    <div className={styles.homeContainer}>
       <h1 className="sr-only">BOOKER 홈페이지</h1>
       <section className={styles.section}>
         <h2>사서 추천 도서</h2>
@@ -18,7 +18,7 @@ const Home = async () => {
       </section>
       <section className={styles.section}>
         <h2>대출 급상승 도서</h2>
-        <BookList listTitle="대출 급상승 도서" bookItemsData={hotBooks} />
+        <BookList.Content listTitle="대출 급상승 도서" bookItemsData={hotBooks} />
       </section>
     </div>
   );

@@ -19,7 +19,7 @@ const Portal = ({ handleClosePortal, children, extraClassName }: Props) => {
     if (!divRef.current) return;
     if (!(e.target instanceof HTMLElement)) return;
 
-    if (divRef.current.contains(e.target) && handleClosePortal) {
+    if (!divRef.current.contains(e.target) && handleClosePortal) {
       handleClosePortal();
     }
   };

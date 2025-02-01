@@ -30,7 +30,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
     <>
       <H1 message={searchResultGuideMessage} />
       {FRONTEND_BOOKS_MOCK_DATA.length > 0 ? (
-        <BookList listTitle={searchResultListTitle} bookItemsData={FRONTEND_BOOKS_MOCK_DATA} />
+        <BookList.Content listTitle={searchResultListTitle} bookItemsData={FRONTEND_BOOKS_MOCK_DATA} />
       ) : (
         <div className={styles.notFoundResultWrapper}>
           <NotFound>

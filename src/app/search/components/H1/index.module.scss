@@ -1,11 +1,11 @@
 @use '@/styles/mixins' as mixins;
 
 .message {
-  margin: 2.4rem 0;
+  margin-bottom: 2rem;
+  padding-top: 1.6rem;
   width: 100%;
   font-size: var(--font-size-h3);
   text-align: center;
-
   @include mixins.word-break;
 
   @media screen and (max-width: 425px) {

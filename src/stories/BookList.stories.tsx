@@ -1,12 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { BookList, BookListSkeleton } from '@/components';
+import { BookList } from '@/components';
 import { HOT_BOOKS_MOCK_DATA } from '@/mocks/mockData';
 
 const TITLE = '대출 급상승 도서';
 
-const meta: Meta<typeof BookList> = {
-  component: BookList,
+const meta: Meta<typeof BookList.Content> = {
+  component: BookList.Content,
   title: 'components/Book/BookList',
   tags: ['autodocs'],
   argTypes: {
@@ -15,7 +15,7 @@ const meta: Meta<typeof BookList> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof BookList>;
+type Story = StoryObj<typeof BookList.Content>;
 
 export const Default: Story = {
   args: {
@@ -24,6 +24,6 @@ export const Default: Story = {
   },
 };
 
-export const Skeleton: StoryObj<typeof BookListSkeleton> = {
-  render: () => <BookListSkeleton listLength={5} listTitle={TITLE} />,
+export const Skeleton: StoryObj<typeof BookList.Skeleton> = {
+  render: () => <BookList.Skeleton listLength={5} listTitle={TITLE} />,
 };

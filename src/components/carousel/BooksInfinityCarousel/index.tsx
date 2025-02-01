@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import NoCoverImage from '@/images/noCover.svg';
 import { BookSimpleInfo } from '@/types';
@@ -18,9 +19,16 @@ const BooksInfinityCarousel = ({ booksSimpleInfo, title }: BooksInfinityCarousel
     <div className={styles.booksCarouselWrapper}>
       <InfinityCarousel title={title} cardsInfoForScreenReader={cardsInfoForScreenReader}>
         {booksSimpleInfo.map((book) => (
-          <div key={book.isbn} className={styles.fullWidthCard}>
-            <div className={styles.imgWrapper}>
-              <Image src={book.coverImageUrl !== '' ? book.coverImageUrl : NoCoverImage} alt={book.title} fill />
+          <Link
+            aria-label={`링크 선택 시, ${book.title} 도서 상세 페이지로 이동합니다.`}
+            className={styles.fullWidthCard}
+            href={`/book/${book.isbn}`}
+            key={book.isbn}
+          >
+            <div className={styles.bookCover}>
+              <div className={styles.imgWrapper}>
+                <Image src={book.coverImageUrl !== '' ? book.coverImageUrl : NoCoverImage} alt={book.title} fill />
+              </div>
             </div>
             <div className={styles.bookInfo}>
               <h3 className={styles.bookTitle}>{book.title}</h3>
@@ -28,10 +36,10 @@ const BooksInfinityCarousel = ({ booksSimpleInfo, title }: BooksInfinityCarousel
                 <li className={styles.bookAuthorAndPublisher}>
                   {book.author} / {book.publisher}
                 </li>
-                <li className={styles.bookContents}>{book.contents}</li>
+                <li className={styles.bookContent}>{book.content}</li>
               </ul>
             </div>
-          </div>
+          </Link>
         ))}
       </InfinityCarousel>
     </div>

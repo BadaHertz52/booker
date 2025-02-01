@@ -9,8 +9,10 @@ import { pretendard } from '@/styles/fonts';
 
 export default function RootLayout({
   children,
+  modal,
 }: Readonly<{
   children: React.ReactNode;
+  modal: React.ReactNode;
 }>) {
   return (
     <html lang="en" className={pretendard.variable}>
@@ -22,6 +24,7 @@ export default function RootLayout({
           <main>{children}</main>
           <Footer />
         </div>
+        {modal}
         <div id="portal-root"></div>
       </body>
     </html>

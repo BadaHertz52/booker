@@ -1,3 +1,11 @@
+@mixin layout-padding {
+  padding: 0 var(--layout-padding-horizontal);
+
+  @media screen and (max-width: 425px) {
+    padding: 0 var(--layout-padding-horizontal-small-device);
+  }
+}
+
 @mixin responsive-layout-width {
   margin: 0;
   width: 100%;

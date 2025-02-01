@@ -1,0 +1,33 @@
+import type { Meta, StoryObj } from '@storybook/react';
+
+import { BookDetails } from '@/components';
+import { BOOK_DETAIL_MOCK_DATA } from '@/mocks/mockData';
+
+const meta: Meta<typeof BookDetails.Content> = {
+  component: BookDetails.Content,
+  title: 'components/Book/BookDetails',
+  tags: ['autodocs'],
+  decorators: [
+    (Story) => (
+      <ul style={{ border: '1px solid black', padding: '1rem', borderRadius: '1rem', width: '45rem' }}>
+        <Story />
+      </ul>
+    ),
+  ],
+  argTypes: {
+    bookDetailData: { control: 'object' },
+  },
+};
+
+export default meta;
+type Story = StoryObj<typeof BookDetails.Content>;
+
+export const Default: Story = {
+  args: {
+    bookDetailData: BOOK_DETAIL_MOCK_DATA,
+  },
+};
+
+export const Skeleton: StoryObj<typeof BookDetails.Skeleton> = {
+  render: () => <BookDetails.Skeleton />,
+};
