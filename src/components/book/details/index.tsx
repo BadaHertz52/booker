@@ -28,11 +28,15 @@ const BookDetails = ({ bookDetailData }: BookDetailProps) => {
 
   return (
     <section>
-      <div className={styles.coverImageContainer} style={{ backgroundImage: `url(${bookDetailData.coverImageUrl})` }}>
+      <div
+        aria-hidden="true"
+        className={styles.coverImageContainer}
+        style={{ backgroundImage: `url(${bookDetailData.coverImageUrl})` }}
+      >
         <div className={styles.coverImageWrapper}>
           <Image
             src={bookDetailData.coverImageUrl}
-            alt={bookDetailData.title}
+            alt={`[${title}] 도서 표지`}
             fill
             placeholder="blur"
             blurDataURL={gray200BlurDataURL}
@@ -63,11 +67,11 @@ const BookDetails = ({ bookDetailData }: BookDetailProps) => {
             <caption className="sr-only">{title} 기본 정보</caption>
             <tbody>
               <tr>
-                <td>ISBN</td>
+                <th scope="row">ISBN</th>
                 <td>{isbn}</td>
               </tr>
               <tr>
-                <td>출판 일자</td>
+                <th scope="row">출판 일자</th>
                 <td>{formateDate(publicationDate)}</td>
               </tr>
             </tbody>

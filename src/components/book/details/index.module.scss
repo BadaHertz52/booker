@@ -105,7 +105,8 @@ $backdrop-filter-brightness: 110%;
     width: 100%;
   }
 
-  td:first-child {
+  th {
     font-weight: var(--font-weight-semi-bold);
+    text-align: left;
   }
 }
