@@ -4,7 +4,7 @@ import H1 from './components/H1';
 
 const SKELETON_LIST_LENGTH = 5;
 
-const Loading = () => {
+const BookDetailsLoading = () => {
   return (
     <>
       <H1 message="검색 중..." />
@@ -13,4 +13,4 @@ const Loading = () => {
   );
 };
 
-export default Loading;
+export default BookDetailsLoading;
