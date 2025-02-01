@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { Topbar } from '@/components';
 
-import StoryWrapper from './components/StoryWrapper';
-
 const meta: Meta<typeof Topbar> = {
   component: Topbar,
   title: 'components/Topbar',
