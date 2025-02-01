@@ -11,4 +11,7 @@
   position: relative;
   aspect-ratio: 3/4;
   width: 12rem;
+  & > img {
+    border-radius: var(--border-radius-basic);
+  }
 }
