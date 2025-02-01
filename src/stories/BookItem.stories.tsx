@@ -1,11 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { BookItem } from '@/components';
-import BookItemSkeleton from '@/components/book/listItem/BookItemSkeleton';
 import { RECOMMENDED_BOOKS_MOCK_DATA } from '@/mocks/mockData';
 
-const meta: Meta<typeof BookItem> = {
-  component: BookItem,
+const meta: Meta<typeof BookItem.Content> = {
+  component: BookItem.Content,
   title: 'components/Book/BookItem',
   tags: ['autodocs'],
   decorators: [
@@ -21,7 +20,7 @@ const meta: Meta<typeof BookItem> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof BookItem>;
+type Story = StoryObj<typeof BookItem.Content>;
 
 export const Default: Story = {
   args: {
@@ -29,6 +28,6 @@ export const Default: Story = {
   },
 };
 
-export const Skeleton: StoryObj<typeof BookItemSkeleton> = {
-  render: () => <BookItemSkeleton />,
+export const Skeleton: StoryObj<typeof BookItem.Skeleton> = {
+  render: () => <BookItem.Skeleton />,
 };
