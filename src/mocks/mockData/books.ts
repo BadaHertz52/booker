@@ -103,7 +103,10 @@ export const BOOK_DETAIL_MOCK_DATA: BookDetailData = {
   author: '알렉스 뱅크스, 이브 포셀로',
   publisher: '한빛미디어',
   publicationYear: 2021,
-  contents: '러닝 리액트',
+  publicationDate: new Date('2021-01-01'),
+  contents: `효율적인 리액트 애플리케이션 작성법을 간결하고 쉽고 빠르게 배우기 
+브라우저에서 작동하는 자바스크립트, CSS, HTML을 아는 웹 개발자나 소프트웨어 엔지니어에게 이상적인 이 책은 최신 리액트 코드를 작성하기 위한 모범 사례와 패턴을 소개한다. 리액트나 함수형 자바스크립트에 대한 지식이 없는 입문자도 이 책을 통해 리액트를 제대로 쓰는 법을 배울 수 있다.
+이 책은 대규모 데이터 기반 웹사이트에서 페이지를 다시 요청하지 않고도 데이터 변화에 따라 화면을 교묘하게 변경하는 UI 제작법을 학습 로드맵에 맞춰 차근차근 설명한다. 그 과정에서 함수형 프로그래밍과 최신 ECMAScript 기능을 다양한 예제와 함께 안내한다.`,
   coverImageUrl: BOOK_COVER_IMG_URL,
   category: '프론트엔드',
   loans: { count: 100, rank: 1 },

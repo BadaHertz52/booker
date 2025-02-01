@@ -22,6 +22,7 @@ export interface BookDetailData {
   author: string;
   publisher: string;
   publicationYear: number;
+  publicationDate: Date;
   contents: string;
   coverImageUrl: string;
   category: string;
