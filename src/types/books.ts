@@ -3,7 +3,7 @@ export interface BookSimpleInfo {
   isbn: number;
   author: string;
   publisher: string;
-  contents: string;
+  content: string;
   coverImageUrl: string;
 }
 
@@ -23,7 +23,7 @@ export interface BookDetailData {
   publisher: string;
   publicationYear: number;
   publicationDate: Date;
-  contents: string;
+  content: string;
   coverImageUrl: string;
   category: string;
   loans: { count: number; rank: number };
