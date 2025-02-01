@@ -19,9 +19,6 @@ const BooksInfinityCarousel = ({ booksSimpleInfo, title }: BooksInfinityCarousel
       <InfinityCarousel title={title} cardsInfoForScreenReader={cardsInfoForScreenReader}>
         {booksSimpleInfo.map((book) => (
           <div key={book.isbn} className={styles.fullWidthCard}>
-            <div className={styles.imgWrapper}>
-              <Image src={book.coverImageUrl !== '' ? book.coverImageUrl : NoCoverImage} alt={book.title} fill />
-            </div>
             <div className={styles.bookInfo}>
               <h3 className={styles.bookTitle}>{book.title}</h3>
               <ul>
@@ -30,6 +27,9 @@ const BooksInfinityCarousel = ({ booksSimpleInfo, title }: BooksInfinityCarousel
                 </li>
                 <li className={styles.bookContents}>{book.contents}</li>
               </ul>
+            </div>
+            <div className={styles.imgWrapper}>
+              <Image src={book.coverImageUrl !== '' ? book.coverImageUrl : NoCoverImage} alt={book.title} fill />
             </div>
           </div>
         ))}
