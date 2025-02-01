@@ -1,6 +1,7 @@
 import { BookDetailData, BookItemData, BookSimpleInfo } from '@/types';
 
-const BOOK_COVER_IMG_URL = '';
+import bookCoverImg from './cover.jpeg';
+const BOOK_COVER_IMG_URL = bookCoverImg.src;
 
 export const RECOMMENDED_BOOKS_MOCK_DATA: BookSimpleInfo[] = [
   {
