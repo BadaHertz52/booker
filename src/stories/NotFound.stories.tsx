@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import NotFoundPage from '@/app/not-found';
 import { NotFound } from '@/components';
 
 import StoryWrapper from './components/StoryWrapper';
@@ -24,3 +25,18 @@ export const Default: Story = {
   ),
 };
 
+export const NotFoundPageStory = {
+  render: () => (
+    <StoryWrapper message="NOT FOUND PAGE">
+      <NotFoundPage />
+    </StoryWrapper>
+  ),
+  parameters: {
+    nextjs: {
+      appDirectory: true,
+      navigation: {
+        pathname: '/not-found',
+      },
+    },
+  },
+};
