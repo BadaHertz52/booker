@@ -1,4 +1,4 @@
-import { BookList, NotFoundSearchResult } from '@/components';
+import { BookList, NotFound } from '@/components';
 import { BOOK_SEARCH_CATEGORY_NAME } from '@/constants';
 import { FRONTEND_BOOKS_MOCK_DATA } from '@/mocks/mockData';
 
@@ -33,9 +33,9 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
         <BookList listTitle={searchResultListTitle} bookItemsData={FRONTEND_BOOKS_MOCK_DATA} />
       ) : (
         <div className={styles.notFoundResultWrapper}>
-          <NotFoundSearchResult>
+          <NotFound>
             <p>찾으시는 {searchTarget} 정보가 없어요.</p>
-          </NotFoundSearchResult>
+          </NotFound>
         </div>
       )}
     </>
