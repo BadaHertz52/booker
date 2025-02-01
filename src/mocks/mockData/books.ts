@@ -1,4 +1,4 @@
-import { BookItemData, BookSimpleInfo } from '@/types';
+import { BookDetailData, BookItemData, BookSimpleInfo } from '@/types';
 
 const BOOK_COVER_IMG_URL = '';
 
@@ -95,3 +95,15 @@ export const FRONTEND_BOOKS_MOCK_DATA: BookItemData[] = [
     publicationYear: 2023,
   },
 ];
+
+export const BOOK_DETAIL_MOCK_DATA: BookDetailData = {
+  isbn: 9781449331818,
+  title: '러닝 리액트',
+  author: '알렉스 뱅크스, 이브 포셀로',
+  publisher: '한빛미디어',
+  publicationYear: 2021,
+  contents: '러닝 리액트',
+  coverImageUrl: BOOK_COVER_IMG_URL,
+  category: '프론트엔드',
+  loans: { count: 100, rank: 1 },
+};
