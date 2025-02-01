@@ -20,7 +20,7 @@ const BooksInfinityCarousel = ({ booksSimpleInfo, title }: BooksInfinityCarousel
       <InfinityCarousel title={title} cardsInfoForScreenReader={cardsInfoForScreenReader}>
         {booksSimpleInfo.map((book) => (
           <Link
-            aria-label={`링크 선택 시, ${book.title} 상세 페이지로 이동합니다.`}
+            aria-label={`링크 선택 시, ${book.title} 도서 상세 페이지로 이동합니다.`}
             className={styles.fullWidthCard}
             href={`/book/${book.isbn}`}
             key={book.isbn}
