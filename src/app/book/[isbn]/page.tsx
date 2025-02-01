@@ -1,8 +1,8 @@
 import { BookDetails } from '@/components';
 import { BOOK_DETAIL_MOCK_DATA } from '@/mocks/mockData';
 
-const BookDetailPage = async () => {
+const BookDetailsPage = async () => {
   return <BookDetails.Content bookDetailData={BOOK_DETAIL_MOCK_DATA} />;
 };
 
-export default BookDetailPage;
+export default BookDetailsPage;
