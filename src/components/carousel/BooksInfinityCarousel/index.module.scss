@@ -35,6 +35,11 @@ $full-width-card__gap-small-mobile: 1rem;
   position: relative;
   aspect-ratio: 2/3;
   width: $img__width-desktop;
+
+  & > img {
+    border-radius: var(--book-cover-border-radius);
+  }
+
   @media screen and (max-width: 768px) {
     width: $img__width-mobile;
   }

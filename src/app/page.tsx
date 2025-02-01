@@ -18,7 +18,7 @@ const Home = async () => {
       </section>
       <section className={styles.section}>
         <h2>대출 급상승 도서</h2>
-        <BookList listTitle="대출 급상승 도서" bookItemsData={hotBooks} />
+        <BookList.Content listTitle="대출 급상승 도서" bookItemsData={hotBooks} />
       </section>
     </div>
   );
