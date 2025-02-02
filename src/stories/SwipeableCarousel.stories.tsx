@@ -2,8 +2,6 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { SwipeableCarousel } from '@/components';
 
-import StoryWrapper from './components/StoryWrapper';
-
 const meta = {
   title: 'Components/Carousel/SwipeableCarousel',
   component: SwipeableCarousel,
