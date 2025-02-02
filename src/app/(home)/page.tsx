@@ -17,7 +17,11 @@ const Home = async () => {
         </div>
       </section>
       <section className={styles.section}>
-        <h2>대출 급상승 도서</h2>
+        <h2>대출 급상승! 도서</h2>
+        <BookList.Content listTitle="대출 급상승 도서" bookItemsData={hotBooks} />
+      </section>
+      <section className={styles.section}>
+        <h2>다독자를 위한 추천 도서</h2>
         <BookList.Content listTitle="대출 급상승 도서" bookItemsData={hotBooks} />
       </section>
     </div>
