@@ -6,7 +6,7 @@
 
 .carouselTrack {
   display: flex;
-  gap: 16px;
+  gap: 2.4rem;
   cursor: grab;
   overflow-x: auto;
   scroll-behavior: smooth;
@@ -16,16 +16,4 @@
 
 .carouselTrack::-webkit-scrollbar {
   display: none;
-}
-
-.slide {
-  display: flex;
-  flex: 0 0 auto;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-  background: #ddd;
-  width: 300px;
-  height: 200px;
-  font-size: 24px;
 }

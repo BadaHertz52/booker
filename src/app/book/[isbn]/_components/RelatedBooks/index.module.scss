@@ -1,0 +1,34 @@
+@use '@/styles/mixins' as mixins;
+@use '../../_styles//mixins' as bookDetailsMixins;
+
+.layout {
+  @include bookDetailsMixins.layout;
+}
+
+.carouselWrapper {
+  margin-top: 1.6rem;
+  border-radius: var(--border-radius-small);
+  background-color: var(--color-gray100);
+  padding: 3rem;
+
+  @media (max-width: 425px) {
+    padding: 2rem;
+  }
+  @media screen and (max-width: 375px) {
+    padding: 1.6rem;
+  }
+}
+
+.titleSkeleton {
+  width: 12rem;
+  height: var(--font-size-h3);
+  @include bookDetailsMixins.header;
+  @include mixins.skeleton;
+}
+
+.carouselSkeleton {
+  width: 100%;
+  height: 25rem;
+
+  @include mixins.skeleton;
+}

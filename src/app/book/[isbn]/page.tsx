@@ -1,9 +1,16 @@
 import { BOOK_DETAIL_MOCK_DATA } from '@/mocks/mockData';
 
-import BookDetails from './_components/BookDetails';
+import { BookDetails, RelatedBooks } from './_components';
+import styles from './page.module.scss';
 
 const BookDetailsPage = async () => {
-  return <BookDetails.Loaded bookDetailData={BOOK_DETAIL_MOCK_DATA} />;
+  await new Promise((resolve) => setTimeout(resolve, 100));
+  return (
+    <div className={styles.container}>
+      <BookDetails.Loaded bookDetailData={BOOK_DETAIL_MOCK_DATA} />
+      <RelatedBooks />
+    </div>
+  );
 };
 
 export default BookDetailsPage;
