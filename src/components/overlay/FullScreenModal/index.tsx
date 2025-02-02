@@ -1,6 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 import CloseIcon from '@/images/whiteCloseIcon.svg';
 
@@ -12,11 +13,20 @@ interface FullScreenModalProps {
   children: React.ReactNode;
 }
 const FullScreenModal = ({ children }: FullScreenModalProps) => {
+  const htmlElement = document.querySelector('html');
+
   const router = useRouter();
 
   const handleClosePortal = () => {
     router.back();
   };
+
+  useEffect(() => {
+    htmlElement?.classList.add('overflow-hidden');
+    return () => {
+      htmlElement?.classList.remove('overflow-hidden');
+    };
+  }, []);
 
   return (
     <Portal handleClosePortal={handleClosePortal}>
