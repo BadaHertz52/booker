@@ -4,14 +4,9 @@
 .imgWrapper {
   position: relative;
   aspect-ratio: 2/3;
-  width: variables.$img__width-basic;
 
   & > img {
     border-radius: var(--book-cover-border-radius);
-  }
-
-  @media screen and (max-width: 425px) {
-    width: variables.$img__width-small;
   }
 }
 

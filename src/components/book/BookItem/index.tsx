@@ -3,7 +3,8 @@ import React from 'react';
 
 import { BookItemData } from '@/types';
 
-import BookCover from './components/BookCover';
+import BookCover from '../BookCover';
+
 import BookOverview from './components/BookOverview';
 import styles from './index.module.scss';
 
@@ -26,7 +27,7 @@ const BookItemLoaded = ({ bookItemData }: BookItemProps) => {
     <li className={styles.item}>
       <Link href={href} aria-label={a11yLabel.bookDescription + ' ' + a11yLabel.linkInfo}>
         <div className={styles.container}>
-          <BookCover.Loaded bookItemData={bookItemData} />
+          <BookCover.Loaded bookItemData={bookItemData} classNameForWidth={styles.cover} />
           <BookOverview.Loaded bookItemData={bookItemData} />
         </div>
       </Link>
@@ -37,7 +38,7 @@ const BookItemLoaded = ({ bookItemData }: BookItemProps) => {
 const BookItemSkeleton = () => {
   return (
     <div className={styles.container}>
-      <BookCover.Skeleton />
+      <BookCover.Skeleton classNameForWidth={styles.cover} />
       <BookOverview.Skeleton />
     </div>
   );

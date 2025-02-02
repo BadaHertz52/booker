@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import Image from 'next/image';
 
 import { gray200BlurDataURL } from '@/constants';
@@ -7,12 +8,13 @@ import { BookItemData } from '@/types';
 import styles from './index.module.scss';
 
 interface BookCoverLoadedProps {
+  classNameForWidth: string;
   bookItemData: BookItemData;
 }
 
-const BookCoverLoaded = ({ bookItemData }: BookCoverLoadedProps) => {
+const BookCoverLoaded = ({ bookItemData, classNameForWidth }: BookCoverLoadedProps) => {
   return (
-    <div className={styles.imgWrapper}>
+    <div className={classNames(styles.imgWrapper, classNameForWidth)}>
       <Image
         src={bookItemData.coverImageUrl !== '' ? bookItemData.coverImageUrl : NoCoverImg}
         placeholder="blur"
@@ -23,10 +25,12 @@ const BookCoverLoaded = ({ bookItemData }: BookCoverLoadedProps) => {
     </div>
   );
 };
-
-const BookCoverSkeleton = () => {
+interface BookCoverSkeletonProps {
+  classNameForWidth: string;
+}
+const BookCoverSkeleton = ({ classNameForWidth }: BookCoverSkeletonProps) => {
   return (
-    <div className={styles.imgWrapper}>
+    <div className={classNames(styles.imgWrapper, classNameForWidth)}>
       <div className={styles.imgSkeleton} />
     </div>
   );
