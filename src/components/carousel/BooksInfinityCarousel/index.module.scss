@@ -115,3 +115,7 @@ $img-width-small-mobile: 7rem;
     font-size: var(--font-size-small);
   }
 }
+
+.cardSkeleton {
+  @include mixins.skeleton;
+}

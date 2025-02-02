@@ -21,7 +21,7 @@ const BookListContent = ({ listTitle, bookItemsData }: BookListContentProps) => 
   );
 };
 
-interface BookListSkeletonProps {
+export interface BookListSkeletonProps {
   listTitle: string;
   listLength: number;
 }

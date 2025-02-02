@@ -36,9 +36,10 @@
   }
 }
 
-@mixin skeleton {
+@mixin skeleton($border-radius: var(--border-radius-basic)) {
   & {
     animation: skeleton-animation 2s infinite ease-in-out;
+    border-radius: $border-radius;
 
     background-image: linear-gradient(
       130deg,

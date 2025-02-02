@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -8,11 +9,12 @@ import InfinityCarousel, { InfinityCarouselProps } from '../InfinityCarousel';
 
 import styles from './index.module.scss';
 
-interface BooksInfinityCarouselProps extends Omit<InfinityCarouselProps, 'children' | 'cardsInfoForScreenReader'> {
+export interface BooksInfinityCarouselProps
+  extends Omit<InfinityCarouselProps, 'children' | 'cardsInfoForScreenReader'> {
   booksSimpleInfo: BookSimpleInfo[];
 }
 
-const BooksInfinityCarousel = ({ booksSimpleInfo, title }: BooksInfinityCarouselProps) => {
+const BooksInfinityCarouselContent = ({ booksSimpleInfo, title }: BooksInfinityCarouselProps) => {
   const cardsInfoForScreenReader = booksSimpleInfo.map((book) => ({ title: book.title }));
 
   return (
@@ -44,6 +46,19 @@ const BooksInfinityCarousel = ({ booksSimpleInfo, title }: BooksInfinityCarousel
       </InfinityCarousel>
     </div>
   );
+};
+
+const BooksInfinityCarouselSkeleton = () => {
+  return (
+    <div className={styles.booksCarouselWrapper}>
+      <div aria-hidden="true" className={classNames(styles.fullWidthCard, styles.cardSkeleton)} />
+    </div>
+  );
+};
+
+const BooksInfinityCarousel = {
+  Content: BooksInfinityCarouselContent,
+  Skeleton: BooksInfinityCarouselSkeleton,
 };
 
 export default BooksInfinityCarousel;
