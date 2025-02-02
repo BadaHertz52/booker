@@ -70,7 +70,7 @@ $img-width-small-mobile: 7rem;
   li:not(:last-child) {
     width: 100%;
 
-    @include mixins.ellipse;
+    @include mixins.ellipsis;
   }
   li {
     font-size: 1.2rem;

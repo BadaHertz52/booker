@@ -60,16 +60,16 @@
   }
 }
 
-@mixin ellipse {
+@mixin ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-@mixin ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+@mixin word-break {
+  white-space: pre-wrap;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 
 @mixin ellipsis-line-clamp($lines: 1) {
@@ -78,12 +78,7 @@
   text-overflow: ellipsis;
   -webkit-line-clamp: $lines;
   -webkit-box-orient: vertical;
-}
-
-@mixin word-break {
-  white-space: pre-wrap;
-  word-break: keep-all;
-  overflow-wrap: break-word;
+  @include word-break;
 }
 
 @mixin primary-button {
