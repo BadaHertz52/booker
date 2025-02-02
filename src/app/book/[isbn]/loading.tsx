@@ -1,4 +1,4 @@
-import { BookDetails } from '@/components';
+import { BookDetails } from './_components';
 
 const BookDetailLoading = () => {
   return <BookDetails.Skeleton />;

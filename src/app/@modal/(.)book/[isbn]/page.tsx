@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { Suspense, useEffect } from 'react';
 
 import BookDetailsPage from '@/app/book/[isbn]/page';
-import { BookDetails } from '@/components';
+import BookDetailsLoading from '@/app/search/loading';
 import Portal from '@/components/overlay/Portal';
 import CloseIcon from '@/images/whiteCloseIcon.svg';
 
@@ -43,7 +43,7 @@ const BookDetailModal = () => {
           <button aria-label="닫기" className={styles.closeButton} onClick={handleClosePortal}>
             <Image src={CloseIcon} alt="" width={24} height={24} />
           </button>
-          <Suspense fallback={<BookDetails.Skeleton />}>
+          <Suspense fallback={<BookDetailsLoading />}>
             <BookDetailsPage />
           </Suspense>
         </div>
