@@ -31,7 +31,7 @@ export const Default: Story = {
           height: '300px',
           display: 'flex',
           alignItems: 'center',
-          justifyLoaded: 'center',
+          justifyContent: 'center',
           backgroundColor: colors[index],
           fontSize: '2rem',
         }}
