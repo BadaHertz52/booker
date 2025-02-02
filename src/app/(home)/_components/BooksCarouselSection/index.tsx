@@ -2,12 +2,12 @@ import styles from '@/app/(home)/page.module.scss';
 import { BooksInfinityCarousel } from '@/components';
 import { BooksInfinityCarouselProps } from '@/components/carousel/BooksInfinityCarousel';
 
-const BooksCarouselSectionContent = ({ title, booksSimpleInfo }: BooksInfinityCarouselProps) => {
+const BooksCarouselSectionLoaded = ({ title, booksSimpleInfo }: BooksInfinityCarouselProps) => {
   return (
     <section>
       <h2>{title}</h2>
       <div>
-        <BooksInfinityCarousel.Content booksSimpleInfo={booksSimpleInfo} title={title} />
+        <BooksInfinityCarousel.Loaded booksSimpleInfo={booksSimpleInfo} title={title} />
       </div>
     </section>
   );
@@ -26,7 +26,7 @@ const BooksCarouselSectionSkeleton = ({ title }: BooksCarouselSectionSkeletonPro
 };
 
 const BooksCarouselSection = {
-  Content: BooksCarouselSectionContent,
+  Loaded: BooksCarouselSectionLoaded,
   Skeleton: BooksCarouselSectionSkeleton,
 };
 

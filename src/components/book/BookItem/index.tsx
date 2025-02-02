@@ -11,7 +11,7 @@ interface BookItemProps {
   bookItemData: BookItemData;
 }
 
-const BookItemContent = ({ bookItemData }: BookItemProps) => {
+const BookItemLoaded = ({ bookItemData }: BookItemProps) => {
   const { title, author } = bookItemData;
 
   const a11yLabel = {
@@ -26,8 +26,8 @@ const BookItemContent = ({ bookItemData }: BookItemProps) => {
     <li className={styles.item}>
       <Link href={href} aria-label={a11yLabel.bookDescription + ' ' + a11yLabel.linkInfo}>
         <div className={styles.container}>
-          <BookCover.Content bookItemData={bookItemData} />
-          <BookOverview.Content bookItemData={bookItemData} />
+          <BookCover.Loaded bookItemData={bookItemData} />
+          <BookOverview.Loaded bookItemData={bookItemData} />
         </div>
       </Link>
     </li>
@@ -44,7 +44,7 @@ const BookItemSkeleton = () => {
 };
 
 const BookItem = {
-  Content: BookItemContent,
+  Loaded: BookItemLoaded,
   Skeleton: BookItemSkeleton,
 };
 

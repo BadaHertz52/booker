@@ -3,8 +3,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { BookItem } from '@/components';
 import { RECOMMENDED_BOOKS_MOCK_DATA } from '@/mocks/mockData';
 
-const meta: Meta<typeof BookItem.Content> = {
-  component: BookItem.Content,
+const meta: Meta<typeof BookItem.Loaded> = {
+  component: BookItem.Loaded,
   title: 'components/Book/BookItem',
   tags: ['autodocs'],
   decorators: [
@@ -20,7 +20,7 @@ const meta: Meta<typeof BookItem.Content> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof BookItem.Content>;
+type Story = StoryObj<typeof BookItem.Loaded>;
 
 export const Default: Story = {
   args: {

@@ -6,16 +6,16 @@ import BookItem from '../BookItem';
 
 import styles from './index.module.scss';
 
-interface BookListContentProps {
+interface BookListLoadedProps {
   listTitle: string;
   bookItemsData: BookItemData[];
 }
 
-const BookListContent = ({ listTitle, bookItemsData }: BookListContentProps) => {
+const BookListLoaded = ({ listTitle, bookItemsData }: BookListLoadedProps) => {
   return (
     <ul aria-label={listTitle} className={styles.list}>
       {bookItemsData.map((book) => (
-        <BookItem.Content key={book.title} bookItemData={book} />
+        <BookItem.Loaded key={book.title} bookItemData={book} />
       ))}
     </ul>
   );
@@ -40,7 +40,7 @@ const BookListSkeleton = ({ listTitle, listLength }: BookListSkeletonProps) => {
 };
 
 const BookList = {
-  Content: BookListContent,
+  Loaded: BookListLoaded,
   Skeleton: BookListSkeleton,
 };
 

@@ -8,11 +8,11 @@ interface BookListSectionProps {
   bookItemsData: BookItemData[];
 }
 
-const BookListSectionContent = ({ title, bookItemsData }: BookListSectionProps) => {
+const BookListSectionLoaded = ({ title, bookItemsData }: BookListSectionProps) => {
   return (
     <section>
       <h2>{title}</h2>
-      <BookList.Content listTitle="대출 급상승 도서" bookItemsData={bookItemsData} />
+      <BookList.Loaded listTitle="대출 급상승 도서" bookItemsData={bookItemsData} />
     </section>
   );
 };
@@ -27,7 +27,7 @@ const BookListSectionSkeleton = ({ listTitle, listLength }: BookListSkeletonProp
 };
 
 const BookListSection = {
-  Content: BookListSectionContent,
+  Loaded: BookListSectionLoaded,
   Skeleton: BookListSectionSkeleton,
 };
 
