@@ -18,21 +18,6 @@
   display: none;
 }
 
-.progressBar {
-  margin-top: 2rem;
-  border-radius: var(--border-radius-basic);
-  background: rgba(0, 0, 0, 0.2);
-  width: 100%;
-  height: 0.4rem;
-  overflow: hidden;
-}
-
-.progressIndicator {
-  transition: width 0.3s ease;
-  background: var(--color-gray500);
-  height: 100%;
-}
-
 .slide {
   display: flex;
   flex: 0 0 auto;
