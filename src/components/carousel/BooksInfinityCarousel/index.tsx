@@ -38,7 +38,7 @@ const BooksInfinityCarouselLoaded = ({ booksSimpleInfo, title }: BooksInfinityCa
                 <li className={styles.bookAuthorAndPublisher}>
                   {book.author} / {book.publisher}
                 </li>
-                <li className={styles.bookLoaded}>{book.content}</li>
+                <li className={styles.bookContent}>{book.content}</li>
               </ul>
             </div>
           </Link>
