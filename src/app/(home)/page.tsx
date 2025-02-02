@@ -12,9 +12,9 @@ const Home = async () => {
   return (
     <div className={styles.homeContainer}>
       <h1 className="sr-only">BOOKER 홈페이지</h1>
-      <BooksCarouselSection.Content title="사서 추천 도서" booksSimpleInfo={recommendedBooks} />
-      <BookListSection.Content title="대출 급상승! 도서" bookItemsData={hotBooks} />
-      <BookListSection.Content title="다독자를 위한 추천 도서" bookItemsData={hotBooks} />
+      <BooksCarouselSection.Loaded title="사서 추천 도서" booksSimpleInfo={recommendedBooks} />
+      <BookListSection.Loaded title="대출 급상승! 도서" bookItemsData={hotBooks} />
+      <BookListSection.Loaded title="다독자를 위한 추천 도서" bookItemsData={hotBooks} />
     </div>
   );
 };

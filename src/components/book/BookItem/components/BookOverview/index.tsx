@@ -4,11 +4,11 @@ import { BookItemData } from '@/types';
 
 import styles from './index.module.scss';
 
-interface BookOverviewContentProps {
+interface BookOverviewLoadedProps {
   bookItemData: BookItemData;
 }
 
-const BookOverviewContent = ({ bookItemData }: BookOverviewContentProps) => {
+const BookOverviewLoaded = ({ bookItemData }: BookOverviewLoadedProps) => {
   return (
     <div className={styles.overview}>
       <h3 className={styles.bookTitle}>{bookItemData.title}</h3>
@@ -33,7 +33,7 @@ const BookOverviewSkeleton = () => {
 };
 
 const BookOverview = {
-  Content: BookOverviewContent,
+  Loaded: BookOverviewLoaded,
   Skeleton: BookOverviewSkeleton,
 };
 

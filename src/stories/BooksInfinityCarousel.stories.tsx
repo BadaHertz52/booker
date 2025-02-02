@@ -5,9 +5,9 @@ import { RECOMMENDED_BOOKS_MOCK_DATA } from '@/mocks/mockData';
 
 const meta = {
   title: 'Components/Carousel/BooksInfinityCarousel',
-  component: BooksInfinityCarousel.Content,
+  component: BooksInfinityCarousel.Loaded,
   tags: ['autodocs'],
-} satisfies Meta<typeof BooksInfinityCarousel.Content>;
+} satisfies Meta<typeof BooksInfinityCarousel.Loaded>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;

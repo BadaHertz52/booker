@@ -5,8 +5,8 @@ import { HOT_BOOKS_MOCK_DATA } from '@/mocks/mockData';
 
 const TITLE = '대출 급상승 도서';
 
-const meta: Meta<typeof BookList.Content> = {
-  component: BookList.Content,
+const meta: Meta<typeof BookList.Loaded> = {
+  component: BookList.Loaded,
   title: 'components/Book/BookList',
   tags: ['autodocs'],
   argTypes: {
@@ -15,7 +15,7 @@ const meta: Meta<typeof BookList.Content> = {
 };
 
 export default meta;
-type Story = StoryObj<typeof BookList.Content>;
+type Story = StoryObj<typeof BookList.Loaded>;
 
 export const Default: Story = {
   args: {

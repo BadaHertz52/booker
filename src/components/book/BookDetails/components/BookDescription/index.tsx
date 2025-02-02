@@ -2,11 +2,11 @@ import { BookDetailData } from '@/types';
 
 import styles from './index.module.scss';
 
-interface BookDescriptionContentProps {
+interface BookDescriptionLoadedProps {
   bookDetailData: BookDetailData;
 }
 
-const BookDescriptionContent = ({ bookDetailData }: BookDescriptionContentProps) => {
+const BookDescriptionLoaded = ({ bookDetailData }: BookDescriptionLoadedProps) => {
   const formateDate = (date: Date) => {
     const year = date.getFullYear();
     const month = date.getMonth() + 1;
@@ -22,7 +22,7 @@ const BookDescriptionContent = ({ bookDetailData }: BookDescriptionContentProps)
         <h3>책 분야</h3>
         <p>{bookDetailData.category}</p>
       </div>
-      <div className={styles.bookContent}>
+      <div className={styles.bookLoaded}>
         <h3>책 내용</h3>
         <pre className={styles.bookContent}>{bookDetailData.content}</pre>
       </div>
@@ -54,7 +54,7 @@ const BookDescriptionSkeleton = () => {
         <div className={styles.h3Skeleton} />
         <div className={styles.categorySkeleton} />
       </div>
-      <div className={styles.bookContentSkeleton}>
+      <div className={styles.bookLoadedSkeleton}>
         <div className={styles.h3Skeleton} />
         <div className={styles.contentSkeleton}>
           <p />
@@ -66,7 +66,7 @@ const BookDescriptionSkeleton = () => {
 };
 
 const BookDescription = {
-  Content: BookDescriptionContent,
+  Loaded: BookDescriptionLoaded,
   Skeleton: BookDescriptionSkeleton,
 };
 

@@ -8,12 +8,12 @@ interface BookDetailProps {
   bookDetailData: BookDetailData;
 }
 
-const BookDetailsContent = ({ bookDetailData }: BookDetailProps) => {
+const BookDetailsLoaded = ({ bookDetailData }: BookDetailProps) => {
   return (
     <section className={styles.container}>
-      <BookCover.Content bookDetailData={bookDetailData} />
-      <BookOverview.Content bookDetailData={bookDetailData} />
-      <BookDescription.Content bookDetailData={bookDetailData} />
+      <BookCover.Loaded bookDetailData={bookDetailData} />
+      <BookOverview.Loaded bookDetailData={bookDetailData} />
+      <BookDescription.Loaded bookDetailData={bookDetailData} />
     </section>
   );
 };
@@ -29,7 +29,7 @@ const BookDetailsSkeleton = () => {
 };
 
 const BookDetails = {
-  Content: BookDetailsContent,
+  Loaded: BookDetailsLoaded,
   Skeleton: BookDetailsSkeleton,
 };
 

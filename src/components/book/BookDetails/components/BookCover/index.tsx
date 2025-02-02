@@ -37,13 +37,13 @@ const BookCoverSkeleton = () => {
   return <BookCoverLayout />;
 };
 
-const BookCoverContent = ({ bookDetailData }: BookCoverLayoutProps) => {
+const BookCoverLoaded = ({ bookDetailData }: BookCoverLayoutProps) => {
   return <BookCoverLayout bookDetailData={bookDetailData} />;
 };
 
 const BookCover = {
   Skeleton: BookCoverSkeleton,
-  Content: BookCoverContent,
+  Loaded: BookCoverLoaded,
 };
 
 export default BookCover;

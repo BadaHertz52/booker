@@ -6,11 +6,11 @@ import { BookItemData } from '@/types';
 
 import styles from './index.module.scss';
 
-interface BookCoverContentProps {
+interface BookCoverLoadedProps {
   bookItemData: BookItemData;
 }
 
-const BookCoverContent = ({ bookItemData }: BookCoverContentProps) => {
+const BookCoverLoaded = ({ bookItemData }: BookCoverLoadedProps) => {
   return (
     <div className={styles.imgWrapper}>
       <Image
@@ -33,7 +33,7 @@ const BookCoverSkeleton = () => {
 };
 
 const BookCover = {
-  Content: BookCoverContent,
+  Loaded: BookCoverLoaded,
   Skeleton: BookCoverSkeleton,
 };
 

@@ -14,7 +14,7 @@ export interface BooksInfinityCarouselProps
   booksSimpleInfo: BookSimpleInfo[];
 }
 
-const BooksInfinityCarouselContent = ({ booksSimpleInfo, title }: BooksInfinityCarouselProps) => {
+const BooksInfinityCarouselLoaded = ({ booksSimpleInfo, title }: BooksInfinityCarouselProps) => {
   const cardsInfoForScreenReader = booksSimpleInfo.map((book) => ({ title: book.title }));
 
   return (
@@ -38,7 +38,7 @@ const BooksInfinityCarouselContent = ({ booksSimpleInfo, title }: BooksInfinityC
                 <li className={styles.bookAuthorAndPublisher}>
                   {book.author} / {book.publisher}
                 </li>
-                <li className={styles.bookContent}>{book.content}</li>
+                <li className={styles.bookLoaded}>{book.content}</li>
               </ul>
             </div>
           </Link>
@@ -57,7 +57,7 @@ const BooksInfinityCarouselSkeleton = () => {
 };
 
 const BooksInfinityCarousel = {
-  Content: BooksInfinityCarouselContent,
+  Loaded: BooksInfinityCarouselLoaded,
   Skeleton: BooksInfinityCarouselSkeleton,
 };
 
