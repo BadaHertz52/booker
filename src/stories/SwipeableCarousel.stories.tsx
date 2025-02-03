@@ -1,6 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { RelatedBooks } from '@/app/book/[isbn]/_components';
 import { SwipeableCarousel } from '@/components';
+import { BOOK_LIST_MOCK_DATA } from '@/mocks/mockData';
 
 const meta = {
   title: 'Components/Carousel/SwipeableCarousel',
@@ -45,6 +47,17 @@ export const Default: Story = {
   render: (args) => (
     <div style={{ width: '70rem', height: '30rem' }}>
       <SwipeableCarousel {...args} />
+    </div>
+  ),
+};
+
+export const BooksSwipeableCarousel: StoryObj<typeof RelatedBooks> = {
+  args: {
+    relatedBooks: [...BOOK_LIST_MOCK_DATA, ...BOOK_LIST_MOCK_DATA],
+  },
+  render: (args) => (
+    <div style={{ width: '70rem', height: '60rem', display: 'flex', alignItems: 'center', backgroundColor: 'white' }}>
+      <RelatedBooks {...args} />
     </div>
   ),
 };
