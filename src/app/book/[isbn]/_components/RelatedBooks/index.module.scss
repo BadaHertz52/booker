@@ -2,6 +2,7 @@
 @use '../../_styles//mixins' as bookDetailsMixins;
 
 .layout {
+  width: 100%;
   @include bookDetailsMixins.layout;
 }
 
