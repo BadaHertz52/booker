@@ -3,11 +3,11 @@ import type { Meta, StoryObj } from '@storybook/react';
 import NotFoundPage from '@/app/not-found';
 import { NotFound } from '@/components';
 
-import StoryWrapper from './components/StoryWrapper';
+import StoryWrapper from '../_components/StoryWrapper';
 
 const meta: Meta<typeof NotFound> = {
   component: NotFound,
-  title: 'components/NotFound',
+  title: 'components/Error/NotFound',
   tags: ['autodocs'],
 };
 

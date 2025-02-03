@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { ErrorNotification } from '@/components';
 
-import StoryWrapper from './components/StoryWrapper';
+import StoryWrapper from '../_components/StoryWrapper';
 
 const meta: Meta<typeof ErrorNotification> = {
   component: ErrorNotification,
