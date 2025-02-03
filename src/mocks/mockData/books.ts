@@ -3,7 +3,7 @@ import { BookDetailData, BookItemData, BookSimpleInfo } from '@/types';
 import bookCoverImg from './cover.jpeg';
 const BOOK_COVER_IMG_URL = bookCoverImg.src;
 
-export const RECOMMENDED_BOOKS_MOCK_DATA: BookSimpleInfo[] = [
+export const BOOK_SIMPLE_INFO_LIST_MOCK_DATA: BookSimpleInfo[] = [
   {
     isbn: 9780743273565,
     title: 'The Great Gatsby',
@@ -49,12 +49,7 @@ export const RECOMMENDED_BOOKS_MOCK_DATA: BookSimpleInfo[] = [
   },
 ];
 
-export const HOT_BOOKS_MOCK_DATA: BookItemData[] = RECOMMENDED_BOOKS_MOCK_DATA.map((book) => ({
-  ...book,
-  publicationYear: 2025,
-}));
-
-export const FRONTEND_BOOKS_MOCK_DATA: BookItemData[] = [
+export const BOOK_LIST_MOCK_DATA: BookItemData[] = [
   {
     isbn: 9781449331818,
     title: '러닝 리액트',

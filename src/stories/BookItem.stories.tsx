@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { BookItem } from '@/components';
-import { RECOMMENDED_BOOKS_MOCK_DATA } from '@/mocks/mockData';
+import { BOOK_SIMPLE_INFO_LIST_MOCK_DATA } from '@/mocks/mockData';
 
 const meta: Meta<typeof BookItem.Loaded> = {
   component: BookItem.Loaded,
@@ -24,7 +24,7 @@ type Story = StoryObj<typeof BookItem.Loaded>;
 
 export const Default: Story = {
   args: {
-    bookItemData: { ...RECOMMENDED_BOOKS_MOCK_DATA[0], publicationYear: 2025 },
+    bookItemData: { ...BOOK_SIMPLE_INFO_LIST_MOCK_DATA[0], publicationYear: 2025 },
   },
 };
 

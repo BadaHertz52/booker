@@ -11,7 +11,7 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-const cardsInfoScreenReader = [
+const CARDS = [
   { title: 'BOOKER - SwipeableCarousel 사용법' },
   { title: '좌우로 스와이프하며 카드를 이동할 수 있어요' },
   { title: '카드 이동 시, 프로그레스바가 이동해요' },
@@ -20,11 +20,11 @@ const cardsInfoScreenReader = [
   { title: '카드 이동 시, 프로그레스바가 이동해요' },
 ];
 
-const colors = ['#ffc300', '#d1fbba', '#7bf0f7', '#d6b0e1', '#9387ff', '#0af7bf'];
+const COLORS = ['#ffc300', '#d1fbba', '#7bf0f7', '#d6b0e1', '#9387ff', '#0af7bf'];
 
 export const Default: Story = {
   args: {
-    children: cardsInfoScreenReader.map((info, index) => (
+    children: CARDS.map((info, index) => (
       <div
         key={info.title}
         style={{
@@ -34,7 +34,7 @@ export const Default: Story = {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
-          backgroundColor: colors[index],
+          backgroundColor: COLORS[index],
           fontSize: '1.6rem',
         }}
       >

@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { BookList } from '@/components';
-import { HOT_BOOKS_MOCK_DATA } from '@/mocks/mockData';
+import { BOOK_LIST_MOCK_DATA } from '@/mocks/mockData';
 
 const TITLE = '대출 급상승 도서';
 
@@ -20,7 +20,7 @@ type Story = StoryObj<typeof BookList.Loaded>;
 export const Default: Story = {
   args: {
     listTitle: TITLE,
-    bookItemsData: HOT_BOOKS_MOCK_DATA,
+    bookItemsData: BOOK_LIST_MOCK_DATA,
   },
 };
 

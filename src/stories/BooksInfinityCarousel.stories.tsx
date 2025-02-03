@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import { BooksInfinityCarousel } from '@/components';
-import { RECOMMENDED_BOOKS_MOCK_DATA } from '@/mocks/mockData';
+import { BOOK_SIMPLE_INFO_LIST_MOCK_DATA } from '@/mocks/mockData';
 
 const meta = {
   title: 'Components/Carousel/BooksInfinityCarousel',
@@ -14,7 +14,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    booksSimpleInfo: RECOMMENDED_BOOKS_MOCK_DATA,
+    booksSimpleInfo: BOOK_SIMPLE_INFO_LIST_MOCK_DATA,
     title: '추천 도서',
   },
 };
