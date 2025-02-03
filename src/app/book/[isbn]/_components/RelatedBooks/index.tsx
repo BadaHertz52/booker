@@ -1,12 +1,15 @@
 import Link from 'next/link';
 
 import { SwipeableCarousel, SwipeableBookCard } from '@/components/carousel';
-import { HOT_BOOKS_MOCK_DATA } from '@/mocks/mockData';
+import { BookItemData } from '@/types';
 
 import styles from './index.module.scss';
 
-const RelatedBooks = () => {
-  const relatedBooks = [...HOT_BOOKS_MOCK_DATA, ...HOT_BOOKS_MOCK_DATA];
+interface RelatedBooksProps {
+  relatedBooks: BookItemData[];
+}
+
+const RelatedBooks = ({ relatedBooks }: RelatedBooksProps) => {
   // TODO: 관련 도서 데이터 받아오기, key에서 index 제거
   return (
     <div className={styles.layout}>
