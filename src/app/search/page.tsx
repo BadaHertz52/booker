@@ -1,6 +1,6 @@
 import { BookList, NotFound } from '@/components';
 import { BOOK_SEARCH_CATEGORY_NAME } from '@/constants';
-import { FRONTEND_BOOKS_MOCK_DATA } from '@/mocks/mockData';
+import { BOOK_LIST_MOCK_DATA } from '@/mocks/mockData';
 
 import H1 from './components/H1';
 import styles from './page.module.scss';
@@ -29,8 +29,8 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
   return (
     <>
       <H1 message={searchResultGuideMessage} />
-      {FRONTEND_BOOKS_MOCK_DATA.length > 0 ? (
-        <BookList.Loaded listTitle={searchResultListTitle} bookItemsData={FRONTEND_BOOKS_MOCK_DATA} />
+      {BOOK_LIST_MOCK_DATA.length > 0 ? (
+        <BookList.Loaded listTitle={searchResultListTitle} bookItemsData={BOOK_LIST_MOCK_DATA} />
       ) : (
         <div className={styles.notFoundResultWrapper}>
           <NotFound>

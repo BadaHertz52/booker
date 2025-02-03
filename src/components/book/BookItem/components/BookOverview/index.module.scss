@@ -26,7 +26,7 @@ $info__gap: 0.4rem;
   width: 100%;
   font-weight: var(--font-weight-semi-bold);
 
-  @include mixins.ellipse;
+  @include mixins.ellipsis;
 
   @media screen and (max-width: 425px) {
     font-size: var(--font-size-basic);
@@ -37,7 +37,7 @@ $info__gap: 0.4rem;
   li {
     width: 100%;
 
-    @include mixins.ellipse;
+    @include mixins.ellipsis;
   }
   li + li {
     margin-top: 0.5rem;

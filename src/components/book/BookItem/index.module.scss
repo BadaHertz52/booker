@@ -1,5 +1,15 @@
+@use './_variables' as variables;
+
 .container {
   display: flex;
   align-items: center;
   gap: 2rem;
+}
+
+.cover {
+  width: variables.$img__width-basic;
+
+  @media screen and (max-width: 425px) {
+    width: variables.$img__width-small;
+  }
 }

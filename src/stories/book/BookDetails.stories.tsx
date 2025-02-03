@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { BookDetails } from '@/components';
+import BookDetails from '@/app/book/[isbn]/_components/BookDetails';
 import { BOOK_DETAIL_MOCK_DATA } from '@/mocks/mockData';
 
 const meta: Meta<typeof BookDetails.Loaded> = {
