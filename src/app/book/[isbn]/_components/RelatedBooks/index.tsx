@@ -12,7 +12,7 @@ interface RelatedBooksProps {
 const RelatedBooks = ({ relatedBooks }: RelatedBooksProps) => {
   // TODO: 관련 도서 데이터 받아오기, key에서 index 제거
   return (
-    <div className={styles.layout}>
+    <section className={styles.layout}>
       <h3>관련 도서</h3>
       <div className={styles.carouselWrapper}>
         <SwipeableCarousel>
@@ -23,7 +23,7 @@ const RelatedBooks = ({ relatedBooks }: RelatedBooksProps) => {
           ))}
         </SwipeableCarousel>
       </div>
-    </div>
+    </section>
   );
 };
 
