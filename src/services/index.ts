@@ -1,2 +1,2 @@
 export * from './books/librarianPick';
-export * from './publicLibraryEndpoint';
+export * from './endpoints/publicLibraryEndpoint';
