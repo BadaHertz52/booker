@@ -10,7 +10,9 @@ import { publicLibraryEndpoint } from '../index';
 export const fetchLastMonthLibrarianPick = async () => {
   const { firstDay: startDate, lastDay: endDate } = getLastMonthDates();
   // NOTE: 변경 사항이 없는 지난 달 사서 추천 도서 목록을 가져오는 것이므로 캐시를 강제함
-  const response = await fetch(publicLibraryEndpoint.gettingLibrarianPick({ startDate, endDate }));
+  const response = await fetch(publicLibraryEndpoint.gettingLibrarianPick({ startDate, endDate }), {
+    cache: 'force-cache',
+  });
 
   if (!response.ok) {
     throwRequestError({
