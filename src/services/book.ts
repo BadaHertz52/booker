@@ -18,3 +18,12 @@ export const fetchLastMonthLibrarianPick = async () => {
   return response;
 };
 
+/**
+ * 국립 중앙 도서관 - xml형태의 사서 추천 도서 목록을 JSON 형식으로 변환
+ */
+export const formatLastMonthLibrarianPick = async (response: Response) => {
+  const xml = await response.text();
+  const result = parseXmlToJson({ xml });
+
+  return result;
+};
