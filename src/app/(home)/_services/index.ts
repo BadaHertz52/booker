@@ -1,8 +1,8 @@
-import { fetchLastMonthLibrarianPick, formatLastMonthLibrarianPick } from '@/services';
+import { fetchLastMonthLibrarianPick, parseLastMonthLibrarianPick } from '@/services';
 
 export const getLastMonthLibrarianPick = async () => {
   const response = await fetchLastMonthLibrarianPick();
-  const result = await formatLastMonthLibrarianPick(response);
+  const result = await parseLastMonthLibrarianPick(response);
 
   return result;
 };

@@ -1,7 +1,6 @@
 import { ERROR_MESSAGE, ERROR_NAME } from '@/constants';
-import CustomError from '@/errors/CustomError';
 import { ApiLibrarianPickData, BookSimpleInfo } from '@/types';
-import { extractPlainTextFromXML, getLastMonthDates, parseXmlToJson } from '@/utils';
+import { extractPlainTextFromXML, getLastMonthDates, parseXmlToJson, throwRequestError } from '@/utils';
 
 import { publicLibraryEndpoint } from '../index';
 
@@ -11,33 +10,48 @@ import { publicLibraryEndpoint } from '../index';
 export const fetchLastMonthLibrarianPick = async () => {
   const { firstDay: startDate, lastDay: endDate } = getLastMonthDates();
   // NOTE: 변경 사항이 없는 지난 달 사서 추천 도서 목록을 가져오는 것이므로 캐시를 강제함
-  const response = await fetch(publicLibraryEndpoint.gettingLibrarianPick({ startDate, endDate }), {
-    cache: 'force-cache',
-  });
+  const response = await fetch(publicLibraryEndpoint.gettingLibrarianPick({ startDate, endDate }));
 
   if (!response.ok) {
-    const error = new CustomError({
-      message: ERROR_MESSAGE.librarianPick,
+    throwRequestError({
       statusCode: response.status,
-      name: ERROR_NAME.librarianPick,
+      errorMessage: ERROR_MESSAGE.librarianPick,
+      errorName: ERROR_NAME.librarianPick,
     });
-
-    console.error(error.message);
-
-    throw error;
   }
 
   return response;
 };
 
 /**
- * 국립 중앙 도서관 - xml형태의 사서 추천 도서 목록을 JSON 형식으로 변환
+ * 지난달 사서 추천 도서 목록 접근 권한 오류 처리
+ * @param data 지난달 사서 추천 도서 목록 데이터
  */
-export const formatLastMonthLibrarianPick = async (response: Response): Promise<BookSimpleInfo[]> => {
-  const xml = await response.text();
+const handleLastMonthLibrarianPickError = (data: any) => {
+  const STATUS_CODE = {
+    '010': 400,
+    '011': 401,
+  };
+
+  const errorCode = data.errorCode;
+
+  throwRequestError({
+    statusCode: STATUS_CODE[errorCode as keyof typeof STATUS_CODE],
+    errorMessage: ERROR_MESSAGE.librarianPick,
+    errorName: ERROR_NAME.librarianPick,
+  });
+};
+
+/**
+ * 지난달 사서 추천 도서 목록 포맷팅
+ * @param data 지난달 사서 추천 도서 목록 데이터
+ * @returns 지난달 사서 추천 도서 목록 포맷팅 데이터
+ */
+const formatLastMonthLibrarianPick = (data: any) => {
   const {
     channel: { list },
-  } = parseXmlToJson({ xml });
+  } = data;
+
   const result: BookSimpleInfo[] = list.map(({ item }: ApiLibrarianPickData) => {
     const info: BookSimpleInfo = {
       title: item.recomtitle,
@@ -51,4 +65,19 @@ export const formatLastMonthLibrarianPick = async (response: Response): Promise<
   });
 
   return result;
+};
+
+/**
+ * 국립 중앙 도서관 - xml형태의 사서 추천 도서 목록을 JSON 형식으로 변환
+ */
+export const parseLastMonthLibrarianPick = async (response: Response) => {
+  const xml = await response.text();
+
+  const data = parseXmlToJson({ xml });
+
+  if ('error' in data) {
+    handleLastMonthLibrarianPickError(data);
+  }
+
+  return formatLastMonthLibrarianPick(data);
 };
