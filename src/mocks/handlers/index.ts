@@ -1,4 +1,7 @@
 import type { HttpHandler } from 'msw';
-const handlers: HttpHandler[] = [];
+
+import { booksHandlers } from './books';
+
+const handlers: HttpHandler[] = [...booksHandlers];
 
 export default handlers;

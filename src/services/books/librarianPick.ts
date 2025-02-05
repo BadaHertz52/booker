@@ -4,13 +4,17 @@ import { extractPlainTextFromXML, getLastMonthDates, parseXmlToJson, throwReques
 
 import { publicLibraryEndpoint } from '../index';
 
+export const makeLastMonthLibrarianPickUrl = () => {
+  const { firstDay: startDate, lastDay: endDate } = getLastMonthDates();
+  return publicLibraryEndpoint.gettingLibrarianPick({ startDate, endDate });
+};
+
 /**
  * 국립 중앙 도서관 - 지난달 사서 추천 도서 목록
  */
 export const fetchLastMonthLibrarianPick = async () => {
-  const { firstDay: startDate, lastDay: endDate } = getLastMonthDates();
   // NOTE: 변경 사항이 없는 지난 달 사서 추천 도서 목록을 가져오는 것이므로 캐시를 강제함
-  const response = await fetch(publicLibraryEndpoint.gettingLibrarianPick({ startDate, endDate }), {
+  const response = await fetch(makeLastMonthLibrarianPickUrl(), {
     cache: 'force-cache',
   });
 
@@ -74,9 +78,12 @@ const formatLastMonthLibrarianPick = (data: any) => {
  */
 export const parseLastMonthLibrarianPick = async (response: Response) => {
   const xml = await response.text();
-
-  const data = parseXmlToJson({ xml });
-
+  const data = parseXmlToJson({
+    xml,
+    options: {
+      ignoreAttributes: true,
+    },
+  });
   if ('error' in data) {
     handleLastMonthLibrarianPickError(data);
   }
