@@ -1,3 +1,5 @@
+import { ERROR_MESSAGE, ERROR_NAME } from '@/constants';
+import CustomError from '@/errors/CustomError';
 import { ApiLibrarianPickData, BookSimpleInfo } from '@/types';
 import { extractPlainTextFromXML, getLastMonthDates, parseXmlToJson } from '@/utils';
 
@@ -14,8 +16,15 @@ export const fetchLastMonthLibrarianPick = async () => {
   });
 
   if (!response.ok) {
-    console.error(`${response.status}:사서 추천 도서 목록 요청 실패`);
-    throw new Error('사서 추천 도서 목록을 불러오는데 실패했어요');
+    const error = new CustomError({
+      message: ERROR_MESSAGE.librarianPick,
+      statusCode: response.status,
+      name: ERROR_NAME.librarianPick,
+    });
+
+    console.error(error.message);
+
+    throw error;
   }
 
   return response;
