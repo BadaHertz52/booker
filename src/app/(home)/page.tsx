@@ -1,4 +1,4 @@
-import { BOOK_LIST_MOCK_DATA, BOOK_SIMPLE_INFO_LIST_MOCK_DATA } from '@/mocks/mockData';
+import { BOOK_LIST_MOCK_DATA } from '@/mocks/mockData';
 
 import BookListSection from './_components/BookListSection';
 import BooksCarouselSection from './_components/BooksCarouselSection';
@@ -8,7 +8,6 @@ import styles from './page.module.scss';
 const Home = async () => {
   const librarianPickBooks = await getLastMonthLibrarianPick();
 
-  const recommendedBooks = BOOK_SIMPLE_INFO_LIST_MOCK_DATA;
   const hotBooks = BOOK_LIST_MOCK_DATA;
 
   return (
