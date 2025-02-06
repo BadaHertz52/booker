@@ -57,7 +57,7 @@ const formatLastMonthLibrarianPick = (data: any) => {
   const {
     channel: { list },
   } = data;
-  console.log('data', data);
+
   const result: BookSimpleInfo[] = list.map(({ item }: ApiLibrarianPickData) => {
     const info: BookSimpleInfo = {
       title: item.recomtitle,
@@ -84,7 +84,10 @@ export const parseLastMonthLibrarianPick = async (response: Response) => {
       ignoreAttributes: true,
     },
   });
-  if ('error' in data || !('channel' in data)) {
+  // 데이터에 channel이 존재하지 않거나 channel의 list가 존재하지 않는 경우 오류 처리
+  const isListEmpty = 'channel' in data && !('list' in data.channel);
+
+  if ('error' in data || isListEmpty) {
     handleLastMonthLibrarianPickError(data);
   }
 
