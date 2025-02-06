@@ -23,6 +23,19 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Set CI Environment to start Mock Server
+        run: echo "CI=true" >> .env
+
+      - name: Set Environment Variables
+        run: |
+          echo "NEXT_BOOK_NARU_API_KEY=${{ secrets.NEXT_BOOK_NARU_API_KEY }}" >> .env
+          echo "NEXT_PUBLIC_BOOK_LIBRARY_API_KEY=${{ secrets.NEXT_PUBLIC_BOOK_LIBRARY_API_KEY }}" >> .env
+
+      - name: Check Environment Variables
+        run: |
+          echo "NEXT_BOOK_NARU_API_KEY=${{ secrets.NEXT_BOOK_NARU_API_KEY }}"
+          echo "NEXT_PUBLIC_BOOK_LIBRARY_API_KEY=${{ secrets.NEXT_PUBLIC_BOOK_LIBRARY_API_KEY }}"
+
       - name: Build Storybook
         run: npm run build-storybook
 
