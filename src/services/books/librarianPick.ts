@@ -84,7 +84,7 @@ export const parseLastMonthLibrarianPick = async (response: Response) => {
       ignoreAttributes: true,
     },
   });
-  if ('error' in data) {
+  if ('error' in data || !('channel' in data)) {
     handleLastMonthLibrarianPickError(data);
   }
 
