@@ -1,12 +1,16 @@
+const formatDateToInt = (date: Date) => {
+  const year = date.getFullYear();
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');
+  return parseInt(`${year}${month}${day}`, 10);
+};
+
 export const getLastMonthDates = () => {
   const today = new Date();
   const firstDay = new Date(today.getFullYear(), today.getMonth() - 1, 1);
   const lastDay = new Date(today.getFullYear(), today.getMonth(), 0);
-
-  const formatDate = (date: Date) => date.toISOString().split('T')[0]; // YYYY-MM-DD 형식으로 변환
-
   return {
-    firstDay: formatDate(firstDay),
-    lastDay: formatDate(lastDay),
+    firstDay: formatDateToInt(firstDay),
+    lastDay: formatDateToInt(lastDay),
   };
 };
