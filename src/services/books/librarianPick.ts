@@ -55,13 +55,6 @@ const handleLastMonthLibrarianPickError = (data: any) => {
  * @returns 지난달 사서 추천 도서 목록 포맷팅 데이터
  */
 const formatLastMonthLibrarianPick = (data: any) => {
-  // 데이터에 channel이 존재하지 않거나 channel의 list가 존재하지 않는 경우 오류 처리
-  const isListEmpty = 'channel' in data && !('list' in data.channel);
-
-  if (isListEmpty && process.env.CI) {
-    return BOOK_SIMPLE_INFO_LIST_MOCK_DATA;
-  }
-
   const {
     channel: { list },
   } = data;
@@ -95,6 +88,13 @@ export const parseLastMonthLibrarianPick = async (response: Response) => {
 
   if ('error' in data) {
     handleLastMonthLibrarianPickError(data);
+  }
+
+  // 데이터에 channel이 존재하지 않거나 channel의 list가 존재하지 않는 경우 오류 처리
+  const isListEmpty = 'channel' in data && !('list' in data.channel);
+  // CI시, list가 없는 캐싱된 데이터로 인해 오류 발생을 방지하기 위해, 모킹 데이터 반환
+  if (isListEmpty && process.env.CI) {
+    return BOOK_SIMPLE_INFO_LIST_MOCK_DATA;
   }
 
   return formatLastMonthLibrarianPick(data);
