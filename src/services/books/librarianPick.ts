@@ -57,7 +57,7 @@ const formatLastMonthLibrarianPick = (data: any) => {
   const {
     channel: { list },
   } = data;
-
+  console.log('data', data);
   const result: BookSimpleInfo[] = list.map(({ item }: ApiLibrarianPickData) => {
     const info: BookSimpleInfo = {
       title: item.recomtitle,
