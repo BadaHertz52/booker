@@ -5,8 +5,7 @@
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  width: 20rem;
-  color: var(--color-gray200);
+  color: var(--color-gray500);
 }
 
 .errorIcon {
@@ -14,7 +13,7 @@
 }
 
 @mixin button {
-  width: 100%;
+  width: 20rem;
   height: 4rem;
   color: var(--color-black);
 }
