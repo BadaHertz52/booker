@@ -1,4 +1,5 @@
 import { ERROR_MESSAGE, ERROR_NAME } from '@/constants';
+import { BOOK_SIMPLE_INFO_LIST_MOCK_DATA } from '@/mocks/mockData';
 import { ApiLibrarianPickData, BookSimpleInfo } from '@/types';
 import { extractPlainTextFromXML, getLastMonthDates, parseXmlToJson, throwRequestError } from '@/utils';
 
@@ -54,6 +55,13 @@ const handleLastMonthLibrarianPickError = (data: any) => {
  * @returns 지난달 사서 추천 도서 목록 포맷팅 데이터
  */
 const formatLastMonthLibrarianPick = (data: any) => {
+  // 데이터에 channel이 존재하지 않거나 channel의 list가 존재하지 않는 경우 오류 처리
+  const isListEmpty = 'channel' in data && !('list' in data.channel);
+
+  if (isListEmpty && !process.env.CI) {
+    return BOOK_SIMPLE_INFO_LIST_MOCK_DATA;
+  }
+
   const {
     channel: { list },
   } = data;
@@ -84,10 +92,8 @@ export const parseLastMonthLibrarianPick = async (response: Response) => {
       ignoreAttributes: true,
     },
   });
-  // 데이터에 channel이 존재하지 않거나 channel의 list가 존재하지 않는 경우 오류 처리
-  const isListEmpty = 'channel' in data && !('list' in data.channel);
 
-  if ('error' in data || isListEmpty) {
+  if ('error' in data) {
     handleLastMonthLibrarianPickError(data);
   }
 
