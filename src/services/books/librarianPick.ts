@@ -17,6 +17,8 @@ export const fetchLastMonthLibrarianPick = async () => {
   const response = await fetch(makeLastMonthLibrarianPickUrl(), {
     cache: 'force-cache',
   });
+  console.log('response', response);
+  console.log('env', process.env.NEXT_PUBLIC_BOOK_LIBRARY_API_KEY);
 
   if (!response.ok) {
     throwRequestError({
@@ -84,7 +86,8 @@ export const parseLastMonthLibrarianPick = async (response: Response) => {
       ignoreAttributes: true,
     },
   });
-  if ('error' in data) {
+  if ('error' in data || !('channel' in data)) {
+    console.log('data error', 'error' in data, !('channel' in data));
     handleLastMonthLibrarianPickError(data);
   }
 
