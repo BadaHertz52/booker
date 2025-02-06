@@ -1,8 +1,8 @@
 export const PUBLIC_LIBRARY_API_BASE_URL = 'https://nl.go.kr/NL/search/openApi';
 
 export interface GetLibrarianPickParams {
-  startDate: string;
-  endDate: string;
+  startDate: number;
+  endDate: number;
 }
 /**
  * 국립 중앙 도서관 - 사서 추천 도서 목록 요청 파라미터
@@ -18,8 +18,8 @@ const getLibrarianPickParams = ({ startDate, endDate }: GetLibrarianPickParams) 
 
   return new URLSearchParams({
     key: process.env.NEXT_PUBLIC_BOOK_LIBRARY_API_KEY || '',
-    start_date: startDate,
-    end_date: endDate,
+    start_date: startDate.toString(),
+    end_date: endDate.toString(),
     ...LIBRARIAN_ROW,
   }).toString();
 };
