@@ -93,7 +93,7 @@ export const parseLastMonthLibrarianPick = async (response: Response) => {
   // 데이터에 channel이 존재하지 않거나 channel의 list가 존재하지 않는 경우 오류 처리
   const isListEmpty = 'channel' in data && !('list' in data.channel);
   // CI시, list가 없는 캐싱된 데이터로 인해 오류 발생을 방지하기 위해, 모킹 데이터 반환
-  if (isListEmpty && process.env.CI) {
+  if (isListEmpty && process.env.ACTIVATE_MOCK_SERVER) {
     return BOOK_SIMPLE_INFO_LIST_MOCK_DATA;
   }
 

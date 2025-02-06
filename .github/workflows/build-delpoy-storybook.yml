@@ -24,7 +24,7 @@ jobs:
         run: npm install
 
       - name: Set CI Environment to start Mock Server
-        run: echo "CI=true" >> .env
+        run: echo "ACTIVATE_MOCK_SERVER=true" >> .env
 
       - name: Set Environment Variables
         run: |
