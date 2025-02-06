@@ -58,7 +58,7 @@ const formatLastMonthLibrarianPick = (data: any) => {
   // 데이터에 channel이 존재하지 않거나 channel의 list가 존재하지 않는 경우 오류 처리
   const isListEmpty = 'channel' in data && !('list' in data.channel);
 
-  if (isListEmpty && !process.env.CI) {
+  if (isListEmpty && process.env.CI) {
     return BOOK_SIMPLE_INFO_LIST_MOCK_DATA;
   }
 
