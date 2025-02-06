@@ -23,8 +23,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Set NODE_ENV to development for CI to start Mock Server
-        run: echo "NODE_ENV=development" >> $GITHUB_ENV
+      - name: Set CI Environment to start Mock Server
+        run: echo "CI=true" >> .env
 
       - name: Set Environment Variables
         run: |
