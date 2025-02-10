@@ -7,7 +7,11 @@ const BooksCarouselSectionLoaded = ({ title, booksSimpleInfo }: BooksInfinityCar
     <section>
       <h2>{title}</h2>
       <div>
-        <BooksInfinityCarousel.Loaded booksSimpleInfo={booksSimpleInfo} title={title} />
+        {booksSimpleInfo.length === 0 ? (
+          <BooksInfinityCarousel.EmptyBooks title={title} />
+        ) : (
+          <BooksInfinityCarousel.Loaded booksSimpleInfo={booksSimpleInfo} title={title} />
+        )}
       </div>
     </section>
   );
