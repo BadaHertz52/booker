@@ -1,5 +1,4 @@
 import { BOOK_LIST_MOCK_DATA } from '@/mocks/mockData';
-import { BookSimpleInfo } from '@/types';
 
 import BookListSection from './_components/BookListSection';
 import BooksCarouselSection from './_components/BooksCarouselSection';
