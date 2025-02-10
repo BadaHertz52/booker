@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { NoBooksYet } from '@/components';
 import { BookItemData } from '@/types';
 
 import BookItem from '../BookItem';
@@ -13,11 +14,17 @@ interface BookListLoadedProps {
 
 const BookListLoaded = ({ listTitle, bookItemsData }: BookListLoadedProps) => {
   return (
-    <ul aria-label={listTitle} className={styles.list}>
-      {bookItemsData.map((book) => (
-        <BookItem.Loaded key={book.title} bookItemData={book} />
-      ))}
-    </ul>
+    <>
+      {bookItemsData.length === 0 ? (
+        <NoBooksYet title={listTitle} />
+      ) : (
+        <ul aria-label={listTitle} className={styles.list}>
+          {bookItemsData.map((book) => (
+            <BookItem.Loaded key={book.title} bookItemData={book} />
+          ))}
+        </ul>
+      )}
+    </>
   );
 };
 
