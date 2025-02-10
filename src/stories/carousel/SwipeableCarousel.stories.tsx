@@ -61,3 +61,14 @@ export const BooksSwipeableCarousel: StoryObj<typeof RelatedBooks> = {
     </div>
   ),
 };
+
+export const EmptyBooksSwipeableCarousel: StoryObj<typeof RelatedBooks> = {
+  args: {
+    relatedBooks: [],
+  },
+  render: (args) => (
+    <div style={{ width: '70rem', height: '60rem', display: 'flex', alignItems: 'center', backgroundColor: 'white' }}>
+      <RelatedBooks {...args} />
+    </div>
+  ),
+};
