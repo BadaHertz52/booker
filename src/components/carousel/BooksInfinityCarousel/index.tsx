@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
+import { NoBooksYet } from '@/components/common';
 import NoCoverImage from '@/images/noCover.svg';
 import { BookSimpleInfo } from '@/types';
 
@@ -69,10 +70,7 @@ interface EmptyBooksProps {
 const EmptyBooks = ({ title }: EmptyBooksProps) => {
   return (
     <BooksInfinityCarouselLayout>
-      <div className={classNames(styles.fullWidthCard, styles.emptyBooksMessageContainer)}>
-        <p>아직 {title}가 준비되지 않았어요 🥲</p>
-        <p>곧 멋진 책들을 소개해 드릴게요 📖✨</p>
-      </div>
+      <NoBooksYet title={title} />
     </BooksInfinityCarouselLayout>
   );
 };
