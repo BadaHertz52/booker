@@ -7,6 +7,11 @@ const meta = {
   title: 'Components/Carousel/BooksInfinityCarousel',
   component: BooksInfinityCarousel.Loaded,
   tags: ['autodocs'],
+  parameters: {
+    backgrounds: {
+      default: 'White',
+    },
+  },
 } satisfies Meta<typeof BooksInfinityCarousel.Loaded>;
 
 export default meta;
@@ -21,4 +26,8 @@ export const Default: Story = {
 
 export const Skeleton: StoryObj<typeof BooksInfinityCarousel.Skeleton> = {
   render: () => <BooksInfinityCarousel.Skeleton />,
+};
+
+export const EmptyBooks: StoryObj<typeof BooksInfinityCarousel.EmptyBooks> = {
+  render: () => <BooksInfinityCarousel.EmptyBooks title="사서 추천 도서" />,
 };
