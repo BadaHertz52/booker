@@ -119,3 +119,10 @@ $img-width-small-mobile: 7rem;
 .cardSkeleton {
   @include mixins.skeleton;
 }
+
+.emptyBooksMessageContainer {
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.5rem;
+  font-size: var(--font-size-small);
+}
