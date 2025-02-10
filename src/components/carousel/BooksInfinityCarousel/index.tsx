@@ -20,6 +20,8 @@ const BooksInfinityCarouselLayout = ({ children }: { children: React.ReactNode }
 };
 
 const BooksInfinityCarouselLoaded = ({ booksSimpleInfo, title }: BooksInfinityCarouselProps) => {
+  if (booksSimpleInfo.length === 0) return <EmptyBooks title={title} />;
+
   const cardsInfoForScreenReader = booksSimpleInfo.map((book) => ({ title: book.title }));
 
   return (
@@ -78,7 +80,6 @@ const EmptyBooks = ({ title }: EmptyBooksProps) => {
 const BooksInfinityCarousel = {
   Loaded: BooksInfinityCarouselLoaded,
   Skeleton: BooksInfinityCarouselSkeleton,
-  EmptyBooks,
 };
 
 export default BooksInfinityCarousel;

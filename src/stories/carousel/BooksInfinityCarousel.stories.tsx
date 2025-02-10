@@ -24,10 +24,13 @@ export const Default: Story = {
   },
 };
 
-export const Skeleton: StoryObj<typeof BooksInfinityCarousel.Skeleton> = {
-  render: () => <BooksInfinityCarousel.Skeleton />,
+export const EmptyBooks: Story = {
+  args: {
+    booksSimpleInfo: [],
+    title: '반민초파 😎 도서',
+  },
 };
 
-export const EmptyBooks: StoryObj<typeof BooksInfinityCarousel.EmptyBooks> = {
-  render: () => <BooksInfinityCarousel.EmptyBooks title="사서 추천 도서" />,
+export const Skeleton: StoryObj<typeof BooksInfinityCarousel.Skeleton> = {
+  render: () => <BooksInfinityCarousel.Skeleton />,
 };
