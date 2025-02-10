@@ -24,6 +24,13 @@ export const Default: Story = {
   },
 };
 
+export const EmptyBooks: Story = {
+  args: {
+    listTitle: '추천 선정 중인 도서',
+    bookItemsData: [],
+  },
+};
+
 export const Skeleton: StoryObj<typeof BookList.Skeleton> = {
   render: () => <BookList.Skeleton listLength={5} listTitle={TITLE} />,
 };

@@ -1,7 +1,9 @@
 import classNames from 'classnames';
 import Image from 'next/image';
 import Link from 'next/link';
+import React from 'react';
 
+import { NoBooksYet } from '@/components/common';
 import NoCoverImage from '@/images/noCover.svg';
 import { BookSimpleInfo } from '@/types';
 
@@ -14,11 +16,17 @@ export interface BooksInfinityCarouselProps
   booksSimpleInfo: BookSimpleInfo[];
 }
 
+const BooksInfinityCarouselLayout = ({ children }: { children: React.ReactNode }) => {
+  return <div className={styles.booksCarouselWrapper}>{children}</div>;
+};
+
 const BooksInfinityCarouselLoaded = ({ booksSimpleInfo, title }: BooksInfinityCarouselProps) => {
+  if (booksSimpleInfo.length === 0) return <EmptyBooks title={title} />;
+
   const cardsInfoForScreenReader = booksSimpleInfo.map((book) => ({ title: book.title }));
 
   return (
-    <div className={styles.booksCarouselWrapper}>
+    <BooksInfinityCarouselLayout>
       <InfinityCarousel title={title} cardsInfoForScreenReader={cardsInfoForScreenReader}>
         {booksSimpleInfo.map((book) => (
           <Link
@@ -44,15 +52,26 @@ const BooksInfinityCarouselLoaded = ({ booksSimpleInfo, title }: BooksInfinityCa
           </Link>
         ))}
       </InfinityCarousel>
-    </div>
+    </BooksInfinityCarouselLayout>
   );
 };
 
 const BooksInfinityCarouselSkeleton = () => {
   return (
-    <div className={styles.booksCarouselWrapper}>
+    <BooksInfinityCarouselLayout>
       <div aria-hidden="true" className={classNames(styles.fullWidthCard, styles.cardSkeleton)} />
-    </div>
+    </BooksInfinityCarouselLayout>
+  );
+};
+
+interface EmptyBooksProps {
+  title: string;
+}
+const EmptyBooks = ({ title }: EmptyBooksProps) => {
+  return (
+    <BooksInfinityCarouselLayout>
+      <NoBooksYet title={title} />
+    </BooksInfinityCarouselLayout>
   );
 };
 

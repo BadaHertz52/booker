@@ -7,6 +7,11 @@ const meta = {
   title: 'Components/Carousel/BooksInfinityCarousel',
   component: BooksInfinityCarousel.Loaded,
   tags: ['autodocs'],
+  parameters: {
+    backgrounds: {
+      default: 'White',
+    },
+  },
 } satisfies Meta<typeof BooksInfinityCarousel.Loaded>;
 
 export default meta;
@@ -16,6 +21,13 @@ export const Default: Story = {
   args: {
     booksSimpleInfo: BOOK_SIMPLE_INFO_LIST_MOCK_DATA,
     title: '추천 도서',
+  },
+};
+
+export const EmptyBooks: Story = {
+  args: {
+    booksSimpleInfo: [],
+    title: '반민초파 😎 도서',
   },
 };
 

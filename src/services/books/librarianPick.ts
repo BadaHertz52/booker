@@ -59,7 +59,7 @@ const formatLastMonthLibrarianPick = (data: any) => {
       title: item.recomtitle,
       author: item.recomauthor,
       publisher: item.recompublisher,
-      isbn: Number(item.recome_isbn),
+      isbn: Number(item.recomisbn),
       coverImageUrl: item.recomfilepath,
       content: extractPlainTextFromXML(item.recomcontens),
     };

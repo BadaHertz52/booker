@@ -30,11 +30,20 @@ const preview: Preview = {
         date: /Date$/i,
       },
     },
+    backgrounds: {
+      values: [
+        { name: 'White', value: '#ffffff' },
+        { name: 'Dark', value: '#000' },
+        { name: 'Light', value: '#f9f9f9' },
+      ],
+      default: 'Light',
+    },
   },
   decorators: [
     (Story) => (
       <div>
-        <style>{GlobalStyles}</style> <div className="storyWrapper">{Story()}</div>
+        <style>{GlobalStyles}</style>
+        <div className="storyWrapper">{Story()}</div>
       </div>
     ),
   ],
