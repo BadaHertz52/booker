@@ -4,6 +4,7 @@ import Link from 'next/link';
 import React from 'react';
 
 import { NoBooksYet } from '@/components/common';
+import { gray200BlurDataURL } from '@/constants';
 import NoCoverImage from '@/images/noCover.svg';
 import { BookSimpleInfo } from '@/types';
 
@@ -22,9 +23,15 @@ const BooksInfinityCarouselLayout = ({ children }: { children: React.ReactNode }
 
 const BooksInfinityCarouselLoaded = ({ booksSimpleInfo, title }: BooksInfinityCarouselProps) => {
   if (booksSimpleInfo.length === 0) return <EmptyBooks title={title} />;
-
   const cardsInfoForScreenReader = booksSimpleInfo.map((book) => ({ title: book.title }));
+  const makeAuthors = (book: BookSimpleInfo) => {
+    let authors = `${book.author} 저자`;
 
+    if (book.translator) {
+      authors += `﹒${book.translator} 옮김`;
+    }
+    return authors;
+  };
   return (
     <BooksInfinityCarouselLayout>
       <InfinityCarousel title={title} cardsInfoForScreenReader={cardsInfoForScreenReader}>
@@ -37,14 +44,19 @@ const BooksInfinityCarouselLoaded = ({ booksSimpleInfo, title }: BooksInfinityCa
           >
             <div className={styles.bookCover}>
               <div className={styles.imgWrapper}>
-                <Image src={book.coverImageUrl !== '' ? book.coverImageUrl : NoCoverImage} alt={book.title} fill />
+                <Image
+                  src={book.coverImageUrl !== '' ? book.coverImageUrl : NoCoverImage}
+                  alt={book.title}
+                  fill
+                  blurDataURL={gray200BlurDataURL}
+                />
               </div>
             </div>
             <div className={styles.bookInfo}>
               <h3 className={styles.bookTitle}>{book.title}</h3>
               <ul>
                 <li className={styles.bookAuthorAndPublisher}>
-                  {book.author} / {book.publisher}
+                  {makeAuthors(book)}&nbsp;/&nbsp;{book.publisher}
                 </li>
                 <li className={styles.bookContent}>{book.content}</li>
               </ul>

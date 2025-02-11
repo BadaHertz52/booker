@@ -1,13 +1,31 @@
 import { http, HttpResponse } from 'msw';
 
-import { makeLastMonthLibrarianPickUrl } from '@/services';
+import { publicLibraryEndpoint } from '@/services';
+import { naruEndpoint } from '@/services/endpoints/naruEndpoint';
 
 import { LIBRARIAN_PICK_XML } from '../mockData';
+import { POPULAR_BOOKS_DATA, RISING_BOOKS_DATA } from '../mockData/books';
 
 const interceptGetLastMonthLibrarianPick = () => {
-  return http.get(makeLastMonthLibrarianPickUrl(), async () => {
+  return http.get(publicLibraryEndpoint.librarianPick, async () => {
     return HttpResponse.xml(LIBRARIAN_PICK_XML, { status: 200 });
   });
 };
 
-export const booksHandlers = [interceptGetLastMonthLibrarianPick()];
+const interceptGetPopularBooks = () => {
+  return http.get(naruEndpoint.popularBooks, async () => {
+    return HttpResponse.json(POPULAR_BOOKS_DATA);
+  });
+};
+
+const interceptGetRisingBooks = () => {
+  return http.get(naruEndpoint.risingBooks, async () => {
+    return HttpResponse.json(RISING_BOOKS_DATA);
+  });
+};
+
+export const booksHandlers = [
+  interceptGetLastMonthLibrarianPick(),
+  interceptGetPopularBooks(),
+  interceptGetRisingBooks(),
+];

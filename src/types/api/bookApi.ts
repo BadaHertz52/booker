@@ -7,3 +7,13 @@ export interface ApiLibrarianPickData {
   recome_isbn: string;
   recomcontens: string;
 }
+
+export interface NaruApiBookData {
+  [key: string]: any;
+  bookname: string;
+  authors: string;
+  publisher: string;
+  publication_year: string;
+  isbn13: string;
+  bookImageURL: string;
+}
