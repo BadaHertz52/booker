@@ -1,4 +1,4 @@
-import bookCoverImg from '../cover.jpeg';
+import bookCoverImg from './cover.jpeg';
 const BOOK_COVER_IMG_URL = bookCoverImg.src;
 
 export const LIBRARIAN_PICK_XML = ` 

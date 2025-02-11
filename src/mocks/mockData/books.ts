@@ -1,108 +1,101 @@
-import { BookDetailData, BookItemData, BookSimpleInfo } from '@/types';
+import { PopularBookData } from '@/types';
 
 import bookCoverImg from './cover.jpeg';
 const BOOK_COVER_IMG_URL = bookCoverImg.src;
 
-export const BOOK_SIMPLE_INFO_LIST_MOCK_DATA: BookSimpleInfo[] = [
-  {
-    isbn: 9780743273565,
-    title: 'The Great Gatsby',
-    author: 'F. Scott Fitzgerald',
-    publisher: 'Scribner',
-    content:
-      'The story of the mysteriously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan, of lavish parties on Long Island. The story of the mysteriously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan, of lavish parties on Long Island. The story of the mysteriously wealthy Jay Gatsby and his love for the beautiful Daisy Buchanan, of lavish parties on Long Island.',
-    coverImageUrl: BOOK_COVER_IMG_URL,
+export const POPULAR_BOOKS_DATA: { response: { docs: { doc: PopularBookData }[] } } = {
+  response: {
+    docs: [
+      {
+        doc: {
+          no: 1,
+          ranking: '1',
+          bookname: '소년이 온다 :한강 장편소설 ',
+          authors: '지은이: 한강',
+          publisher: '창비',
+          publication_year: '2014',
+          isbn13: '9788936434120',
+          addition_symbol: '03810',
+          vol: '',
+          class_no: '813.62',
+          class_nm: '문학 > 한국문학 > 소설',
+          loan_count: '1403',
+          bookImageURL: BOOK_COVER_IMG_URL,
+          bookDtlUrl: 'https://data4library.kr/bookV?seq=2037399',
+        },
+      },
+      {
+        doc: {
+          no: 2,
+          ranking: '2',
+          bookname: '작별하지 않는다 :한강 장편소설 ',
+          authors: '지은이: 한강',
+          publisher: '문학동네',
+          publication_year: '2021',
+          isbn13: '9788954682152',
+          addition_symbol: '03810',
+          vol: '',
+          class_no: '813.62',
+          class_nm: '문학 > 한국문학 > 소설',
+          loan_count: '1228',
+          bookImageURL: BOOK_COVER_IMG_URL,
+          bookDtlUrl: 'https://data4library.kr/bookV?seq=6086446',
+        },
+      },
+      {
+        doc: {
+          no: 3,
+          ranking: '3',
+          bookname: '채식주의자:한강 연작소설',
+          authors: '한강',
+          publisher: '창비',
+          publication_year: '2007',
+          isbn13: '9788936433598',
+          addition_symbol: '03810',
+          vol: '',
+          class_no: '813.6',
+          class_nm: '문학 > 한국문학 > 소설',
+          loan_count: '874',
+          bookImageURL: BOOK_COVER_IMG_URL,
+          bookDtlUrl: 'https://data4library.kr/bookV?seq=2155671',
+        },
+      },
+      {
+        doc: {
+          no: 4,
+          ranking: '4',
+          bookname: '불편한 편의점 :김호연 장편소설 ',
+          authors: '지은이: 김호연',
+          publisher: '나무옆의자',
+          publication_year: '2021',
+          isbn13: '9791161571188',
+          addition_symbol: '03810',
+          vol: '',
+          class_no: '813.7',
+          class_nm: '문학 > 한국문학 > 소설',
+          loan_count: '870',
+          bookImageURL: BOOK_COVER_IMG_URL,
+          bookDtlUrl: 'https://data4library.kr/bookV?seq=5962217',
+        },
+      },
+      {
+        doc: {
+          no: 5,
+          ranking: '5',
+          bookname: '이처럼 사소한 것들 :클레어 키건 소설 ',
+          authors: '지은이: 클레어 키건 ;옮긴이: 홍한별',
+          publisher: '다산북스',
+          publication_year: '2023',
+          isbn13: '9791130646381',
+          addition_symbol: '03840',
+          vol: '',
+          class_no: '843.6',
+          class_nm: '문학 > 영미문학 > 소설',
+          loan_count: '716',
+          bookImageURL: BOOK_COVER_IMG_URL,
+          bookDtlUrl: 'https://data4library.kr/bookV?seq=6791651',
+        },
+      },
+    ],
   },
-  {
-    isbn: 9780446310786,
-    title: 'To Kill a Mockingbird',
-    author: 'Harper Lee',
-    publisher: 'J.B. Lippincott & Co.',
-    content:
-      'The unforgettable novel of a childhood in a sleepy Southern town and the crisis of conscience that rocked it. The unforgettable novel of a childhood in a sleepy Southern town and the crisis of conscience that rocked it. The unforgettable novel of a childhood in a sleepy Southern town and the crisis of conscience that rocked it.',
-    coverImageUrl: BOOK_COVER_IMG_URL,
-  },
-  {
-    isbn: 9780451524934,
-    title: '1984',
-    author: 'George Orwell',
-    publisher: 'Penguin Random House',
-    content:
-      'The chilling dystopian novel that explores the dangers of totalitarianism and the importance of individual freedom. The chilling dystopian novel that explores the dangers of totalitarianism and the importance of individual freedom. The chilling dystopian novel that explores the dangers of totalitarianism and the importance of individual freedom.',
-    coverImageUrl: BOOK_COVER_IMG_URL,
-  },
-  {
-    isbn: 9780141439518,
-    title: 'Pride and Prejudice',
-    author: 'Jane Austen',
-    publisher: 'Penguin Classics',
-    content: '영국 중산층 가정의 다섯 자매와 그들을 둘러싼 사랑과 결혼 이야기를 그린 고전 소설.',
-    coverImageUrl: BOOK_COVER_IMG_URL,
-  },
-  {
-    isbn: 9780316769488,
-    title: 'The Catcher in the Rye',
-    author: 'J.D. Salinger',
-    publisher: 'Little, Brown and Company',
-    content: '16세 소년 홀든 콜필드의 3일간의 방황을 통해 청소년기의 혼란과 성장통을 그린 현대 문학의 고전.',
-    coverImageUrl: BOOK_COVER_IMG_URL,
-  },
-];
-
-export const BOOK_LIST_MOCK_DATA: BookItemData[] = [
-  {
-    isbn: 9781449331818,
-    title: '러닝 리액트',
-    author: '알렉스 뱅크스, 이브 포셀로',
-    publisher: '한빛미디어',
-    coverImageUrl: BOOK_COVER_IMG_URL,
-    publicationYear: 2021,
-  },
-  {
-    isbn: 9788966262557,
-    title: '모던 자바스크립트 Deep Dive',
-    author: '이웅모',
-    publisher: '위키북스',
-    coverImageUrl: BOOK_COVER_IMG_URL,
-    publicationYear: 2020,
-  },
-  {
-    isbn: 9791158392239,
-    title: '타입스크립트 프로그래밍',
-    author: '보리스 체르니',
-    publisher: '인사이트',
-    coverImageUrl: BOOK_COVER_IMG_URL,
-    publicationYear: 2021,
-  },
-  {
-    isbn: 9791165921675,
-    title: '프론트엔드 성능 최적화 가이드',
-    author: '김효진',
-    publisher: '프로그래밍인사이트',
-    coverImageUrl: BOOK_COVER_IMG_URL,
-    publicationYear: 2022,
-  },
-  {
-    isbn: 9791162245262,
-    title: 'Next.js 완벽 가이드',
-    author: '이재승',
-    publisher: '길벗',
-    coverImageUrl: BOOK_COVER_IMG_URL,
-    publicationYear: 2023,
-  },
-];
-
-export const BOOK_DETAIL_MOCK_DATA: BookDetailData = {
-  isbn: 9781449331818,
-  title: '러닝 리액트',
-  author: '알렉스 뱅크스, 이브 포셀로',
-  publisher: '한빛미디어',
-  publicationYear: 2021,
-  publicationDate: new Date('2021-01-01'),
-  content: `효율적인 리액트 애플리케이션 작성법을 간결하고 쉽고 빠르게 배우기 
-브라우저에서 작동하는 자바스크립트, CSS, HTML을 아는 웹 개발자나 소프트웨어 엔지니어에게 이상적인 이 책은 최신 리액트 코드를 작성하기 위한 모범 사례와 패턴을 소개한다. 리액트나 함수형 자바스크립트에 대한 지식이 없는 입문자도 이 책을 통해 리액트를 제대로 쓰는 법을 배울 수 있다.
-이 책은 대규모 데이터 기반 웹사이트에서 페이지를 다시 요청하지 않고도 데이터 변화에 따라 화면을 교묘하게 변경하는 UI 제작법을 학습 로드맵에 맞춰 차근차근 설명한다. 그 과정에서 함수형 프로그래밍과 최신 ECMAScript 기능을 다양한 예제와 함께 안내한다.`,
-  coverImageUrl: BOOK_COVER_IMG_URL,
-  category: '프론트엔드',
-  loans: { count: 100, rank: 1 },
 };

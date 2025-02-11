@@ -10,11 +10,11 @@ export interface ApiLibrarianPickData {
 
 export interface PopularBookData {
   [key: string]: any;
-  ranking: number;
+  ranking: string;
   bookname: string;
   authors: string;
   publisher: string;
   publication_year: string;
-  isbn13: number;
+  isbn13: string;
   bookImageURL: string;
 }

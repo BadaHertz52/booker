@@ -1,2 +1,2 @@
-export * from './books';
-export * from './xml/librarianPick';
+export * from './formattingBooks';
+export * from './librarianPick';
