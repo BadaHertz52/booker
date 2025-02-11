@@ -46,6 +46,10 @@ const formatNaruApiBookDataToBookItemData = (doc: NaruApiBookData) => {
     publicationYear: Number(doc.publication_year),
   };
 
+  if ('difference' in doc) {
+    book.loanRankingIncrease = Number(doc.difference);
+  }
+
   return book;
 };
 

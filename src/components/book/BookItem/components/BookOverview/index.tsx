@@ -1,5 +1,7 @@
 import classNames from 'classnames';
+import Image from 'next/image';
 
+import UpArrowIcon from '@/images/primaryArrowUp.svg';
 import { BookItemData } from '@/types';
 
 import styles from './index.module.scss';
@@ -18,6 +20,13 @@ const BookOverviewLoaded = ({ bookItemData }: BookOverviewLoadedProps) => {
           {bookItemData.translator && <span>{`﹒${bookItemData.translator} 옮김`}</span>}
         </li>
         <li className={styles.publication}>{`${bookItemData.publisher} - ${bookItemData.publicationYear}년`}</li>
+
+        {bookItemData.loanRankingIncrease && (
+          <li className={styles.rankingIncrease}>
+            <Image src={UpArrowIcon} alt="" width={14} height={14} />
+            <p> 대출 순위 {bookItemData.loanRankingIncrease}단계 상승</p>
+          </li>
+        )}
       </ul>
     </div>
   );

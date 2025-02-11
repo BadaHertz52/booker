@@ -72,3 +72,15 @@ $info__gap: 0.4rem;
     width: 16rem;
   }
 }
+
+.rankingIncrease {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 1.8rem;
+  color: var(--color-gray500);
+  font-size: var(--font-size-small);
+  p {
+    height: 1.5rem;
+  }
+}

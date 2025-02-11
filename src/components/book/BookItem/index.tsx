@@ -7,7 +7,6 @@ import BookCover from '../BookCover';
 
 import BookOverview from './components/BookOverview';
 import styles from './index.module.scss';
-
 interface BookItemProps {
   bookItemData: BookItemData;
 }

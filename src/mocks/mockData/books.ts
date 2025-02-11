@@ -114,6 +114,7 @@ export const RISING_BOOKS_DATA: { response: { results: { result: { docs: { doc: 
                 isbn13: '9791193506516',
                 publication_year: '2024',
                 publisher: '포레스트북스',
+                difference: 211,
               },
             },
             {
