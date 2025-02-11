@@ -1,3 +1,4 @@
+'use server';
 import { fetchSearchBooks } from '@/services';
 import { GetSearchBooksParamsParams } from '@/services/endpoints/naruEndpoint';
 import { NaruApiBookData } from '@/types';
@@ -8,8 +9,10 @@ export const getSearchBooks = async (params: GetSearchBooksParamsParams) => {
 
   const { docs, request, numFound } = data.response;
   const { pageNo, pageSize } = request;
-  const isLastPage = Math.ceil(numFound / pageSize) <= pageNo;
   console.log(docs);
+  console.log(pageNo, numFound);
+  const isLastPage: boolean = numFound == 0 ? true : Math.ceil(numFound / pageSize) <= pageNo;
+
   const books = docs.map(({ doc }: { doc: NaruApiBookData }) => formatNaruApiBookDataToBookItemData(doc));
 
   return {

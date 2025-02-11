@@ -1,10 +1,10 @@
 import { BOOK_SEARCH_CATEGORY_NAME } from '@/constants';
 import { BOOK_LIST_MOCK_DATA } from '@/mocks/mockData';
 
-import { fetchSearchBooks } from '../../services/books/bookList';
-
 import H1 from './_components/H1';
 import NotFoundResult from './_components/NotFoundResult';
+import SearchResult from './_components/SearchResult';
+import { getSearchBooks } from './_services/searchBooks';
 
 interface SearchPageProps {
   searchParams: Promise<{
@@ -22,7 +22,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
   const params = await searchParams;
   const { keyword, category } = params;
-  // TODO : 검색 api 호출 추후 세부 작업 진행 , api 요청 실패 시, 에러 메세지에 에러 페이지에 보여줄 문구 넣을 것!
+
   const truncatedKeyword =
     keyword.length > MAX_SEARCH_KEYWORD_LENGTH ? keyword.slice(0, MAX_SEARCH_KEYWORD_LENGTH) + '...' : keyword;
   const searchResultGuideMessage = `'${truncatedKeyword}'에 대한 검색 결과에요`;
@@ -35,19 +35,28 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
     return <NotFoundResult message={INVALIDATED_CATEGORY_MESSAGE} />;
   }
 
+  const { books: initialSearchBooks, isLastPage: initialIsLastPage } = await getSearchBooks({
+    keyword,
+    category,
+    pageNumber: '1',
+  });
+
+  // TODO : 검색 api 호출 추후 세부 작업 진행 , api 요청 실패 시, 에러 메세지에 에러 페이지에 보여줄 문구 넣을 것!
+
   const searchTarget = BOOK_SEARCH_CATEGORY_NAME[category];
 
   return (
     <>
       <H1 message={searchResultGuideMessage} />
-      {BOOK_LIST_MOCK_DATA.length > 0 ? (
-        <BookList.Loaded listTitle={searchResultListTitle} bookItemsData={BOOK_LIST_MOCK_DATA} />
+      {initialSearchBooks.length > 0 ? (
+        <SearchResult
+          title={searchResultListTitle}
+          initialSearchBooks={initialSearchBooks}
+          initialIsLastPage={initialIsLastPage}
+          searchParams={{ keyword, category }}
+        />
       ) : (
-        <div className={styles.notFoundResultWrapper}>
-          <NotFound>
-            <p>찾으시는 {searchTarget} 정보가 없어요.</p>
-          </NotFound>
-        </div>
+        <NotFoundResult message={`찾으시는 ${searchTarget} 정보가 없어요.`} />
       )}
     </>
   );
