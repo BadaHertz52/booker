@@ -4,7 +4,7 @@ import { publicLibraryEndpoint } from '@/services';
 import { naruEndpoint } from '@/services/endpoints/naruEndpoint';
 
 import { LIBRARIAN_PICK_XML } from '../mockData';
-import { POPULAR_BOOKS_DATA } from '../mockData/books';
+import { POPULAR_BOOKS_DATA, RISING_BOOKS_DATA } from '../mockData/books';
 
 const interceptGetLastMonthLibrarianPick = () => {
   return http.get(publicLibraryEndpoint.librarianPick, async () => {
@@ -18,4 +18,14 @@ const interceptGetPopularBooks = () => {
   });
 };
 
-export const booksHandlers = [interceptGetLastMonthLibrarianPick(), interceptGetPopularBooks()];
+const interceptGetRisingBooks = () => {
+  return http.get(naruEndpoint.risingBooks, async () => {
+    return HttpResponse.json(RISING_BOOKS_DATA);
+  });
+};
+
+export const booksHandlers = [
+  interceptGetLastMonthLibrarianPick(),
+  interceptGetPopularBooks(),
+  interceptGetRisingBooks(),
+];

@@ -10,7 +10,6 @@ export interface ApiLibrarianPickData {
 
 export interface NaruApiBookData {
   [key: string]: any;
-  ranking: string;
   bookname: string;
   authors: string;
   publisher: string;
