@@ -49,9 +49,11 @@ export const getSearchBooksParams = ({ category, keyword, pageNumber }: GetSearc
   return new URLSearchParams(params);
 };
 
+export const BASIC_SEARCH_BOOKS_URL = NARU_BASE_URL + '/srchBooks';
+
 export const naruEndpoint = {
   popularBooks: NARU_BASE_URL + '/loanItemSrch' + '?' + getPopularBooksParams(),
   risingBooks: NARU_BASE_URL + '/hotTrend' + '?' + getRisingBooksParams(),
   gettingSearchBooks: (params: GetSearchBooksParamsParams) =>
-    NARU_BASE_URL + '/srchBooks' + '?' + getSearchBooksParams(params),
+    BASIC_SEARCH_BOOKS_URL + '?' + getSearchBooksParams(params),
 };
