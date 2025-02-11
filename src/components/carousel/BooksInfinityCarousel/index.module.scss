@@ -9,7 +9,9 @@ $img-width-small-mobile: 7rem;
 .booksCarouselWrapper {
   display: flex;
   justify-content: center;
+  background-color: var(--color-gray100);
   width: 100%;
+  height: 20rem;
 }
 
 .fullWidthCard {
@@ -17,10 +19,8 @@ $img-width-small-mobile: 7rem;
   position: relative;
   align-items: center;
   gap: $full-width-card__gap-desktop;
-  background-color: var(--color-gray100);
   padding: 3rem;
   height: 22rem;
-
   @include mixins.full-width-card;
 
   @media screen and (max-width: 768px) {
@@ -117,6 +117,7 @@ $img-width-small-mobile: 7rem;
 }
 
 .cardSkeleton {
+  width: 100%;
   @include mixins.skeleton;
 }
 
