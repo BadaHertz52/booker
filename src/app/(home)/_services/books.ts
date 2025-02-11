@@ -1,7 +1,7 @@
 import { fetchPopularBooks } from '@/services';
-import { BookItemData, PopularBookData } from '@/types';
+import { BookItemData, NaruApiBookData } from '@/types';
 
-const formatePopularBookDataToBookItemData = (doc: PopularBookData) => {
+const formatePopularBookDataToBookItemData = (doc: NaruApiBookData) => {
   let author = doc.authors;
   let translator;
 
@@ -34,7 +34,7 @@ const formatePopularBookDataToBookItemData = (doc: PopularBookData) => {
 export const getPopularBooks = async (): Promise<BookItemData[]> => {
   const data = await fetchPopularBooks();
 
-  const popularBooks: BookItemData[] = data.docs.map((doc: PopularBookData) => {
+  const popularBooks: BookItemData[] = data.docs.map((doc: NaruApiBookData) => {
     return formatePopularBookDataToBookItemData(doc.doc);
   });
 

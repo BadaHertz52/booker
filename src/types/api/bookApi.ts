@@ -8,7 +8,7 @@ export interface ApiLibrarianPickData {
   recomcontens: string;
 }
 
-export interface PopularBookData {
+export interface NaruApiBookData {
   [key: string]: any;
   ranking: string;
   bookname: string;

@@ -1,9 +1,9 @@
-import { PopularBookData } from '@/types';
+import { NaruApiBookData } from '@/types';
 
 import bookCoverImg from './cover.jpeg';
 const BOOK_COVER_IMG_URL = bookCoverImg.src;
 
-export const POPULAR_BOOKS_DATA: { response: { docs: { doc: PopularBookData }[] } } = {
+export const POPULAR_BOOKS_DATA: { response: { docs: { doc: NaruApiBookData }[] } } = {
   response: {
     docs: [
       {
