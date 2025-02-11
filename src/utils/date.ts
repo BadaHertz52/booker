@@ -19,12 +19,19 @@ export const getLastMonthDates = () => {
   };
 };
 
+export const getPastDate = (daysAgo: number) => {
+  const today = new Date();
+  const pageDate = new Date();
+  pageDate.setDate(today.getDate() - daysAgo);
+
+  return formateISODate(pageDate);
+};
+
 export const getCurrentAndPastWeek = () => {
   const today = new Date();
-  const onWeekago = new Date();
-  onWeekago.setDate(today.getDate() - 7);
+
   return {
     currentDate: formateISODate(today),
-    onWeekago: formateISODate(onWeekago),
+    onWeekago: getPastDate(7),
   };
 };
