@@ -1,5 +1,4 @@
 import { BOOK_SEARCH_CATEGORY_NAME } from '@/constants';
-import { BOOK_LIST_MOCK_DATA } from '@/mocks/mockData';
 
 import H1 from './_components/H1';
 import NotFoundResult from './_components/NotFoundResult';

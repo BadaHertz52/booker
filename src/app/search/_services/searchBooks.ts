@@ -9,8 +9,7 @@ export const getSearchBooks = async (params: GetSearchBooksParamsParams) => {
 
   const { docs, request, numFound } = data.response;
   const { pageNo, pageSize } = request;
-  console.log(docs);
-  console.log(pageNo, numFound);
+
   const isLastPage: boolean = numFound == 0 ? true : Math.ceil(numFound / pageSize) <= pageNo;
 
   const books = docs.map(({ doc }: { doc: NaruApiBookData }) => formatNaruApiBookDataToBookItemData(doc));

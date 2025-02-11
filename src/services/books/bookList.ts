@@ -1,7 +1,7 @@
 import { ERROR_MESSAGE, ERROR_NAME } from '@/constants';
 import { throwRequestError } from '@/utils';
 
-import { getSearchBooksParams, GetSearchBooksParamsParams, naruEndpoint } from '../endpoints/naruEndpoint';
+import { GetSearchBooksParamsParams, naruEndpoint } from '../endpoints/naruEndpoint';
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60;
 
