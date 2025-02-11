@@ -24,7 +24,14 @@ const BooksInfinityCarouselLoaded = ({ booksSimpleInfo, title }: BooksInfinityCa
   if (booksSimpleInfo.length === 0) return <EmptyBooks title={title} />;
 
   const cardsInfoForScreenReader = booksSimpleInfo.map((book) => ({ title: book.title }));
+  const makeAuthors = (book: BookSimpleInfo) => {
+    let authors = `${book.author} 저자`;
 
+    if (book.translator) {
+      authors += `﹒${book.translator} 옮김`;
+    }
+    return authors;
+  };
   return (
     <BooksInfinityCarouselLayout>
       <InfinityCarousel title={title} cardsInfoForScreenReader={cardsInfoForScreenReader}>
@@ -44,7 +51,7 @@ const BooksInfinityCarouselLoaded = ({ booksSimpleInfo, title }: BooksInfinityCa
               <h3 className={styles.bookTitle}>{book.title}</h3>
               <ul>
                 <li className={styles.bookAuthorAndPublisher}>
-                  {book.author} / {book.publisher}
+                  {makeAuthors(book)}&nbsp;/&nbsp;{book.publisher}
                 </li>
                 <li className={styles.bookContent}>{book.content}</li>
               </ul>

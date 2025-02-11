@@ -2,6 +2,7 @@ export interface BookSimpleInfo {
   title: string;
   isbn: number;
   author: string;
+  translator?: string;
   publisher: string;
   content: string;
   coverImageUrl: string;

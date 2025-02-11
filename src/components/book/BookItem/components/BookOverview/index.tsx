@@ -13,7 +13,10 @@ const BookOverviewLoaded = ({ bookItemData }: BookOverviewLoadedProps) => {
     <div className={styles.overview}>
       <h3 className={styles.bookTitle}>{bookItemData.title}</h3>
       <ul className={styles.bookDetail}>
-        <li className={styles.author}>{`${bookItemData.author} 저자(글)`}</li>
+        <li className={styles.author}>
+          <span>{`${bookItemData.author} 저자(글)`}</span>
+          {bookItemData.translator && <span>{`﹒${bookItemData.translator} 옮김`}</span>}
+        </li>
         <li className={styles.publication}>{`${bookItemData.publisher} - ${bookItemData.publicationYear}년`}</li>
       </ul>
     </div>

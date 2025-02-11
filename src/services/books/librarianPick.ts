@@ -50,9 +50,19 @@ const formatLastMonthLibrarianPick = (data: any) => {
   } = data;
 
   const result: BookSimpleInfo[] = list.map(({ item }: ApiLibrarianPickData) => {
+    let author = item.recomauthor.replace('지음', '').trim();
+    let translator;
+
+    if (item.recomauthor.includes('옮김')) {
+      const splitedText = item.recomauthor.split(';');
+      author = splitedText[0].trim().replace('지음', '');
+      translator = splitedText[1].trim().replace('옮김', '');
+    }
+
     const info: BookSimpleInfo = {
       title: item.recomtitle,
-      author: item.recomauthor,
+      author,
+      translator,
       publisher: item.recompublisher,
       isbn: Number(item.recomisbn),
       coverImageUrl: item.recomfilepath,
