@@ -4,6 +4,7 @@ import { BOOK_LIST_MOCK_DATA } from '@/mocks/mockData';
 import { fetchSearchBooks } from '../../services/books/bookList';
 
 import H1 from './_components/H1';
+import NotFoundResult from './_components/NotFoundResult';
 
 interface SearchPageProps {
   searchParams: Promise<{
@@ -13,6 +14,8 @@ interface SearchPageProps {
 }
 
 const MAX_SEARCH_KEYWORD_LENGTH = 16;
+const INVALIDATED_CATEGORY_MESSAGE = '유효하지 않은 카테고리에요 (운영진에게 문의해주세요)';
+type Category = keyof typeof BOOK_SEARCH_CATEGORY_NAME;
 
 const SearchPage = async ({ searchParams }: SearchPageProps) => {
   // NOTE : 검색 api 호출 중인 경우를 위한 임시 코드 - api 호출 작업 후 삭제 예정
@@ -24,6 +27,14 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
     keyword.length > MAX_SEARCH_KEYWORD_LENGTH ? keyword.slice(0, MAX_SEARCH_KEYWORD_LENGTH) + '...' : keyword;
   const searchResultGuideMessage = `'${truncatedKeyword}'에 대한 검색 결과에요`;
   const searchResultListTitle = `${keyword} 검색 결과`;
+
+  const isValidCategory = (target: string): target is Category => {
+    return target in BOOK_SEARCH_CATEGORY_NAME;
+  };
+  if (!isValidCategory(category)) {
+    return <NotFoundResult message={INVALIDATED_CATEGORY_MESSAGE} />;
+  }
+
   const searchTarget = BOOK_SEARCH_CATEGORY_NAME[category];
 
   return (
