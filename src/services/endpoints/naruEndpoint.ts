@@ -41,7 +41,7 @@ export const getSearchBooksParams = ({ category, keyword, pageNumber }: GetSearc
     authKey,
     sort: 'loan',
     pageSize: SEARCH_PAGE_SIZE.toString(),
-    pageNumber,
+    pageNo: pageNumber,
     format,
     [category]: keyword,
   };
