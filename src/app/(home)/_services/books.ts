@@ -57,7 +57,12 @@ export const getPopularBooks = async (): Promise<BookItemData[]> => {
   });
 };
 
+export const getRisingBooks = async () => {
+  const data = await fetchRisingBooks();
+
+  const books = data.response.results[0].result.docs.map(({ doc }: { doc: NaruApiBookData }) => {
+    return formatNaruApiBookDataToBookItemData(doc);
   });
 
-  return popularBooks;
+  return books;
 };

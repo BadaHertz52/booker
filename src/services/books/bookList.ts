@@ -10,8 +10,6 @@ export const fetchPopularBooks = async () => {
     next: { revalidate: ONE_DAY_IN_SECONDS },
   });
 
-  const data = await response.json();
-
   if (!response.ok) {
     throwRequestError({
       statusCode: response.status,
@@ -20,5 +18,24 @@ export const fetchPopularBooks = async () => {
     });
   }
 
-  return data.response;
+  const data = await response.json();
+
+  return data;
+};
+
+export const fetchRisingBooks = async () => {
+  const response = await fetch(naruEndpoint.risingBooks, {
+    next: { revalidate: ONE_DAY_IN_SECONDS },
+  });
+
+  if (!response.ok) {
+    throwRequestError({
+      statusCode: response.status,
+      errorMessage: ERROR_MESSAGE.risingBooks,
+      errorName: ERROR_NAME.risingBooks,
+    });
+  }
+
+  const data = await response.json();
+  return data;
 };
