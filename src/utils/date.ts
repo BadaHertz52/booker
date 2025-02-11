@@ -5,6 +5,10 @@ const formatDateToInt = (date: Date) => {
   return parseInt(`${year}${month}${day}`, 10);
 };
 
+const formateISODate = (date: Date) => {
+  return date.toISOString().split('T')[0];
+};
+
 export const getLastMonthDates = () => {
   const today = new Date();
   const firstDay = new Date(today.getFullYear(), today.getMonth() - 1, 1);
@@ -12,5 +16,15 @@ export const getLastMonthDates = () => {
   return {
     firstDay: formatDateToInt(firstDay),
     lastDay: formatDateToInt(lastDay),
+  };
+};
+
+export const getCurrentAndPastWeek = () => {
+  const today = new Date();
+  const onWeekago = new Date();
+  onWeekago.setDate(today.getDate() - 7);
+  return {
+    currentDate: formateISODate(today),
+    onWeekago: formateISODate(onWeekago),
   };
 };
