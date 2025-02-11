@@ -18,8 +18,8 @@ const Observer = ({ initialIsLastPage, updateBooks, searchParams }: ObserverProp
   const observerRef = useRef<IntersectionObserver | null>(null);
   const [isLastPage, setIsLastPage] = useState(initialIsLastPage);
   const pageRef = useRef(1);
-
-  const [state, fetchMoreBooksAction, isPending] = useActionState(async () => {
+  //eslint-disable-next-line
+  const [_, fetchMoreBooksAction, isPending] = useActionState(async () => {
     if (isLastPage) return;
 
     const nextPageParams = { ...searchParams, pageNumber: String(pageRef.current + 1) };
