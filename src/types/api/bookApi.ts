@@ -7,3 +7,14 @@ export interface ApiLibrarianPickData {
   recome_isbn: string;
   recomcontens: string;
 }
+
+export interface PopularBookData {
+  [key: string]: any;
+  ranking: number;
+  bookname: string;
+  authors: string;
+  publisher: string;
+  publication_year: string;
+  isbn13: number;
+  bookImageURL: string;
+}

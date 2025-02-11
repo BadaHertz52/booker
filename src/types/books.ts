@@ -12,6 +12,7 @@ export interface BookItemData {
   title: string;
   coverImageUrl: string;
   author: string;
+  translator?: string;
   publisher: string;
   publicationYear: number;
 }
@@ -20,6 +21,7 @@ export interface BookDetailData {
   isbn: number;
   title: string;
   author: string;
+  translator?: string;
   publisher: string;
   publicationYear: number;
   publicationDate: Date;
