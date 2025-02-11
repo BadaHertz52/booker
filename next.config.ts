@@ -11,6 +11,8 @@ const nextConfig: NextConfig = {
       {
         hostname: 'www.nl.go.kr',
       },
+      { hostname: 'image.aladin.co.kr' },
+      { protocol: 'https', hostname: '**' },
     ],
   },
 };
