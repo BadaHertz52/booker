@@ -22,13 +22,13 @@ const formatAuthors = (doc: NaruApiBookData) => {
     author = doc.authors
       .split(',')[0]
       .trim()
-      .replace(/(지은이)/, '');
+      .replace(/\(지은이\)/, '');
   }
   if (doc.authors.includes('(옮긴이)')) {
     translator = doc.authors
-      .split(',')[0]
+      .split(',')[1]
       .trim()
-      .replace(/(옮긴이)/, '');
+      .replace(/\(옮긴이\)/, '');
   }
 
   return { author, translator };
