@@ -50,6 +50,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
       <H1 message={searchResultGuideMessage} />
       {initialSearchBooks.length > 0 ? (
         <SearchResult
+          key={searchResultListTitle}
           title={searchResultListTitle}
           initialSearchBooks={initialSearchBooks}
           initialIsLastPage={initialIsLastPage}
