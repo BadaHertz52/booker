@@ -18,7 +18,7 @@ export default async function RootLayout({
   await enableServerMocking();
 
   return (
-    <html lang="en" className={pretendard.variable}>
+    <html lang="ko" className={pretendard.variable}>
       <body>
         <div id="root">
           <Suspense>
