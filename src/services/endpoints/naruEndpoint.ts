@@ -1,3 +1,4 @@
+import { BOOK_SEARCH_CATEGORY_NAME, SEARCH_PAGE_SIZE } from '@/constants';
 import { getCurrentAndPastWeek, getPastDate } from '@/utils';
 
 const NARU_BASE_URL = 'http://data4library.kr/api';
@@ -27,20 +28,22 @@ const getRisingBooksParams = () => {
   });
 };
 
-interface SearchInfo {
-  category: 'title' | 'author';
+export interface GetSearchBooksParamsParams {
+  category: keyof typeof BOOK_SEARCH_CATEGORY_NAME;
   keyword: string;
+  pageNumber: string;
 }
-
-export const getSearchBooksParams = (searchInfo: SearchInfo, pageNumber: string) => {
+/**
+ * 검색어를 대출이 많은 순으로 내려주는 검색 API 파라미터
+ */
+export const getSearchBooksParams = ({ category, keyword, pageNumber }: GetSearchBooksParamsParams) => {
   const params: Record<string, string> = {
     authKey,
     sort: 'loan',
-    order: 'dsc',
-    pageSize: '10',
+    pageSize: SEARCH_PAGE_SIZE.toString(),
     pageNumber,
     format,
-    [searchInfo.category]: searchInfo.keyword,
+    [category]: keyword,
   };
 
   return new URLSearchParams(params);
@@ -49,6 +52,6 @@ export const getSearchBooksParams = (searchInfo: SearchInfo, pageNumber: string)
 export const naruEndpoint = {
   popularBooks: NARU_BASE_URL + '/loanItemSrch' + '?' + getPopularBooksParams(),
   risingBooks: NARU_BASE_URL + '/hotTrend' + '?' + getRisingBooksParams(),
-  gettingSearchBooks: (params: Parameters<typeof getSearchBooksParams>) =>
-    NARU_BASE_URL + '/srchBooks' + '?' + getSearchBooksParams(...params),
+  gettingSearchBooks: (params: GetSearchBooksParamsParams) =>
+    NARU_BASE_URL + '/srchBooks' + '?' + getSearchBooksParams(params),
 };
