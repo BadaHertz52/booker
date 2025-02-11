@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { startTransition, useEffect, useRef } from 'react';
 
 interface UseObserverProps {
   isLastPage: boolean;
@@ -17,7 +17,9 @@ const useObserver = ({ isLastPage, fetchMoreBooksAction, isPending }: UseObserve
     observerRef.current = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting && !isPending) {
-          fetchMoreBooksAction();
+          startTransition(() => {
+            fetchMoreBooksAction();
+          });
         }
       },
       { threshold: 1.0 },
@@ -26,13 +28,13 @@ const useObserver = ({ isLastPage, fetchMoreBooksAction, isPending }: UseObserve
     observerRef.current?.observe(observerTargetRef.current);
   };
 
-  const deActivateObserver = () => observerRef.current?.disconnect();
+  const deactivateObserver = () => observerRef.current?.disconnect();
 
   useEffect(() => {
-    if (observerRef.current && isLastPage) deActivateObserver();
+    if (observerRef.current && isLastPage) deactivateObserver();
     activateObserver();
 
-    return () => deActivateObserver();
+    return () => deactivateObserver();
   }, [fetchMoreBooksAction, isLastPage, isPending]);
 
   return {
