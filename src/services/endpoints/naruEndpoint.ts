@@ -27,7 +27,28 @@ const getRisingBooksParams = () => {
   });
 };
 
+interface SearchInfo {
+  category: 'title' | 'author';
+  keyword: string;
+}
+
+export const getSearchBooksParams = (searchInfo: SearchInfo, pageNumber: string) => {
+  const params: Record<string, string> = {
+    authKey,
+    sort: 'loan',
+    order: 'dsc',
+    pageSize: '10',
+    pageNumber,
+    format,
+    [searchInfo.category]: searchInfo.keyword,
+  };
+
+  return new URLSearchParams(params);
+};
+
 export const naruEndpoint = {
   popularBooks: NARU_BASE_URL + '/loanItemSrch' + '?' + getPopularBooksParams(),
   risingBooks: NARU_BASE_URL + '/hotTrend' + '?' + getRisingBooksParams(),
+  gettingSearchBooks: (params: Parameters<typeof getSearchBooksParams>) =>
+    NARU_BASE_URL + '/srchBooks' + '?' + getSearchBooksParams(...params),
 };

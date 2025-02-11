@@ -1,6 +1,6 @@
 import { BookList } from '@/components';
 
-import H1 from './components/H1';
+import H1 from './_components/H1';
 
 const SKELETON_LIST_LENGTH = 5;
 

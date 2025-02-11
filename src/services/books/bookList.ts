@@ -1,7 +1,7 @@
 import { ERROR_MESSAGE, ERROR_NAME } from '@/constants';
 import { throwRequestError } from '@/utils';
 
-import { naruEndpoint } from '../endpoints/naruEndpoint';
+import { getSearchBooksParams, naruEndpoint } from '../endpoints/naruEndpoint';
 
 const ONE_DAY_IN_SECONDS = 24 * 60 * 60;
 
@@ -37,5 +37,22 @@ export const fetchRisingBooks = async () => {
   }
 
   const data = await response.json();
+  return data;
+};
+
+export const fetchSearchBooks = async (params: Parameters<typeof getSearchBooksParams>) => {
+  // 무한 스크롤할때 까지
+  const response = await fetch(naruEndpoint.gettingSearchBooks(params));
+
+  if (!response.ok) {
+    throwRequestError({
+      statusCode: response.status,
+      errorMessage: ERROR_MESSAGE.searchBooks,
+      errorName: ERROR_NAME.searchBooks,
+    });
+  }
+
+  const data = await response.json();
+
   return data;
 };

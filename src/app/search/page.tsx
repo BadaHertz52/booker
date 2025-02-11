@@ -1,9 +1,9 @@
-import { BookList, NotFound } from '@/components';
 import { BOOK_SEARCH_CATEGORY_NAME } from '@/constants';
 import { BOOK_LIST_MOCK_DATA } from '@/mocks/mockData';
 
-import H1 from './components/H1';
-import styles from './page.module.scss';
+import { fetchSearchBooks } from '../../services/books/bookList';
+
+import H1 from './_components/H1';
 
 interface SearchPageProps {
   searchParams: Promise<{
