@@ -17,3 +17,13 @@ export interface NaruApiBookData {
   isbn13: string;
   bookImageURL: string;
 }
+
+export interface NaruApiBookDetailData extends NaruApiBookData {
+  class_nm: string; //도서 종류 분류 (ex :문학 \u003E 한국문학 \u003E 소설)
+  description: string;
+}
+
+export interface NaruApiBookDetailDataTotalLoanInfo {
+  ranking: number;
+  loanCnt: number;
+}

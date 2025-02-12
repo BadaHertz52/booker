@@ -1,4 +1,10 @@
-import { BookItemData, NaruApiBookData } from '@/types';
+import {
+  BookDetailData,
+  BookItemData,
+  NaruApiBookData,
+  NaruApiBookDetailData,
+  NaruApiBookDetailDataTotalLoanInfo,
+} from '@/types';
 
 export const formatAuthors = (doc: NaruApiBookData) => {
   let author = doc.authors;
@@ -42,4 +48,27 @@ export const formatNaruApiBookDataToBookItemData = (doc: NaruApiBookData) => {
   }
 
   return book;
+};
+
+interface NaruApiBookDetailDataParams {
+  naruBookDetailData: NaruApiBookDetailData;
+  totalLoanInfo: NaruApiBookDetailDataTotalLoanInfo;
+}
+export const formatNaruApiBookDetailData = ({ naruBookDetailData, totalLoanInfo }: NaruApiBookDetailDataParams) => {
+  const { author, translator } = formatAuthors(naruBookDetailData);
+
+  const bookDetailData: BookDetailData = {
+    isbn: naruBookDetailData.isbn13,
+    title: naruBookDetailData.bookname,
+    author,
+    translator,
+    publisher: naruBookDetailData.publisher,
+    publicationYear: Number(naruBookDetailData.publication_year),
+    coverImageUrl: naruBookDetailData.bookImageURL,
+    content: naruBookDetailData.description,
+    category: naruBookDetailData.class_nm,
+    loans: { count: totalLoanInfo.loanCnt, rank: totalLoanInfo.ranking },
+  };
+
+  return bookDetailData;
 };

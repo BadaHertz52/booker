@@ -19,16 +19,8 @@ export interface BookItemData {
   loanRankingIncrease?: number; // 대출 상승폭 - 대출 급상승 도서에서 보여짐
 }
 
-export interface BookDetailData {
-  isbn: number;
-  title: string;
-  author: string;
-  translator?: string;
-  publisher: string;
-  publicationYear: number;
-  publicationDate: Date;
+export interface BookDetailData extends BookItemData {
   content: string;
-  coverImageUrl: string;
   category: string;
   loans: { count: number; rank: number };
 }
