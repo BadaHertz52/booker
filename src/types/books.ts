@@ -1,6 +1,6 @@
 export interface BookSimpleInfo {
   title: string;
-  isbn: number;
+  isbn: string;
   author: string;
   translator?: string;
   publisher: string;

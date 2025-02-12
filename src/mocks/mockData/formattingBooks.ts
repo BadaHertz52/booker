@@ -5,7 +5,7 @@ const BOOK_COVER_IMG_URL = bookCoverImg.src;
 
 export const BOOK_SIMPLE_INFO_LIST_MOCK_DATA: BookSimpleInfo[] = [
   {
-    isbn: 9780743273565,
+    isbn: '9780743273565',
     title: 'The Great Gatsby',
     author: 'F. Scott Fitzgerald',
     translator: '바다',
@@ -15,7 +15,7 @@ export const BOOK_SIMPLE_INFO_LIST_MOCK_DATA: BookSimpleInfo[] = [
     coverImageUrl: BOOK_COVER_IMG_URL,
   },
   {
-    isbn: 9780446310786,
+    isbn: '9780446310786',
     title: 'To Kill a Mockingbird',
     author: 'Harper Lee',
     translator: '바다',
@@ -25,7 +25,7 @@ export const BOOK_SIMPLE_INFO_LIST_MOCK_DATA: BookSimpleInfo[] = [
     coverImageUrl: BOOK_COVER_IMG_URL,
   },
   {
-    isbn: 9780451524934,
+    isbn: '9780451524934',
     title: '1984',
     author: 'George Orwell',
     translator: '바다',
@@ -35,7 +35,7 @@ export const BOOK_SIMPLE_INFO_LIST_MOCK_DATA: BookSimpleInfo[] = [
     coverImageUrl: BOOK_COVER_IMG_URL,
   },
   {
-    isbn: 9780141439518,
+    isbn: '9780141439518',
     title: 'Pride and Prejudice',
     author: 'Jane Austen',
     translator: '바다',
@@ -44,7 +44,7 @@ export const BOOK_SIMPLE_INFO_LIST_MOCK_DATA: BookSimpleInfo[] = [
     coverImageUrl: BOOK_COVER_IMG_URL,
   },
   {
-    isbn: 9780316769488,
+    isbn: '9780316769488',
     title: 'The Catcher in the Rye',
     author: 'J.D. Salinger',
     translator: '바다',
