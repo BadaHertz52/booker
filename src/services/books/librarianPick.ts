@@ -1,4 +1,4 @@
-import { ERROR_MESSAGE, ERROR_NAME } from '@/constants';
+import { ERROR_MESSAGE, ERROR_NAME, ONE_DAY_IN_SECONDS } from '@/constants';
 import { ApiLibrarianPickData, BookSimpleInfo } from '@/types';
 import { extractPlainTextFromXML, parseXmlToJson, throwRequestError } from '@/utils';
 
@@ -8,8 +8,7 @@ import { publicLibraryEndpoint } from '../index';
  * 국립 중앙 도서관 - 지난달 사서 추천 도서 목록
  */
 export const fetchLastMonthLibrarianPick = async () => {
-  // NOTE: 변경 사항이 없는 지난 달 사서 추천 도서 목록을 가져오는 것이므로 캐시를 강제함
-  const response = await fetch(publicLibraryEndpoint.librarianPick, { cache: 'force-cache' });
+  const response = await fetch(publicLibraryEndpoint.librarianPick, { next: { revalidate: ONE_DAY_IN_SECONDS } });
   if (!response.ok) {
     throwRequestError({
       statusCode: response.status,
