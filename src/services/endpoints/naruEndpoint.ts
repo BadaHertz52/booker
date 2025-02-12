@@ -50,7 +50,7 @@ export const getSearchBooksParams = ({ category, keyword, pageNumber }: GetSearc
   return new URLSearchParams(params);
 };
 
-const getDetailBookParams = (isbn: string) => {
+const getBookDetailsParams = (isbn: string) => {
   return new URLSearchParams({
     authKey,
     isbn13: isbn,
@@ -65,5 +65,5 @@ export const naruEndpoint = {
   risingBooks: NARU_BASE_URL + '/hotTrend' + '?' + getRisingBooksParams(),
   gettingSearchBooks: (params: GetSearchBooksParamsParams) =>
     BASIC_SEARCH_BOOKS_URL + '?' + getSearchBooksParams(params),
-  gettingDetailBook: (isbn: string) => NARU_BASE_URL + '/srchDtlList' + '?' + getDetailBookParams(isbn),
+  gettingBookDetails: (isbn: string) => NARU_BASE_URL + '/srchDtlList' + '?' + getBookDetailsParams(isbn),
 };

@@ -2,8 +2,8 @@ import {
   BookDetailData,
   BookItemData,
   NaruApiBookData,
-  NaruApiBookDetailData,
-  NaruApiBookDetailDataTotalLoanInfo,
+  NaruApiBookDetailsData,
+  NaruApiBookDetailsDataTotalLoanInfo,
 } from '@/types';
 
 export const formatAuthors = (doc: NaruApiBookData) => {
@@ -51,22 +51,23 @@ export const formatNaruApiBookDataToBookItemData = (doc: NaruApiBookData) => {
 };
 
 interface NaruApiBookDetailDataParams {
-  naruBookDetailData: NaruApiBookDetailData;
-  totalLoanInfo: NaruApiBookDetailDataTotalLoanInfo;
+  naruBookDetailsData: NaruApiBookDetailsData;
+  totalLoanInfo: NaruApiBookDetailsDataTotalLoanInfo;
 }
-export const formatNaruApiBookDetailData = ({ naruBookDetailData, totalLoanInfo }: NaruApiBookDetailDataParams) => {
-  const { author, translator } = formatAuthors(naruBookDetailData);
+
+export const formatNaruApiBookDetailsData = ({ naruBookDetailsData, totalLoanInfo }: NaruApiBookDetailDataParams) => {
+  const { author, translator } = formatAuthors(naruBookDetailsData);
 
   const bookDetailData: BookDetailData = {
-    isbn: naruBookDetailData.isbn13,
-    title: naruBookDetailData.bookname,
+    isbn: naruBookDetailsData.isbn13,
+    title: naruBookDetailsData.bookname,
     author,
     translator,
-    publisher: naruBookDetailData.publisher,
-    publicationYear: Number(naruBookDetailData.publication_year),
-    coverImageUrl: naruBookDetailData.bookImageURL,
-    content: naruBookDetailData.description,
-    category: naruBookDetailData.class_nm,
+    publisher: naruBookDetailsData.publisher,
+    publicationYear: Number(naruBookDetailsData.publication_year),
+    coverImageUrl: naruBookDetailsData.bookImageURL,
+    content: naruBookDetailsData.description,
+    category: naruBookDetailsData.class_nm,
     loans: { count: totalLoanInfo.loanCnt, rank: totalLoanInfo.ranking },
   };
 

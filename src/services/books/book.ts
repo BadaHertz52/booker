@@ -3,14 +3,14 @@ import { throwRequestError } from '@/utils';
 
 import { naruEndpoint } from '../endpoints/naruEndpoint';
 
-export const fetchDetailBook = async (isbn: string) => {
-  const response = await fetch(naruEndpoint.gettingDetailBook(isbn), { next: { revalidate: ONE_DAY_IN_SECONDS } });
+export const fetchBookDetails = async (isbn: string) => {
+  const response = await fetch(naruEndpoint.gettingBookDetails(isbn), { next: { revalidate: ONE_DAY_IN_SECONDS } });
 
   if (!response.ok) {
     throwRequestError({
       statusCode: response.status,
-      errorMessage: ERROR_MESSAGE.detailBook,
-      errorName: ERROR_NAME.detailBook,
+      errorMessage: ERROR_MESSAGE.bookDetails,
+      errorName: ERROR_NAME.bookDetails,
     });
   }
 

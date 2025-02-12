@@ -99,7 +99,7 @@ export const BOOK_LIST_MOCK_DATA: BookItemData[] = [
   },
 ];
 
-export const BOOK_DETAIL_MOCK_DATA: BookDetailData = {
+export const BOOK_DETAILS_MOCK_DATA: BookDetailData = {
   isbn: '9781449331818',
   title: '러닝 리액트',
   author: '알렉스 뱅크스, 이브 포셀로',

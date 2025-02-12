@@ -1,8 +1,7 @@
-import { BOOK_DETAIL_MOCK_DATA, BOOK_LIST_MOCK_DATA } from '@/mocks/mockData';
-
-import { getDetailBook } from '../_services/book';
+import { BOOK_LIST_MOCK_DATA } from '@/mocks/mockData';
 
 import { BookDetails, RelatedBooks } from './_components';
+import { getBookDetails } from './_services/book';
 import styles from './page.module.scss';
 
 interface PageParams {
@@ -13,7 +12,7 @@ interface PageParams {
 
 const BookDetailsPage = async ({ params }: PageParams) => {
   const { isbn } = await params;
-  const bookDetailData = await getDetailBook(isbn);
+  const bookDetailData = await getBookDetails(isbn);
 
   return (
     <div className={styles.container}>
