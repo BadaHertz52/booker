@@ -234,3 +234,9 @@ export const NARU_API_BOOK_DETAILS_DATA: {
     ],
   },
 };
+
+export const BOOKS_FOR_MANIA: { response: { docs: { book: NaruApiBookData }[] } } = {
+  response: {
+    docs: [...BOOKS_DOCS_DATA.popular, ...BOOKS_DOCS_DATA.rising].map(({ doc }) => ({ book: { ...doc } })),
+  },
+};
