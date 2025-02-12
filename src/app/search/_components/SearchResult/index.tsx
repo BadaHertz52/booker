@@ -2,11 +2,9 @@
 
 import { Suspense, useState } from 'react';
 
-import { BookList } from '@/components';
+import { BookList, ScrollObserver } from '@/components';
 import { GetSearchBooksParamsParams } from '@/services/endpoints/naruEndpoint';
 import { BookItemData } from '@/types';
-
-import Observer from '../Observer';
 
 interface SearchResultProps {
   title: string;
@@ -24,7 +22,7 @@ const SearchResult = ({ title, initialSearchBooks, initialIsLastPage, searchPara
     <div>
       <BookList.Loaded listTitle={title} bookItemsData={books} />
       <Suspense fallback={<BookList.Skeleton listTitle={''} listLength={3} />}>
-        <Observer searchParams={searchParams} updateBooks={updateBooks} initialIsLastPage={initialIsLastPage} />
+        <ScrollObserver searchParams={searchParams} updateBooks={updateBooks} initialIsLastPage={initialIsLastPage} />
       </Suspense>
     </div>
   );

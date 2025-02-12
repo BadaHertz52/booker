@@ -20,7 +20,7 @@ const useFetchBooksAction = ({ initialIsLastPage, updateBooks, searchParams }: U
 
     const nextPageParams = { ...searchParams, pageNumber: String(pageRef.current + 1) };
     const { books: newBooks, isLastPage: lastPage } = await getSearchBooks(nextPageParams);
-
+    console.log('newbooks', newBooks.length, nextPageParams);
     updateBooks(newBooks);
     pageRef.current += 1;
     setIsLastPage(lastPage);
