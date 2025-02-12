@@ -1,5 +1,5 @@
 import { fetchBookDetails, fetchBooksForMania } from '@/services/books';
-import { NaruApiBookDetailsData, NaruApiBookDetailsDataTotalLoanInfo, NaruApiBookData } from '@/types';
+import { NaruApiBookDetailsData, NaruApiBookDetailsDataTotalLoanInfo, NaruApiBookData, BookItemData } from '@/types';
 import { formatNaruApiBookDataToBookItemData, formatNaruApiBookDetailsData } from '@/utils';
 
 export const getBookDetails = async (isbn: string) => {
@@ -13,7 +13,7 @@ export const getBookDetails = async (isbn: string) => {
 
 export const getBooksForMania = async (isbn: string) => {
   const data = await fetchBooksForMania(isbn);
-  const books = data.response.docs.map(({ book }: { book: NaruApiBookData }) =>
+  const books: BookItemData[] = data.response.docs.map(({ book }: { book: NaruApiBookData }) =>
     formatNaruApiBookDataToBookItemData(book),
   );
 
