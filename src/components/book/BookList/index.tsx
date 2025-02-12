@@ -20,7 +20,7 @@ const BookListLoaded = ({ listTitle, bookItemsData }: BookListLoadedProps) => {
       ) : (
         <ul aria-label={listTitle} className={styles.list}>
           {bookItemsData.map((book) => (
-            <BookItem.Loaded key={book.title} bookItemData={book} />
+            <BookItem.Loaded key={book.isbn} bookItemData={book} />
           ))}
         </ul>
       )}
