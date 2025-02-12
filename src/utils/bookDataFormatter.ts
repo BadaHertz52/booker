@@ -17,10 +17,12 @@ export const formatAuthors = (doc: NaruApiBookData) => {
   ];
 
   for (const pattern of patterns) {
-    if (doc.authors.includes(pattern.author) && doc.authors.includes(pattern.translator)) {
+    if (doc.authors.includes(pattern.author) || doc.authors.includes(pattern.translator)) {
       const [first, second] = doc.authors.split(pattern.delimiter).map((item) => item.trim());
       author = first.replace(pattern.author, '').trim();
-      translator = second.replace(pattern.translator, '').trim();
+      if (second) {
+        translator = second.replace(pattern.translator, '').trim();
+      }
       break;
     }
   }
