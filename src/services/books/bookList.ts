@@ -1,9 +1,7 @@
-import { ERROR_MESSAGE, ERROR_NAME } from '@/constants';
+import { ERROR_MESSAGE, ERROR_NAME, ONE_DAY_IN_SECONDS } from '@/constants';
 import { throwRequestError } from '@/utils';
 
 import { GetSearchBooksParamsParams, naruEndpoint } from '../endpoints/naruEndpoint';
-
-const ONE_DAY_IN_SECONDS = 24 * 60 * 60;
 
 export const fetchPopularBooks = async () => {
   const response = await fetch(naruEndpoint.popularBooks, {
