@@ -54,3 +54,19 @@ export const fetchSearchBooks = async (params: GetSearchBooksParamsParams) => {
 
   return data;
 };
+
+export const fetchBooksForMania = async (isbn: string) => {
+  const response = await fetch(naruEndpoint.gettingBooksForMania(isbn), { next: { revalidate: ONE_DAY_IN_SECONDS } });
+
+  if (!response.ok) {
+    throwRequestError({
+      statusCode: response.status,
+      errorMessage: ERROR_MESSAGE.booksForMania,
+      errorName: ERROR_NAME.booksForMania,
+    });
+  }
+
+  const data = await response.json();
+
+  return data;
+};
