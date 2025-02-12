@@ -1,4 +1,10 @@
-import { BookItemData, NaruApiBookData } from '@/types';
+import {
+  BookDetailData,
+  BookItemData,
+  NaruApiBookData,
+  NaruApiBookDetailsData,
+  NaruApiBookDetailsDataTotalLoanInfo,
+} from '@/types';
 
 export const formatAuthors = (doc: NaruApiBookData) => {
   let author = doc.authors;
@@ -11,10 +17,12 @@ export const formatAuthors = (doc: NaruApiBookData) => {
   ];
 
   for (const pattern of patterns) {
-    if (doc.authors.includes(pattern.author) && doc.authors.includes(pattern.translator)) {
+    if (doc.authors.includes(pattern.author) || doc.authors.includes(pattern.translator)) {
       const [first, second] = doc.authors.split(pattern.delimiter).map((item) => item.trim());
       author = first.replace(pattern.author, '').trim();
-      translator = second.replace(pattern.translator, '').trim();
+      if (second) {
+        translator = second.replace(pattern.translator, '').trim();
+      }
       break;
     }
   }
@@ -29,7 +37,7 @@ export const formatNaruApiBookDataToBookItemData = (doc: NaruApiBookData) => {
 
   const book: BookItemData = {
     title: doc.bookname,
-    isbn: Number(doc.isbn13),
+    isbn: doc.isbn13,
     author,
     translator,
     publisher: doc.publisher,
@@ -42,4 +50,28 @@ export const formatNaruApiBookDataToBookItemData = (doc: NaruApiBookData) => {
   }
 
   return book;
+};
+
+interface NaruApiBookDetailDataParams {
+  naruBookDetailsData: NaruApiBookDetailsData;
+  totalLoanInfo: NaruApiBookDetailsDataTotalLoanInfo;
+}
+
+export const formatNaruApiBookDetailsData = ({ naruBookDetailsData, totalLoanInfo }: NaruApiBookDetailDataParams) => {
+  const { author, translator } = formatAuthors(naruBookDetailsData);
+
+  const bookDetailData: BookDetailData = {
+    isbn: naruBookDetailsData.isbn13,
+    title: naruBookDetailsData.bookname,
+    author,
+    translator,
+    publisher: naruBookDetailsData.publisher,
+    publicationYear: Number(naruBookDetailsData.publication_year),
+    coverImageUrl: naruBookDetailsData.bookImageURL,
+    content: naruBookDetailsData.description,
+    category: naruBookDetailsData.class_nm,
+    loans: { count: totalLoanInfo.loanCnt, rank: totalLoanInfo.ranking },
+  };
+
+  return bookDetailData;
 };

@@ -1,10 +1,21 @@
 import { http, HttpResponse } from 'msw';
 
 import { publicLibraryEndpoint } from '@/services';
-import { BASIC_SEARCH_BOOKS_URL, naruEndpoint } from '@/services/endpoints/naruEndpoint';
+import {
+  BASIC_BOOK_DETAILS_URL,
+  BASIC_BOOKS_FOR_MANIA,
+  BASIC_SEARCH_BOOKS_URL,
+  naruEndpoint,
+} from '@/services/endpoints/naruEndpoint';
 
 import { LIBRARIAN_PICK_XML } from '../mockData';
-import { BOOKS_DOCS_DATA, POPULAR_BOOKS_DATA, RISING_BOOKS_DATA } from '../mockData/books';
+import {
+  BOOKS_DOCS_DATA,
+  BOOKS_FOR_MANIA,
+  NARU_API_BOOK_DETAILS_DATA,
+  POPULAR_BOOKS_DATA,
+  RISING_BOOKS_DATA,
+} from '../mockData/books';
 
 const interceptGetLastMonthLibrarianPick = () => {
   return http.get(publicLibraryEndpoint.librarianPick, async () => {
@@ -62,9 +73,23 @@ const interceptGetSearchBooks = () => {
   });
 };
 
+const interceptBookDetails = () => {
+  return http.get(BASIC_BOOK_DETAILS_URL, async () => {
+    return HttpResponse.json(NARU_API_BOOK_DETAILS_DATA);
+  });
+};
+
+const interceptBooksForMania = () => {
+  return http.get(BASIC_BOOKS_FOR_MANIA, async () => {
+    return HttpResponse.json(BOOKS_FOR_MANIA);
+  });
+};
+
 export const booksHandlers = [
   interceptGetLastMonthLibrarianPick(),
   interceptGetPopularBooks(),
   interceptGetRisingBooks(),
   interceptGetSearchBooks(),
+  interceptBookDetails(),
+  interceptBooksForMania(),
 ];

@@ -1,4 +1,4 @@
-import { NaruApiBookData } from '@/types';
+import { NaruApiBookData, NaruApiBookDetailsData, NaruApiBookDetailsDataTotalLoanInfo } from '@/types';
 
 import bookCoverImg from './cover.jpeg';
 const BOOK_COVER_IMG_URL = bookCoverImg.src;
@@ -199,5 +199,44 @@ export const RISING_BOOKS_DATA: { response: { results: { result: { docs: { doc: 
         },
       },
     ],
+  },
+};
+
+export const NARU_API_BOOK_DETAILS_DATA: {
+  response: { detail: { book: NaruApiBookDetailsData }[]; loanInfo: { Total: NaruApiBookDetailsDataTotalLoanInfo }[] };
+} = {
+  response: {
+    detail: [
+      {
+        book: {
+          bookname: '소년이 온다 :한강 장편소설 ',
+          publication_date: '2014',
+          authors: '지은이: 한강',
+          publisher: '창비',
+          class_no: '813.62',
+          class_nm: '문학 \u003E 한국문학 \u003E 소설',
+          publication_year: '2014',
+          bookImageURL: BOOK_COVER_IMG_URL,
+          isbn13: '9788936434120',
+          description:
+            "섬세한 감수성과 치밀한 문장으로 인간 존재의 본질을 탐구해온 작가 한강의 여섯번째 장편소설. '상처의 구조에 대한 투시와 천착의 서사'를 통해 한강만이 풀어낼 수 있는 방식으로 1980년 5월을 새롭게 조명한다.",
+        },
+      },
+    ],
+    loanInfo: [
+      {
+        Total: {
+          ranking: 1,
+
+          loanCnt: 14821,
+        },
+      },
+    ],
+  },
+};
+
+export const BOOKS_FOR_MANIA: { response: { docs: { book: NaruApiBookData }[] } } = {
+  response: {
+    docs: [...BOOKS_DOCS_DATA.popular, ...BOOKS_DOCS_DATA.rising].map(({ doc }) => ({ book: { ...doc } })),
   },
 };

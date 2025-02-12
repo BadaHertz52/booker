@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import BookDetails from '@/app/book/[isbn]/_components/BookDetails';
-import { BOOK_DETAIL_MOCK_DATA } from '@/mocks/mockData';
+import { BOOK_DETAILS_MOCK_DATA } from '@/mocks/mockData';
 
 const meta: Meta<typeof BookDetails.Loaded> = {
   component: BookDetails.Loaded,
@@ -24,7 +24,7 @@ type Story = StoryObj<typeof BookDetails.Loaded>;
 
 export const Default: Story = {
   args: {
-    bookDetailData: BOOK_DETAIL_MOCK_DATA,
+    bookDetailData: BOOK_DETAILS_MOCK_DATA,
   },
 };
 

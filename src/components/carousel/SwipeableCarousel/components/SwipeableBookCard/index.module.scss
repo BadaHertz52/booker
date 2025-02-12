@@ -31,3 +31,14 @@ $img__width-basic: 10rem;
 .title {
   font-weight: var(--font-weight-semi-bold);
 }
+
+.bookInfoSkeleton {
+  & > div {
+    width: 6rem;
+    height: var(--font-size-small);
+    @include mixins.skeleton;
+  }
+  & > div:first-child {
+    width: 8rem;
+  }
+}

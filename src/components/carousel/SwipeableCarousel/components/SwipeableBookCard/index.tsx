@@ -1,3 +1,5 @@
+import classNames from 'classnames';
+
 import { BookCover } from '@/components/book';
 import { BookItemData } from '@/types';
 
@@ -19,7 +21,20 @@ const Loaded = ({ bookItemData }: SwipeableBookCardProps) => {
   );
 };
 
+const Skeleton = () => {
+  return (
+    <div className={styles.container}>
+      <BookCover.Skeleton classNameForWidth={styles.cover} />
+      <div className={classNames(styles.bookInfo, styles.bookInfoSkeleton)}>
+        <div className={styles.title} />
+        <div className={styles.author} />
+      </div>
+    </div>
+  );
+};
+
 const SwipeableBookCard = {
   Loaded,
+  Skeleton,
 };
 export default SwipeableBookCard;

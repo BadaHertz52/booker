@@ -1,41 +1,53 @@
-import Link from 'next/link';
-
 import { NoBooksYet } from '@/components';
-import { SwipeableCarousel, SwipeableBookCard } from '@/components/carousel';
 import { BookItemData } from '@/types';
 
+import SwipeableBooksCarousel from './components/SwipeableBooksCarousel';
 import styles from './index.module.scss';
 
-interface RelatedBooksProps {
-  relatedBooks: BookItemData[];
+interface LayoutProps {
+  title: string;
+  children: React.ReactNode;
 }
 
-const SwipeableBooksCarousel = ({ relatedBooks }: RelatedBooksProps) => {
+const Layout = ({ title, children }: LayoutProps) => {
   return (
-    <SwipeableCarousel>
-      {relatedBooks.map((book, index) => (
-        <Link href={`/book/${book.isbn}`} key={book.isbn + index}>
-          <SwipeableBookCard.Loaded bookItemData={book} />
-        </Link>
-      ))}
-    </SwipeableCarousel>
+    <section className={styles.layout}>
+      <h3>{title}</h3>
+      <div className={styles.carouselWrapper}>{children}</div>
+    </section>
   );
 };
 
-const RelatedBooks = ({ relatedBooks }: RelatedBooksProps) => {
-  // TODO: 관련 도서 데이터 받아오기, key에서 index 제거
+interface LoadedProps {
+  isbn: string;
+  title: string;
+  fetchBooks: (isbn: string) => Promise<BookItemData[]>;
+}
+
+const Loaded = async ({ isbn, title, fetchBooks }: LoadedProps) => {
+  const relatedBooks = await fetchBooks(isbn);
+
   return (
-    <section className={styles.layout}>
-      <h3>관련 도서</h3>
-      <div className={styles.carouselWrapper}>
-        {relatedBooks.length === 0 ? (
-          <NoBooksYet title="관련 도서" />
-        ) : (
-          <SwipeableBooksCarousel relatedBooks={relatedBooks} />
-        )}
-      </div>
-    </section>
+    <Layout title={title}>
+      {relatedBooks.length === 0 ? (
+        <NoBooksYet title={title} />
+      ) : (
+        <SwipeableBooksCarousel.Loaded relatedBooks={relatedBooks} />
+      )}
+    </Layout>
   );
+};
+
+const Skeleton = ({ title }: Pick<LayoutProps, 'title'>) => {
+  return (
+    <Layout title={title}>
+      <SwipeableBooksCarousel.Skeleton />
+    </Layout>
+  );
+};
+const RelatedBooks = {
+  Loaded,
+  Skeleton,
 };
 
 export default RelatedBooks;

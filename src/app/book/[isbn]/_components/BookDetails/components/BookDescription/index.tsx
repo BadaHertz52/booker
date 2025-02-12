@@ -7,14 +7,6 @@ interface BookDescriptionLoadedProps {
 }
 
 const BookDescriptionLoaded = ({ bookDetailData }: BookDescriptionLoadedProps) => {
-  const formateDate = (date: Date) => {
-    const year = date.getFullYear();
-    const month = date.getMonth() + 1;
-    const day = date.getDate();
-
-    return `${year}년 ${month}월 ${day}일`;
-  };
-
   return (
     <div className={styles.bookDescription}>
       <h2>책 소개</h2>
@@ -36,8 +28,8 @@ const BookDescriptionLoaded = ({ bookDetailData }: BookDescriptionLoadedProps) =
               <td>{bookDetailData.isbn}</td>
             </tr>
             <tr>
-              <th scope="row">출판 일자</th>
-              <td>{formateDate(bookDetailData.publicationDate)}</td>
+              <th scope="row">출판 년도</th>
+              <td>{bookDetailData.publicationYear}년</td>
             </tr>
           </tbody>
         </table>

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { Suspense } from 'react';
 
 import { RelatedBooks } from '@/app/book/[isbn]/_components';
 import { SwipeableCarousel } from '@/components';
@@ -51,24 +52,47 @@ export const Default: Story = {
   ),
 };
 
-export const BooksSwipeableCarousel: StoryObj<typeof RelatedBooks> = {
+export const BooksSwipeableCarousel: StoryObj<typeof RelatedBooks.Loaded> = {
   args: {
-    relatedBooks: [...BOOK_LIST_MOCK_DATA, ...BOOK_LIST_MOCK_DATA],
+    isbn: '1234567890123',
+    title: '관련도서',
+    fetchBooks: async () => {
+      return [...BOOK_LIST_MOCK_DATA, ...BOOK_LIST_MOCK_DATA];
+    },
   },
   render: (args) => (
     <div style={{ width: '70rem', height: '60rem', display: 'flex', alignItems: 'center', backgroundColor: 'white' }}>
-      <RelatedBooks {...args} />
+      <Suspense fallback={<RelatedBooks.Skeleton title={args.title} />}>
+        <RelatedBooks.Loaded {...args} />
+      </Suspense>
     </div>
   ),
 };
 
-export const EmptyBooksSwipeableCarousel: StoryObj<typeof RelatedBooks> = {
+export const EmptyBooksSwipeableCarousel: StoryObj<typeof RelatedBooks.Loaded> = {
   args: {
-    relatedBooks: [],
+    isbn: '1234567890123',
+    title: '관련도서',
+    fetchBooks: async () => {
+      return [];
+    },
   },
   render: (args) => (
     <div style={{ width: '70rem', height: '60rem', display: 'flex', alignItems: 'center', backgroundColor: 'white' }}>
-      <RelatedBooks {...args} />
+      <Suspense fallback={<RelatedBooks.Skeleton title={args.title} />}>
+        <RelatedBooks.Loaded {...args} />
+      </Suspense>
+    </div>
+  ),
+};
+
+export const BooksSwipeableCarouselSkeleton: StoryObj<typeof RelatedBooks.Loaded> = {
+  args: {
+    title: '관련도서',
+  },
+  render: (args) => (
+    <div style={{ width: '70rem', height: '60rem', display: 'flex', alignItems: 'center', backgroundColor: 'white' }}>
+      <RelatedBooks.Skeleton {...args} />
     </div>
   ),
 };

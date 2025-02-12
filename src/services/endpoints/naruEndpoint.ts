@@ -2,6 +2,10 @@ import { BOOK_SEARCH_CATEGORY_NAME, SEARCH_PAGE_SIZE } from '@/constants';
 import { getCurrentAndPastWeek, getPastDate } from '@/utils';
 
 const NARU_BASE_URL = 'http://data4library.kr/api';
+export const BASIC_SEARCH_BOOKS_URL = NARU_BASE_URL + '/srchBooks';
+export const BASIC_BOOK_DETAILS_URL = NARU_BASE_URL + '/srchDtlList';
+export const BASIC_BOOKS_FOR_MANIA = NARU_BASE_URL + '/recommandList';
+
 const authKey = process.env.NEXT_BOOK_NARU_API_KEY || '';
 const format = 'json';
 
@@ -49,11 +53,29 @@ export const getSearchBooksParams = ({ category, keyword, pageNumber }: GetSearc
   return new URLSearchParams(params);
 };
 
-export const BASIC_SEARCH_BOOKS_URL = NARU_BASE_URL + '/srchBooks';
+const getBookDetailsParams = (isbn: string) => {
+  return new URLSearchParams({
+    authKey,
+    isbn13: isbn,
+    loaninfoYN: 'Y',
+    displayInfo: 'age',
+    format,
+  });
+};
+
+const getBooksForManiaParams = (isbn: string) => {
+  return new URLSearchParams({
+    authKey,
+    isbn13: isbn,
+    format,
+  });
+};
 
 export const naruEndpoint = {
   popularBooks: NARU_BASE_URL + '/loanItemSrch' + '?' + getPopularBooksParams(),
   risingBooks: NARU_BASE_URL + '/hotTrend' + '?' + getRisingBooksParams(),
   gettingSearchBooks: (params: GetSearchBooksParamsParams) =>
     BASIC_SEARCH_BOOKS_URL + '?' + getSearchBooksParams(params),
+  gettingBookDetails: (isbn: string) => BASIC_BOOK_DETAILS_URL + '?' + getBookDetailsParams(isbn),
+  gettingBooksForMania: (isbn: string) => BASIC_BOOKS_FOR_MANIA + '?' + getBooksForManiaParams(isbn),
 };

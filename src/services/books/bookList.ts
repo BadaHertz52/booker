@@ -1,9 +1,7 @@
-import { ERROR_MESSAGE, ERROR_NAME } from '@/constants';
+import { ERROR_MESSAGE, ERROR_NAME, ONE_DAY_IN_SECONDS } from '@/constants';
 import { throwRequestError } from '@/utils';
 
 import { GetSearchBooksParamsParams, naruEndpoint } from '../endpoints/naruEndpoint';
-
-const ONE_DAY_IN_SECONDS = 24 * 60 * 60;
 
 export const fetchPopularBooks = async () => {
   const response = await fetch(naruEndpoint.popularBooks, {
@@ -49,6 +47,22 @@ export const fetchSearchBooks = async (params: GetSearchBooksParamsParams) => {
       statusCode: response.status,
       errorMessage: ERROR_MESSAGE.searchBooks,
       errorName: ERROR_NAME.searchBooks,
+    });
+  }
+
+  const data = await response.json();
+
+  return data;
+};
+
+export const fetchBooksForMania = async (isbn: string) => {
+  const response = await fetch(naruEndpoint.gettingBooksForMania(isbn), { next: { revalidate: ONE_DAY_IN_SECONDS } });
+
+  if (!response.ok) {
+    throwRequestError({
+      statusCode: response.status,
+      errorMessage: ERROR_MESSAGE.booksForMania,
+      errorName: ERROR_NAME.booksForMania,
     });
   }
 

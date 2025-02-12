@@ -1,14 +1,38 @@
-import { BOOK_DETAIL_MOCK_DATA, BOOK_LIST_MOCK_DATA } from '@/mocks/mockData';
+import { Suspense } from 'react';
 
 import { BookDetails, RelatedBooks } from './_components';
+import { getBookDetails, getBooksForMania } from './_services/book';
 import styles from './page.module.scss';
 
-const BookDetailsPage = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 1000));
+interface AsyncComponentProps {
+  isbn: string;
+}
+
+const AsyncBookDetails = async ({ isbn }: AsyncComponentProps) => {
+  const bookDetailData = await getBookDetails(isbn);
+
+  return <BookDetails.Loaded bookDetailData={bookDetailData} />;
+};
+
+export interface BookDetailsPageParams {
+  params: Promise<{
+    isbn: string;
+  }>;
+}
+const TITLE = {
+  mania: '관련도서',
+};
+const BookDetailsPage = async ({ params }: BookDetailsPageParams) => {
+  const { isbn } = await params;
+
   return (
     <div className={styles.container}>
-      <BookDetails.Loaded bookDetailData={BOOK_DETAIL_MOCK_DATA} />
-      <RelatedBooks relatedBooks={BOOK_LIST_MOCK_DATA} />
+      <Suspense fallback={<BookDetails.Skeleton />}>
+        <AsyncBookDetails isbn={isbn} />
+      </Suspense>
+      <Suspense fallback={<RelatedBooks.Skeleton title={TITLE.mania} />}>
+        <RelatedBooks.Loaded isbn={isbn} title={TITLE.mania} fetchBooks={getBooksForMania} />
+      </Suspense>
     </div>
   );
 };
