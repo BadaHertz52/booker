@@ -3,6 +3,7 @@ import { getCurrentAndPastWeek, getPastDate } from '@/utils';
 
 const NARU_BASE_URL = 'http://data4library.kr/api';
 export const BASIC_SEARCH_BOOKS_URL = NARU_BASE_URL + '/srchBooks';
+export const BASIC_BOOK_DETAILS_URL = NARU_BASE_URL + '/srchDtlList';
 const authKey = process.env.NEXT_BOOK_NARU_API_KEY || '';
 const format = 'json';
 
@@ -65,5 +66,5 @@ export const naruEndpoint = {
   risingBooks: NARU_BASE_URL + '/hotTrend' + '?' + getRisingBooksParams(),
   gettingSearchBooks: (params: GetSearchBooksParamsParams) =>
     BASIC_SEARCH_BOOKS_URL + '?' + getSearchBooksParams(params),
-  gettingBookDetails: (isbn: string) => NARU_BASE_URL + '/srchDtlList' + '?' + getBookDetailsParams(isbn),
+  gettingBookDetails: (isbn: string) => BASIC_BOOK_DETAILS_URL + '?' + getBookDetailsParams(isbn),
 };
