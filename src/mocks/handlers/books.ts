@@ -40,7 +40,8 @@ const interceptGetSearchBooks = () => {
     const availBooksLength = BOOKS_DOCS_DATA.popular.length;
     const remains = numFound - pageNo * pageSize;
     const targetLength = remains >= 0 ? pageNo * pageSize : numFound;
-    const startIndex = pageNo === 1 ? 1 : pageNo * pageSize + 1;
+    // 첫 페이지이면 1부터, 아닐 경우 이전 페이지 다음 부터
+    const startIndex = pageNo === 1 ? 1 : (pageNo - 1) * pageSize + 1;
     for (let i = startIndex; i <= targetLength; i++) {
       const targetBookDoc = BOOKS_DOCS_DATA.popular[i % availBooksLength];
 
