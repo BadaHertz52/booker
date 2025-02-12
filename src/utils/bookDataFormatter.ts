@@ -29,7 +29,7 @@ export const formatNaruApiBookDataToBookItemData = (doc: NaruApiBookData) => {
 
   const book: BookItemData = {
     title: doc.bookname,
-    isbn: Number(doc.isbn13),
+    isbn: doc.isbn13,
     author,
     translator,
     publisher: doc.publisher,

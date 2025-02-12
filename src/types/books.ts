@@ -9,7 +9,7 @@ export interface BookSimpleInfo {
 }
 
 export interface BookItemData {
-  isbn: number;
+  isbn: string;
   title: string;
   coverImageUrl: string;
   author: string;
