@@ -4,10 +4,11 @@ import { useActionState, useRef, useState } from 'react';
 
 import { BookItemData } from '@/types';
 
+export type GetNewBooks = (nextPage: number) => Promise<{ newBooks: BookItemData[]; lastPage: boolean }>;
 export interface UseFetchBooksActionProps {
   initialIsLastPage: boolean;
   updateBooks: (newBooks: BookItemData[]) => void;
-  getNewBooks: (nextPage: number) => Promise<{ newBooks: BookItemData[]; lastPage: boolean }>;
+  getNewBooks: GetNewBooks;
 }
 
 const useFetchBooksAction = ({ initialIsLastPage, updateBooks, getNewBooks }: UseFetchBooksActionProps) => {
