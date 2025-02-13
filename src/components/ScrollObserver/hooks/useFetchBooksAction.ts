@@ -2,25 +2,23 @@
 
 import { useActionState, useRef, useState } from 'react';
 
-import { getSearchBooks } from '@/app/search/_services/searchBooks';
-import { GetSearchBooksParamsParams } from '@/services/endpoints/naruEndpoint';
 import { BookItemData } from '@/types';
 
-export interface UseFetchBooksActionParams {
+export interface UseFetchBooksActionProps {
   initialIsLastPage: boolean;
   updateBooks: (newBooks: BookItemData[]) => void;
-  searchParams: Omit<GetSearchBooksParamsParams, 'pageNumber'>;
+  getNewBooks: (nextPage: number) => Promise<{ newBooks: BookItemData[]; lastPage: boolean }>;
 }
-const useFetchBooksAction = ({ initialIsLastPage, updateBooks, searchParams }: UseFetchBooksActionParams) => {
+
+const useFetchBooksAction = ({ initialIsLastPage, updateBooks, getNewBooks }: UseFetchBooksActionProps) => {
   const [isLastPage, setIsLastPage] = useState(initialIsLastPage);
   const pageRef = useRef(1);
   //eslint-disable-next-line
   const [_, fetchMoreBooksAction, isPending] = useActionState(async () => {
     if (isLastPage) return;
 
-    const nextPageParams = { ...searchParams, pageNumber: String(pageRef.current + 1) };
-    const { books: newBooks, isLastPage: lastPage } = await getSearchBooks(nextPageParams);
-    console.log('newbooks', newBooks.length, nextPageParams);
+    const { newBooks, lastPage } = await getNewBooks(++pageRef.current);
+
     updateBooks(newBooks);
     pageRef.current += 1;
     setIsLastPage(lastPage);
