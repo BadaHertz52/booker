@@ -11,6 +11,7 @@ const TITLE = {
   popular: '인기 대출 도서',
   risingBooks: '급상승! 대출 도서',
 };
+
 const SKELTON_LIST_LENGTH = 5;
 
 const AsyncBooksCarousel = async () => {
@@ -25,6 +26,7 @@ interface AsyncBooksParams {
 }
 const AsyncBooks = async ({ title, getBooks }: AsyncBooksParams) => {
   const books = await getBooks();
+
   return <BookListSection.Loaded title={title} bookItemsData={books} />;
 };
 
@@ -39,7 +41,7 @@ const Home = () => {
         <AsyncBooks title={TITLE.popular} getBooks={getPopularBooks} />
       </Suspense>
       <Suspense fallback={<BookListSection.Skeleton listTitle={TITLE.risingBooks} listLength={SKELTON_LIST_LENGTH} />}>
-        <AsyncBooks title={TITLE.popular} getBooks={getRisingBooks} />
+        <AsyncBooks title={TITLE.risingBooks} getBooks={getRisingBooks} />
       </Suspense>
     </div>
   );
