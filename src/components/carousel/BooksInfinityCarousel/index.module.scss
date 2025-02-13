@@ -12,6 +12,10 @@ $img-width-small-mobile: 7rem;
   background-color: var(--color-gray100);
   width: 100%;
   height: 20rem;
+
+  @media screen and (max-width: 425px) {
+    height: 15rem;
+  }
 }
 
 .fullWidthCard {
