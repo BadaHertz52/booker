@@ -1,9 +1,11 @@
 import { Suspense } from 'react';
 
+import { getPopularBooks } from '@/services';
+
 import BookListSection from './_components/BookListSection';
 import BooksCarouselSection from './_components/BooksCarouselSection';
 import { getLastMonthLibrarianPick } from './_services';
-import { getPopularBooks, getRisingBooks } from './_services/books';
+import { getRisingBooks } from './_services/books';
 import styles from './page.module.scss';
 
 const TITLE = {
