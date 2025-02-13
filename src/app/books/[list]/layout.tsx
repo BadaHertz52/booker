@@ -2,9 +2,8 @@ import { H1 } from '@/components';
 
 import styles from './layout.module.scss';
 
-export const TITLE: Record<string, string> = {
+const TITLE: Record<string, string> = {
   popular: '인기 대출 도서',
-  rising: '급상승! 대출 도서',
 };
 
 export type BooksPageParams = Promise<{
