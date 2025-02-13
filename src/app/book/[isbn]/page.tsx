@@ -1,9 +1,13 @@
+import { Metadata } from 'next';
 import { Suspense } from 'react';
 
 import { BookDetails, RelatedBooks } from './_components';
 import { getBookDetails, getBooksForMania } from './_services/book';
 import styles from './page.module.scss';
 
+const TITLE = {
+  mania: '관련도서',
+};
 interface AsyncComponentProps {
   isbn: string;
 }
@@ -19,9 +23,17 @@ export interface BookDetailsPageParams {
     isbn: string;
   }>;
 }
-const TITLE = {
-  mania: '관련도서',
+
+export const generateBookDetailsMetadata = async ({ params }: BookDetailsPageParams): Promise<Metadata> => {
+  const { isbn } = await params;
+  const bookDetailData = await getBookDetails(isbn);
+
+  return {
+    title: `BOOKER - ${bookDetailData.title} 도서 상세 정보`,
+    description: `${bookDetailData.title}-${bookDetailData.author} 작가 : ${bookDetailData.content}`,
+  };
 };
+
 const BookDetailsPage = async ({ params }: BookDetailsPageParams) => {
   const { isbn } = await params;
 
