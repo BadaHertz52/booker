@@ -37,7 +37,7 @@ BOOKER는 이러한 문제를 해결하기 위해 등장했어요. 공공 데이
 
 ### 기능 시연
 
-<img src="./readmeImages/ver1.0.0.gif" width="120px" alt="ver1.0.0 시연 영상">
+<img src="./readmeImages/ver1.0.0.gif" width="250px" alt="ver1.0.0 시연 영상">
 <br/>
 <br/>
 
