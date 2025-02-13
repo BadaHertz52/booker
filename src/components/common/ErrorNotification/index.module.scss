@@ -1,0 +1,29 @@
+@use '@/styles/mixins' as mixins;
+
+.errorNotification {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  color: var(--color-gray500);
+}
+
+.errorIcon {
+  border-radius: var(--border-radius-basic);
+}
+
+@mixin button {
+  width: 20rem;
+  height: 4rem;
+  color: var(--color-black);
+}
+
+.resetButton {
+  @include mixins.primary-button;
+  @include button;
+}
+
+.homeButton {
+  @include mixins.secondary-button;
+  @include button;
+}

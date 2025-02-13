@@ -1,0 +1,26 @@
+@use '@/components/search/Searchbar/_variable' as vars;
+
+.categoryContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.2rem;
+  margin-right: vars.$category-container__margin;
+  width: vars.$category-container__width;
+  height: 1.6rem;
+}
+.bar {
+  color: var(--color-gray200);
+  font-weight: 500;
+}
+.searchButton {
+  margin-left: vars.$search-button__margin;
+  width: vars.$search-button__width;
+}
+
+.triangle {
+  transform: rotateX(0);
+  transition: transform 500ms ease;
+  &.reverse {
+    transform: rotateX(180deg);
+  }
+}

@@ -1,0 +1,96 @@
+@mixin layout-padding {
+  padding: 0 var(--layout-padding-horizontal);
+
+  @media screen and (max-width: 425px) {
+    padding: 0 var(--layout-padding-horizontal-small-device);
+  }
+}
+
+@mixin responsive-layout-width {
+  margin: 0;
+  width: 100%;
+
+  @media screen and (min-width: 768px) {
+    margin: 0 auto;
+    width: var(--root-max-width);
+  }
+}
+
+@mixin responsive-fixed-layout {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  @include responsive-layout-width;
+
+  @media screen and (min-width: 768px) {
+    left: calc((100% - var(--root-max-width)) / 2);
+  }
+}
+
+@mixin full-width-card {
+  width: calc(100vw * 0.95);
+
+  @media screen and (min-width: 768px) {
+    width: calc(var(--root-max-width) * 0.95);
+  }
+}
+
+@mixin skeleton($border-radius: var(--border-radius-basic)) {
+  & {
+    animation: skeleton-animation 2s infinite ease-in-out;
+    border-radius: $border-radius;
+
+    background-image: linear-gradient(
+      130deg,
+      var(--color-gray150) 25%,
+      rgba(236, 236, 236, 0.601) 50%,
+      var(--color-gray150) 75%
+    );
+    background-size: 300% 100%;
+  }
+
+  @keyframes skeleton-animation {
+    0% {
+      background-position: 200% 0%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
+}
+
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin word-break {
+  white-space: pre-wrap;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+@mixin ellipsis-line-clamp($lines: 1) {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  @include word-break;
+}
+
+@mixin primary-button {
+  border-radius: var(--border-radius-basic);
+  background-color: var(--color-primary);
+  padding: 1rem 0;
+  text-align: center;
+}
+
+@mixin secondary-button {
+  border: 0.2rem solid var(--color-primary);
+  border-radius: var(--border-radius-basic);
+  padding: 1rem 0;
+  text-align: center;
+}

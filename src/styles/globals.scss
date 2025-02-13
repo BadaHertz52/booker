@@ -1,0 +1,73 @@
+@use 'mixins' as mixins;
+
+html {
+  font-size: 62.5%; /*NOTE: 1rem = 10px을 위한 트릭*/
+}
+
+html.overflow-hidden {
+  overflow: hidden;
+}
+
+body {
+  box-sizing: border-box;
+  background-color: var(--color-gray100);
+  width: 100%;
+  color: var(--color-black);
+  font-size: var(--font-size-basic);
+  font-family: var(--font-pretendard);
+  word-break: keep-all;
+}
+
+#root {
+  position: relative;
+  -webkit-box-shadow: 0px 0px 21px 5px rgba(118, 118, 118, 0.27);
+  box-shadow: 0px 0px 21px 5px rgba(118, 118, 118, 0.27);
+  background-color: var(--color-white);
+  padding-top: var(--topbar-height);
+  padding-bottom: 0;
+  min-height: 100vh;
+
+  @include mixins.responsive-layout-width;
+}
+
+#portal-root {
+  z-index: var(--portal-z-index);
+  border: none;
+  padding: 0;
+  &::backdrop {
+    background: transparent;
+  }
+
+  @include mixins.responsive-fixed-layout;
+}
+
+.sr-only {
+  position: fixed;
+  top: -9999px;
+  left: -9999px;
+}
+
+input {
+  outline: none;
+  border: 1px solid transparent;
+}
+
+h1 {
+  font-size: var(--font-size-h1);
+}
+
+h2 {
+  font-size: var(--font-size-h2);
+}
+h3 {
+  font-size: var(--font-size-h3);
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+main {
+  min-height: calc((100vh - var(--topbar-height) - var(--footer-height)));
+}

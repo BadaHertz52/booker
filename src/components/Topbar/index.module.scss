@@ -1,0 +1,46 @@
+@use '@/styles/mixins' as mixins;
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  z-index: var(--topbar-z-index);
+  background-color: var(--color-white);
+  padding: 1.6rem var(--layout-padding-horizontal);
+  height: var(--topbar-height);
+
+  @include mixins.responsive-fixed-layout;
+
+  @media screen and (max-width: 425px) {
+    padding-right: var(--layout-padding-horizontal-small-device);
+    padding-left: var(--layout-padding-horizontal-small-device);
+  }
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  @media screen and (max-width: 350px) {
+    & > p {
+      display: none;
+    }
+  }
+}
+
+.logoText {
+  color: var(--color-primary);
+  font-weight: 900;
+  font-size: 2rem;
+}
+
+.searchbarWrapper {
+  width: 30rem;
+
+  @media screen and (max-width: 500px) {
+    width: 60%;
+  }
+  @media screen and (max-width: 350px) {
+    width: 80%;
+  }
+}
