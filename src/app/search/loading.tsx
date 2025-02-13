@@ -1,14 +1,12 @@
-import { BookList } from '@/components';
-
-import H1 from './_components/H1';
+import { BookList, H1 } from '@/components';
 
 const SKELETON_LIST_LENGTH = 5;
 
 const BookDetailsLoading = () => {
   return (
     <>
-      <H1 message="검색 중..." />
-      <BookList.Skeleton listTitle={'검색 목록'} listLength={SKELETON_LIST_LENGTH} />
+      <H1 contents="검색 중..." />
+      <BookList.Skeleton listTitle={''} listLength={SKELETON_LIST_LENGTH} />
     </>
   );
 };

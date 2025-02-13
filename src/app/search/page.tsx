@@ -1,6 +1,6 @@
+import { H1 } from '@/components';
 import { BOOK_SEARCH_CATEGORY_NAME } from '@/constants';
 
-import H1 from './_components/H1';
 import NotFoundResult from './_components/NotFoundResult';
 import SearchResult from './_components/SearchResult';
 import { getSearchBooks } from './_services/searchBooks';
@@ -53,7 +53,7 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
 
   return (
     <>
-      <H1 message={searchResultGuideMessage} />
+      <H1 contents={searchResultGuideMessage} />
       {initialSearchBooks.length > 0 ? (
         <SearchResult
           key={searchResultListTitle}

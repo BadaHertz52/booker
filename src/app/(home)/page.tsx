@@ -1,9 +1,11 @@
 import { Suspense } from 'react';
 
+import { getPopularBooks } from '@/services';
+
 import BookListSection from './_components/BookListSection';
 import BooksCarouselSection from './_components/BooksCarouselSection';
 import { getLastMonthLibrarianPick } from './_services';
-import { getPopularBooks, getRisingBooks } from './_services/books';
+import { getRisingBooks } from './_services/books';
 import styles from './page.module.scss';
 
 const TITLE = {
@@ -21,13 +23,14 @@ const AsyncBooksCarousel = async () => {
 };
 
 interface AsyncBooksParams {
+  linkHref?: string;
   title: string;
   getBooks: () => Promise<any>;
 }
-const AsyncBooks = async ({ title, getBooks }: AsyncBooksParams) => {
-  const books = await getBooks();
+const AsyncBooks = async ({ title, getBooks, linkHref }: AsyncBooksParams) => {
+  const { books } = await getBooks();
 
-  return <BookListSection.Loaded title={title} bookItemsData={books} />;
+  return <BookListSection.Loaded title={title} bookItemsData={books} linkHref={linkHref} />;
 };
 
 const Home = () => {
@@ -38,7 +41,7 @@ const Home = () => {
         <AsyncBooksCarousel />
       </Suspense>
       <Suspense fallback={<BookListSection.Skeleton listTitle={TITLE.popular} listLength={SKELTON_LIST_LENGTH} />}>
-        <AsyncBooks title={TITLE.popular} getBooks={getPopularBooks} />
+        <AsyncBooks title={TITLE.popular} getBooks={async () => await getPopularBooks({})} linkHref="books/popular" />
       </Suspense>
       <Suspense fallback={<BookListSection.Skeleton listTitle={TITLE.risingBooks} listLength={SKELTON_LIST_LENGTH} />}>
         <AsyncBooks title={TITLE.risingBooks} getBooks={getRisingBooks} />

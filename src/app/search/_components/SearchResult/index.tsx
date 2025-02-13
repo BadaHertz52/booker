@@ -6,6 +6,8 @@ import { BookList, ScrollObserver } from '@/components';
 import { GetSearchBooksParamsParams } from '@/services/endpoints/naruEndpoint';
 import { BookItemData } from '@/types';
 
+import { getSearchBooks } from '../../_services/searchBooks';
+
 interface SearchResultProps {
   title: string;
   initialSearchBooks: BookItemData[];
@@ -18,11 +20,18 @@ const SearchResult = ({ title, initialSearchBooks, initialIsLastPage, searchPara
 
   const updateBooks = (newBooks: BookItemData[]) => setBooks((prev) => [...prev, ...newBooks]);
 
+  const getNewBooks = async (nextPage: number) => {
+    const nextPageParams = { ...searchParams, pageNumber: String(nextPage) };
+    const { books: newBooks, isLastPage: lastPage } = await getSearchBooks(nextPageParams);
+
+    return { newBooks, lastPage };
+  };
+
   return (
     <div>
       <BookList.Loaded listTitle={title} bookItemsData={books} />
       <Suspense fallback={<BookList.Skeleton listTitle={''} listLength={3} />}>
-        <ScrollObserver searchParams={searchParams} updateBooks={updateBooks} initialIsLastPage={initialIsLastPage} />
+        <ScrollObserver updateBooks={updateBooks} initialIsLastPage={initialIsLastPage} getNewBooks={getNewBooks} />
       </Suspense>
     </div>
   );

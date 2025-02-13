@@ -1,10 +1,12 @@
 import { ERROR_MESSAGE, ERROR_NAME, ONE_DAY_IN_SECONDS } from '@/constants';
-import { throwRequestError } from '@/utils';
+import { NaruApiBookData } from '@/types';
+import { formatNaruApiBookDataToBookItemData, throwRequestError } from '@/utils';
 
-import { GetSearchBooksParamsParams, naruEndpoint } from '../endpoints/naruEndpoint';
+import { GetPopularBooksParamsProps, GetSearchBooksParamsParams, naruEndpoint } from '../endpoints/naruEndpoint';
 
-export const fetchPopularBooks = async () => {
-  const response = await fetch(naruEndpoint.popularBooks, {
+// --- 인기 대출 도서
+export const fetchPopularBooks = async (props: GetPopularBooksParamsProps) => {
+  const response = await fetch(naruEndpoint.gettingpopularBooks(props), {
     next: { revalidate: ONE_DAY_IN_SECONDS },
   });
 
@@ -20,6 +22,23 @@ export const fetchPopularBooks = async () => {
 
   return data;
 };
+/**
+ * 인기 대출 도서 데이터를 가져와서, 클라이언트에 필요한 형식으로 변경해 반환
+ */
+export const getPopularBooks = async (props: GetPopularBooksParamsProps) => {
+  const data = await fetchPopularBooks(props);
+  const { docs, numFound, resultNum } = data.response;
+  const books = docs.map(({ doc }: { doc: NaruApiBookData }) => {
+    return formatNaruApiBookDataToBookItemData(doc);
+  });
+
+  if (!props.pageNo) return { books, isLastPage: true };
+
+  const isLastPage = (Number(props.pageNo) - 1) * Number(props.pageSize) + resultNum >= numFound;
+
+  return { books, isLastPage };
+};
+// --- 인기 대츌 도서
 
 export const fetchRisingBooks = async () => {
   const response = await fetch(naruEndpoint.risingBooks, {
