@@ -21,6 +21,10 @@ export function extractPlainTextFromXML(rawContent: string): string {
     .replace(/<\/?[^>]+(>|$)/g, '') // 모든 HTML 태그 제거
     .replace(/&nbsp;/g, ' ') // 공백 문자 처리
     .replace(/&middot;/g, '·') // 특수 문자 처리
+    .replace(/&ldquo;/g, '"')
+    .replace(/&rdquo;/g, '"')
+    .replace(/&lsquo;/g, "'")
+    .replace(/&rsquo;/, "'")
     .replace(/\n\s*\n/g, '\n'); // 연속된 줄바꿈 정리
 
   return cleanText.trim(); // 앞뒤 공백 제거
