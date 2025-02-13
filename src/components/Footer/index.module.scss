@@ -1,0 +1,19 @@
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: var(--footer-height);
+  color: var(--color-gray500);
+  font-size: var(--font-size-small);
+
+  p {
+    height: fit-content;
+  }
+}
+
+.link {
+  &:hover {
+    color: var(--color-primary);
+  }
+}

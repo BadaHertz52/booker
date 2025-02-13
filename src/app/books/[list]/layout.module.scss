@@ -1,0 +1,10 @@
+@use '@/styles/mixins.scss' as mixins;
+
+.layout {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  min-height: inherit;
+
+  @include mixins.layout-padding;
+}

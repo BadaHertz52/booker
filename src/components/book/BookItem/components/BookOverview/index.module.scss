@@ -1,0 +1,86 @@
+@use '@/styles/mixins.scss' as mixins;
+@use '@/components/book/BookItem/_variables.scss' as variables;
+
+$info__gap: 0.4rem;
+
+@mixin overview-skeleton {
+  border-radius: var(--border-radius-small);
+
+  @include mixins.skeleton;
+}
+
+.overview {
+  display: flex;
+  flex-direction: column;
+  gap: $info__gap;
+  padding-right: 1rem;
+  width: calc(100% - variables.$img__width-basic - $info__gap);
+
+  @media screen and (max-width: 425px) {
+    width: calc(100% - variables.$img__width-small - $info__gap);
+  }
+}
+
+.bookTitle {
+  margin-bottom: 0.4rem;
+  width: 100%;
+  font-weight: var(--font-weight-semi-bold);
+
+  @include mixins.ellipsis;
+
+  @media screen and (max-width: 425px) {
+    font-size: var(--font-size-basic);
+  }
+}
+
+.bookDetail {
+  li {
+    width: 100%;
+
+    @include mixins.ellipsis;
+  }
+  li + li {
+    margin-top: 0.5rem;
+  }
+}
+
+.author {
+  font-size: var(--font-size-small);
+}
+
+.publication {
+  color: var(--color-gray500);
+  font-size: var(--font-size-xsmall);
+}
+
+.bookTitleSkeleton,
+.bookDetailSkeleton li {
+  height: var(--font-size-basic);
+  @include overview-skeleton;
+}
+
+.bookTitleSkeleton {
+  width: 10rem;
+}
+
+.bookDetailSkeleton {
+  li:nth-child(1) {
+    width: 12rem;
+  }
+
+  li:nth-child(2) {
+    width: 16rem;
+  }
+}
+
+.rankingIncrease {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  height: 1.8rem;
+  color: var(--color-gray500);
+  font-size: var(--font-size-small);
+  p {
+    height: 1.5rem;
+  }
+}

@@ -1,0 +1,15 @@
+@use '@/components/search/Searchbar/_variable' as vars;
+
+.input {
+  width: calc(
+    100% - vars.$category-container__width - vars.$category-container__margin - vars.$search-button__width -
+      vars.$search-button__margin
+  );
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  &::placeholder {
+    width: 100%;
+    color: var(--color-placeHolder);
+  }
+}
