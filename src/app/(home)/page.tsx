@@ -41,7 +41,7 @@ const Home = () => {
         <AsyncBooks title={TITLE.popular} getBooks={getPopularBooks} />
       </Suspense>
       <Suspense fallback={<BookListSection.Skeleton listTitle={TITLE.risingBooks} listLength={SKELTON_LIST_LENGTH} />}>
-        <AsyncBooks title={TITLE.popular} getBooks={getRisingBooks} />
+        <AsyncBooks title={TITLE.risingBooks} getBooks={getRisingBooks} />
       </Suspense>
     </div>
   );
