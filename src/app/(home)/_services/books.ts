@@ -1,13 +1,20 @@
 import { fetchPopularBooks, fetchRisingBooks } from '@/services';
-import { BookItemData, NaruApiBookData } from '@/types';
+import { GetPopularBooksParamsProps } from '@/services/endpoints/naruEndpoint';
+import { NaruApiBookData } from '@/types';
 import { formatNaruApiBookDataToBookItemData } from '@/utils';
 
-export const getPopularBooks = async (): Promise<BookItemData[]> => {
-  const data = await fetchPopularBooks();
-
-  return data.response.docs.map(({ doc }: { doc: NaruApiBookData }) => {
+export const getPopularBooks = async (props: GetPopularBooksParamsProps) => {
+  const data = await fetchPopularBooks(props);
+  const { docs, numFound, resultNum } = data.response;
+  const books = docs.map(({ doc }: { doc: NaruApiBookData }) => {
     return formatNaruApiBookDataToBookItemData(doc);
   });
+
+  if (!props.pageNo) return { books, isLastPage: true };
+
+  const isLastPage = (Number(props.pageNo) - 1) * Number(props.pageSize) + resultNum >= numFound;
+
+  return { books, isLastPage };
 };
 
 export const getRisingBooks = async () => {
@@ -17,5 +24,5 @@ export const getRisingBooks = async () => {
     return formatNaruApiBookDataToBookItemData(doc);
   });
 
-  return books;
+  return { books };
 };

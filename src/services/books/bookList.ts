@@ -1,12 +1,14 @@
 import { ERROR_MESSAGE, ERROR_NAME, ONE_DAY_IN_SECONDS } from '@/constants';
 import { throwRequestError } from '@/utils';
 
-import { GetSearchBooksParamsParams, naruEndpoint } from '../endpoints/naruEndpoint';
+import { GetPopularBooksParamsProps, GetSearchBooksParamsParams, naruEndpoint } from '../endpoints/naruEndpoint';
 
-export const fetchPopularBooks = async () => {
-  const response = await fetch(naruEndpoint.popularBooks, {
+export const fetchPopularBooks = async (props: GetPopularBooksParamsProps) => {
+  const response = await fetch(naruEndpoint.gettingpopularBooks(props), {
     next: { revalidate: ONE_DAY_IN_SECONDS },
   });
+  console.log('✨props///', props);
+  console.log('🌱result//', response);
 
   if (!response.ok) {
     throwRequestError({
