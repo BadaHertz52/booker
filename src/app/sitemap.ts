@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 
 const PRO_URL = 'https://booker-production-badahertz52s-projects.vercel.app';
 
-export const sitemap = (): MetadataRoute.Sitemap => {
+const sitemap = (): MetadataRoute.Sitemap => {
   return [
     {
       url: PRO_URL,
@@ -12,3 +12,5 @@ export const sitemap = (): MetadataRoute.Sitemap => {
     },
   ];
 };
+
+export default sitemap;
