@@ -34,6 +34,7 @@ export default async function RootLayout({
       <link rel="icon" href="/favicon.ico" sizes="any" />
       <body>
         <div id="root">
+          <div id="root__background"></div>
           <Suspense>
             <Topbar />
           </Suspense>
