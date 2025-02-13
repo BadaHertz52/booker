@@ -20,8 +20,6 @@ body {
 
 #root {
   position: relative;
-  -webkit-box-shadow: 0px 0px 21px 5px rgba(118, 118, 118, 0.27);
-  box-shadow: 0px 0px 21px 5px rgba(118, 118, 118, 0.27);
   background-color: var(--color-white);
   padding-top: var(--topbar-height);
   padding-bottom: 0;
@@ -30,6 +28,16 @@ body {
   @include mixins.responsive-layout-width;
 }
 
+#root__background {
+  z-index: -1;
+  -webkit-box-shadow: 0px 0px 21px 5px rgba(118, 118, 118, 0.27);
+  box-shadow: 0px 0px 21px 5px rgba(118, 118, 118, 0.27);
+  background-color: var(--color-white);
+  padding-top: var(--topbar-height);
+  height: 100vh;
+
+  @include mixins.responsive-fixed-layout;
+}
 #portal-root {
   z-index: var(--portal-z-index);
   border: none;
