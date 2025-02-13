@@ -5,6 +5,10 @@ import NotFoundResult from './_components/NotFoundResult';
 import SearchResult from './_components/SearchResult';
 import { getSearchBooks } from './_services/searchBooks';
 
+const MAX_SEARCH_KEYWORD_LENGTH = 16;
+const INVALIDATED_CATEGORY_MESSAGE = '유효하지 않은 카테고리에요 (운영진에게 문의해주세요)';
+type Category = keyof typeof BOOK_SEARCH_CATEGORY_NAME;
+
 interface SearchPageProps {
   searchParams: Promise<{
     keyword: string;
@@ -12,9 +16,14 @@ interface SearchPageProps {
   }>;
 }
 
-const MAX_SEARCH_KEYWORD_LENGTH = 16;
-const INVALIDATED_CATEGORY_MESSAGE = '유효하지 않은 카테고리에요 (운영진에게 문의해주세요)';
-type Category = keyof typeof BOOK_SEARCH_CATEGORY_NAME;
+export const generateMetadata = async ({ searchParams }: SearchPageProps) => {
+  const params = await searchParams;
+  const { keyword } = params;
+
+  return {
+    title: `BOOKER - '${keyword}' 검색 결과`,
+  };
+};
 
 const SearchPage = async ({ searchParams }: SearchPageProps) => {
   const params = await searchParams;
