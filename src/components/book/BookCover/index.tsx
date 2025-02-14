@@ -6,13 +6,13 @@ import NoCoverImg from '@/images/noCover.svg';
 import { BookItemData } from '@/types';
 
 import styles from './index.module.scss';
-
 interface BookCoverLoadedProps {
+  imgWidth?: number;
   classNameForWidth: string;
   bookItemData: BookItemData;
 }
 
-const BookCoverLoaded = ({ bookItemData, classNameForWidth }: BookCoverLoadedProps) => {
+const BookCoverLoaded = ({ bookItemData, classNameForWidth, imgWidth = 100 }: BookCoverLoadedProps) => {
   return (
     <div className={classNames(styles.imgWrapper, classNameForWidth)}>
       <Image
@@ -20,7 +20,9 @@ const BookCoverLoaded = ({ bookItemData, classNameForWidth }: BookCoverLoadedPro
         placeholder="blur"
         blurDataURL={gray200BlurDataURL}
         alt=""
-        fill
+        width={imgWidth}
+        height={(imgWidth * 3) / 2}
+        quality={100}
       />
     </div>
   );

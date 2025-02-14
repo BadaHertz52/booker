@@ -7,7 +7,7 @@ const ScrollObserver = (props: UseFetchBooksActionProps) => {
   const { fetchMoreBooksAction, isPending, isLastPage } = useFetchBooksAction(props);
   const { observerTargetRef } = useObserver({ isLastPage, isPending, fetchMoreBooksAction });
 
-  return <>{!isLastPage && <div ref={observerTargetRef} style={{ height: '1px' }} />}</>;
+  return <>{!isLastPage && <div ref={observerTargetRef} style={{ minHeight: '1px' }} />}</>;
 };
 
 export default ScrollObserver;
