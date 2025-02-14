@@ -12,7 +12,7 @@ interface BookCoverLoadedProps {
   bookItemData: BookItemData;
 }
 
-const BookCoverLoaded = ({ bookItemData, classNameForWidth, imgWidth = 400 }: BookCoverLoadedProps) => {
+const BookCoverLoaded = ({ bookItemData, classNameForWidth, imgWidth = 100 }: BookCoverLoadedProps) => {
   return (
     <div className={classNames(styles.imgWrapper, classNameForWidth)}>
       <Image
@@ -22,6 +22,7 @@ const BookCoverLoaded = ({ bookItemData, classNameForWidth, imgWidth = 400 }: Bo
         alt=""
         width={imgWidth}
         height={(imgWidth * 3) / 2}
+        quality={100}
       />
     </div>
   );
