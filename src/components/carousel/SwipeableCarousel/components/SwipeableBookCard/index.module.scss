@@ -1,6 +1,7 @@
 @use '@/styles/mixins' as mixins;
 
 $img__width-basic: 10rem;
+$img__width-small: 7rem;
 
 .container {
   display: flex;
@@ -8,10 +9,18 @@ $img__width-basic: 10rem;
   align-items: center;
   gap: 1rem;
   width: $img__width-basic;
+
+  @media screen and (max-width: 425px) {
+    width: $img__width-small;
+  }
 }
 
 .cover {
   width: $img__width-basic;
+
+  @media screen and (max-width: 425px) {
+    width: $img__width-small;
+  }
 }
 
 .bookInfo {
