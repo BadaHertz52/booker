@@ -24,6 +24,7 @@ const BookCoverLayout = ({ bookDetailData }: BookCoverLayoutProps) => {
             fill
             placeholder="blur"
             blurDataURL={gray200BlurDataURL}
+            quality={100}
           />
         ) : (
           <div className={styles.coverImageSkeleton}></div>

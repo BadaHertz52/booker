@@ -42,9 +42,9 @@ $backdrop-filter-brightness: 110%;
   -webkit-box-shadow: 0px 0px 40px 6px rgba(9, 9, 9, 0.3);
   box-shadow: 0px 0px 40px 6px rgba(109, 108, 108, 0.3);
   border-radius: $img-border-radius;
+  aspect-ratio: 2/3;
 
   width: 20rem;
-  height: 32rem;
   img {
     border-radius: inherit;
   }
