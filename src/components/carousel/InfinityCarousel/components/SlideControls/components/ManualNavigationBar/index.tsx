@@ -16,6 +16,7 @@ interface ManualNavigationButtonProps {
 const ManualNavigationButton = ({ isPrev = false, disabled, handleNavigationClick }: ManualNavigationButtonProps) => {
   return (
     <button disabled={disabled} onClick={() => handleNavigationClick(isPrev)}>
+      <span className="sr-only">{isPrev ? '이전 버튼' : '다음 버튼'}</span>
       <Image src={isPrev ? ArrowLeftIcon : ArrowRightIcon} height={10} alt="" />
     </button>
   );

@@ -50,6 +50,7 @@ const Searchbar = ({ categoryInfo, processSearch, initialFormData }: Props) => {
         initialSearchValue={initialFormData?.searchValue}
       />
       <button type="submit" className={styles.searchButton} disabled={isPending}>
+        <span className="sr-only">검색 버튼</span>
         <Image src={SearchIcon} alt="" width={17} height={18} />
       </button>
       {isOpenToast && (
