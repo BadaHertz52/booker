@@ -6,6 +6,7 @@ import { useAutoSlide, UseAutoSlideProps } from './hooks/useAutoSlide';
 import styles from './index.module.scss';
 
 interface SlideControlsProps extends UseAutoSlideProps {
+  isFocused: boolean;
   isAbleControlSlide: boolean;
   currentCardIndex: number;
   cardsLength: number;
@@ -15,6 +16,7 @@ interface SlideControlsProps extends UseAutoSlideProps {
 }
 
 const SlideControls = ({
+  isFocused,
   isAbleControlSlide,
   currentCardIndex,
   cardsLength,
@@ -23,7 +25,11 @@ const SlideControls = ({
   moveToPrevSlide,
   autoSlideInterval,
 }: SlideControlsProps) => {
-  const { isAutoSlide, toggleAutoSlide, clearSlideInterval } = useAutoSlide({ autoSlideInterval, moveToNextSlide });
+  const { isAutoSlide, toggleAutoSlide, clearSlideInterval } = useAutoSlide({
+    autoSlideInterval,
+    moveToNextSlide,
+    isFocused,
+  });
 
   const handleNavigationClick = (isPrev: boolean) => {
     adjustTransitionToManualSpeed();

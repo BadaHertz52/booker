@@ -13,7 +13,7 @@ interface BookOverviewLoadedProps {
 const BookOverviewLoaded = ({ bookItemData }: BookOverviewLoadedProps) => {
   return (
     <div className={styles.overview}>
-      <h3 className={styles.bookTitle}>{bookItemData.title}</h3>
+      <p className={styles.bookTitle}>{bookItemData.title}</p>
       <ul className={styles.bookDetail}>
         <li className={styles.author}>
           <span>{`${bookItemData.author} 저자(글)`}</span>

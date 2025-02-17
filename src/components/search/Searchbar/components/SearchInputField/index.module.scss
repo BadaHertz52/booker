@@ -2,8 +2,7 @@
 
 .input {
   width: calc(
-    100% - vars.$category-container__width - vars.$category-container__margin - vars.$search-button__width -
-      vars.$search-button__margin
+    100% - vars.$category-container__width - vars.$search-button__width - vars.$search-button__margin - (vars.$gap * 2)
   );
   overflow-x: hidden;
   text-overflow: ellipsis;

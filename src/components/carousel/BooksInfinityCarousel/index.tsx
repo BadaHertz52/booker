@@ -1,15 +1,12 @@
 import classNames from 'classnames';
-import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
 
 import { NoBooksYet } from '@/components/common';
-import { gray200BlurDataURL } from '@/constants';
-import NoCoverImage from '@/images/noCover.svg';
 import { BookSimpleInfo } from '@/types';
 
 import InfinityCarousel, { InfinityCarouselProps } from '../InfinityCarousel';
 
+import BookCard from './components/BookCard';
 import styles from './index.module.scss';
 
 export interface BooksInfinityCarouselProps
@@ -24,44 +21,12 @@ const BooksInfinityCarouselLayout = ({ children }: { children: React.ReactNode }
 const BooksInfinityCarouselLoaded = ({ booksSimpleInfo, title }: BooksInfinityCarouselProps) => {
   if (booksSimpleInfo.length === 0) return <EmptyBooks title={title} />;
   const cardsInfoForScreenReader = booksSimpleInfo.map((book) => ({ title: book.title }));
-  const makeAuthors = (book: BookSimpleInfo) => {
-    let authors = `${book.author} 저자`;
 
-    if (book.translator) {
-      authors += `﹒${book.translator} 옮김`;
-    }
-    return authors;
-  };
   return (
     <BooksInfinityCarouselLayout>
       <InfinityCarousel title={title} cardsInfoForScreenReader={cardsInfoForScreenReader}>
-        {booksSimpleInfo.map((book) => (
-          <Link
-            aria-label={`링크 선택 시, ${book.title} 도서 상세 페이지로 이동합니다.`}
-            className={styles.fullWidthCard}
-            href={`/book/${book.isbn}`}
-            key={book.isbn}
-          >
-            <div className={styles.bookCover}>
-              <div className={styles.imgWrapper}>
-                <Image
-                  src={book.coverImageUrl !== '' ? book.coverImageUrl : NoCoverImage}
-                  alt={book.title}
-                  fill
-                  blurDataURL={gray200BlurDataURL}
-                />
-              </div>
-            </div>
-            <div className={styles.bookInfo}>
-              <h3 className={styles.bookTitle}>{book.title}</h3>
-              <ul>
-                <li className={styles.bookAuthorAndPublisher}>
-                  {makeAuthors(book)}&nbsp;/&nbsp;{book.publisher}
-                </li>
-                <li className={styles.bookContent}>{book.content}</li>
-              </ul>
-            </div>
-          </Link>
+        {booksSimpleInfo.map((book, index) => (
+          <BookCard key={book.isbn} book={book} imgPriority={index === 0} />
         ))}
       </InfinityCarousel>
     </BooksInfinityCarouselLayout>

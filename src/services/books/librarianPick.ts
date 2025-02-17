@@ -1,6 +1,6 @@
 import { ERROR_MESSAGE, ERROR_NAME, ONE_DAY_IN_SECONDS } from '@/constants';
 import { ApiLibrarianPickData, BookSimpleInfo } from '@/types';
-import { extractPlainTextFromXML, parseXmlToJson, throwRequestError } from '@/utils';
+import { extractPlainTextFromXML, parseXmlToJson, throwRequestError, truncateText } from '@/utils';
 
 import { publicLibraryEndpoint } from '../index';
 
@@ -47,6 +47,7 @@ const formatLastMonthLibrarianPick = (data: any) => {
   const {
     channel: { list },
   } = data;
+  const MAX_CONTENT_LENGTH = 100;
 
   const result: BookSimpleInfo[] = list.map(({ item }: ApiLibrarianPickData) => {
     let author = item.recomauthor.replace('지음', '').trim();
@@ -57,6 +58,8 @@ const formatLastMonthLibrarianPick = (data: any) => {
       author = splitedText[0].trim().replace('지음', '');
       translator = splitedText[1].trim().replace('옮김', '');
     }
+    const recomcontents = extractPlainTextFromXML(item.recomcontens);
+    const content = truncateText({ text: recomcontents, maxLength: MAX_CONTENT_LENGTH });
 
     const info: BookSimpleInfo = {
       title: item.recomtitle,
@@ -65,7 +68,7 @@ const formatLastMonthLibrarianPick = (data: any) => {
       publisher: item.recompublisher,
       isbn: item.recomisbn,
       coverImageUrl: item.recomfilepath,
-      content: extractPlainTextFromXML(item.recomcontens),
+      content,
     };
     return info;
   });

@@ -1,8 +1,6 @@
 @use '@/styles/mixins' as mixins;
 
 .topbar {
-  display: flex;
-  justify-content: space-between;
   z-index: var(--topbar-z-index);
   background-color: var(--color-white);
   padding: 1.6rem var(--layout-padding-horizontal);
@@ -13,6 +11,34 @@
   @media screen and (max-width: 425px) {
     padding-right: var(--layout-padding-horizontal-small-device);
     padding-left: var(--layout-padding-horizontal-small-device);
+  }
+}
+.topbarInner {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.skipLink {
+  position: absolute;
+  z-index: 2;
+  border-radius: var(--border-radius-basic);
+  background-color: #dbd9d9e3;
+  padding: 1rem 1.4rem;
+  font-weight: var(--font-weight-semi-bold);
+  font-size: var(--font-size-small);
+
+  @include mixins.responsive-fixed-layout;
+
+  & {
+    top: -999px;
+    left: 1rem;
+    width: 0;
+  }
+
+  &:focus {
+    top: 1rem;
+    width: fit-content;
   }
 }
 
