@@ -100,6 +100,7 @@ const InfinityCarousel = ({
         handleTransitionRun={handleTransitionRun}
       />
       <SlideControls
+        isFocused={isFocused}
         isAbleControlSlide={isAbleControlSlide}
         currentCardIndex={currentCardIndex}
         cardsLength={cards.length}
