@@ -3,3 +3,12 @@
   flex-direction: row;
   list-style: none;
 }
+
+.card {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.inactive {
+  opacity: 0;
+}
