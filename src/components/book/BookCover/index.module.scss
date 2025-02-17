@@ -3,11 +3,12 @@
 
 .imgWrapper {
   position: relative;
-  aspect-ratio: 2/3;
+
   & > img {
     border-radius: var(--book-cover-border-radius);
+    aspect-ratio: 2/3;
     width: inherit;
-    height: auto;
+    height: 100%;
   }
 }
 
