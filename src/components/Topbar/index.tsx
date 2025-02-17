@@ -6,7 +6,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
 
 import { Searchbar } from '@/components';
-import { BOOK_SEARCH_CATEGORY_NAME } from '@/constants';
+import { BOOK_SEARCH_CATEGORY_NAME, gray200BlurDataURL } from '@/constants';
+import BookerIcon from '@/images/booker.svg';
 import LogoIcon from '@/images/logo.svg';
 
 import { ProcessSearchFunction, ProcessSearchParams } from '../search/Searchbar/action/searchAction';
@@ -38,10 +39,24 @@ const Topbar = () => {
           aria-label="BOOKER 로고 : 클릭 시 홈으로 돌아가기"
           prefetch={false}
         >
-          <Image src={LogoIcon} alt="" width={30} height={30} aria-hidden />
-          <p className={styles.logoText} aria-hidden>
-            BOOKER
-          </p>
+          <Image
+            src={LogoIcon}
+            alt=""
+            width={30}
+            height={30}
+            aria-hidden
+            placeholder="blur"
+            blurDataURL={gray200BlurDataURL}
+          />
+          <Image
+            src={BookerIcon}
+            alt=""
+            height={30}
+            width={83}
+            aria-hidden
+            placeholder="blur"
+            blurDataURL={gray200BlurDataURL}
+          />
         </Link>
         <div className={styles.searchbarWrapper}>
           <Searchbar
