@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import React from 'react';
 
 import styles from './index.module.scss';
@@ -36,7 +37,11 @@ const SlideDisplay = ({
       }}
     >
       {slides.map((card, index) => (
-        <li ref={cardRef} key={`${title}card-${index}`}>
+        <li
+          ref={cardRef}
+          key={`${title}card-${index}`}
+          className={classNames(styles.card, { [styles.inactive]: currentSlideIndex !== index })}
+        >
           {React.cloneElement(card, {
             'aria-hidden': currentSlideIndex !== index,
             tabIndex: currentSlideIndex === index ? 0 : -1,
