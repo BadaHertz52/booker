@@ -32,10 +32,11 @@ const BooksInfinityCarouselLoaded = ({ booksSimpleInfo, title }: BooksInfinityCa
     }
     return authors;
   };
+
   return (
     <BooksInfinityCarouselLayout>
       <InfinityCarousel title={title} cardsInfoForScreenReader={cardsInfoForScreenReader}>
-        {booksSimpleInfo.map((book) => (
+        {booksSimpleInfo.map((book, index) => (
           <Link
             aria-label={`링크 선택 시, ${book.title} 도서 상세 페이지로 이동합니다.`}
             className={styles.fullWidthCard}
@@ -49,6 +50,7 @@ const BooksInfinityCarouselLoaded = ({ booksSimpleInfo, title }: BooksInfinityCa
                   alt={book.title}
                   fill
                   blurDataURL={gray200BlurDataURL}
+                  priority={index === 0}
                 />
               </div>
             </div>
