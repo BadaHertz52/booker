@@ -28,23 +28,28 @@ const Topbar = () => {
 
   return (
     <header className={styles.topbar}>
-      <Link
-        className={styles.logoContainer}
-        href="/"
-        aria-label="BOOKER 로고 : 클릭 시 홈으로 돌아가기"
-        prefetch={false}
-      >
-        <Image src={LogoIcon} alt="" width={30} height={30} aria-hidden />
-        <p className={styles.logoText} aria-hidden>
-          BOOKER
-        </p>
-      </Link>
-      <div className={styles.searchbarWrapper}>
-        <Searchbar
-          categoryInfo={BOOK_SEARCH_CATEGORY_NAME}
-          processSearch={processSearch}
-          initialFormData={initialFormData}
-        />
+      <a className={styles.skipLink} href="#main">
+        본문 건너뛰기
+      </a>
+      <div className={styles.topbarInner}>
+        <Link
+          className={styles.logoContainer}
+          href="/"
+          aria-label="BOOKER 로고 : 클릭 시 홈으로 돌아가기"
+          prefetch={false}
+        >
+          <Image src={LogoIcon} alt="" width={30} height={30} aria-hidden />
+          <p className={styles.logoText} aria-hidden>
+            BOOKER
+          </p>
+        </Link>
+        <div className={styles.searchbarWrapper}>
+          <Searchbar
+            categoryInfo={BOOK_SEARCH_CATEGORY_NAME}
+            processSearch={processSearch}
+            initialFormData={initialFormData}
+          />
+        </div>
       </div>
     </header>
   );

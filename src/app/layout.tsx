@@ -38,7 +38,7 @@ export default async function RootLayout({
           <Suspense>
             <Topbar />
           </Suspense>
-          <main>{children}</main>
+          <main id="main">{children}</main>
           <Footer />
         </div>
         {modal}
