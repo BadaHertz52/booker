@@ -17,7 +17,7 @@ export interface InfinityCarouselProps {
   autoSlideDuration?: number;
   autoSlideInterval?: number;
   manualSlideDuration?: number;
-  children: React.ReactElement<HTMLElement>[];
+  children: React.ReactElement<React.HTMLAttributes<HTMLElement>>[];
   cardsInfoForScreenReader: CardInfoForScreenReader[];
 }
 const InfinityCarousel = ({
