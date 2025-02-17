@@ -12,7 +12,6 @@ interface BookCoverLayoutProps {
 const BookCoverLayout = ({ bookDetailData }: BookCoverLayoutProps) => {
   return (
     <div
-      aria-hidden="true"
       className={styles.coverImageContainer}
       style={bookDetailData ? { backgroundImage: `url(${bookDetailData.coverImageUrl})` } : {}}
     >
