@@ -15,6 +15,7 @@ export interface AutoPlayButtonProps {
 const AutoPlayButton = ({ isAutoSlide, disabled, handlePlayButtonClick }: AutoPlayButtonProps) => {
   return (
     <button onClick={handlePlayButtonClick} disabled={disabled} className={styles.button}>
+      <span className="sr-only">{isAutoSlide ? '일시 정지 버튼' : '재생 버튼'}</span>
       <Image src={isAutoSlide ? PauseIcon : PlayIcon} height={10} alt="" />
     </button>
   );

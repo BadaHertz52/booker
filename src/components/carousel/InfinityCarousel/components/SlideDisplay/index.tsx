@@ -5,7 +5,7 @@ import styles from './index.module.scss';
 interface SlideDisplayProps {
   title: string;
   cardRef: React.RefObject<HTMLLIElement | null>;
-  slides: React.ReactElement<HTMLElement>[];
+  slides: React.ReactElement<React.HTMLAttributes<HTMLElement>>[];
   cardWidth: number;
   currentSlideIndex: number;
   isTransitioning: boolean;
@@ -36,8 +36,11 @@ const SlideDisplay = ({
       }}
     >
       {slides.map((card, index) => (
-        <li ref={cardRef} key={`${title}card-${index}`} aria-hidden={currentSlideIndex !== index}>
-          {card}
+        <li ref={cardRef} key={`${title}card-${index}`}>
+          {React.cloneElement(card, {
+            'aria-hidden': currentSlideIndex !== index,
+            tabIndex: currentSlideIndex === index ? 0 : -1,
+          } as any)}
         </li>
       ))}
     </ul>

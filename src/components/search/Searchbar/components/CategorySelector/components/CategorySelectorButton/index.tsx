@@ -40,7 +40,6 @@ const CategorySelectorButton = ({
         alt=""
         width={10}
         height={8}
-        aria-hidden="true"
       />
       <span aria-hidden="true" className={styles.bar}>
         |
