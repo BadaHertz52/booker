@@ -1,4 +1,5 @@
 import { H1 } from '@/components';
+import { BOOKS_TITLE } from '@/constants';
 
 import styles from './layout.module.scss';
 
@@ -14,7 +15,7 @@ export const generateMetadata = async ({ params }: { params: BooksPageParams }) 
   const { list } = await params;
 
   return {
-    title: `BOOKER - ${TITLE[list]}`,
+    title: `BOOKER - ${BOOKS_TITLE[list]}`,
   };
 };
 
