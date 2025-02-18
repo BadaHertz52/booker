@@ -9,9 +9,9 @@ const meta: Meta<typeof BookDetails.Loaded> = {
   tags: ['autodocs'],
   decorators: [
     (Story) => (
-      <ul style={{ border: '1px solid black', padding: '1rem', borderRadius: '1rem', width: '45rem' }}>
+      <div style={{ border: '1px solid black', padding: '1rem', borderRadius: '1rem', width: '45rem' }}>
         <Story />
-      </ul>
+      </div>
     ),
   ],
   argTypes: {
