@@ -2,7 +2,7 @@ import { BookList, H1 } from '@/components';
 
 const SKELETON_LIST_LENGTH = 5;
 
-const SearchPageLoading = () => {
+const BookDetailsLoading = () => {
   return (
     <>
       <H1 contents="검색 중..." />
@@ -11,4 +11,4 @@ const SearchPageLoading = () => {
   );
 };
 
-export default SearchPageLoading;
+export default BookDetailsLoading;

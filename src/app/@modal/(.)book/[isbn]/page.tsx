@@ -1,17 +1,24 @@
 import { Suspense } from 'react';
 
-import BookDetailsLoading from '@/app/book/[isbn]/loading';
+import { BookDetails } from '@/app/book/[isbn]/_components';
 import BookDetailsPage, { BookDetailsPageParams } from '@/app/book/[isbn]/page';
+import styles from '@/app/book/[isbn]/page.module.scss';
 import { FullScreenModal } from '@/components';
 
-const BookDetailsModal = async ({ params }: BookDetailsPageParams) => {
+const BookDetailModal = async ({ params }: BookDetailsPageParams) => {
   return (
     <FullScreenModal>
-      <Suspense fallback={<BookDetailsLoading />}>
+      <Suspense
+        fallback={
+          <div className={styles.container}>
+            <BookDetails.Skeleton />
+          </div>
+        }
+      >
         <BookDetailsPage params={params} />
       </Suspense>
     </FullScreenModal>
   );
 };
 
-export default BookDetailsModal;
+export default BookDetailModal;

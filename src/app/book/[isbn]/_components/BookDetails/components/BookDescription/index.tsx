@@ -46,6 +46,13 @@ const BookDescriptionSkeleton = () => {
         <div className={styles.h3Skeleton} />
         <div className={styles.categorySkeleton} />
       </div>
+      <div className={styles.bookLoadedSkeleton}>
+        <div className={styles.h3Skeleton} />
+        <div className={styles.contentSkeleton}>
+          <p />
+          <p />
+        </div>
+      </div>
     </div>
   );
 };
