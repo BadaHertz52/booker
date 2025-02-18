@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { BookListPageLayout, TITLE } from '@/app/books/[list]/layout';
 import BookListLoading from '@/app/books/[list]/loading';
+import { BOOKS_TITLE } from '@/constants';
 
-const LoadingComponent = ({ list }: { list: keyof typeof TITLE }) => {
+const LoadingComponent = ({ list }: { list: keyof typeof BOOKS_TITLE }) => {
   return (
     <BookListPageLayout list={list}>
       <BookListLoading />
