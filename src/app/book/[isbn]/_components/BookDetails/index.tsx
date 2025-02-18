@@ -1,5 +1,3 @@
-import classNames from 'classnames';
-
 import type { BookDetailData } from '@/types/books';
 
 import BookCover from './components/BookCover';
@@ -12,21 +10,21 @@ interface BookDetailProps {
 
 const BookDetailsLoaded = ({ bookDetailData }: BookDetailProps) => {
   return (
-    <article className={styles.container}>
+    <section className={styles.container}>
       <BookCover.Loaded bookDetailData={bookDetailData} />
       <BookOverview.Loaded bookDetailData={bookDetailData} />
       <BookDescription.Loaded bookDetailData={bookDetailData} />
-    </article>
+    </section>
   );
 };
 
 const BookDetailsSkeleton = () => {
   return (
-    <article className={classNames(styles.container, styles.containerSkeleton)}>
+    <section className={styles.container}>
       <BookCover.Skeleton />
       <BookOverview.Skeleton />
       <BookDescription.Skeleton />
-    </article>
+    </section>
   );
 };
 

@@ -14,8 +14,8 @@
 
 .imgSkeleton {
   border-radius: var(--book-cover-border-radius);
-  aspect-ratio: 2/3;
   width: 100%;
+  height: 100%;
 
   @include mixins.skeleton;
 }

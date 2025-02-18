@@ -2,8 +2,8 @@ import { BookList } from '@/components';
 
 const SKELETON_LIST_LENGTH = 6;
 
-const BookListLoading = () => {
+const BookDetailsLoading = () => {
   return <BookList.Skeleton listTitle={''} listLength={SKELETON_LIST_LENGTH} />;
 };
 
-export default BookListLoading;
+export default BookDetailsLoading;

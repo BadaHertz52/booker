@@ -27,6 +27,10 @@ $info__gap: 0.4rem;
   font-weight: var(--font-weight-semi-bold);
 
   @include mixins.ellipsis;
+
+  @media screen and (max-width: 425px) {
+    font-size: var(--font-size-basic);
+  }
 }
 
 .bookDetail {
@@ -49,16 +53,14 @@ $info__gap: 0.4rem;
   font-size: var(--font-size-xsmall);
 }
 
+.bookTitleSkeleton,
 .bookDetailSkeleton li {
   height: var(--font-size-basic);
   @include overview-skeleton;
 }
 
 .bookTitleSkeleton {
-  margin-bottom: 0.4rem;
   width: 10rem;
-  height: 1.8rem;
-  @include overview-skeleton;
 }
 
 .bookDetailSkeleton {

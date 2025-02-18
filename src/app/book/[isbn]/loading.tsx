@@ -1,13 +1,11 @@
-import { BookDetails, RelatedBooks } from './_components';
+import { BookDetails } from './_components';
 import styles from './page.module.scss';
-
-const BookDetailsLoading = () => {
+const BookDetailLoading = () => {
   return (
     <div className={styles.container}>
       <BookDetails.Skeleton />
-      <RelatedBooks.Skeleton title="" />
     </div>
   );
 };
 
-export default BookDetailsLoading;
+export default BookDetailLoading;

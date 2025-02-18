@@ -1,12 +1,7 @@
 import BookDetailLoading from '@/app/book/[isbn]/loading';
-import { FullScreenModal } from '@/components';
 
-const BookDetailsModalLoading = () => {
-  return (
-    <FullScreenModal>
-      <BookDetailLoading />
-    </FullScreenModal>
-  );
+const Loading = () => {
+  return <BookDetailLoading />;
 };
 
-export default BookDetailsModalLoading;
+export default Loading;
