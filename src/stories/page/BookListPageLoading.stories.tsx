@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
+import { BookListPageLayout } from '@/app/books/[list]/_components/PageLayout';
 import BookListLoading from '@/app/books/[list]/loading';
 import { BOOKS_TITLE } from '@/constants';
 
