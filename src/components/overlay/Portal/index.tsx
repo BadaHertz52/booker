@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 
+import useKeydownPortal from './hooks/useKeydownPortal';
 import styles from './index.module.scss';
 
 interface Props {
@@ -12,22 +13,20 @@ interface Props {
   extraClassName?: string;
 }
 const Portal = ({ handleClosePortal, children, extraClassName }: Props) => {
-  const divRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
   const [portalRoot, setPortalRoot] = useState<HTMLElement | null>(null);
 
+
   const handleClick = (e: MouseEvent) => {
-    if (!divRef.current) return;
+    if (!modalRef.current) return;
     if (!(e.target instanceof HTMLElement)) return;
 
-    if (!divRef.current.contains(e.target) && handleClosePortal) {
+    if (!modalRef.current.contains(e.target) && handleClosePortal) {
       handleClosePortal();
     }
   };
 
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.code === 'Escape' && handleClosePortal) handleClosePortal();
-  };
-
+  useKeydownPortal({ modalRef, portalRoot, handleClosePortal });
   useEffect(() => {
     const root = document.getElementById('portal-root');
     setPortalRoot(root);
@@ -36,12 +35,10 @@ const Portal = ({ handleClosePortal, children, extraClassName }: Props) => {
   useEffect(() => {
     if (!handleClosePortal) return;
     document.addEventListener('click', handleClick);
-    document.addEventListener('keydown', handleKeyDown);
 
     return () => {
       if (!handleClosePortal) return;
       document.removeEventListener('click', handleClick);
-      document.removeEventListener('keydown', handleKeyDown);
     };
   }, []);
 
@@ -51,7 +48,7 @@ const Portal = ({ handleClosePortal, children, extraClassName }: Props) => {
     <div
       role="dialog"
       aria-label="portal"
-      ref={divRef}
+      ref={modalRef}
       className={classNames(styles.portal, { [extraClassName as string]: extraClassName })}
     >
       {children}
