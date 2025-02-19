@@ -31,19 +31,12 @@ const Portal = ({ handleClosePortal, children, extraClassName, a11yMessage }: Pr
   return createPortal(
     <div
       role="dialog"
-      aria-label={'portal'}
+      aria-label={a11yMessage ?? 'portal'}
       ref={modalRef}
       className={classNames(styles.portal, { [extraClassName as string]: extraClassName })}
+      //eslint-disable-next-line
+      tabIndex={0}
     >
-      {a11yMessage && (
-        <p
-          className="sr-only"
-          //eslint-disable-next-line
-          tabIndex={0}
-        >
-          {a11yMessage}
-        </p>
-      )}
       {children}
     </div>,
     portalRoot,

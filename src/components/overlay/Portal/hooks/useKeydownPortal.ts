@@ -9,7 +9,7 @@ interface UseKeydownPortalProps {
 }
 
 const useKeydownPortal = ({ portalRoot, modalRef, handleClosePortal }: UseKeydownPortalProps) => {
-  const [focusableElements, setFocusableElements] = useState<NodeListOf<HTMLElement> | null>(null);
+  const [focusableElements, setFocusableElements] = useState<HTMLElement[] | null>(null);
   const focusCountRef = useRef(0);
   const updateFocusableElement = () => {
     if (!modalRef.current) return;
@@ -18,7 +18,7 @@ const useKeydownPortal = ({ portalRoot, modalRef, handleClosePortal }: UseKeydow
       'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])',
     );
 
-    setFocusableElements(elements);
+    setFocusableElements([modalRef.current, ...elements]);
   };
 
   const handleTab = (e: KeyboardEvent) => {
