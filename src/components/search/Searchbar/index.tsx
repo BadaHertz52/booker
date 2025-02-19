@@ -54,7 +54,7 @@ const Searchbar = ({ categoryInfo, processSearch, initialFormData }: Props) => {
         <Image src={SearchIcon} alt="" width={17} height={18} />
       </button>
       {isOpenToast && (
-        <Toast handleCloseToast={handleCloseToast}>
+        <Toast handleCloseToast={handleCloseToast} a11yMessage="검색 오류 안내">
           <p>{state?.error}</p>
         </Toast>
       )}

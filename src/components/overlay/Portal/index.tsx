@@ -12,13 +12,15 @@ interface Props {
   handleClosePortal?: () => void;
   children: React.ReactNode;
   extraClassName?: string;
+  a11yMessage?: string;
 }
-const Portal = ({ handleClosePortal, children, extraClassName }: Props) => {
+const Portal = ({ handleClosePortal, children, extraClassName, a11yMessage }: Props) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const [portalRoot, setPortalRoot] = useState<HTMLElement | null>(null);
 
   useKeydownPortal({ modalRef, portalRoot, handleClosePortal });
   useClickPortal({ modalRef, handleClosePortal });
+
   useEffect(() => {
     const root = document.getElementById('portal-root');
     setPortalRoot(root);
@@ -29,10 +31,19 @@ const Portal = ({ handleClosePortal, children, extraClassName }: Props) => {
   return createPortal(
     <div
       role="dialog"
-      aria-label="portal"
+      aria-label={'portal'}
       ref={modalRef}
       className={classNames(styles.portal, { [extraClassName as string]: extraClassName })}
     >
+      {a11yMessage && (
+        <p
+          className="sr-only"
+          //eslint-disable-next-line
+          tabIndex={0}
+        >
+          {a11yMessage}
+        </p>
+      )}
       {children}
     </div>,
     portalRoot,

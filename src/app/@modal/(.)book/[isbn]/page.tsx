@@ -6,7 +6,7 @@ import { FullScreenModal } from '@/components';
 
 const BookDetailsModal = async ({ params }: BookDetailsPageParams) => {
   return (
-    <FullScreenModal>
+    <FullScreenModal a11yMessage="도서 상세 정보 모달">
       <Suspense fallback={<BookDetailsLoading />}>
         <BookDetailsPage params={params} />
       </Suspense>
