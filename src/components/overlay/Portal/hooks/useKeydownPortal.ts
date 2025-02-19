@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 interface UseKeydownPortalProps {
   portalRoot: HTMLElement | null;
@@ -10,7 +10,7 @@ interface UseKeydownPortalProps {
 
 const useKeydownPortal = ({ portalRoot, modalRef, handleClosePortal }: UseKeydownPortalProps) => {
   const [focusableElements, setFocusableElements] = useState<NodeListOf<HTMLElement> | null>(null);
-
+  const focusCountRef = useRef(0);
   const updateFocusableElement = () => {
     if (!modalRef.current) return;
 
@@ -21,11 +21,6 @@ const useKeydownPortal = ({ portalRoot, modalRef, handleClosePortal }: UseKeydow
     setFocusableElements(elements);
   };
 
-  const focusFirstFocusableElement = () => {
-    if (!focusableElements || focusableElements.length === 0) return;
-    focusableElements[0].focus();
-  };
-
   const handleTab = (e: KeyboardEvent) => {
     if (!modalRef.current) return;
     if (e.key !== 'Tab') return;
@@ -33,15 +28,14 @@ const useKeydownPortal = ({ portalRoot, modalRef, handleClosePortal }: UseKeydow
 
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
+    focusCountRef.current++;
 
     if (e.shiftKey && document.activeElement === firstElement) {
       e.preventDefault();
       lastElement.focus();
-
-      return;
     }
 
-    if (document.activeElement === lastElement) {
+    if (document.activeElement === lastElement || focusCountRef.current === 1) {
       e.preventDefault();
       firstElement.focus();
     }
@@ -59,13 +53,12 @@ const useKeydownPortal = ({ portalRoot, modalRef, handleClosePortal }: UseKeydow
   useEffect(() => {
     if (!handleClosePortal) return;
     document.addEventListener('keydown', handleKeyDown);
-    focusFirstFocusableElement();
 
     return () => {
       if (!handleClosePortal) return;
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [focusFirstFocusableElement]);
+  }, [focusableElements]);
 };
 
 export default useKeydownPortal;
