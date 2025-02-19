@@ -14,7 +14,7 @@ const DURATION = 3 * 1000;
 interface Props {
   children: React.ReactNode;
   handleCloseToast: () => void;
-  a11yMessage?: string;
+  a11yMessage: string;
 }
 const Toast = ({ children, handleCloseToast, a11yMessage }: Props) => {
   const timeout = setTimeout(() => {
