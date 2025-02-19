@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useActionState, useEffect, useRef, useState } from 'react';
+import React, { useActionState, useRef } from 'react';
 
 import { A11yMessage, Toast } from '@/components';
 import SearchIcon from '@/images/searchIcon.svg';
