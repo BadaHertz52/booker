@@ -11,8 +11,9 @@ import styles from './index.module.scss';
 
 interface FullScreenModalProps {
   children: React.ReactNode;
+  a11yMessage?: string;
 }
-const FullScreenModal = ({ children }: FullScreenModalProps) => {
+const FullScreenModal = ({ children, a11yMessage }: FullScreenModalProps) => {
   const htmlElement = document.querySelector('html');
 
   const router = useRouter();
@@ -29,7 +30,7 @@ const FullScreenModal = ({ children }: FullScreenModalProps) => {
   }, []);
 
   return (
-    <Portal handleClosePortal={handleClosePortal}>
+    <Portal a11yMessage={a11yMessage} handleClosePortal={handleClosePortal}>
       <div className={styles.container}>
         <div className={styles.inner}>
           <button aria-label="닫기" className={styles.closeButton} onClick={handleClosePortal}>
