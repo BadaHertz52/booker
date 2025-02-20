@@ -36,7 +36,7 @@ export const getPopularBooks = async (props: GetPopularBooksParamsProps) => {
 
   const isLastPage = (Number(props.pageNo) - 1) * Number(props.pageSize) + resultNum >= numFound;
 
-  return { books, isLastPage };
+  return { books, isLastPage, totalBooksLength: numFound };
 };
 // --- 인기 대츌 도서
 
