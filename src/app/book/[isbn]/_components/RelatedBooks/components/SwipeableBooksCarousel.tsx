@@ -10,9 +10,11 @@ const Loaded = ({ relatedBooks }: LoadedProps) => {
   return (
     <SwipeableCarousel>
       {relatedBooks.map((book) => (
-        <Link href={`/book/${book.isbn}`} key={book.isbn}>
-          <SwipeableBookCard.Loaded bookItemData={book} />
-        </Link>
+        <li key={book.isbn}>
+          <Link href={`/book/${book.isbn}`}>
+            <SwipeableBookCard.Loaded bookItemData={book} />
+          </Link>
+        </li>
       ))}
     </SwipeableCarousel>
   );
