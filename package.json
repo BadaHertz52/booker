@@ -74,5 +74,11 @@
     "workerDirectory": [
       "public"
     ]
-  }
+  },
+  "sideEffects": [
+    "*.sss",
+    "*.css",
+    "**/*.css",
+    "**/*.scss"
+  ]
 }
