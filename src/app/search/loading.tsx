@@ -1,4 +1,5 @@
-import { BookList, H1 } from '@/components';
+import BookList from '@/components/book/BookList';
+import H1 from '@/components/common/H1';
 
 const SKELETON_LIST_LENGTH = 5;
 

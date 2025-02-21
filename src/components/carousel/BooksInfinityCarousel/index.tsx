@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import React from 'react';
 
-import { NoBooksYet } from '@/components/common';
-import { BookSimpleInfo } from '@/types';
+import NoBooksYet from '@/components/common/NoBooksYet';
+import { BookSimpleInfo } from '@/types/books';
 
 import InfinityCarousel, { InfinityCarouselProps } from '../InfinityCarousel';
 

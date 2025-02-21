@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { InfinityCarousel } from '@/components';
+import InfinityCarousel from '@/components/carousel/InfinityCarousel';
 
 const meta = {
   title: 'Components/Carousel/InfinityCarousel',

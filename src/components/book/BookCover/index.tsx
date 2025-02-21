@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import Image from 'next/image';
 
-import { gray200BlurDataURL } from '@/constants';
+import { gray200BlurDataURL } from '@/constants/blurDataURL';
 import NoCoverImg from '@/images/noCover.svg';
-import { BookItemData } from '@/types';
+import { BookItemData } from '@/types/books';
 
 import styles from './index.module.scss';
 interface BookCoverLoadedProps {
@@ -12,7 +12,7 @@ interface BookCoverLoadedProps {
   bookItemData: BookItemData;
 }
 
-const BookCoverLoaded = ({ bookItemData, classNameForWidth, imgWidth = 100 }: BookCoverLoadedProps) => {
+const BookCoverLoaded = ({ bookItemData, classNameForWidth, imgWidth = 80 }: BookCoverLoadedProps) => {
   return (
     <div className={classNames(styles.imgWrapper, classNameForWidth)}>
       <Image
@@ -22,7 +22,6 @@ const BookCoverLoaded = ({ bookItemData, classNameForWidth, imgWidth = 100 }: Bo
         alt=""
         width={imgWidth}
         height={(imgWidth * 3) / 2}
-        quality={100}
       />
     </div>
   );

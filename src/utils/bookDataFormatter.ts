@@ -1,10 +1,5 @@
-import {
-  BookDetailData,
-  BookItemData,
-  NaruApiBookData,
-  NaruApiBookDetailsData,
-  NaruApiBookDetailsDataTotalLoanInfo,
-} from '@/types';
+import { NaruApiBookData, NaruApiBookDetailsData, NaruApiBookDetailsDataTotalLoanInfo } from '@/types/api/bookApi';
+import { BookDetailData, BookItemData } from '@/types/books';
 
 export const formatAuthors = (doc: NaruApiBookData) => {
   let author = doc.authors;

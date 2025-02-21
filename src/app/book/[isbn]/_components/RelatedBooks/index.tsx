@@ -1,5 +1,5 @@
-import { NoBooksYet } from '@/components';
-import { BookItemData } from '@/types';
+import NoBooksYet from '@/components/common/NoBooksYet';
+import { BookItemData } from '@/types/books';
 
 import SwipeableBooksCarousel from './components/SwipeableBooksCarousel';
 import styles from './index.module.scss';

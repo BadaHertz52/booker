@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { ErrorNotification } from '@/components';
+import ErrorNotification from '@/components/common/ErrorNotification';
 
 import StoryWrapper from '../_components/StoryWrapper';
 

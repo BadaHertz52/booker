@@ -1,6 +1,5 @@
 import styles from '@/app/(home)/page.module.scss';
-import { BooksInfinityCarousel } from '@/components';
-import { BooksInfinityCarouselProps } from '@/components/carousel/BooksInfinityCarousel';
+import BooksInfinityCarousel, { BooksInfinityCarouselProps } from '@/components/carousel/BooksInfinityCarousel';
 
 const BooksCarouselSectionLoaded = ({ title, booksSimpleInfo }: BooksInfinityCarouselProps) => {
   return (

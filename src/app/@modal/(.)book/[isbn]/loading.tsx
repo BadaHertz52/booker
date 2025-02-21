@@ -1,5 +1,5 @@
 import BookDetailLoading from '@/app/book/[isbn]/loading';
-import { FullScreenModal } from '@/components';
+import FullScreenModal from '@/components/overlay/FullScreenModal';
 
 const BookDetailsModalLoading = () => {
   return (

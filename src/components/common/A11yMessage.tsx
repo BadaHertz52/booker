@@ -3,6 +3,7 @@ interface A11MessageProps {
   isHidden?: boolean;
   isAbleTab?: boolean;
 }
+
 const A11yMessage = ({ isHidden = false, message, isAbleTab = false }: A11MessageProps) => {
   return (
     <p

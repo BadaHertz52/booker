@@ -2,9 +2,10 @@
 
 import { Suspense, useState } from 'react';
 
-import { BookList, ScrollObserver } from '@/components';
+import BookList from '@/components/book/BookList';
+import ScrollObserver from '@/components/ScrollObserver';
 import { GetSearchBooksParamsParams } from '@/services/endpoints/naruEndpoint';
-import { BookItemData } from '@/types';
+import { BookItemData } from '@/types/books';
 
 import { getSearchBooks } from '../../_services/searchBooks';
 

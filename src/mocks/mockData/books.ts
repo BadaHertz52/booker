@@ -1,4 +1,4 @@
-import { NaruApiBookData, NaruApiBookDetailsData, NaruApiBookDetailsDataTotalLoanInfo } from '@/types';
+import { NaruApiBookData, NaruApiBookDetailsData, NaruApiBookDetailsDataTotalLoanInfo } from '@/types/api/bookApi';
 
 import bookCoverImg from './cover.jpeg';
 const BOOK_COVER_IMG_URL = bookCoverImg.src;

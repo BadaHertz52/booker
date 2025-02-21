@@ -1,6 +1,8 @@
-import { ERROR_MESSAGE, ERROR_NAME, ONE_DAY_IN_SECONDS } from '@/constants';
-import { NaruApiBookData } from '@/types';
-import { formatNaruApiBookDataToBookItemData, throwRequestError } from '@/utils';
+import { ERROR_MESSAGE, ERROR_NAME } from '@/constants/error';
+import { ONE_DAY_IN_SECONDS } from '@/constants/time';
+import { NaruApiBookData } from '@/types/api/bookApi';
+import { formatNaruApiBookDataToBookItemData } from '@/utils/bookDataFormatter';
+import { throwRequestError } from '@/utils/errorHandler';
 
 import { GetPopularBooksParamsProps, GetSearchBooksParamsParams, naruEndpoint } from '../endpoints/naruEndpoint';
 

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import { BookListPageLayout } from '@/app/books/[list]/_components/BookListPageLayout';
 import BookListLoading from '@/app/books/[list]/loading';
-import { BOOKS_TITLE } from '@/constants';
+import { BOOKS_TITLE } from '@/constants/books';
 
 const LoadingComponent = ({ list }: { list: keyof typeof BOOKS_TITLE }) => {
   return (

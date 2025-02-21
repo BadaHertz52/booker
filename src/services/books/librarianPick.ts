@@ -1,8 +1,12 @@
-import { ERROR_MESSAGE, ERROR_NAME, ONE_DAY_IN_SECONDS } from '@/constants';
-import { ApiLibrarianPickData, BookSimpleInfo } from '@/types';
-import { extractPlainTextFromXML, parseXmlToJson, throwRequestError, truncateText } from '@/utils';
+import { ERROR_MESSAGE, ERROR_NAME } from '@/constants/error';
+import { ONE_DAY_IN_SECONDS } from '@/constants/time';
+import { ApiLibrarianPickData } from '@/types/api/bookApi';
+import { BookSimpleInfo } from '@/types/books';
+import { throwRequestError } from '@/utils/errorHandler';
+import { truncateText } from '@/utils/textUtils';
+import { extractPlainTextFromXML, parseXmlToJson } from '@/utils/xmlParser';
 
-import { publicLibraryEndpoint } from '../index';
+import { publicLibraryEndpoint } from '../endpoints/publicLibraryEndpoint';
 
 /**
  * 국립 중앙 도서관 - 지난달 사서 추천 도서 목록

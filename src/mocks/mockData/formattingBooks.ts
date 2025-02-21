@@ -1,4 +1,4 @@
-import { BookDetailData, BookItemData, BookSimpleInfo } from '@/types';
+import { BookDetailData, BookItemData, BookSimpleInfo } from '@/types/books';
 
 import bookCoverImg from './cover.jpeg';
 const BOOK_COVER_IMG_URL = bookCoverImg.src;

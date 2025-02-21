@@ -1,4 +1,4 @@
-import { BOOKS_TITLE } from '@/constants';
+import { BOOKS_TITLE } from '@/constants/books';
 
 import { BookListPageLayout } from './_components/BookListPageLayout';
 

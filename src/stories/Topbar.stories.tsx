@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Topbar } from '@/components';
+import Topbar from '@/components/Topbar';
 
 const meta: Meta<typeof Topbar> = {
   component: Topbar,

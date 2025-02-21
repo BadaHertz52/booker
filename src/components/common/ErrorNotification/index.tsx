@@ -2,11 +2,12 @@
 
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
+import { lazy } from 'react';
 
-import { gray200BlurDataURL } from '@/constants';
+import { gray200BlurDataURL } from '@/constants/blurDataURL';
 import ErrorIcon from '@/images/error.svg';
 
-import HomeButton from '../HomeButton';
+const HomeButton = lazy(() => import('../HomeButton'));
 
 import styles from './index.module.scss';
 

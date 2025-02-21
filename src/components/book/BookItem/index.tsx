@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-import { BookItemData } from '@/types';
+import { BookItemData } from '@/types/books';
 
 import BookCover from '../BookCover';
 
