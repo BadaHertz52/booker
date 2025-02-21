@@ -20,5 +20,8 @@ const nextConfig: NextConfig = {
       exclude: ['error'],
     },
   },
+  experimental: {
+    optimizePackageImports: ['classnames', 'fast-xml-parser'],
+  },
 };
 export default nextConfig;
