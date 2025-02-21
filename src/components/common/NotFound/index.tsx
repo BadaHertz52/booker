@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-import { gray200BlurDataURL } from '@/constants';
+import { gray200BlurDataURL } from '@/constants/blurDataURL';
 import NotFoundImage from '@/images/notFound.svg';
 
 import styles from './index.module.scss';

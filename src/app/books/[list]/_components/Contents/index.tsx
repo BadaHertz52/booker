@@ -2,8 +2,10 @@
 
 import { Suspense, useState } from 'react';
 
-import { A11yMessage, BookList, ScrollObserver } from '@/components';
-import { BookItemData } from '@/types';
+import BookList from '@/components/book/BookList';
+import A11yMessage from '@/components/common/A11yMessage';
+import ScrollObserver from '@/components/ScrollObserver';
+import { BookItemData } from '@/types/books';
 
 import { loadNewBooks } from '../../_services/books';
 

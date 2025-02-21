@@ -1,7 +1,8 @@
 import Link from 'next/link';
 
-import { SwipeableBookCard, SwipeableCarousel } from '@/components';
-import { BookItemData } from '@/types';
+import SwipeableCarousel from '@/components/carousel/SwipeableCarousel';
+import SwipeableBookCard from '@/components/carousel/SwipeableCarousel/components/SwipeableBookCard';
+import { BookItemData } from '@/types/books';
 
 interface LoadedProps {
   relatedBooks: BookItemData[];

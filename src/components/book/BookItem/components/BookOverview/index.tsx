@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import Image from 'next/image';
 
 import UpArrowIcon from '@/images/primaryArrowUp.svg';
-import { BookItemData } from '@/types';
+import { BookItemData } from '@/types/books';
 
 import styles from './index.module.scss';
 

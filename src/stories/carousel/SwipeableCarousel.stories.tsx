@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Suspense } from 'react';
 
-import { RelatedBooks } from '@/app/book/[isbn]/_components';
-import { SwipeableCarousel } from '@/components';
-import { BOOK_LIST_MOCK_DATA } from '@/mocks/mockData';
+import RelatedBooks from '@/app/book/[isbn]/_components/RelatedBooks';
+import SwipeableCarousel from '@/components/carousel/SwipeableCarousel';
+import { BOOK_LIST_MOCK_DATA } from '@/mocks/mockData/formattingBooks';
 
 const meta = {
   title: 'Components/Carousel/SwipeableCarousel',

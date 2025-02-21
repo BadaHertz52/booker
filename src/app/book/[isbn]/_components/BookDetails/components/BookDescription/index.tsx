@@ -1,4 +1,4 @@
-import { BookDetailData } from '@/types';
+import { BookDetailData } from '@/types/books';
 
 import styles from './index.module.scss';
 

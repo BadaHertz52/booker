@@ -1,6 +1,5 @@
 import { http, HttpResponse } from 'msw';
 
-import { publicLibraryEndpoint } from '@/services';
 import {
   BASIC_BOOK_DETAILS_URL,
   BASIC_BOOKS_FOR_MANIA,
@@ -8,9 +7,10 @@ import {
   BASIC_SEARCH_BOOKS_URL,
   naruEndpoint,
 } from '@/services/endpoints/naruEndpoint';
+import { publicLibraryEndpoint } from '@/services/endpoints/publicLibraryEndpoint';
 
-import { LIBRARIAN_PICK_XML } from '../mockData';
 import { BOOKS_DOCS_DATA, BOOKS_FOR_MANIA, NARU_API_BOOK_DETAILS_DATA, RISING_BOOKS_DATA } from '../mockData/books';
+import { LIBRARIAN_PICK_XML } from '../mockData/librarianPick';
 
 const interceptGetLastMonthLibrarianPick = () => {
   return http.get(publicLibraryEndpoint.librarianPick, async () => {

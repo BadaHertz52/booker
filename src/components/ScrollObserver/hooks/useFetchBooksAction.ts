@@ -2,7 +2,7 @@
 
 import { useActionState, useRef, useState } from 'react';
 
-import { BookItemData } from '@/types';
+import { BookItemData } from '@/types/books';
 
 export type GetNewBooks = (nextPage: number) => Promise<{ newBooks: BookItemData[]; lastPage: boolean }>;
 export interface UseFetchBooksActionProps {

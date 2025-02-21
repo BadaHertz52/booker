@@ -1,6 +1,6 @@
-import { fetchRisingBooks } from '@/services';
-import { NaruApiBookData } from '@/types';
-import { formatNaruApiBookDataToBookItemData } from '@/utils';
+import { fetchRisingBooks } from '@/services/books/bookList';
+import { NaruApiBookData } from '@/types/api/bookApi';
+import { formatNaruApiBookDataToBookItemData } from '@/utils/bookDataFormatter';
 
 export const getRisingBooks = async () => {
   const data = await fetchRisingBooks();

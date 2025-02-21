@@ -5,7 +5,8 @@ import '@/styles/reset.scss';
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 
-import { Footer, Topbar } from '@/components';
+import Footer from '@/components/Footer';
+import Topbar from '@/components/Topbar';
 import { enableServerMocking } from '@/mocks/enableServerMocking';
 import { pretendard } from '@/styles/fonts';
 

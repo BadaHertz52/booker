@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { BookList } from '@/components';
-import { BOOK_LIST_MOCK_DATA } from '@/mocks/mockData';
+import BookList from '@/components/book/BookList';
+import { BOOK_LIST_MOCK_DATA } from '@/mocks/mockData/formattingBooks';
 
 const TITLE = '대출 급상승 도서';
 

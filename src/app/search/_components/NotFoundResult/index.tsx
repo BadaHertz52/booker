@@ -1,4 +1,4 @@
-import { NotFound } from '@/components';
+import NotFound from '@/components/common/NotFound';
 
 import styles from './index.module.scss';
 

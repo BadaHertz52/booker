@@ -3,7 +3,9 @@
 import { useRef } from 'react';
 
 import Progressbar from './components/Progressbar';
-import { useScrollProgress, useSwipeMouse, useSwipeTouch } from './hooks';
+import useScrollProgress from './hooks/useScrollProgress';
+import useSwipeMouse from './hooks/useSwipeMouse';
+import useSwipeTouch from './hooks/useSwipeTouch';
 import styles from './index.module.scss';
 
 interface SwipeableCarouselProps {

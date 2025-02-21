@@ -1,4 +1,5 @@
-import { BookDetails, RelatedBooks } from './_components';
+import BookDetails from './_components/BookDetails';
+import RelatedBooks from './_components/RelatedBooks';
 import styles from './page.module.scss';
 
 const BookDetailsLoading = () => {

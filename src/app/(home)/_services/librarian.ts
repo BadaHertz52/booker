@@ -1,4 +1,4 @@
-import { fetchLastMonthLibrarianPick, parseLastMonthLibrarianPick } from '@/services';
+import { fetchLastMonthLibrarianPick, parseLastMonthLibrarianPick } from '@/services/books/librarianPick';
 
 export const getLastMonthLibrarianPick = async () => {
   const response = await fetchLastMonthLibrarianPick();

@@ -3,7 +3,8 @@
 import Image from 'next/image';
 import React, { useActionState, useRef } from 'react';
 
-import { A11yMessage, Toast } from '@/components';
+import A11yMessage from '@/components/common/A11yMessage';
+import { Toast } from '@/components/overlay';
 import SearchIcon from '@/images/searchIcon.svg';
 
 import searchAction, { ProcessSearchFunction } from './action/searchAction';

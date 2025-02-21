@@ -1,6 +1,6 @@
 'use server';
 
-import { getPopularBooks } from '@/services';
+import { getPopularBooks } from '@/services/books/bookList';
 
 interface LoadNewBooksProps {
   list: string;

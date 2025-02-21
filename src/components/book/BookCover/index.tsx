@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import Image from 'next/image';
 
-import { gray200BlurDataURL } from '@/constants';
+import { gray200BlurDataURL } from '@/constants/blurDataURL';
 import NoCoverImg from '@/images/noCover.svg';
-import { BookItemData } from '@/types';
+import { BookItemData } from '@/types/books';
 
 import styles from './index.module.scss';
 interface BookCoverLoadedProps {

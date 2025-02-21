@@ -2,9 +2,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-import { gray200BlurDataURL } from '@/constants';
+import { gray200BlurDataURL } from '@/constants/blurDataURL';
 import NoCoverImage from '@/images/noCover.svg';
-import { BookSimpleInfo } from '@/types';
+import { BookSimpleInfo } from '@/types/books';
 
 import styles from './index.module.scss';
 

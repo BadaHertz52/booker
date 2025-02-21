@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import NotFoundPage from '@/app/not-found';
-import { NotFound } from '@/components';
+import NotFound from '@/components/common/NotFound';
 
 import StoryWrapper from '../_components/StoryWrapper';
 

@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
-import { gray200BlurDataURL } from '@/constants';
-import { BookDetailData } from '@/types';
+import { gray200BlurDataURL } from '@/constants/blurDataURL';
+import { BookDetailData } from '@/types/books';
 
 import styles from './index.module.scss';
 

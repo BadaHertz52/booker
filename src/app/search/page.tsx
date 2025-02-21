@@ -1,5 +1,5 @@
-import { H1 } from '@/components';
-import { BOOK_SEARCH_CATEGORY_NAME } from '@/constants';
+import H1 from '@/components/common/H1';
+import { BOOK_SEARCH_CATEGORY_NAME } from '@/constants/book';
 
 import NotFoundResult from './_components/NotFoundResult';
 import SearchResult from './_components/SearchResult';
@@ -7,6 +7,7 @@ import { getSearchBooks } from './_services/searchBooks';
 
 const MAX_SEARCH_KEYWORD_LENGTH = 16;
 const INVALIDATED_CATEGORY_MESSAGE = '유효하지 않은 카테고리에요 (운영진에게 문의해주세요)';
+
 type Category = keyof typeof BOOK_SEARCH_CATEGORY_NAME;
 
 interface SearchPageProps {

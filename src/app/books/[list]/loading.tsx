@@ -1,4 +1,4 @@
-import { BookList } from '@/components';
+import BookList from '@/components/book/BookList';
 
 const SKELETON_LIST_LENGTH = 6;
 

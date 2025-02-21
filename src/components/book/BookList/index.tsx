@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { NoBooksYet } from '@/components';
-import { BookItemData } from '@/types';
+import NoBooksYet from '@/components/common/NoBooksYet';
+import { BookItemData } from '@/types/books';
 
 import BookItem from '../BookItem';
 

@@ -1,5 +1,6 @@
 'use client';
-import { ErrorNotification } from '@/components';
+
+import ErrorNotification from '@/components/common/ErrorNotification';
 
 import styles from './error.module.scss';
 

@@ -1,5 +1,5 @@
-import { H1 } from '@/components';
-import { BOOKS_TITLE } from '@/constants';
+import H1 from '@/components/common/H1';
+import { BOOKS_TITLE } from '@/constants/books';
 
 import styles from './index.module.scss';
 
