@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 interface UseSwipeTouchProps {
-  containerRef: React.RefObject<HTMLDivElement | null>;
+  containerRef: React.RefObject<HTMLUListElement | null>;
 }
 
 const useSwipeTouch = ({ containerRef }: UseSwipeTouchProps) => {

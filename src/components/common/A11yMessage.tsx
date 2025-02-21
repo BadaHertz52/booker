@@ -1,10 +1,18 @@
 interface A11MessageProps {
-  isHidden: boolean;
   message: string;
+  isHidden?: boolean;
+  isAbleTab?: boolean;
 }
-const A11yMessage = ({ isHidden, message }: A11MessageProps) => {
+const A11yMessage = ({ isHidden = false, message, isAbleTab = false }: A11MessageProps) => {
   return (
-    <p className="sr-only" aria-live="assertive" aria-hidden={isHidden} aria-atomic="true">
+    <p
+      className="sr-only"
+      aria-live="assertive"
+      aria-hidden={isHidden}
+      aria-atomic="true"
+      //eslint-disable-next-line
+      tabIndex={isAbleTab ? 0 : -1}
+    >
       {message}
     </p>
   );

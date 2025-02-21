@@ -24,7 +24,7 @@ const DropdownMenu = ({ id, dropdownMenuRef, selectedCategory, categoryInfo, cha
             name={key}
             role="option"
             type="button"
-            aria-selected={selectedCategory === value}
+            aria-selected={selectedCategory === key}
             onClick={handleClickList}
           >
             {value}

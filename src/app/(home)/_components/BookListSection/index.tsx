@@ -24,7 +24,7 @@ const BookListSectionLoaded = ({ title, bookItemsData, linkHref }: BookListSecti
       ) : (
         <H2 title={title} />
       )}
-      <BookList.Loaded listTitle="대출 급상승 도서" bookItemsData={bookItemsData} />
+      <BookList.Loaded listTitle={title} bookItemsData={bookItemsData} />
     </section>
   );
 };

@@ -11,7 +11,7 @@ interface SwipeableCarouselProps {
 }
 
 const SwipeableCarousel = ({ children }: SwipeableCarouselProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLUListElement>(null);
 
   const { handleMouseDown, handleMouseMove, handleMouseUp, handleMouseLeave } = useSwipeMouse({
     containerRef,
@@ -37,11 +37,11 @@ const SwipeableCarousel = ({ children }: SwipeableCarouselProps) => {
   return (
     <div className={styles.carousel}>
       {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
-      <div
+      <ul
         ref={containerRef}
         className={styles.carouselTrack}
-        role="region"
-        aria-label="Swipeable image carousel"
+        //eslint-disable-next-line
+        tabIndex={0}
         onKeyDown={handleKeyDown}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
@@ -52,7 +52,7 @@ const SwipeableCarousel = ({ children }: SwipeableCarouselProps) => {
         onScroll={handleScroll}
       >
         {children}
-      </div>
+      </ul>
       <Progressbar scrollProgress={scrollProgress} />
     </div>
   );
