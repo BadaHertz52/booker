@@ -15,5 +15,10 @@ const nextConfig: NextConfig = {
       { protocol: 'https', hostname: '**' },
     ],
   },
+  compiler: {
+    removeConsole: {
+      exclude: ['error'],
+    },
+  },
 };
 export default nextConfig;
