@@ -3,7 +3,7 @@ import { Suspense } from 'react';
 import { getBookDetails } from '@/app/book/[isbn]/_services/book';
 import BookDetailsLoading from '@/app/book/[isbn]/loading';
 import BookDetailsPage, { BookDetailsPageParams } from '@/app/book/[isbn]/page';
-import { FullScreenModal } from '@/components/overlay';
+import FullScreenModal from '@/components/overlay/FullScreenModal';
 
 const BookDetailsModal = async ({ params }: BookDetailsPageParams) => {
   const { isbn } = await params;
