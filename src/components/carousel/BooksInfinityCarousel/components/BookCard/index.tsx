@@ -36,6 +36,7 @@ const BookCard = ({ book, imgPriority }: BookCardProps) => {
             src={book.coverImageUrl !== '' ? book.coverImageUrl : NoCoverImage}
             alt={book.title}
             fill
+            sizes="85px"
             blurDataURL={gray200BlurDataURL}
             priority={imgPriority}
           />

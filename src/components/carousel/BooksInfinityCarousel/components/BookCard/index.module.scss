@@ -2,9 +2,8 @@
 @use '../../mixins' as carouselMixins;
 @use '@/styles/mixins.scss' as mixins;
 
-$img-width-desktop: 10rem;
-$img-width-mobile: 8rem;
-$img-width-small-mobile: 7rem;
+$img-width-desktop: 8.5rem;
+$img-width-mobile: 6.5rem;
 
 .imgWrapper {
   position: relative;
@@ -15,10 +14,6 @@ $img-width-small-mobile: 7rem;
 
   @media screen and (max-width: 425px) {
     width: $img-width-mobile;
-  }
-
-  @media screen and (max-width: 375px) {
-    width: $img-width-small-mobile;
   }
 }
 
@@ -51,10 +46,6 @@ $img-width-small-mobile: 7rem;
   @media screen and (max-width: 425px) {
     gap: 0.8rem;
     width: calc(100% - $img-width-mobile - variables.$full-width-card__gap-desktop);
-  }
-
-  @media screen and (max-width: 375px) {
-    width: calc(100% - $img-width-small-mobile - variables.$full-width-card__gap-mobile);
   }
 }
 
