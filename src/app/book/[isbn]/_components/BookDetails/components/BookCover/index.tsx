@@ -21,9 +21,9 @@ const BookCoverLayout = ({ bookDetailData }: BookCoverLayoutProps) => {
             src={bookDetailData.coverImageUrl}
             alt={`[${bookDetailData.title}] 도서 표지`}
             fill
+            sizes="200px"
             placeholder="blur"
             blurDataURL={gray200BlurDataURL}
-            quality={100}
           />
         ) : (
           <div className={styles.coverImageSkeleton}></div>
