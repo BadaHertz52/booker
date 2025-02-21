@@ -23,5 +23,15 @@ const nextConfig: NextConfig = {
   experimental: {
     optimizePackageImports: ['classnames', 'fast-xml-parser'],
   },
+  webpack: (config) => {
+    config.optimization.splitChunks = {
+      ...config.optimization.splitChunks,
+      chunks: 'all',
+      minSize: 100,
+      minChunks: 2,
+    };
+
+    return config;
+  },
 };
 export default nextConfig;
