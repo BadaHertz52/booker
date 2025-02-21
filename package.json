@@ -31,7 +31,6 @@
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",
     "@eslint/eslintrc": "^3",
-    "@next/bundle-analyzer": "^15.1.7",
     "@storybook/addon-essentials": "^8.6.0-alpha.1",
     "@storybook/addon-interactions": "^8.6.0-alpha.1",
     "@storybook/addon-onboarding": "^8.6.0-alpha.1",
