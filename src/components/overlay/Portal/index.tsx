@@ -12,13 +12,13 @@ interface Props {
   handleClosePortal?: () => void;
   children: React.ReactNode;
   extraClassName?: string;
-  a11yMessage?: string;
+  isFocusFirstFocusableEl?: boolean;
 }
-const Portal = ({ handleClosePortal, children, extraClassName, a11yMessage }: Props) => {
+const Portal = ({ handleClosePortal, children, extraClassName, isFocusFirstFocusableEl = false }: Props) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const [portalRoot, setPortalRoot] = useState<HTMLElement | null>(null);
 
-  useKeydownPortal({ modalRef, portalRoot, handleClosePortal });
+  useKeydownPortal({ modalRef, portalRoot, handleClosePortal, isFocusFirstFocusableEl });
   useClickPortal({ modalRef, handleClosePortal });
 
   useEffect(() => {
@@ -29,14 +29,7 @@ const Portal = ({ handleClosePortal, children, extraClassName, a11yMessage }: Pr
   if (!portalRoot) return null; // portal-root가 준비되지 않으면 렌더링하지 않음
 
   return createPortal(
-    <div
-      role="dialog"
-      aria-label={a11yMessage ?? 'portal'}
-      ref={modalRef}
-      className={classNames(styles.portal, { [extraClassName as string]: extraClassName })}
-      //eslint-disable-next-line
-      tabIndex={0}
-    >
+    <div ref={modalRef} className={classNames(styles.portal, { [extraClassName as string]: extraClassName })}>
       {children}
     </div>,
     portalRoot,

@@ -6,39 +6,52 @@ interface UseKeydownPortalProps {
   portalRoot: HTMLElement | null;
   modalRef: React.RefObject<HTMLDivElement | null>;
   handleClosePortal?: () => void;
+  isFocusFirstFocusableEl?: boolean;
 }
 
-const useKeydownPortal = ({ portalRoot, modalRef, handleClosePortal }: UseKeydownPortalProps) => {
+const useKeydownPortal = ({
+  portalRoot,
+  modalRef,
+  handleClosePortal,
+  isFocusFirstFocusableEl,
+}: UseKeydownPortalProps) => {
   const [focusableElements, setFocusableElements] = useState<HTMLElement[] | null>(null);
   const focusCountRef = useRef(0);
+
+  const handleFocusFirstFocusableEl = () => {
+    if (!focusableElements || !isFocusFirstFocusableEl) return;
+
+    focusableElements[0].focus();
+    focusCountRef.current++;
+  };
+
   const updateFocusableElement = () => {
     if (!modalRef.current) return;
 
     const elements = modalRef.current.querySelectorAll<HTMLElement>(
       'a, button, input, textarea, select, [tabindex]:not([tabindex="-1"])',
     );
-
-    setFocusableElements([modalRef.current, ...elements]);
+    setFocusableElements([...elements]);
   };
 
   const handleTab = (e: KeyboardEvent) => {
-    if (!modalRef.current) return;
     if (e.key !== 'Tab') return;
     if (!focusableElements || focusableElements.length === 0) return;
 
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
-    focusCountRef.current++;
 
     if (e.shiftKey && document.activeElement === firstElement) {
       e.preventDefault();
       lastElement.focus();
     }
 
-    if (document.activeElement === lastElement || focusCountRef.current === 1) {
+    if (document.activeElement === lastElement) {
       e.preventDefault();
       firstElement.focus();
     }
+
+    focusCountRef.current++;
   };
 
   const handleKeyDown = (e: KeyboardEvent) => {
@@ -47,8 +60,13 @@ const useKeydownPortal = ({ portalRoot, modalRef, handleClosePortal }: UseKeydow
   };
 
   useEffect(() => {
+    if (!portalRoot) return;
     updateFocusableElement();
-  }, [portalRoot]);
+  }, [modalRef.current, portalRoot]);
+
+  useEffect(() => {
+    handleFocusFirstFocusableEl();
+  }, [focusableElements, isFocusFirstFocusableEl]);
 
   useEffect(() => {
     if (!handleClosePortal) return;
