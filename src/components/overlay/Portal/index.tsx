@@ -32,6 +32,7 @@ const Portal = ({ handleClosePortal, children, extraClassName, a11yMessage }: Pr
     <div
       role="dialog"
       aria-label={a11yMessage ?? 'portal'}
+      aria-modal="true"
       ref={modalRef}
       className={classNames(styles.portal, { [extraClassName as string]: extraClassName })}
       //eslint-disable-next-line
