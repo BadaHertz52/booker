@@ -30,7 +30,7 @@ const FullScreenModal = ({ children, a11yMessage }: FullScreenModalProps) => {
   }, []);
 
   return (
-    <Portal a11yMessage={a11yMessage} handleClosePortal={handleClosePortal}>
+    <Portal a11yMessage={a11yMessage} handleClosePortal={handleClosePortal} isFocusModal={true}>
       <div className={styles.container}>
         <div className={styles.inner}>
           <button aria-label="닫기" className={styles.closeButton} onClick={handleClosePortal}>

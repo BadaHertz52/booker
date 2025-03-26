@@ -13,12 +13,13 @@ interface Props {
   children: React.ReactNode;
   extraClassName?: string;
   a11yMessage?: string;
+  isFocusModal?: boolean;
 }
-const Portal = ({ handleClosePortal, children, extraClassName, a11yMessage }: Props) => {
+const Portal = ({ handleClosePortal, children, extraClassName, a11yMessage, isFocusModal = false }: Props) => {
   const modalRef = useRef<HTMLDivElement>(null);
   const [portalRoot, setPortalRoot] = useState<HTMLElement | null>(null);
 
-  useKeydownPortal({ modalRef, portalRoot, handleClosePortal });
+  useKeydownPortal({ modalRef, portalRoot, handleClosePortal, isFocusModal });
   useClickPortal({ modalRef, handleClosePortal });
 
   useEffect(() => {
