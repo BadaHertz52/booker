@@ -28,8 +28,8 @@ const Toast = ({ children, handleCloseToast, a11yMessage }: Props) => {
   }, []);
 
   return (
-    <Portal a11yMessage={a11yMessage}>
-      <div className={styles.toast}>
+    <Portal>
+      <div role="alert" aria-label={a11yMessage} aria-live="assertive" className={styles.toast}>
         <Image src={WarningIcon} alt="" width={16} />
         {children}
       </div>

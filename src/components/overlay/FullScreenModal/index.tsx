@@ -30,9 +30,16 @@ const FullScreenModal = ({ children, a11yMessage }: FullScreenModalProps) => {
   }, []);
 
   return (
-    <Portal a11yMessage={a11yMessage} handleClosePortal={handleClosePortal} isFocusModal={true}>
+    <Portal handleClosePortal={handleClosePortal} isFocusFirstFocusableEl={true}>
       <div className={styles.container}>
-        <div className={styles.inner}>
+        <div
+          className={styles.inner}
+          role="dialog"
+          aria-label={a11yMessage}
+          aria-modal="true"
+          // eslint-disable-next-line
+          tabIndex={0}
+        >
           <button aria-label="닫기" className={styles.closeButton} onClick={handleClosePortal}>
             <Image src={CloseIcon} alt="" width={24} height={24} />
           </button>
