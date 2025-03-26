@@ -21,6 +21,7 @@
 
 .skipLink {
   position: absolute;
+  left: 1rem;
   z-index: 2;
   border-radius: var(--border-radius-basic);
   background-color: #dbd9d9e3;
@@ -31,13 +32,13 @@
   @include mixins.responsive-fixed-layout;
 
   & {
-    top: -999px;
-    left: 1rem;
+    top: 1rem;
+    transform: translateY(-999px);
     width: 0;
   }
 
   &:focus {
-    top: 1rem;
+    transform: translateY(0);
     width: fit-content;
   }
 }
