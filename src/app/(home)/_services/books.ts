@@ -5,7 +5,11 @@ import { formatNaruApiBookDataToBookItemData } from '@/utils/bookDataFormatter';
 export const getRisingBooks = async () => {
   const data = await fetchRisingBooks();
 
-  const books = data.response.results[0].result.docs.map(({ doc }: { doc: NaruApiBookData }) => {
+  const { response } = data;
+
+  if (!('result' in response.results[0])) return [];
+
+  const books = response.results[0].result.docs.map(({ doc }: { doc: NaruApiBookData }) => {
     return formatNaruApiBookDataToBookItemData(doc);
   });
 
