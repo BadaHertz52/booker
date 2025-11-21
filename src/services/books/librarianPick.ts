@@ -48,12 +48,15 @@ const handleLastMonthLibrarianPickError = (data: any) => {
  * @returns 지난달 사서 추천 도서 목록 포맷팅 데이터
  */
 const formatLastMonthLibrarianPick = (data: any) => {
-  const {
-    channel: { list },
-  } = data;
+  const { channel } = data;
+
+  if (channel.totalCount === 0) {
+    return [];
+  }
+
   const MAX_CONTENT_LENGTH = 100;
 
-  const result: BookSimpleInfo[] = list.map(({ item }: ApiLibrarianPickData) => {
+  const result: BookSimpleInfo[] = channel.list.map(({ item }: ApiLibrarianPickData) => {
     let author = item.recomauthor.replace('지음', '').trim();
     let translator;
 
