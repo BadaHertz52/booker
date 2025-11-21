@@ -7,7 +7,7 @@ export const getRisingBooks = async () => {
 
   const { response } = data;
 
-  if (response.resultNum === 0) return [];
+  if (!('result' in response.results[0])) return [];
 
   const books = response.results[0].result.docs.map(({ doc }: { doc: NaruApiBookData }) => {
     return formatNaruApiBookDataToBookItemData(doc);

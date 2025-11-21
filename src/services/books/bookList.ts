@@ -29,16 +29,15 @@ export const fetchPopularBooks = async (props: GetPopularBooksParamsProps) => {
  */
 export const getPopularBooks = async (props: GetPopularBooksParamsProps) => {
   const data = await fetchPopularBooks(props);
-  const { resultNum } = data.response;
 
-  if (resultNum === 0)
+  if (!('docs' in data.response))
     return {
       books: [],
       isLastPage: true,
       totalBooksLength: 0,
     };
 
-  const { docs, numFound } = data.response;
+  const { docs, numFound, resultNum } = data.response;
 
   const books = docs.map(({ doc }: { doc: NaruApiBookData }) => {
     return formatNaruApiBookDataToBookItemData(doc);
