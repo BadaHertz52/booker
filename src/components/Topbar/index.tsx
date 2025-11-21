@@ -5,11 +5,12 @@ import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React from 'react';
 
-import { Searchbar } from '@/components';
-import { BOOK_SEARCH_CATEGORY_NAME, gray200BlurDataURL } from '@/constants';
+import { gray200BlurDataURL } from '@/constants/blurDataURL';
+import { BOOK_SEARCH_CATEGORY_NAME } from '@/constants/book';
 import BookerIcon from '@/images/booker.svg';
 import LogoIcon from '@/images/logo.svg';
 
+import Searchbar from '../search/Searchbar';
 import { ProcessSearchFunction, ProcessSearchParams } from '../search/Searchbar/action/searchAction';
 
 import styles from './index.module.scss';

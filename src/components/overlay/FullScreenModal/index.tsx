@@ -11,8 +11,9 @@ import styles from './index.module.scss';
 
 interface FullScreenModalProps {
   children: React.ReactNode;
+  a11yMessage?: string;
 }
-const FullScreenModal = ({ children }: FullScreenModalProps) => {
+const FullScreenModal = ({ children, a11yMessage }: FullScreenModalProps) => {
   const htmlElement = document.querySelector('html');
 
   const router = useRouter();
@@ -29,9 +30,16 @@ const FullScreenModal = ({ children }: FullScreenModalProps) => {
   }, []);
 
   return (
-    <Portal handleClosePortal={handleClosePortal}>
+    <Portal handleClosePortal={handleClosePortal} isFocusFirstFocusableEl={true}>
       <div className={styles.container}>
-        <div className={styles.inner}>
+        <div
+          className={styles.inner}
+          role="dialog"
+          aria-label={a11yMessage}
+          aria-modal="true"
+          // eslint-disable-next-line
+          tabIndex={0}
+        >
           <button aria-label="닫기" className={styles.closeButton} onClick={handleClosePortal}>
             <Image src={CloseIcon} alt="" width={24} height={24} />
           </button>

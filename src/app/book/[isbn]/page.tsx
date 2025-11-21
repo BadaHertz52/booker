@@ -1,7 +1,8 @@
 import { Metadata } from 'next';
 import { Suspense } from 'react';
 
-import { BookDetails, RelatedBooks } from './_components';
+import BookDetails from './_components/BookDetails';
+import RelatedBooks from './_components/RelatedBooks';
 import { getBookDetails, getBooksForMania } from './_services/book';
 import styles from './page.module.scss';
 

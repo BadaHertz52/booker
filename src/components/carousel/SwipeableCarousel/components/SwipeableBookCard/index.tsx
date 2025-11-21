@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 
-import { BookCover } from '@/components/book';
-import { BookItemData } from '@/types';
+import BookCover from '@/components/book/BookCover';
+import { BookItemData } from '@/types/books';
 
 import styles from './index.module.scss';
 

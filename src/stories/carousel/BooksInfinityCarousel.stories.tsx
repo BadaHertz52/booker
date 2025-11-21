@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { BooksInfinityCarousel } from '@/components';
-import { BOOK_SIMPLE_INFO_LIST_MOCK_DATA } from '@/mocks/mockData';
+import BooksInfinityCarousel from '@/components/carousel/BooksInfinityCarousel';
+import { BOOK_SIMPLE_INFO_LIST_MOCK_DATA } from '@/mocks/mockData/formattingBooks';
 
 const meta = {
   title: 'Components/Carousel/BooksInfinityCarousel',

@@ -14,8 +14,9 @@ const DURATION = 3 * 1000;
 interface Props {
   children: React.ReactNode;
   handleCloseToast: () => void;
+  a11yMessage: string;
 }
-const Toast = ({ children, handleCloseToast }: Props) => {
+const Toast = ({ children, handleCloseToast, a11yMessage }: Props) => {
   const timeout = setTimeout(() => {
     handleCloseToast();
   }, DURATION);
@@ -28,7 +29,7 @@ const Toast = ({ children, handleCloseToast }: Props) => {
 
   return (
     <Portal>
-      <div className={styles.toast}>
+      <div role="alert" aria-label={a11yMessage} aria-live="assertive" className={styles.toast}>
         <Image src={WarningIcon} alt="" width={16} />
         {children}
       </div>

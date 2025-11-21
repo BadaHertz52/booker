@@ -3,7 +3,9 @@
 import { useRef } from 'react';
 
 import Progressbar from './components/Progressbar';
-import { useScrollProgress, useSwipeMouse, useSwipeTouch } from './hooks';
+import useScrollProgress from './hooks/useScrollProgress';
+import useSwipeMouse from './hooks/useSwipeMouse';
+import useSwipeTouch from './hooks/useSwipeTouch';
 import styles from './index.module.scss';
 
 interface SwipeableCarouselProps {
@@ -11,7 +13,7 @@ interface SwipeableCarouselProps {
 }
 
 const SwipeableCarousel = ({ children }: SwipeableCarouselProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLUListElement>(null);
 
   const { handleMouseDown, handleMouseMove, handleMouseUp, handleMouseLeave } = useSwipeMouse({
     containerRef,
@@ -37,11 +39,11 @@ const SwipeableCarousel = ({ children }: SwipeableCarouselProps) => {
   return (
     <div className={styles.carousel}>
       {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
-      <div
+      <ul
         ref={containerRef}
         className={styles.carouselTrack}
-        role="region"
-        aria-label="Swipeable image carousel"
+        //eslint-disable-next-line
+        tabIndex={0}
         onKeyDown={handleKeyDown}
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
@@ -52,7 +54,7 @@ const SwipeableCarousel = ({ children }: SwipeableCarouselProps) => {
         onScroll={handleScroll}
       >
         {children}
-      </div>
+      </ul>
       <Progressbar scrollProgress={scrollProgress} />
     </div>
   );

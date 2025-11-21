@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 interface UseSwipeMouseProps {
-  containerRef: React.RefObject<HTMLDivElement | null>;
+  containerRef: React.RefObject<HTMLUListElement | null>;
 }
 
 const useSwipeMouse = ({ containerRef }: UseSwipeMouseProps) => {

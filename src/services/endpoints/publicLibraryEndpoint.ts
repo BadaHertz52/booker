@@ -1,4 +1,4 @@
-import { getLastMonthDates } from '@/utils';
+import { getLastMonthDates } from '@/utils/date';
 
 export const PUBLIC_LIBRARY_API_BASE_URL = 'https://nl.go.kr/NL/search/openApi';
 

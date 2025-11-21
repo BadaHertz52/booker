@@ -12,21 +12,21 @@ interface BookDetailProps {
 
 const BookDetailsLoaded = ({ bookDetailData }: BookDetailProps) => {
   return (
-    <article className={styles.container}>
+    <section className={styles.container}>
       <BookCover.Loaded bookDetailData={bookDetailData} />
       <BookOverview.Loaded bookDetailData={bookDetailData} />
       <BookDescription.Loaded bookDetailData={bookDetailData} />
-    </article>
+    </section>
   );
 };
 
 const BookDetailsSkeleton = () => {
   return (
-    <article className={classNames(styles.container, styles.containerSkeleton)}>
+    <section className={classNames(styles.container, styles.containerSkeleton)}>
       <BookCover.Skeleton />
       <BookOverview.Skeleton />
       <BookDescription.Skeleton />
-    </article>
+    </section>
   );
 };
 

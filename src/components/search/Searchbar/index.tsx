@@ -1,9 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import React, { useActionState, useRef } from 'react';
+import React, { lazy, useActionState, useRef } from 'react';
 
-import { Toast } from '@/components';
+import A11yMessage from '@/components/common/A11yMessage';
+const Toast = lazy(() => import('@/components/overlay/Toast'));
 import SearchIcon from '@/images/searchIcon.svg';
 
 import searchAction, { ProcessSearchFunction } from './action/searchAction';
@@ -25,7 +26,7 @@ interface Props {
 const Searchbar = ({ categoryInfo, processSearch, initialFormData }: Props) => {
   const [state, formAction, isPending] = useActionState(searchAction(processSearch), null);
 
-  const { isOpenToast, handleCloseToast } = useToast({ state });
+  const { isOpenToast, handleCloseToast, errorAlertMessage } = useToast({ state });
 
   const elementId = useElementId();
 
@@ -53,8 +54,9 @@ const Searchbar = ({ categoryInfo, processSearch, initialFormData }: Props) => {
         <span className="sr-only">검색 버튼</span>
         <Image src={SearchIcon} alt="" width={17} height={18} />
       </button>
+      <A11yMessage isHidden={!isOpenToast} message={errorAlertMessage} />
       {isOpenToast && (
-        <Toast handleCloseToast={handleCloseToast}>
+        <Toast handleCloseToast={handleCloseToast} a11yMessage={'검색 오류'}>
           <p>{state?.error}</p>
         </Toast>
       )}

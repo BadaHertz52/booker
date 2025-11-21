@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Searchbar } from '@/components';
-import { BOOK_SEARCH_CATEGORY_NAME } from '@/constants';
+import Searchbar from '@/components/search/Searchbar';
+import { BOOK_SEARCH_CATEGORY_NAME } from '@/constants/book';
 
 import { ProcessSearchParams } from '../components/search/Searchbar/action/searchAction';
 

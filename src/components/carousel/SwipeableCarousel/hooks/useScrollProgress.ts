@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
 interface UseScrollProgressProps {
-  containerRef: React.RefObject<HTMLDivElement | null>;
+  containerRef: React.RefObject<HTMLUListElement | null>;
 }
 
 const useScrollProgress = ({ containerRef }: UseScrollProgressProps) => {

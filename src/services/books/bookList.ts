@@ -1,6 +1,8 @@
-import { ERROR_MESSAGE, ERROR_NAME, ONE_DAY_IN_SECONDS } from '@/constants';
-import { NaruApiBookData } from '@/types';
-import { formatNaruApiBookDataToBookItemData, throwRequestError } from '@/utils';
+import { ERROR_MESSAGE, ERROR_NAME } from '@/constants/error';
+import { ONE_DAY_IN_SECONDS } from '@/constants/time';
+import { NaruApiBookData } from '@/types/api/bookApi';
+import { formatNaruApiBookDataToBookItemData } from '@/utils/bookDataFormatter';
+import { throwRequestError } from '@/utils/errorHandler';
 
 import { GetPopularBooksParamsProps, GetSearchBooksParamsParams, naruEndpoint } from '../endpoints/naruEndpoint';
 
@@ -27,7 +29,16 @@ export const fetchPopularBooks = async (props: GetPopularBooksParamsProps) => {
  */
 export const getPopularBooks = async (props: GetPopularBooksParamsProps) => {
   const data = await fetchPopularBooks(props);
+
+  if (!('docs' in data.response))
+    return {
+      books: [],
+      isLastPage: true,
+      totalBooksLength: 0,
+    };
+
   const { docs, numFound, resultNum } = data.response;
+
   const books = docs.map(({ doc }: { doc: NaruApiBookData }) => {
     return formatNaruApiBookDataToBookItemData(doc);
   });
@@ -36,7 +47,7 @@ export const getPopularBooks = async (props: GetPopularBooksParamsProps) => {
 
   const isLastPage = (Number(props.pageNo) - 1) * Number(props.pageSize) + resultNum >= numFound;
 
-  return { books, isLastPage };
+  return { books, isLastPage, totalBooksLength: numFound };
 };
 // --- 인기 대츌 도서
 

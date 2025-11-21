@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import BookDetails from '@/app/book/[isbn]/_components/BookDetails';
-import { BOOK_DETAILS_MOCK_DATA } from '@/mocks/mockData';
+import { BOOK_DETAILS_MOCK_DATA } from '@/mocks/mockData/formattingBooks';
 
 const meta: Meta<typeof BookDetails.Loaded> = {
   component: BookDetails.Loaded,

@@ -1,9 +1,8 @@
 import Image from 'next/image';
 import React from 'react';
 
+import { gray200BlurDataURL } from '@/constants/blurDataURL';
 import GiftImg from '@/images/gift.svg';
-
-import { gray200BlurDataURL } from '../../../constants/blurDataURL';
 
 import styles from './index.module.scss';
 

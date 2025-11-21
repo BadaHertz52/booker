@@ -1,6 +1,6 @@
-import { BOOKS_TITLE } from '@/constants';
+import { BOOKS_TITLE } from '@/constants/books';
 
-import { BookListPageLayout } from './_components/PageLayout';
+import { BookListPageLayout } from './_components/BookListPageLayout';
 
 export type BooksPageParams = Promise<{
   list: string;

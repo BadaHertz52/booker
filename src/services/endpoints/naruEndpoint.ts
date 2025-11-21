@@ -1,5 +1,5 @@
-import { BOOK_SEARCH_CATEGORY_NAME, SEARCH_PAGE_SIZE } from '@/constants';
-import { getCurrentAndPastWeek, getPastDate } from '@/utils';
+import { BOOK_SEARCH_CATEGORY_NAME, SEARCH_PAGE_SIZE } from '@/constants/book';
+import { getCurrentAndPastWeek, getPastDate } from '@/utils/date';
 
 const NARU_BASE_URL = 'http://data4library.kr/api';
 export const BASIC_SEARCH_BOOKS_URL = NARU_BASE_URL + '/srchBooks';

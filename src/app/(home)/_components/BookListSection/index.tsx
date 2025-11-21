@@ -1,9 +1,8 @@
 import Link from 'next/link';
 
 import styles from '@/app/(home)/page.module.scss';
-import { BookList } from '@/components';
-import { BookListSkeletonProps } from '@/components/book/BookList';
-import { BookItemData } from '@/types';
+import BookList, { BookListSkeletonProps } from '@/components/book/BookList';
+import { BookItemData } from '@/types/books';
 
 const H2 = ({ title }: { title: string }) => {
   return <h2>{title}</h2>;
@@ -24,7 +23,7 @@ const BookListSectionLoaded = ({ title, bookItemsData, linkHref }: BookListSecti
       ) : (
         <H2 title={title} />
       )}
-      <BookList.Loaded listTitle="대출 급상승 도서" bookItemsData={bookItemsData} />
+      <BookList.Loaded listTitle={title} bookItemsData={bookItemsData} />
     </section>
   );
 };

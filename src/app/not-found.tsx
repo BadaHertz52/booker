@@ -1,4 +1,5 @@
-import { NotFound, HomeButton } from '@/components';
+import HomeButton from '@/components/common/HomeButton';
+import NotFound from '@/components/common/NotFound';
 
 import styles from './not-found.module.scss';
 
