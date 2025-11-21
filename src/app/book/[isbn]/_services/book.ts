@@ -15,6 +15,10 @@ export const getBookDetails = async (isbn: string) => {
 
 export const getBooksForMania = async (isbn: string) => {
   const data = await fetchBooksForMania(isbn);
+  const { response } = data;
+
+  if (response.resultNum === 0) return [];
+
   const books: BookItemData[] = data.response.docs.map(({ book }: { book: NaruApiBookData }) =>
     formatNaruApiBookDataToBookItemData(book),
   );
