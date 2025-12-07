@@ -1,6 +1,6 @@
 {
   "name": "BOOKER",
-  "version": "0.1.0",
+  "version": "1.5.1",
   "private": true,
   "author": {
     "name": "badahertz52"
@@ -23,15 +23,15 @@
   },
   "dependencies": {
     "fast-xml-parser": "^4.5.1",
-    "next": "15.1.4",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "next": "15.1.9",
+    "react": "^19.0.1",
+    "react-dom": "^19.0.1",
     "sass": "^1.83.4"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.4",
     "@eslint/eslintrc": "^3",
-    "@storybook/addon-essentials": "^8.6.0-alpha.1",
+    "@storybook/addon-essentials": "^8.6.0",
     "@storybook/addon-interactions": "^8.6.0-alpha.1",
     "@storybook/addon-onboarding": "^8.6.0-alpha.1",
     "@storybook/blocks": "^8.6.0-alpha.1",
@@ -45,7 +45,7 @@
     "autoprefixer": "^10.4.20",
     "classnames": "^2.5.1",
     "compression-webpack-plugin": "^11.1.0",
-    "eslint": "^9",
+    "eslint": "^9.9.1",
     "eslint-config-next": "15.1.4",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-jsx-a11y": "^6.10.2",
